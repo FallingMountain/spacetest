@@ -226,7 +226,7 @@ document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
 	
 };
 function pUpgrade1() {
-	if (game.ally = 0) {
+	if (game.ally === 0) {
 	game.ally = 1;
 	game.maxUp3Buys = 15;
 	game.maxUp2Buys = 15;
@@ -235,7 +235,7 @@ function pUpgrade1() {
 	}
 };
 function pUpgrade2() {
-	if (game.ally = 0) {
+	if (game.ally === 0) {
 	game.ally = 2;
 	game.maxUp3Buys = 10;
 	game.maxUp2Buys = 10;
