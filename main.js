@@ -14,12 +14,16 @@ var game = {
   },
   up1Cost:2500,
   up1buys:0,
+  maxUp1buys:5,
   up2Cost:4000,
-	up2buys:0,
+up2buys:0,
+maxUp2buys:5,
   up3Cost:6000,
-	up3buys:0,
+up3buys:0,
+maxUp3buys:5,
   creat:0,
-	creatGainReset:0
+creatGainReset:0,
+  ally:0
 };
 function rockLaunch1() {
 	var rocketAuto = setInterval(function() {
@@ -57,7 +61,7 @@ if (game.money < game.fuel.cost*game.fuel.max) {
 };
 function upgrade1() {
 	if (game.money >= game.up1Cost) {
-	if (game.up1buys < 5) {
+	if (game.up1buys < game.maxUp1buys) {
 	game.fuel.max = Math.floor(game.fuel.max*1.1);
 	game.money -= game.up1Cost;
 	game.up1Cost = game.up1Cost*1.3;
@@ -71,7 +75,7 @@ function upgrade1() {
 };
 function upgrade2() {
 	if (game.money >= game.up2Cost) {
-	if (game.up2buys < 5) {
+	if (game.up2buys < game.maxUp2buys) {
 	game.fuel.cost -= 1;
 	game.fuel.scaleDown = 0.9*game.fuel.scaleDown;
 	game.money -= game.up2Cost;
@@ -87,7 +91,7 @@ function upgrade2() {
 
 function upgrade3() {
 	if (game.money >= game.up3Cost) {
-	if (game.up3buys < 5) {
+	if (game.up3buys < game.maxUp3buys) {
 	game.moneyPerFuel = game.moneyPerFuel*1.25;
 	game.money -= game.up3Cost;
 	game.up3Cost = game.up3Cost*1.7;
@@ -116,7 +120,7 @@ if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 
 game.creat += Math.floor(Math.sqrt(game.money/50000));
 game = {
 	money:0,
-	moneyPerFuel:10*(game.creat+1),
+	moneyPerFuel:10*(Math.log2(game.creat+1)+1)*game.ally,
 	fuel: {
 	amount:150,
  	cost:3,
@@ -129,10 +133,13 @@ game = {
  	},
  	up1Cost:2500,
   	up1buys:0,
+	maxUp1buys:game.maxUp1buys,
   	up2Cost:4000,
 	up2buys:0,
+	maxUp2buys:game.maxUp2buys,
   	up3Cost:6000,
 	up3buys:0,
+	maxUp3buys:game.maxUp3buys,
 	creatGainReset:0,
 	creat:game.creat
 	};
@@ -175,26 +182,30 @@ window.setInterval(function(){
 }, 2000);
 function fullReset() {
 	game = {
-  	money:0,
-  	moneyPerFuel:10,
-  	fuel: {
-  	amount:150,
-  	cost:3,
-  	max:150,
-  	scaleDown:1
-  	},
-  	auto: {
-  	rocket:false,
- 	fuel:false
-  	},
-  	up1Cost:2500,
-  	up1buys:0,
-  	up2Cost:4000,
-	up2buys:0,
-  	up3Cost:6000,
-	up3buys:0,
-	creatGainReset:0,
-	creat:0
+  money:0,
+  moneyPerFuel:10,
+  fuel: {
+  amount:150,
+  cost:3,
+  max:150,
+  scaleDown:1
+  },
+  auto: {
+  rocket:false,
+  fuel:false
+  },
+  up1Cost:2500,
+  up1buys:0,
+  maxUp1buys:5,
+  up2Cost:4000,
+up2buys:0,
+maxUp2buys:5,
+  up3Cost:6000,
+up3buys:0,
+maxUp3buys:5,
+  creat:0,
+creatGainReset:0,
+  ally:0
 };
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.fuel.amount;
@@ -207,6 +218,24 @@ document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
 document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
 document.getElementById("upgrade3Buys").innerHTML = game.up3buys;	
 	
+};
+function pUpgrade1() {
+	if (game.ally = 0) {
+	game.ally = 1;
+	game.maxUp3Buys = 15;
+	game.maxUp2Buys = 15,
+	game.maxUp1Buys = 15,
+		game.creat -= 1;
+	}
+};
+function pUpgrade2() {
+	if (game.ally = 0) {
+	game.ally = 2;
+	game.maxUp3Buys = 10;
+	game.maxUp2Buys = 10,
+	game.maxUp1Buys = 10,
+		game.creat -= 1;
+	}
 };
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.fuel.amount;
