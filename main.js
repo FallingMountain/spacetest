@@ -143,10 +143,10 @@ game = {
 	creatGainReset:0,
 	creat:game.creat
 	};
-	if (ally ===2) {
+	if (game.ally ===2) {
 	game.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)*2
 	}
-	if (ally ===1) {
+	if (game.ally ===1) {
 	game.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)*1.5
 	}
 	document.getElementById("money").innerHTML = game.money;
