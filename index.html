@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<html>
+	<title>Space Race Incremental</title>
+	<head>
+	</head>
+  <body>
+	  <button class="tabe" onclick="tab('game')">Game</button>
+	  <button class="tabe" onclick="tab('sources')">Sources</button>
+	  <button class="tabe" onclick="tab('options')">Options</button>
+	  <button class="tabe" onclick="tab('prestige')">Brainstorm</button>
+	  <div id="game" class="tab">
+<button onclick="rockLaunch1()">Launch a small rocket,<br>You lose your fuel, and gain money.</button>
+<br>
+	You have <span id = "money"></span>$<br>
+	  You have <span id = "fuel"></span> fuel.<br>
+	  Your maximum fuel is <span id = "fuelMax"></span><br>
+	  The current cost of 1 fuel is <span id = "fuelCost"></span>$<br>
+	  <button onclick="buyFuel()"><br>Buy some fuel!</button><br>
+	  <button onclick="upgrade1()">Make your rocket longer, allowing it to <br>increase your fuel capacity by 10%!.<br>Cost:<span id = "upgrade1Cost"></span>$<br>Bought <span id = "upgrade1Buys"></span>/5 times</button>
+	  <button onclick="upgrade2()">Disrupt the economy, so you can decrease the cost<br> of fuel by $1, and decrease the cost scaling of fuel by 10%!<br>Cost:<span id = "upgrade2Cost"></span>$<br>Bought <span id = "upgrade2Buys"></span>/5 times</button>
+	  <button onclick="upgrade3()">Increase the speed of your rocket,<br> allowing it to collect 25% more money!<br>Cost:<span id = "upgrade3Cost"></span>$<br>Bought <span id = "upgrade3Buys"></span>/5 times</button>
+<script type="text/javascript" src="main.js"></script>
+	  <br>
+	  <br>
+	Thanks to SuperSpruce for some of the code! You can check out his YouTube channel <a href = "https://www.youtube.com/channel/UCrpbLYZYpwpkrW9j9x8Ci2A" target = "_blank">here</a>.
+	  </div>
+	  <div id="sources" class="tab">
+		  Secondary:
+		  Morring, Jr., Frank. "Space race." World Book Advanced, World Book, 2019, www.worldbookonline.com/advanced/article?id=ar755298. Accessed 16 Jan. 2019.<br>
+		  Trevino, Marcella Bush. “Space Race.” Salem Press Encyclopedia, 2018. EBSCOhost, search.ebscohost.com/login.aspx?direct=true&db=t6o&AN=89183508.<br>
+		  McGill, Sara Ann. “The First Moon Landing.” First Moon Landing, Aug. 2017, pp. 1–2. EBSCOhost, search.ebscohost.com/login.aspx?direct=true&db=n8h&AN=17989654.<br>
+		  https://www.khanacademy.org/humanities/us-history/postwarera/1950s-america/a/the-start-of-the-space-race<br>
+		  https://www.history.com/topics/cold-war/space-race<br>
+		  Primary:
+		  none yet
+	  </div>
+	  <div id="options" class="tab">
+				   <button onclick="fullReset()">Reset the game</button>	   
+				   
+	</div>
+	  <div id="prestige" class="tab">
+		  <button onclick="prestige1()">Reset everything except automation, and gain <span id = "gainOnBrainstorm"></span> creativity. </button>
+		  
+		  
+	  </div>
+	  <script>
+		function tab(t) {
+			var classList = document.getElementsByClassName("tab");
+	for(var i = 0; i < classList.length; i++) {
+		classList[i].style.display = "none"
+	}
+			document.getElementById(t).style.display = ""
+		}
+		  tab("game")
+		  </script>
+	  <br>
+  </body>
+  </html>
