@@ -33,7 +33,7 @@ function rockLaunch1() {
 	game.money = Math.round(game.money*100)/100;
 	document.getElementById("money").innerHTML = game.money;
 	document.getElementById("fuel").innerHTML = game.fuel.amount;
-	}else if (game.auto.rocket === false){
+	}else{
 	clearInterval(rocketAuto);
 	}
 	}, 40/Math.floor(game.up3buys/5));	
@@ -164,6 +164,9 @@ game = {
 	if (game.auto.fuel = true) {
 		buyFuel();
 	};
+	if (game.auto.rocket = true) {
+		rockLaunch1();
+	}
 	bugFix();
 	p1Gain();
 }, 100);
