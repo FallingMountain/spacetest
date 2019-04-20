@@ -94,60 +94,63 @@ function upgrade3() {
 	game.up3buys += 1;
 	document.getElementById("money").innerHTML = game.money;
 	document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
-			document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
-		}
+	document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
+	}
 	}
 };
 
 function bugFix() {
-  game.fuel.cost = Math.round(game.fuel.cost*100)/100;
-  game.money = Math.round(game.money*100)/100;
+	game.fuel.cost = Math.round(game.fuel.cost*100)/100;
+	game.money = Math.round(game.money*100)/100;
 	game.fuel.amount = Math.round(game.fuel.amount);
-  document.getElementById("fuelCost").innerHTML = game.fuel.cost;
+	document.getElementById("fuelCost").innerHTML = game.fuel.cost;
 	document.getElementById("money").innerHTML = game.money;
-document.getElementById("fuel").innerHTML = game.fuel.amount;
+	document.getElementById("fuel").innerHTML = game.fuel.amount;
 };
 function p1Gain() {
 	game.creatGainReset = Math.floor(Math.sqrt(game.money/50000));
 					 document.getElementById("gainOnBrainstorm").innerHTML = game.creatGainReset;
 }
-function prestige1() {
-	if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000)
-	game.creat += Math.floor(Math.sqrt(game.money/50000));
-	game = {
-  money:0,
-  moneyPerFuel:10*(game.creat+1),
-  fuel: {
-  amount:150,
-  cost:3,
-  max:150,
-  scaleDown:1
-  },
-  auto: {
-  rocket:game.auto.rocket,
-  fuel:game.auto.fuel
-  },
-  up1Cost:2500,
-  up1buys:0,
-  up2Cost:4000,
+function prestige1(){
+if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000)
+game.creat += Math.floor(Math.sqrt(game.money/50000));
+game = {
+	money:0,
+	moneyPerFuel:10*(game.creat+1),
+	fuel: {
+	amount:150,
+ 	cost:3,
+  	max:150,
+  	scaleDown:1
+ 	},
+  	auto: {
+  	rocket:true,
+  	fuel:true
+ 	},
+ 	up1Cost:2500,
+  	up1buys:0,
+  	up2Cost:4000,
 	up2buys:0,
-  up3Cost:6000,
+  	up3Cost:6000,
 	up3buys:0,
 	creatGainReset:0,
 	creat:game.creat
 	};
 	document.getElementById("money").innerHTML = game.money;
-document.getElementById("fuel").innerHTML = game.fuel.amount;
-document.getElementById("fuelCost").innerHTML = game.fuel.cost;
-document.getElementById("fuelMax").innerHTML = game.fuel.max;
-document.getElementById("upgrade1Cost").innerHTML = game.up1Cost;
-document.getElementById("upgrade2Cost").innerHTML = game.up2Cost;
-document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
-document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
-document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
-document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
+	document.getElementById("fuel").innerHTML = game.fuel.amount;
+	document.getElementById("fuelCost").innerHTML = game.fuel.cost;
+	document.getElementById("fuelMax").innerHTML = game.fuel.max;
+	document.getElementById("upgrade1Cost").innerHTML = game.up1Cost;
+	document.getElementById("upgrade2Cost").innerHTML = game.up2Cost;
+	document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
+	document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
+	document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
+	document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
 };
-window.setInterval(function(){
+	window.setInterval(function(){
+	if (game.auto.fuel = true) {
+		buyFuel();
+	};
 	bugFix();
 	p1Gain();
 }, 100);
@@ -172,26 +175,26 @@ window.setInterval(function(){
 }, 2000);
 function fullReset() {
 	game = {
-  money:0,
-  moneyPerFuel:10,
-  fuel: {
-  amount:150,
-  cost:3,
-  max:150,
-  scaleDown:1
-  },
-  auto: {
-  rocket:false,
-  fuel:false
-  },
-  up1Cost:2500,
-  up1buys:0,
-  up2Cost:4000,
+  	money:0,
+  	moneyPerFuel:10,
+  	fuel: {
+  	amount:150,
+  	cost:3,
+  	max:150,
+  	scaleDown:1
+  	},
+  	auto: {
+  	rocket:false,
+ 	fuel:false
+  	},
+  	up1Cost:2500,
+  	up1buys:0,
+  	up2Cost:4000,
 	up2buys:0,
-  up3Cost:6000,
+  	up3Cost:6000,
 	up3buys:0,
-creatGainReset:0,
-creat:0
+	creatGainReset:0,
+	creat:0
 };
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.fuel.amount;
