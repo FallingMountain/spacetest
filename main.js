@@ -120,7 +120,7 @@ if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 
 game.creat += Math.floor(Math.sqrt(game.money/50000));
 game = {
 	money:0,
-	moneyPerFuel:10*(Math.log2(game.creat+1)+1)*game.ally,
+	moneyPerFuel:10*(Math.log2(game.creat+1)+1),
 	fuel: {
 	amount:150,
  	cost:3,
@@ -143,6 +143,12 @@ game = {
 	creatGainReset:0,
 	creat:game.creat
 	};
+	if (ally ===2) {
+	game.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)*2
+	}
+	if (ally ===1) {
+	game.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)*1.5
+	}
 	document.getElementById("money").innerHTML = game.money;
 	document.getElementById("fuel").innerHTML = game.fuel.amount;
 	document.getElementById("fuelCost").innerHTML = game.fuel.cost;
