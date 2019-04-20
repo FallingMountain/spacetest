@@ -223,8 +223,8 @@ function pUpgrade1() {
 	if (game.ally = 0) {
 	game.ally = 1;
 	game.maxUp3Buys = 15;
-	game.maxUp2Buys = 15,
-	game.maxUp1Buys = 15,
+	game.maxUp2Buys = 15;
+	game.maxUp1Buys = 15;
 		game.creat -= 1;
 	}
 };
@@ -232,8 +232,8 @@ function pUpgrade2() {
 	if (game.ally = 0) {
 	game.ally = 2;
 	game.maxUp3Buys = 10;
-	game.maxUp2Buys = 10,
-	game.maxUp1Buys = 10,
+	game.maxUp2Buys = 10;
+	game.maxUp1Buys = 10;
 		game.creat -= 1;
 	}
 };
