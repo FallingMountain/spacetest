@@ -36,7 +36,7 @@ function rockLaunch1() {
 	}else{
 	clearInterval(rocketAuto);
 	}
-	}, 40/Math.floor(game.up3buys/5));	
+	}, 40/(Math.floor(game.up3buys/5)+1));	
 };
 
 function buyFuel() {
