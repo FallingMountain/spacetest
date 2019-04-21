@@ -161,6 +161,12 @@ game = {
 	document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
 };
 	window.setInterval(function(){
+	if (game.auto.rocket === true) {
+		rockLaunch1();
+	}
+		if (game.auto.fuel === true) {
+		rockLaunch1();
+	}
 	bugFix();
 	p1Gain();
 }, 100);
