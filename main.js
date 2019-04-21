@@ -33,7 +33,7 @@ function rockLaunch1() {
 	game.money = Math.round(game.money*100)/100;
 	document.getElementById("money").innerHTML = game.money;
 	document.getElementById("fuel").innerHTML = game.fuel.amount;
-	}else{
+	}else if (game.auto.rocket === true) {
 	clearInterval(rocketAuto);
 	}
 	}, 40/(Math.floor(game.up3buys/5)+1));	
@@ -161,11 +161,8 @@ game = {
 	document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
 };
 	window.setInterval(function(){
-	if (game.auto.rocket === true) {
-		rockLaunch1();
-	}
 		if (game.auto.fuel === true) {
-		rockLaunch1();
+		buyFuel();
 	}
 	bugFix();
 	p1Gain();
