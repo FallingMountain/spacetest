@@ -117,7 +117,7 @@ function p1Gain() {
 					 document.getElementById("gainOnBrainstorm").innerHTML = game.creatGainReset;
 }
 function prestige1(){
-if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000)
+if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
 game.creat += Math.floor(Math.sqrt(game.money/50000));
 game = {
 	money:0,
@@ -160,6 +160,7 @@ game = {
 	document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
 	document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
 	document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
+}
 };
 	window.setInterval(function(){
 		if (game.auto.fuel === true) {
