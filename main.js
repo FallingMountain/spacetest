@@ -119,7 +119,7 @@ function p1Gain() {
 function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
 game.creat += Math.floor(Math.sqrt(game.money/50000));
-	document.getElementById("creativity") = game.creat;
+	document.getElementById("creativity").innerHTML = game.creat;
 game = {
 	money:0,
 	moneyPerFuel:10*(Math.log2(game.creat+1)+1),
