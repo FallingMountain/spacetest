@@ -262,6 +262,7 @@ function pUpgrade2() {
 		document.getElementById("creativity").innerHTML = game.creat;
 	}
 };
+document.getElementById("creativity").innerHTML = game.creat;
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.fuel.amount;
 document.getElementById("fuelCost").innerHTML = game.fuel.cost;
@@ -272,4 +273,3 @@ document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
 document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
 document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
 document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
-document.getElementById("creativity").innerHTML = game.creat;
