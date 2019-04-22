@@ -272,3 +272,4 @@ document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
 document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
 document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
 document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
+document.getElementById("creativity").innerHTML = game.creat;
