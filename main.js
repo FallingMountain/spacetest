@@ -24,20 +24,25 @@ maxUp3buys:5,
   creat:0,
 creatGainReset:0,
   ally:0,
+rockLimit:false,
   allyButText:"none"
 };
 function rockLaunch1() {
+	if (game.rockLimit === false) {
 	var rocketAuto = setInterval(function() {
 	if (game.fuel.amount > 0) {
+		game.rockLimit = true;
 	game.money += game.moneyPerFuel;
 	game.fuel.amount -= 1;
 	game.money = Math.round(game.money*100)/100;
 	document.getElementById("money").innerHTML = game.money;
 	document.getElementById("fuel").innerHTML = game.fuel.amount;
-	}else if (game.auto.rocket === false) {
+	}else if (game.auto.rocket === false){
+	game.rockLimit = false;
 	clearInterval(rocketAuto);
 	}
-	}, 40/(Math.floor(game.up3buys/5)+1));	
+	}, 40);	
+	}
 };
 
 function buyFuel() {
