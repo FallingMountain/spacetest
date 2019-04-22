@@ -238,6 +238,8 @@ function pUpgrade1() {
 };
 function pUpgrade2() {
 	if (game.ally === 0) {
+	var friend = document.getElementsByClassName("allegiance");
+	friend.style.display = "none";
 	game.ally = 2;
 	game.maxUp3Buys = 10;
 	game.maxUp2Buys = 10;
