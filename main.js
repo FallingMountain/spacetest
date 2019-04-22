@@ -65,7 +65,7 @@ function upgrade1() {
 	if (game.up1buys < game.maxUp1buys) {
 	game.fuel.max = Math.floor(game.fuel.max*1.1);
 	game.money -= game.up1Cost;
-	game.up1Cost = game.up1Cost*1.3;
+	game.up1Cost = game.up1Cost*1.25;
 	game.up1buys += 1;
 	document.getElementById("money").innerHTML = game.money;
 	document.getElementById("upgrade1Cost").innerHTML = game.up1Cost;
@@ -80,7 +80,7 @@ function upgrade2() {
 	game.fuel.cost -= 1;
 	game.fuel.scaleDown = 0.9*game.fuel.scaleDown;
 	game.money -= game.up2Cost;
-	game.up2Cost = game.up2Cost*1.5;
+	game.up2Cost = game.up2Cost*1.45;
 	game.up2buys += 1;
 	document.getElementById("money").innerHTML = game.money;
 	document.getElementById("upgrade2Cost").innerHTML = game.up2Cost;
@@ -95,7 +95,7 @@ function upgrade3() {
 	if (game.up3buys < game.maxUp3buys) {
 	game.moneyPerFuel = game.moneyPerFuel*1.25;
 	game.money -= game.up3Cost;
-	game.up3Cost = game.up3Cost*1.7;
+	game.up3Cost = game.up3Cost*1.6;
 	game.up3buys += 1;
 	document.getElementById("money").innerHTML = game.money;
 	document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
