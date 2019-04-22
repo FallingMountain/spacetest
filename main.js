@@ -23,7 +23,8 @@ up3buys:0,
 maxUp3buys:5,
   creat:0,
 creatGainReset:0,
-  ally:0
+  ally:0,
+  allyButText:"none"
 };
 function rockLaunch1() {
 	var rocketAuto = setInterval(function() {
