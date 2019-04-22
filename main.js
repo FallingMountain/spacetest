@@ -34,7 +34,7 @@ function rockLaunch1() {
 	game.money = Math.round(game.money*100)/100;
 	document.getElementById("money").innerHTML = game.money;
 	document.getElementById("fuel").innerHTML = game.fuel.amount;
-	}else if (game.auto.rocket === true) {
+	}else if (game.auto.rocket === false) {
 	clearInterval(rocketAuto);
 	}
 	}, 40/(Math.floor(game.up3buys/5)+1));	
@@ -119,6 +119,7 @@ function p1Gain() {
 function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
 game.creat += Math.floor(Math.sqrt(game.money/50000));
+	document.getElementById("creativity") = game.creat;
 game = {
 	money:0,
 	moneyPerFuel:10*(Math.log2(game.creat+1)+1),
