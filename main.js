@@ -227,6 +227,8 @@ document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
 };
 function pUpgrade1() {
 	if (game.ally === 0) {
+	var friend = document.getElementsByClassName("allegiance");
+	friend.style.display = "none";
 	game.ally = 1;
 	game.maxUp3Buys = 15;
 	game.maxUp2Buys = 15;
