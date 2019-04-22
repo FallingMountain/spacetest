@@ -240,6 +240,7 @@ function pUpgrade1() {
 	game.maxUp2Buys = 15;
 	game.maxUp1Buys = 15;
 		game.creat -= 1;
+		document.getElementById("creativity").innerHTML = game.creat;
 	}
 };
 function pUpgrade2() {
@@ -253,6 +254,7 @@ function pUpgrade2() {
 	game.maxUp2Buys = 10;
 	game.maxUp1Buys = 10;
 		game.creat -= 1;
+		document.getElementById("creativity").innerHTML = game.creat;
 	}
 };
 document.getElementById("money").innerHTML = game.money;
