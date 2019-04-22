@@ -262,7 +262,6 @@ function pUpgrade2() {
 		document.getElementById("creativity").innerHTML = game.creat;
 	}
 };
-document.getElementById("creativity").innerHTML = game.creat;
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.fuel.amount;
 document.getElementById("fuelCost").innerHTML = game.fuel.cost;
