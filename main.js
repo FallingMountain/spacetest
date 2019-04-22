@@ -229,7 +229,7 @@ document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
 	
 };
 function pUpgrade1() {
-	if (game.ally === 0) {
+	if (game.ally === 0 && game.creat >= 1) {
 		var friend = document.getElementsByClassName("allegiance");
 	for (var f = 0; f < friend.length; f++) {
 	
@@ -244,7 +244,7 @@ function pUpgrade1() {
 	}
 };
 function pUpgrade2() {
-	if (game.ally === 0) {
+	if (game.ally === 0 && game.creat >= 1) {
 	var friend = document.getElementsByClassName("allegiance");
 	for (var f = 0; f < friend.length; f++) {
 	friend[f].style.display = "none"
