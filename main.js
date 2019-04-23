@@ -142,7 +142,7 @@ function load() {
 };
 function transformToDecimal(object) { 
 	for(i in object) {
-		if(typeof(object[i]) == "string" && !isNaN(new Decimal(object[i]).mag)) object[i] = new Decimal(object[i]); 
+		if(typeof(object[i]) == "string" && !isNaN(object[i].mag)) object[i] = (object[i]); 
 		if(typeof(object[i]) == "object") transformToDecimal(object[i]) 
 	}
 }
