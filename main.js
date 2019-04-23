@@ -169,7 +169,8 @@ function load() {
 	if(!localStorage.sri) return;
 	game = JSON.parse(atob(localStorage.sri));
 	
-	transformToDecimal(game)
+	transformToDecimal(game);
+	game.rockLimit = false
 };
 function transformToDecimal(object) { 
 	for(i in object) {
@@ -182,7 +183,7 @@ window.setInterval(function(){
 	save();
 }, 2000);
 function fullReset() {
-	game = {
+game = {
   money:0,
   moneyPerFuel:10,
   fuel: {
@@ -206,7 +207,9 @@ up3buys:0,
 maxUp3buys:5,
   creat:0,
 creatGainReset:0,
-  ally:0
+  ally:0,
+rockLimit:false,
+  allyButText:"none"
 };
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.fuel.amount;
