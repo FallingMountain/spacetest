@@ -35,8 +35,6 @@ function rockLaunch1() {
 	game.money += game.moneyPerFuel;
 	game.fuel.amount -= 1;
 	game.money = Math.round(game.money*100)/100;
-	document.getElementById("money").innerHTML = game.money;
-	document.getElementById("fuel").innerHTML = game.fuel.amount;
 	}else if (game.auto.rocket === false){
 	game.rockLimit = false;
 	clearInterval(rocketAuto);
@@ -61,9 +59,6 @@ if (game.money < game.fuel.cost*game.fuel.max) {
 	halp = 0;
 	}
 }
-	document.getElementById("money").innerHTML = game.money;
-	document.getElementById("fuel").innerHTML = game.fuel.amount;
-	document.getElementById("fuelCost").innerHTML = game.fuel.cost;
 };
 function upgrade1() {
 	if (game.money >= game.up1Cost) {
@@ -72,10 +67,6 @@ function upgrade1() {
 	game.money -= game.up1Cost;
 	game.up1Cost = game.up1Cost*1.25;
 	game.up1buys += 1;
-	document.getElementById("money").innerHTML = game.money;
-	document.getElementById("upgrade1Cost").innerHTML = game.up1Cost;
-	document.getElementById("fuelMax").innerHTML = game.fuel.max;
-	document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
 	}
 	}
 };
@@ -87,10 +78,6 @@ function upgrade2() {
 	game.money -= game.up2Cost;
 	game.up2Cost = game.up2Cost*1.45;
 	game.up2buys += 1;
-	document.getElementById("money").innerHTML = game.money;
-	document.getElementById("upgrade2Cost").innerHTML = game.up2Cost;
-	document.getElementById("fuelCost").innerHTML = game.fuel.cost
-	document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
 		}
 	}
 };
@@ -102,9 +89,6 @@ function upgrade3() {
 	game.money -= game.up3Cost;
 	game.up3Cost = game.up3Cost*1.6;
 	game.up3buys += 1;
-	document.getElementById("money").innerHTML = game.money;
-	document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
-	document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
 	}
 	}
 };
@@ -113,18 +97,13 @@ function bugFix() {
 	game.fuel.cost = Math.round(game.fuel.cost*100)/100;
 	game.money = Math.round(game.money*100)/100;
 	game.fuel.amount = Math.round(game.fuel.amount);
-	document.getElementById("fuelCost").innerHTML = game.fuel.cost;
-	document.getElementById("money").innerHTML = game.money;
-	document.getElementById("fuel").innerHTML = game.fuel.amount;
 };
 function p1Gain() {
 	game.creatGainReset = Math.floor(Math.sqrt(game.money/50000));
-					 document.getElementById("gainOnBrainstorm").innerHTML = game.creatGainReset;
 }
 function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
 game.creat += Math.floor(Math.sqrt(game.money/50000));
-	document.getElementById("creativity").innerHTML = game.creat;
 game.money = 0;
 game.fuel.amount = 150;
 game.fuel.cost = 3;
@@ -142,17 +121,6 @@ game.up3buys = 0;
 	if (game.ally ===1) {
 	game.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)*1.5
 	}
-	document.getElementById("money").innerHTML = game.money;
-	document.getElementById("fuel").innerHTML = game.fuel.amount;
-	document.getElementById("fuelCost").innerHTML = game.fuel.cost;
-	document.getElementById("fuelMax").innerHTML = game.fuel.max;
-	document.getElementById("upgrade1Cost").innerHTML = game.up1Cost;
-	document.getElementById("upgrade2Cost").innerHTML = game.up2Cost;
-	document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
-	document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
-	document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
-	document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
-	document.getElementById("creativity").innerHTML = game.creat;
 }
 };
 	window.setInterval(function(){
@@ -211,17 +179,6 @@ creatGainReset:0,
 rockLimit:false,
   allyButText:"none"
 };
-document.getElementById("money").innerHTML = game.money;
-document.getElementById("fuel").innerHTML = game.fuel.amount;
-document.getElementById("fuelCost").innerHTML = game.fuel.cost;
-document.getElementById("fuelMax").innerHTML = game.fuel.max;
-document.getElementById("upgrade1Cost").innerHTML = game.up1Cost;
-document.getElementById("upgrade2Cost").innerHTML = game.up2Cost;
-document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
-document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
-document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
-document.getElementById("upgrade3Buys").innerHTML = game.up3buys;	
-document.getElementById("creativity").innerHTML = game.creat;
 };
 function pUpgrade1() {
 	if (game.ally === 0 && game.creat >= 1) {
@@ -230,7 +187,6 @@ function pUpgrade1() {
 	game.maxUp2Buys = 15;
 	game.maxUp1Buys = 15;
 		game.creat -= 1;
-		document.getElementById("creativity").innerHTML = game.creat;
 	}
 };
 function pUpgrade2() {
@@ -240,9 +196,9 @@ function pUpgrade2() {
 	game.maxUp2Buys = 10;
 	game.maxUp1Buys = 10;
 		game.creat -= 1;
-		document.getElementById("creativity").innerHTML = game.creat;
 	}
 };
+window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.fuel.amount;
 document.getElementById("fuelCost").innerHTML = game.fuel.cost;
@@ -254,3 +210,5 @@ document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
 document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
 document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
 document.getElementById("creativity").innerHTML = game.creat;
+document.getElementById("gainOnBrainstorm").innerHTML = game.creatGainReset;
+}, 10);
