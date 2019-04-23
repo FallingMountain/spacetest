@@ -125,31 +125,17 @@ function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
 game.creat += Math.floor(Math.sqrt(game.money/50000));
 	document.getElementById("creativity").innerHTML = game.creat;
-game = {
-	money:0,
-	moneyPerFuel:10*(Math.log2(game.creat+1)+1),
-	fuel: {
-	amount:150,
- 	cost:3,
-  	max:150,
-  	scaleDown:1
- 	},
-  	auto: {
-  	rocket:true,
-  	fuel:true
- 	},
- 	up1Cost:2500,
-  	up1buys:0,
-	maxUp1buys:game.maxUp1buys,
-  	up2Cost:4000,
-	up2buys:0,
-	maxUp2buys:game.maxUp2buys,
-  	up3Cost:6000,
-	up3buys:0,
-	maxUp3buys:game.maxUp3buys,
-	creatGainReset:0,
-	creat:game.creat
-	};
+game.money = 0;
+game.fuel.amount = 150;
+game.fuel.cost = 3;
+game.fuel.max = 150;
+game.fuel.scaleDown = 1;
+game.up1Cost = 2500;
+game.up1buys = 0;
+game.up2Cost = 4000;
+game.up2buys = 0;
+game.up3Cost:6000;
+game.up3buys:0;
 	if (game.ally ===2) {
 	game.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)*2
 	}
@@ -166,6 +152,7 @@ game = {
 	document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
 	document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
 	document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
+	document.getElementById("creativity").innerHTML = game.creat;
 }
 };
 	window.setInterval(function(){
@@ -231,15 +218,10 @@ document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
 document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
 document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
 document.getElementById("upgrade3Buys").innerHTML = game.up3buys;	
-	
+document.getElementById("creativity").innerHTML = game.creat;
 };
 function pUpgrade1() {
 	if (game.ally === 0 && game.creat >= 1) {
-		var friend = document.getElementsByClassName("allegiance");
-	for (var f = 0; f < friend.length; f++) {
-	
-	friend[f].style.display = "none"
-	}
 	game.ally = 1;
 	game.maxUp3Buys = 15;
 	game.maxUp2Buys = 15;
@@ -250,10 +232,6 @@ function pUpgrade1() {
 };
 function pUpgrade2() {
 	if (game.ally === 0 && game.creat >= 1) {
-	var friend = document.getElementsByClassName("allegiance");
-	for (var f = 0; f < friend.length; f++) {
-	friend[f].style.display = "none"
-	}
 	game.ally = 2;
 	game.maxUp3Buys = 10;
 	game.maxUp2Buys = 10;
@@ -272,3 +250,4 @@ document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
 document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
 document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
 document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
+document.getElementById("creativity").innerHTML = game.creat;
