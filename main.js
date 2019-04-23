@@ -134,8 +134,8 @@ game.up1Cost = 2500;
 game.up1buys = 0;
 game.up2Cost = 4000;
 game.up2buys = 0;
-game.up3Cost:6000;
-game.up3buys:0;
+game.up3Cost = 6000;
+game.up3buys = 0;
 	if (game.ally ===2) {
 	game.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)*2
 	}
