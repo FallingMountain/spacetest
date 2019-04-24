@@ -216,4 +216,6 @@ document.getElementById("maxUpgrade3Buys").innerHTML = game.maxUp3buys;
 document.getElementById("creativity").innerHTML = game.creat;
 document.getElementById("gainOnBrainstorm").innerHTML = game.creatGainReset;
 document.getElementById("lore1").innerHTML = lore[0];
+document.getElementById("lore2").innerHTML = lore[1];
+document.getElementById("lore3").innerHTML = lore[2];
 }, 10);
