@@ -25,9 +25,9 @@ maxUp3buys:5,
 creatGainReset:0,
   ally:0,
 rockLimit:false,
-  allyButText:"none",
-lore:["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.","","","",""]
+  allyButText:"none"
 };
+var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.","","","",""];
 function rockLaunch1() {
 	if (game.rockLimit === false) {
 	var rocketAuto = setInterval(function() {
@@ -215,5 +215,5 @@ document.getElementById("maxUpgrade2Buys").innerHTML = game.maxUp2buys;
 document.getElementById("maxUpgrade3Buys").innerHTML = game.maxUp3buys;
 document.getElementById("creativity").innerHTML = game.creat;
 document.getElementById("gainOnBrainstorm").innerHTML = game.creatGainReset;
-document.getElementById("lore1").innerHTML = game.lore[0];
+document.getElementById("lore1").innerHTML = lore[0];
 }, 10);
