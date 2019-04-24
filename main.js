@@ -42,7 +42,7 @@ function rockLaunch1() {
 	game.fuel.amount -= 1;
 	game.money = Math.round(game.money*100)/100;
 	}else if (game.auto.rocket === false){
-	game.lore.lore3 = "The day after the rocket launch, you recieve a letter saying \'That rocket launch was cool. Hope you can do more!\' with enough money to fund another launch. The letter is signed \'FM\'"
+	game.lore.lore3 = "The day after the rocket launch, you recieve a letter saying \'That rocket launch was cool. Hope you can do more!\' with enough money to fund another launch. The letter is signed \'FM\'";
 	game.rockLimit = false;
 	clearInterval(rocketAuto);
 	}
@@ -158,7 +158,8 @@ window.setInterval(function(){
 	save();
 }, 2000);
 function fullReset() {
-game = {
+
+var game = {
   money:0,
   moneyPerFuel:10,
   fuel: {
@@ -184,6 +185,11 @@ maxUp3buys:5,
 creatGainReset:0,
   ally:0,
 rockLimit:false,
+lore: {
+	lore1:"You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.",
+	lore2:"",
+	lore3:""
+},
   allyButText:"none"
 };
 };
