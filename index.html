@@ -5,10 +5,11 @@
 	<head>
 	</head>
   <body>
-	  <button class="tabe" onclick="tab('game')">Game</button>
-	  <button class="tabe" onclick="tab('sources')">Sources</button>
-	  <button class="tabe" onclick="tab('options')">Options</button>
+	  <button class="tabe" onclick="tab('game')">Launchpad</button>
+	  <button class="tabe" onclick="tab('sources')">Blueprints</button>
+	  <button class="tabe" onclick="tab('options')">Workshop</button>
 	  <button class="tabe" onclick="tab('prestige')">Brainstorm</button>
+	  <button class="tabe" onclick="tab('lore')">Journal</button>
 	  <div id="game" class="tab">
 <button onclick="rockLaunch1()">Launch a small rocket,<br>You lose your fuel, and gain money.</button>
 <br>
@@ -46,6 +47,9 @@
 		  <button class="allegiance" onclick="pUpgrade1()">Use 1 creativity to join the United States!<br>This allows you to upgrade everything 15 times, but you get less from Creativity.</button>
 		  <button class="allegiance" onclick="pUpgrade2()">Use 1 creativity to join the Soviet Untion!<br>This allows you to upgrade everything 10 times, but you get more from Creativity.</button>
 	  </div>
+	<div id="lore" class="tab">
+		<span id = "lore1'></span>
+		  </div>
 	  <script>
 		function tab(t) {
 			var classList = document.getElementsByClassName("tab");
