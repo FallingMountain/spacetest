@@ -17,7 +17,7 @@
 	font-weight: bold;
     border: 2px solid #63CC00;
 	border-radius: 4px;
-	transition-duration: 0.1s;
+	transition-duration: 1s;
 	cursor: pointer;
 }
 .yeet:hover {
