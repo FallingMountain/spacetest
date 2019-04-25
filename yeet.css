@@ -2,7 +2,7 @@
 	color: #82fffc;
     background: #7447ff;
 	font-weight: bold;
-    border: 2px solid #63CC00;
+    border: 2px solid #82fffc;
 	border-radius: 4px;
 	transition-duration: 0.4s;
 	cursor: pointer;
@@ -10,6 +10,7 @@
 .tabe:hover {
     color: #6837ff;
     background: #82fffc;
+    border: 2px solid #6837ff;
 }
 .yeet {
 	color: #ffff00;
