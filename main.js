@@ -139,16 +139,8 @@ function save() {
 function load() {
 	if(!localStorage.sri) return;
 	game = JSON.parse(atob(localStorage.sri));
-	
-	transformToDecimal(game);
 	game.rockLimit = false
 };
-function transformToDecimal(object) { 
-	for(i in object) {
-		if(typeof(object[i]) == "string" && !isNaN(object[i].mag)) object[i] = (object[i]); 
-		if(typeof(object[i]) == "object") transformToDecimal(object[i]) 
-	}
-}
 load();
 window.setInterval(function(){
 	save();
