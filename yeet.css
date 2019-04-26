@@ -13,8 +13,8 @@
     border: 2px solid #6837ff;
 }
 .yeet {
-	color: #ffff00;
-    background: #000000;
+	color: #6837ff;
+    background: #82fffc;
 	font-weight: bold;
     border: 2px solid #ffff00;
 	border-radius: 4px;
@@ -24,6 +24,6 @@
 .yeet:hover {
 
     border: 2px solid #00ffff;
-color: #00ffff;
-background: #000000
+color: #82fffc;
+background: #6837ff
 }
