@@ -25,7 +25,8 @@ maxUp3buys:5,
 creatGainReset:0,
   ally:0,
 rockLimit:false,
-  allyButText:"none"
+  allyButText:"none", 
+era:"before"
 };
 var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", ""]
 function rockLaunch1() {
