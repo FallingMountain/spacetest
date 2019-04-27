@@ -196,6 +196,8 @@ function pUpgrade2() {
 	
 	}
 };
+var explorerTab = document.getElementsByClassName("explorer");
+		  explorerTab.style.display = "none"
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.fuel.amount;
