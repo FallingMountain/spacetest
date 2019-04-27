@@ -171,7 +171,6 @@ function fullReset() {
   game.allyButText = "none";
   game.era = "before";
 };
-};
 function pUpgrade1() {
 	if (game.ally === 0 && game.creat >= 1) {
 	game.ally = 1;
