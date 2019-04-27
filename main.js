@@ -147,39 +147,29 @@ window.setInterval(function(){
 	save();
 }, 2000);
 function fullReset() {
-
-var game = {
-  money:0,
-  moneyPerFuel:10,
-  fuel: {
-  amount:150,
-  cost:3,
-  max:150,
-  scaleDown:1
-  },
-  auto: {
-  rocket:false,
-  fuel:false
-  },
-  up1Cost:2500,
-  up1buys:0,
-  maxUp1buys:5,
-  up2Cost:4000,
-up2buys:0,
-maxUp2buys:5,
-  up3Cost:6000,
-up3buys:0,
-maxUp3buys:5,
-  creat:0,
-creatGainReset:0,
-  ally:0,
-rockLimit:false,
-lore: {
-	lore1:"You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.",
-	lore2:"",
-	lore3:""
-},
-  allyButText:"none"
+  game.money = 0;
+  game.moneyPerFuel = 10;
+  game.fuel.amount = 150;
+  game.fuel.cost = 3;
+  game.fuel.max = 150;
+  game.fuel.scaleDown = 1;
+  game.auto.rocket = false;
+  game.auto.fuel = false;
+  game.up1Cost = 2500;
+  game.up1buys = 0;
+  game.maxUp1buys = 5;
+  game.up2Cost = 4000;
+  game.up2buys = 0;
+  game.maxUp2buys = 5;
+  game.up3Cost = 6000;
+  game.up3buys = 0;
+  game.maxUp3buys = 5;
+  game.creat = 0;
+  game.creatGainReset = 0;
+  game.ally = 0;
+  game.rockLimit = false;
+  game.allyButText = "none";
+  game.era = "before";
 };
 };
 function pUpgrade1() {
