@@ -30,7 +30,7 @@ era:"before",
 pUp2cost:5,
 rockLaunched:0,
 pUp3cost:10,
-rocket:0;
+rocket:0
 };
 var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", ""]
 function rockLaunch1() {
