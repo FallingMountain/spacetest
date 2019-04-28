@@ -24,23 +24,27 @@ maxUp3buys:5,
   creat:0,
 creatGainReset:0,
   ally:0,
-rockLimit:false,
+rockLimit:1,
   allyButText:"none", 
-era:"before"
+era:"before",
+pUp2cost:5,
+rockLaunched:0,
+pUp3cost:10
 };
 var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", ""]
 function rockLaunch1() {
-	if (game.rockLimit === false) {
+	if (game.rockLimit > game.rockLaunched) {
+	game.rockLaunched += 1;
 	lore[1] = "You set up a launch pad in a field filled with flowers and one-leafed clovers. As you launch the rocket, you realize you won't be able to make any money for future launches, which is sad.";
 	var rocketAuto = setInterval(function() {
 	if (game.fuel.amount > 0) {
-		game.rockLimit = true;
+		
 	game.money += game.moneyPerFuel;
 	game.fuel.amount -= 1;
 	game.money = Math.round(game.money*100)/100;
 	}else if (game.auto.rocket === false){
 	lore[2] = "The day after the rocket launch, you recieve a letter saying \'That rocket launch was cool. Hope you can do more!\' with enough money to fund another launch. The letter is signed \'FM\'";
-	game.rockLimit = false;
+	game.rockLimit = 0;
 	clearInterval(rocketAuto);
 	}
 	}, 40);	
@@ -140,7 +144,7 @@ function save() {
 function load() {
 	if(!localStorage.sri) return;
 	game = JSON.parse(atob(localStorage.sri));
-	game.rockLimit = false
+	game.rockLaunched = 0;
 };
 load();
 window.setInterval(function(){
@@ -167,7 +171,7 @@ function fullReset() {
   game.creat = 0;
   game.creatGainReset = 0;
   game.ally = 0;
-  game.rockLimit = false;
+  game.rockLimit = 1;
   game.allyButText = "none";
   game.era = "before";
 };
@@ -178,8 +182,9 @@ function pUpgrade1() {
 	}
 };
 function pUpgrade2() {
-	if (game.creat >= 10) {
-	
+	if (game.creat >= game.pUp2cost) {
+	game.creat -= game.pUp2cost;
+	game.rockLimit += 1;
 	}
 };
 window.setInterval(function(){
@@ -198,4 +203,6 @@ document.getElementById("gainOnBrainstorm").innerHTML = game.creatGainReset;
 document.getElementById("lore1").innerHTML = lore[0];
 document.getElementById("lore2").innerHTML = lore[1];
 document.getElementById("lore3").innerHTML = lore[2];
+document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
+document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2Cost;
 }, 10);
