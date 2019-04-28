@@ -77,7 +77,7 @@ function upgrade1() {
 function upgrade2() {
 	if (game.money >= game.up2Cost) {
 	if (game.up2buys < 25) {
-	game.fuel.cost -= 1;
+	game.fuel.cost = 2;
 	game.fuel.scaleDown = 0.9*game.fuel.scaleDown;
 	game.money -= game.up2Cost;
 	game.up2Cost = Math.round(game.up2Cost*1.4);
