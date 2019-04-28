@@ -205,5 +205,5 @@ document.getElementById("lore1").innerHTML = lore[0];
 document.getElementById("lore2").innerHTML = lore[1];
 document.getElementById("lore3").innerHTML = lore[2];
 document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
-document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2Cost;
+document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2cost;
 }, 10);
