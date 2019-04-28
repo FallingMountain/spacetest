@@ -209,9 +209,4 @@ document.getElementById("lore2").innerHTML = lore[1];
 document.getElementById("lore3").innerHTML = lore[2];
 document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
 document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2cost;
-if (rocket > 1) {
-	document.getElementsByClassName('explorer').style.display = "block"
-} else {
-	document.getElementsByClassName('explorer').style.display = "none"
-}
 }, 10);
