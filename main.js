@@ -29,7 +29,8 @@ rockLimit:1,
 era:"before",
 pUp2cost:5,
 rockLaunched:0,
-pUp3cost:10
+pUp3cost:10,
+rocket:0;
 };
 var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", ""]
 function rockLaunch1() {
@@ -208,4 +209,9 @@ document.getElementById("lore2").innerHTML = lore[1];
 document.getElementById("lore3").innerHTML = lore[2];
 document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
 document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2cost;
+if (rocket > 1) {
+	document.getElementsByClassName('explorer').style.display = "block"
+} else {
+	document.getElementsByClassName('explorer').style.display = "none"
+}
 }, 10);
