@@ -27,6 +27,20 @@
 color: #82fffc;
 background: #6837ff
 }
+.basic {
+	color: #00FF7E;
+    background: #000000;
+	font-weight: bold;
+    border: 2px solid #00FF7E;
+	border-radius: 4px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+.basic:hover {
+	color: #000000;
+    background: #00FF7E;
+	border: 2px solid #00FF7E;
+}
 .explorer {
 	color: #FF7B00;
     background: #000000;
