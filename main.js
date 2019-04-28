@@ -174,6 +174,8 @@ function fullReset() {
   game.rockLimit = 1;
   game.allyButText = "none";
   game.era = "before";
+  game.rockLaunched = 0;
+  game.pUp2cost = 5;
 };
 function pUpgrade1() {
 	if (game.ally === 0 && game.creat >= 1) {
@@ -185,7 +187,7 @@ function pUpgrade2() {
 	if (game.creat >= game.pUp2cost) {
 	game.creat -= game.pUp2cost;
 	game.rockLimit += 1;
-	game.pUp2cost = Math.round(game.pUp2Cost*3);
+	game.pUp2cost = Math.round(game.pUp2cost*3);
 	}
 };
 window.setInterval(function(){
