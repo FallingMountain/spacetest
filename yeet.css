@@ -27,3 +27,17 @@
 color: #82fffc;
 background: #6837ff
 }
+.explorer {
+	color: #FF7B00;
+    background: #000000;
+	font-weight: bold;
+    border: 2px solid #FF7B00;
+	border-radius: 4px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+.explorer:hover {
+	color: #000000;
+    background: #FF7B00;
+    border: 2px solid #000000;
+}
