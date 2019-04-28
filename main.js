@@ -44,7 +44,7 @@ function rockLaunch1() {
 	game.money = Math.round(game.money*100)/100;
 	}else if (game.auto.rocket === false){
 	lore[2] = "The day after the rocket launch, you recieve a letter saying \'That rocket launch was cool. Hope you can do more!\' with enough money to fund another launch. The letter is signed \'FM\'";
-	game.rockLimit = 0;
+	game.rockLaunched = 0;
 	clearInterval(rocketAuto);
 	}
 	}, 40);	
