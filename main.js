@@ -8,7 +8,7 @@ fuel: {
   cost:3,
   max:150,
   scaleDown:1
-  },
+  }
 },
   
   
