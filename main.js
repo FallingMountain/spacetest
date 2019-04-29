@@ -3,15 +3,15 @@ var game = {
   money:0,
   rock1: {
 moneyPerFuel:10,
-
-},
-  
-  fuel: {
+fuel: {
   amount:150,
   cost:3,
   max:150,
   scaleDown:1
   },
+},
+  
+  
   auto: {
   rocket:false,
   fuel:false
