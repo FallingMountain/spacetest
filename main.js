@@ -34,7 +34,8 @@ era:"before",
 pUp2cost:5,
 rockLaunched:0,
 pUp3cost:10,
-rocket:0
+rocket:0,
+creatMult:1
 };
 var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", ""]
 function rockLaunch1() {
@@ -112,11 +113,11 @@ function bugFix() {
 	game.rock1.fuel.amount = Math.round(game.rock1.fuel.amount);
 };
 function p1Gain() {
-	game.creatGainReset = Math.floor(Math.sqrt(game.money/50000));
+	game.creatGainReset = Math.floor(Math.sqrt(game.money/50000)*game.creatMult);
 }
 function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
-game.creat += Math.floor(Math.sqrt(game.money/50000));
+game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult);
 game.money = 0;
 game.rock1.fuel.amount = 150;
 game.rock1.fuel.cost = 3;
@@ -195,6 +196,13 @@ function pUpgrade2() {
 	game.pUp2cost = Math.round(game.pUp2cost*3);
 	}
 };
+function pUpgrade3() {
+	if (game.creat >= game.pUp3cost) {
+	game.creat -= game.pUp3cost;
+	game.creatMult = game.creatMult*1.5;
+	game.pUp2cost = Math.round(game.pUp2cost*3);
+	}
+};
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.rock1.fuel.amount;
@@ -213,4 +221,6 @@ document.getElementById("lore2").innerHTML = lore[1];
 document.getElementById("lore3").innerHTML = lore[2];
 document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
 document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2cost;
+document.getElementById("pUpgrade3Cost").innerHTML = game.pUp3cost;
+document.getElementById("creativityMultiplier").innerHTML  game.creatMult;
 }, 10);
