@@ -211,7 +211,7 @@ document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
 document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2cost;
 
 	var explorer = document.getElementsByClassName("explorer");
-	for(var i = 0; i < rocketThing.length; i++) {
+	for(var i = 0; i < explorer.length; i++) {
 		if (game.rocket < 1) {
 		explorer[i].style.display = "none";
 		}
