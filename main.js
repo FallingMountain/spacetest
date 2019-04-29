@@ -200,7 +200,7 @@ function pUpgrade3() {
 	if (game.creat >= game.pUp3cost) {
 	game.creat -= game.pUp3cost;
 	game.creatMult = game.creatMult*1.5;
-	game.pUp2cost = Math.round(game.pUp2cost*3);
+	game.pUp3cost = Math.round(game.pUp3cost*3);
 	}
 };
 window.setInterval(function(){
