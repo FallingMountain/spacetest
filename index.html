@@ -43,12 +43,15 @@
 				   
 	</div>
 	  <div id="prestige" class="tab">
+		  <center>
 		  <button onclick="prestige1()">Reset everything except automation, and gain <span id = "gainOnBrainstorm"></span> creativity. <div> You must have bought at least 5 of each upgrade.</button>
 	  	  <br>
 			  You have <span id="creativity">0</span> creativity.
 		  <br>
 		  <button class="allegiance yeet" onclick="pUpgrade1()">Use 1 creativity to join the United States!<br>This makes creativity have a better multiplier. (log2(x+1)+1)*1.5</button><br>
 			  <button class="allegiance yeet" onclick="pUpgrade2()">Use <span id = "pUpgrade2Cost"></span> creativity to launch multiple rockets at once! <br> Currently:<span id = "basicRocketLimit"></span></button>
+			  <button class="yeet" onclick="pUpgrade3()">Use <span id = "pUpgrade3Cost"></span> creativity to increase the Creativity multiplier.<br>Currently: <span id="creativityMultipler"></span> 
+				  </center>
 	  </div>
 	<div id="lore" class="tab">
 		<span id = "lore1"></span><br>
