@@ -26,6 +26,8 @@
 	  <button class="yeet" onclick="upgrade3()">Increase the speed of your rocket,<br> allowing it to collect 25% more money!<br>Cost:<span id = "upgrade3Cost"></span>$<br>Bought <span id = "upgrade3Buys"></span>/25 times</button>
 	  <br>
 		  You have <span id="basicTechPoints"></span> TP, out of <span id="maxBTP"></span>
+		  <br>
+<button class="basic" onclick="tech11()"> Decrease the cost scaling of the first upgrade to <br>28% -> 25% -> 20%.<br>Cost: 1 TP</button>
 	  <br>
 	Thanks to SuperSpruce for some of the code! You can check out his YouTube channel <a href = "https://www.youtube.com/channel/UCrpbLYZYpwpkrW9j9x8Ci2A" target = "_blank">here</a>, and the game we're collaborating on <a href = "https://superspruce.github.io/Clover-Clicker/" target = "_blank">here<a>.
 	  </div>
@@ -53,6 +55,7 @@
 		  <button class="allegiance yeet" onclick="pUpgrade1()">Use 1 creativity to join the United States!<br>This makes creativity have a better multiplier. (log2(x+1)+1)*1.5</button><br>
 			  <button class="allegiance yeet" onclick="pUpgrade2()">Use <span id = "pUpgrade2Cost"></span> creativity to launch multiple rockets at once! <br> Currently:<span id = "basicRocketLimit"></span></button>
 			  <button class="yeet" onclick="pUpgrade3()">Use <span id = "pUpgrade3Cost"></span> creativity to increase the Creativity multiplier.<br>Currently: <span id="creativityMultiplier"></span></button>
+			  <button class="basic" onclick="pUpgrade4()">Use 10 creativity to unlock Technology Points,<br> gained based on how many upgrades you have!</button>
 				  </center>
 	  </div>
 	<div id="lore" class="tab">
