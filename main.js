@@ -270,5 +270,5 @@ document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
 document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2cost;
 document.getElementById("pUpgrade3Cost").innerHTML = game.pUp3cost;
 document.getElementById("creativityMultiplier").innerHTML = game.creatMult;
-document.getElementById("moneyPerFuel").innerHTML = game.rock1.moneyPerFuel;
+document.getElementById("moneyPerFuel").innerHTML = Math.round(game.rock1.moneyPerFuel);
 }, 10);
