@@ -105,7 +105,7 @@ function upgrade1() {
 	game.up1Cost = Math.round(game.up1Cost*1.25);
 	}
 	if (game.rock1.techs.cs1 === 3){
-	game.up1Cost = Math.round(game.up1Cost*1.2);
+	game.up1Cost = Math.round(game.up1Cost*1.21);
 	}
 	game.up1buys += 1;
 	}
@@ -117,19 +117,51 @@ function upgrade2() {
 	game.rock1.fuel.cost = 2;
 	game.rock1.fuel.scaleDown = 0.9*game.rock1.fuel.scaleDown;
 	game.money -= game.up2Cost;
-	
+	if (game.rock1.techs.cs2 === 0){
 	game.up2Cost = Math.round(game.up2Cost*1.4);
+	}
+	if (game.rock1.techs.cs2 === 1){
+	game.up2Cost = Math.round(game.up2Cost*1.38);
+	}
+	if (game.rock1.techs.cs2 === 2){
+	game.up2Cost = Math.round(game.up2Cost*1.35);
+	}
+	if (game.rock1.techs.cs2 === 3){
+	game.up2Cost = Math.round(game.up2Cost*1.31);
+	}
 	game.up2buys += 1;
-		}
+	}
 	}
 };
 
 function upgrade3() {
 	if (game.money >= game.up3Cost) {
 	if (game.up3buys < 25) {
+	if (game.rock1.techs.ef3 === 0){
 	game.rock1.moneyPerFuel = game.rock1.moneyPerFuel*1.25;
+	}
+	if (game.rock1.techs.ef3 === 1){
+	game.rock1.moneyPerFuel = game.rock1.moneyPerFuel*1.28;
+	}
+	if (game.rock1.techs.ef3 === 2){
+	game.rock1.moneyPerFuel = game.rock1.moneyPerFuel*1.3;
+	}
+	if (game.rock1.techs.ef3 === 3){
+	game.rock1.moneyPerFuel = game.rock1.moneyPerFuel*1.32;
+	}
 	game.money -= game.up3Cost;
+	if (game.rock1.techs.cs3 === 0){
 	game.up3Cost = Math.round(game.up3Cost*1.5);
+	}
+	if (game.rock1.techs.cs3 === 1){
+	game.up3Cost = Math.round(game.up3Cost*1.48);
+	}
+	if (game.rock1.techs.cs3 === 2){
+	game.up3Cost = Math.round(game.up3Cost*1.45);
+	}
+	if (game.rock1.techs.cs3 === 3){
+	game.up3Cost = Math.round(game.up3Cost*1.4);
+	}
 	game.up3buys += 1;
 	}
 	}
@@ -141,11 +173,11 @@ function bugFix() {
 	game.rock1.fuel.amount = Math.round(game.rock1.fuel.amount);
 };
 function p1Gain() {
-	game.creatGainReset = Math.floor(Math.pow(Math.floor(Math.sqrt(game.money/50000)*game.creatMult), 1.5));
+	game.creatGainReset = Math.floor(Math.sqrt(game.money/50000)*game.creatMult*(game.rock1.techs.cmx+1));
 }
 function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
-game.creat += Math.floor(Math.pow(Math.floor(Math.sqrt(game.money/50000)*game.creatMult), 1.5));
+game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult)*(game.rock1.techs.cmx+1);
 game.money = 0;
 game.rock1.fuel.amount = 150;
 game.rock1.fuel.cost = 3;
@@ -161,7 +193,7 @@ game.up3buys = 0;
 	game.rock1.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)
 	}
 	if (game.ally ===1) {
-	game.rock1.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)*1.5
+	game.rock1.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)*1.5*(game.rock1.techs.mpf+1)
 	}
 }
 };
@@ -303,4 +335,9 @@ document.getElementById("moneyPerFuel").innerHTML = Math.round(game.rock1.moneyP
 document.getElementById("basicTechPoints").innerHTML = game.rock1.techs.currentTP;
 document.getElementById("maxBTP").innerHTML = game.rock1.techs.maxTP;
 document.getElementById("TC11").innerHTML = game.rock1.techs.cs1;
+document.getElementById("TC12").innerHTML = game.rock1.techs.cs2;
+document.getElementById("TC13").innerHTML = game.rock1.techs.cs3;
+document.getElementById("TC14").innerHTML = game.rock1.techs.ef3;
+document.getElementById("TC15").innerHTML = game.rock1.techs.mpf;
+document.getElementById("TC16").innerHTML = game.rock1.techs.cmx;
 }, 10);
