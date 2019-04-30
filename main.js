@@ -18,7 +18,8 @@ ef3:0,
 mpf:0,
 cmx:0,
 maxTP:0,
-currentTP:0
+currentTP:0,
+respec:false
 },
 upCostScales: {
 	up1:1.3,
@@ -195,6 +196,16 @@ game.up3buys = 0;
 	if (game.ally ===1) {
 	game.rock1.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)*1.5*(game.rock1.techs.mpf+1)
 	}
+if (game.rock1.techs.respec === true) {
+game.rock1.techs.cs1 = 0;
+game.rock1.techs.cs2 = 0;
+game.rock1.techs.cs3 = 0;
+game.rock1.techs.ef3 = 0;
+game.rock1.techs.mpf = 0;
+game.rock1.techs.cmx = 0;
+game.rock1.techs.currentTP = game.rock1.techs.maxTP;
+game.rock1.techs.respec = false;
+}
 }
 };
 	window.setInterval(function(){
@@ -311,6 +322,9 @@ function tech16() {
 	game.rock1.techs.cmx +=1;
 	}
 };
+function techRespec() {
+	game.rock1.techs.respec = true;
+}
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.rock1.fuel.amount;
