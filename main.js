@@ -216,27 +216,38 @@ function pUpgrade4() {
 	
 }
 setInterval(function() {
+if (game.rock1.tchs.techStart === true) {
 if (game.up1buys > 5 && game.up2buys > 5 && game.up3buys > 5 && game.maxTP === 0) {
-	game.maxTP = 1;
+	game.rock1.techs.maxTP = 1;
+	game.rock1.techs.currentTP = 1;
 }
 if (game.up1buys > 10 && game.up2buys > 10 && game.up3buys > 10 && game.maxTP === 1) {
 	game.maxTP = 2;
+	game.rock1.techs.currentTP += 1;
 }
-if (game.up1buys > 15 && game.up2buys > 15 && game.up3buys > 15 && game.maxTP === 1) {
+if (game.up1buys > 15 && game.up2buys > 15 && game.up3buys > 15 && game.maxTP === 2) {
 	game.maxTP = 3;
+	game.rock1.techs.currentTP += 1;
+}
 }
 },10)
 function tech11() {
-	
-	
+	if (game.rock1.techs.cs1 < 3) {
+	game.rock1.techs.currentTP -= 1;
+	game.rock1.techs.cs1 +=1;
+	}
 };
 function tech12() {
-	
-	
+	if (game.rock1.techs.cs2 < 3) {
+	game.rock1.techs.currentTP -= 1;
+	game.rock1.techs.cs2 +=1;
+	}
 };
 function tech13() {
-	
-	
+	if (game.rock1.techs.cs3 < 3) {
+	game.rock1.techs.currentTP -= 1;
+	game.rock1.techs.cs3 +=1;
+	}
 };
 function tech14() {
 	
@@ -271,4 +282,6 @@ document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2cost;
 document.getElementById("pUpgrade3Cost").innerHTML = game.pUp3cost;
 document.getElementById("creativityMultiplier").innerHTML = game.creatMult;
 document.getElementById("moneyPerFuel").innerHTML = Math.round(game.rock1.moneyPerFuel);
+document.getElementById("basicTechPoints").innerHTML = game.rock1.techs.currentTP
+document.getElementById("maxBTP").innerHTML = game.rock1.techs.maxTP
 }, 10);
