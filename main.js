@@ -8,7 +8,20 @@ fuel: {
   cost:3,
   max:150,
   scaleDown:1
-  }
+  },
+techs: {
+cs1:0,
+cs2:0,
+cs3:0,
+ef3:0,
+mpf:0,
+crx:0
+},
+upCostScales: {
+	up1:1.3,
+	up2:1.4,
+	up3:1.5
+}
 },
   
   
@@ -79,7 +92,18 @@ function upgrade1() {
 	if (game.up1buys < 25) {
 	game.rock1.fuel.max = Math.floor(game.rock1.fuel.max*1.1);
 	game.money -= game.up1Cost;
+	if (game.rock1.techs.cs1 === 0){
 	game.up1Cost = Math.round(game.up1Cost*1.3);
+	}
+	if (game.rock1.techs.cs1 === 1){
+	game.up1Cost = Math.round(game.up1Cost*1.28);
+	}
+	if (game.rock1.techs.cs1 === 2){
+	game.up1Cost = Math.round(game.up1Cost*1.25);
+	}
+	if (game.rock1.techs.cs1 === 3){
+	game.up1Cost = Math.round(game.up1Cost*1.2);
+	}
 	game.up1buys += 1;
 	}
 	}
@@ -90,6 +114,7 @@ function upgrade2() {
 	game.rock1.fuel.cost = 2;
 	game.rock1.fuel.scaleDown = 0.9*game.rock1.fuel.scaleDown;
 	game.money -= game.up2Cost;
+	
 	game.up2Cost = Math.round(game.up2Cost*1.4);
 	game.up2buys += 1;
 		}
@@ -202,6 +227,30 @@ function pUpgrade3() {
 	game.creatMult = game.creatMult*1.5;
 	game.pUp3cost = Math.round(game.pUp3cost*3);
 	}
+};
+function tech11() {
+	
+	
+};
+function tech12() {
+	
+	
+};
+function tech13() {
+	
+	
+};
+function tech14() {
+	
+	
+};
+function tech15() {
+	
+	
+};
+function tech16() {
+	
+	
 };
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
