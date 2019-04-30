@@ -217,15 +217,15 @@ function pUpgrade4() {
 }
 setInterval(function() {
 if (game.rock1.techs.techStart === true) {
-if (game.up1buys > 5 && game.up2buys > 5 && game.up3buys > 5 && game.maxTP === 0) {
+if (game.up1buys >= 5 && game.up2buys >= 5 && game.up3buys >= 5 && game.maxTP === 0) {
 	game.rock1.techs.maxTP = 1;
 	game.rock1.techs.currentTP = 1;
 }
-if (game.up1buys > 10 && game.up2buys > 10 && game.up3buys > 10 && game.maxTP === 1) {
+if (game.up1buys >= 10 && game.up2buys >= 10 && game.up3buys >= 10 && game.maxTP === 1) {
 	game.maxTP = 2;
 	game.rock1.techs.currentTP += 1;
 }
-if (game.up1buys > 15 && game.up2buys > 15 && game.up3buys > 15 && game.maxTP === 2) {
+if (game.up1buys >= 15 && game.up2buys >= 15 && game.up3buys >= 15 && game.maxTP === 2) {
 	game.maxTP = 3;
 	game.rock1.techs.currentTP += 1;
 }
