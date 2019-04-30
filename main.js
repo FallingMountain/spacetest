@@ -10,6 +10,7 @@ fuel: {
   scaleDown:1
   },
 techs: {
+techStart:false,
 cs1:0,
 cs2:0,
 cs3:0,
@@ -210,19 +211,21 @@ function pUpgrade3() {
 function pUpgrade4() {
 	if (game.creat >= 50) {
 		game.creat -= 50;
-		setInterval(function(){
-		if (game.up1buys > 5 && game.up2buys > 5 && game.up3buys > 5 && game.maxTP === 0) {
-			game.maxTP = 1;
-		}
-		if (game.up1buys > 10 && game.up2buys > 10 && game.up3buys > 10 && game.maxTP === 1) {
-			game.maxTP = 2;
-		}
-			
-		}, 10)
-		
+		game.rock1.techs.techStart = true;
 	}
 	
 }
+setInterval(function() {
+if (game.up1buys > 5 && game.up2buys > 5 && game.up3buys > 5 && game.maxTP === 0) {
+	game.maxTP = 1;
+}
+if (game.up1buys > 10 && game.up2buys > 10 && game.up3buys > 10 && game.maxTP === 1) {
+	game.maxTP = 2;
+}
+if (game.up1buys > 15 && game.up2buys > 15 && game.up3buys > 15 && game.maxTP === 1) {
+	game.maxTP = 3;
+}
+},10)
 function tech11() {
 	
 	
