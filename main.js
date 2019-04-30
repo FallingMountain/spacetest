@@ -16,7 +16,7 @@ cs2:0,
 cs3:0,
 ef3:0,
 mpf:0,
-crx:0,
+cmx:0,
 maxTP:0,
 currentTP:0
 },
@@ -217,16 +217,28 @@ function pUpgrade4() {
 }
 setInterval(function() {
 if (game.rock1.techs.techStart === true) {
-if (game.up1buys >= 5 && game.up2buys >= 5 && game.up3buys >= 5 && game.maxTP === 0) {
+if (game.up1buys >= 5 && game.up2buys >= 5 && game.up3buys >= 5 && game.rock1.techs.maxTP === 0) {
 	game.rock1.techs.maxTP = 1;
 	game.rock1.techs.currentTP = 1;
 }
-if (game.up1buys >= 10 && game.up2buys >= 10 && game.up3buys >= 10 && game.maxTP === 1) {
+if (game.up1buys >= 10 && game.up2buys >= 10 && game.up3buys >= 10 && game.rock1.techs.maxTP === 1) {
 	game.maxTP = 2;
 	game.rock1.techs.currentTP += 1;
 }
-if (game.up1buys >= 15 && game.up2buys >= 15 && game.up3buys >= 15 && game.maxTP === 2) {
+if (game.up1buys >= 15 && game.up2buys >= 15 && game.up3buys >= 15 && game.rock1.techs.maxTP === 2) {
 	game.maxTP = 3;
+	game.rock1.techs.currentTP += 1;
+}
+if (game.up1buys >= 20 && game.up2buys >= 20 && game.up3buys >= 20 && game.rock1.techs.maxTP === 3) {
+	game.maxTP = 4;
+	game.rock1.techs.currentTP += 1;
+}
+if (game.up1buys >= 22 && game.up2buys >= 22 && game.up3buys >= 22 && game.rock1.techs.maxTP === 4) {
+	game.maxTP = 5;
+	game.rock1.techs.currentTP += 1;
+}
+if (game.up1buys >= 24 && game.up2buys >= 24 && game.up3buys >= 24 && game.rock1.techs.maxTP === 5) {
+	game.maxTP = 6;
 	game.rock1.techs.currentTP += 1;
 }
 }
@@ -250,16 +262,22 @@ function tech13() {
 	}
 };
 function tech14() {
-	
-	
+	if (game.rock1.techs.ef3 < 3) {
+	game.rock1.techs.currentTP -= 1;
+	game.rock1.techs.ef3 +=1;
+	}
 };
 function tech15() {
-	
-	
+	if (game.rock1.techs.mpf < 3) {
+	game.rock1.techs.currentTP -= 1;
+	game.rock1.techs.mpf +=1;
+	}
 };
 function tech16() {
-	
-	
+	if (game.rock1.techs.cmx < 3) {
+	game.rock1.techs.currentTP -= 1;
+	game.rock1.techs.cmx +=1;
+	}
 };
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
