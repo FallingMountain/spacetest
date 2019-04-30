@@ -145,7 +145,7 @@ function p1Gain() {
 }
 function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
-Math.floor(Math.pow(Math.floor(Math.sqrt(game.money/50000)*game.creatMult), 1.5));
+game.creat += Math.floor(Math.pow(Math.floor(Math.sqrt(game.money/50000)*game.creatMult), 1.5));
 game.money = 0;
 game.rock1.fuel.amount = 150;
 game.rock1.fuel.cost = 3;
