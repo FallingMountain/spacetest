@@ -184,31 +184,8 @@ window.setInterval(function(){
 	save();
 }, 2000);
 function fullReset() {
-  game.money = 0;
-  game.rock1.moneyPerFuel = 10;
-  game.rock1.fuel.amount = 150;
-  game.rock1.fuel.cost = 3;
-  game.rock1.fuel.max = 150;
-  game.fuel.scaleDown = 1;
-  game.auto.rocket = false;
-  game.auto.fuel = false;
-  game.up1Cost = 2500;
-  game.up1buys = 0;
-  game.maxUp1buys = 5;
-  game.up2Cost = 4000;
-  game.up2buys = 0;
-  game.maxUp2buys = 5;
-  game.up3Cost = 6000;
-  game.up3buys = 0;
-  game.maxUp3buys = 5;
-  game.creat = 0;
-  game.creatGainReset = 0;
-  game.ally = 0;
-  game.rockLimit = 1;
-  game.allyButText = "none";
-  game.era = "before";
-  game.rockLaunched = 0;
-  game.pUp2cost = 5;
+localStorage.removeItem("sri");
+location.reload();
 };
 function pUpgrade1() {
 	if (game.ally === 0 && game.creat >= 1) {
