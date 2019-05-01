@@ -339,7 +339,7 @@ function techRespec() {
 	game.rock1.techs.respec = true;
 }
 function ruinTheFun() {
-	if (game.funRuned === false){
+	if (game.funRuined === false){
 	game.up1Buys = 5;
 	game.up2Buys = 5;
 	game.up3Buys = 5;
