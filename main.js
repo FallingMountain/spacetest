@@ -120,7 +120,7 @@ function upgrade2() {
 	lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2."
 	if (game.up2buys < 25) {
 	game.rock1.fuel.cost = 2;
-	game.rock1.fuel.scaleDown = 0.9*game.rock1.fuel.scaleDown;
+	game.rock1.fuel.scaleDown = 1.05*game.rock1.fuel.scaleDown;
 	game.money -= game.up2Cost;
 	if (game.rock1.techs.cs2 === 0){
 	game.up2Cost = Math.round(game.up2Cost*1.4);
