@@ -54,7 +54,7 @@ pUp3cost:5,
 rocket:0,
 creatMult:1
 };
-var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", ""]
+var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", "", "", "","","","","","","","","","","","",""]
 function rockLaunch1() {
 	if (game.rockLimit > game.rockLaunched) {
 	game.rockLaunched += 1;
@@ -80,6 +80,7 @@ function buyFuel() {
 	game.money -= game.rock1.fuel.cost*game.rock1.fuel.max;
 	game.rock1.fuel.amount += game.rock1.fuel.max;
 	game.rock1.fuel.cost += 0.0005*game.rock1.fuel.max*game.rock1.fuel.scaleDown;
+	lore[3] = "You decide to get more fuel, so you can continue to launch rockets.";
     }
   }
 if (game.money < game.rock1.fuel.cost*game.rock1.fuel.max) {
@@ -94,6 +95,7 @@ if (game.money < game.rock1.fuel.cost*game.rock1.fuel.max) {
 function upgrade1() {
 	if (game.money >= game.up1Cost) {
 	if (game.up1buys < 25) {
+	lore[4] = "You figure out that if you make your rocket taller or wider, you can fit more fuel inside. You feel like you should have thought of that by now.";
 	game.rock1.fuel.max = Math.floor(game.rock1.fuel.max*1.1);
 	game.money -= game.up1Cost;
 	if (game.rock1.techs.cs1 === 0){
@@ -114,6 +116,7 @@ function upgrade1() {
 };
 function upgrade2() {
 	if (game.money >= game.up2Cost) {
+	lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2."
 	if (game.up2buys < 25) {
 	game.rock1.fuel.cost = 2;
 	game.rock1.fuel.scaleDown = 0.9*game.rock1.fuel.scaleDown;
@@ -137,6 +140,7 @@ function upgrade2() {
 
 function upgrade3() {
 	if (game.money >= game.up3Cost) {
+	lore[6] = "Better engines mean more speed. More speed means more height. And FM seems to be sending you money based on how high the rocket goes."
 	if (game.up3buys < 25) {
 	if (game.rock1.techs.ef3 === 0){
 	game.rock1.moneyPerFuel = game.rock1.moneyPerFuel*1.25;
@@ -178,6 +182,7 @@ function p1Gain() {
 }
 function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
+lore[7] = "You decide it's time to brainstorm up some better ideas for your rocket, so you deconstruct it using the money you have left."
 game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult)*(game.rock1.techs.cmx+1);
 game.money = 0;
 game.rock1.fuel.amount = 150;
@@ -235,10 +240,12 @@ function pUpgrade1() {
 	if (game.ally === 0 && game.creat >= 1) {
 	game.ally = 1;
 		game.creat -= 1;
+	lore[8] = "Suddenly, you get a letter from NASA saying, \'Hello. We have heard of your \'accomplishments\' from FM, and was wondering if you'd like to join us\'. You gladly accept."
 	}
 };
 function pUpgrade2() {
 	if (game.creat >= game.pUp2cost) {
+	lore[9] = "You now have enough ideas that you think you can launch multiple rockets."
 	game.creat -= game.pUp2cost;
 	game.rockLimit += 1;
 	game.pUp2cost = Math.round(game.pUp2cost*3);
@@ -246,6 +253,7 @@ function pUpgrade2() {
 };
 function pUpgrade3() {
 	if (game.creat >= game.pUp3cost) {
+	lore[10] = "After a good brainstorm, you find a better place to think, making you more creative."
 	game.creat -= game.pUp3cost;
 	game.creatMult = game.creatMult*1.5;
 	game.pUp3cost = Math.round(game.pUp3cost*3);
@@ -253,12 +261,16 @@ function pUpgrade3() {
 };
 function pUpgrade4() {
 	if (game.creat >= 10) {
+	lore[11] = "You have recieved additional funding to make better rockets with things called Technology Points. Pretty cool."
 		game.creat -= 10;
 		game.rock1.techs.techStart = true;
 	}
 	
 }
 setInterval(function() {
+if (game.up1buys === 25 && game.up2buys === 25 && game.up3buys === 25) {
+	lore[11] = "You have done everything you can with this rocket. Maybe it's time to start a new project."
+}
 if (game.rock1.techs.techStart === true) {
 if (game.up1buys >= 5 && game.up2buys >= 5 && game.up3buys >= 5 && game.rock1.techs.maxTP === 0) {
 	game.rock1.techs.maxTP = 1;
@@ -341,6 +353,15 @@ document.getElementById("gainOnBrainstorm").innerHTML = game.creatGainReset;
 document.getElementById("lore1").innerHTML = lore[0];
 document.getElementById("lore2").innerHTML = lore[1];
 document.getElementById("lore3").innerHTML = lore[2];
+document.getElementById("lore4").innerHTML = lore[3];
+document.getElementById("lore5").innerHTML = lore[4];
+document.getElementById("lore6").innerHTML = lore[5];
+document.getElementById("lore7").innerHTML = lore[6];
+document.getElementById("lore8").innerHTML = lore[7];
+document.getElementById("lore9").innerHTML = lore[8];
+document.getElementById("lore10").innerHTML = lore[9];
+document.getElementById("lore11").innerHTML = lore[10];
+document.getElementById("lore12").innerHTML = lore[11];
 document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
 document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2cost;
 document.getElementById("pUpgrade3Cost").innerHTML = game.pUp3cost;
