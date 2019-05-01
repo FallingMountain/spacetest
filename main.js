@@ -346,7 +346,6 @@ function ruinTheFun() {
 	game.creat = 25;
 	game.money = 50000;
 	game.funRuined = true;
-	prestige1();
 	}
 };
 window.setInterval(function(){
