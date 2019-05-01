@@ -278,23 +278,23 @@ if (game.up1buys >= 5 && game.up2buys >= 5 && game.up3buys >= 5 && game.rock1.te
 	game.rock1.techs.currentTP = 1;
 }
 if (game.up1buys >= 10 && game.up2buys >= 10 && game.up3buys >= 10 && game.rock1.techs.maxTP === 1) {
-	game.maxTP = 2;
+	game.rock1.techs.maxTP = 2;
 	game.rock1.techs.currentTP += 1;
 }
 if (game.up1buys >= 15 && game.up2buys >= 15 && game.up3buys >= 15 && game.rock1.techs.maxTP === 2) {
-	game.maxTP = 3;
+	game.rock1.techs.maxTP = 3;
 	game.rock1.techs.currentTP += 1;
 }
 if (game.up1buys >= 20 && game.up2buys >= 20 && game.up3buys >= 20 && game.rock1.techs.maxTP === 3) {
-	game.maxTP = 4;
+	game.rock1.techs.maxTP = 4;
 	game.rock1.techs.currentTP += 1;
 }
 if (game.up1buys >= 22 && game.up2buys >= 22 && game.up3buys >= 22 && game.rock1.techs.maxTP === 4) {
-	game.maxTP = 5;
+	game.rock1.techs.maxTP = 5;
 	game.rock1.techs.currentTP += 1;
 }
 if (game.up1buys >= 24 && game.up2buys >= 24 && game.up3buys >= 24 && game.rock1.techs.maxTP === 5) {
-	game.maxTP = 6;
+	game.rock1.techs.maxTP = 6;
 	game.rock1.techs.currentTP += 1;
 }
 }
