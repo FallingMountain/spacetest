@@ -52,6 +52,7 @@ pUp2cost:5,
 rockLaunched:0,
 pUp3cost:5,
 rocket:0,
+funRuined:false,
 creatMult:1
 };
 var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", "", "", "","","","","","","","","","","","",""]
@@ -336,6 +337,17 @@ function tech16() {
 };
 function techRespec() {
 	game.rock1.techs.respec = true;
+}
+function ruinTheFun() {
+	if (game.funRuned === false){
+	game.up1Buys = 5;
+	game.up2Buys = 5;
+	game.up3Buys = 5;
+	game.creat = 25;
+	game.money = 50000;
+	game.funRuined = true;
+	prestige1();
+	}
 }
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
