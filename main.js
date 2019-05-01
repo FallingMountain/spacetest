@@ -337,7 +337,7 @@ function tech16() {
 };
 function techRespec() {
 	game.rock1.techs.respec = true;
-}
+};
 function ruinTheFun() {
 	if (game.funRuined === false){
 	game.up1Buys = 5;
@@ -348,7 +348,7 @@ function ruinTheFun() {
 	game.funRuined = true;
 	prestige1();
 	}
-}
+};
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.rock1.fuel.amount;
