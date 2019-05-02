@@ -56,6 +56,7 @@ funRuined:false,
 creatMult:1,
 pUp4Bought:false,
 brainstormed:false,
+explorerUnlocked:false,
 pUp5Bought:false
 };
 var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", "", "", "","","","","","","","","","","","",""]
@@ -281,6 +282,12 @@ function pUpgrade5() {
 	game.pUp5Bought = true;
 	}
 };
+function pUpgrade6() {
+	if (game.creat > 250 && game.explorerUnlocked === false && game.up1buys === 25 && game.up2buys === 25 && game.up3buys === 25) {
+		game.explorerUnlocked = true;
+		game.creat -= 250;
+	}
+};
 setInterval(function() {
 if (game.up1buys === 25 && game.up2buys === 25 && game.up3buys === 25) {
 	lore[11] = "You have done everything you can with this rocket. Maybe it's time to start a new project."
@@ -410,7 +417,7 @@ document.getElementById("explorerTab").style.display = "inline"
 } else {
 	document.getElementById("explorerTab").style.display = "none"
 }
-	if (game.rock1.techs.techStart === true) {
+	if (game.explorerUnlocked === true) {
 		document.getElementById("basicTechs").style.display = ""
 		
 	}else {
