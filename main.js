@@ -267,7 +267,13 @@ function pUpgrade4() {
 		game.rock1.techs.techStart = true;
 	}
 	
-}
+};
+function pUpgrade5() {
+	if (game.creat >= 10) {
+	game.creat -= 10;
+	game.auto.rocket = true;
+	game.auto.fuel = true;
+	}
 setInterval(function() {
 if (game.up1buys === 25 && game.up2buys === 25 && game.up3buys === 25) {
 	lore[11] = "You have done everything you can with this rocket. Maybe it's time to start a new project."
