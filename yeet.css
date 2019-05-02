@@ -55,3 +55,16 @@ background: #6837ff
     background: #FF7B00;
     border: 2px solid #FF7B00;
 }
+.prestige1 {
+	color: #FFFFE5;
+	background: #040041;
+	border: 2px solid #04004A;
+	font-weight: bold;
+	border-radius: 4px;
+	transition-duration: 0.2s;
+	cursor: pointer;
+}
+.prestige1:hover {
+	color: #FEFDFD;
+	background: #3500DA;
+}
