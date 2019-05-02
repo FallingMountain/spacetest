@@ -55,6 +55,7 @@ rocket:0,
 funRuined:false,
 creatMult:1,
 pUp4Bought:false,
+brainstormed:false,
 pUp5Bought:false
 };
 var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", "", "", "","","","","","","","","","","","",""]
@@ -185,6 +186,7 @@ function p1Gain() {
 }
 function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
+	game.brainstormed = true;
 lore[7] = "You decide it's time to brainstorm up some better ideas for your rocket, so you deconstruct it using the money you have left."
 game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult)*(game.rock1.techs.cmx+1);
 game.money = 0;
@@ -397,4 +399,9 @@ document.getElementById("TC13").innerHTML = game.rock1.techs.cs3;
 document.getElementById("TC14").innerHTML = game.rock1.techs.ef3;
 document.getElementById("TC15").innerHTML = game.rock1.techs.mpf;
 document.getElementById("TC16").innerHTML = game.rock1.techs.cmx;
+if (game.money > 50000 || game.brainstormed === true) {
+	document.getElementById("prestige").style.display = "block"
+} else {
+	document.getElementById("prestige").style.display = "none"
+}
 }, 10);
