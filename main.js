@@ -356,7 +356,7 @@ function ruinTheFun() {
 	game.up1Buys = 5;
 	game.up2Buys = 5;
 	game.up3Buys = 5;
-	game.creat = 25;
+	game.creat = 50;
 	game.money = 50000;
 	game.rock1.moneyPerFuel = 100;
 	game.funRuined = true;
