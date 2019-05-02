@@ -53,7 +53,9 @@ rockLaunched:0,
 pUp3cost:5,
 rocket:0,
 funRuined:false,
-creatMult:1
+creatMult:1,
+pUp4Bought:false,
+pUp5Bought:false
 };
 var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", "", "", "","","","","","","","","","","","",""]
 function rockLaunch1() {
@@ -261,18 +263,20 @@ function pUpgrade3() {
 	}
 };
 function pUpgrade4() {
-	if (game.creat >= 10) {
+	if (game.creat >= 10 && game.pUp4Bought === false) {
 	lore[11] = "You have recieved additional funding to make better rockets with things called Technology Points. Pretty cool."
 		game.creat -= 10;
 		game.rock1.techs.techStart = true;
+		game.pUp4Bought = true;
 	}
 	
 };
 function pUpgrade5() {
-	if (game.creat >= 10) {
+	if (game.creat >= 10 && game.pUp5Bought === false) {
 	game.creat -= 10;
 	game.auto.rocket = true;
 	game.auto.fuel = true;
+	game.pUp5Bought = true;
 	}
 };
 setInterval(function() {
@@ -313,31 +317,31 @@ function tech11() {
 	}
 };
 function tech12() {
-	if (game.rock1.techs.cs2 < 3) {
+	if (game.rock1.techs.cs2 < 3 && game.rock1.techs.currentTP > 0) {
 	game.rock1.techs.currentTP -= 1;
 	game.rock1.techs.cs2 +=1;
 	}
 };
 function tech13() {
-	if (game.rock1.techs.cs3 < 3) {
+	if (game.rock1.techs.cs3 < 3&& game.rock1.techs.currentTP > 0) {
 	game.rock1.techs.currentTP -= 1;
 	game.rock1.techs.cs3 +=1;
 	}
 };
 function tech14() {
-	if (game.rock1.techs.ef3 < 3) {
+	if (game.rock1.techs.ef3 < 3&& game.rock1.techs.currentTP > 0) {
 	game.rock1.techs.currentTP -= 1;
 	game.rock1.techs.ef3 +=1;
 	}
 };
 function tech15() {
-	if (game.rock1.techs.mpf < 3) {
+	if (game.rock1.techs.mpf < 3&& game.rock1.techs.currentTP > 0) {
 	game.rock1.techs.currentTP -= 1;
 	game.rock1.techs.mpf +=1;
 	}
 };
 function tech16() {
-	if (game.rock1.techs.cmx < 3) {
+	if (game.rock1.techs.cmx < 3&& game.rock1.techs.currentTP > 0) {
 	game.rock1.techs.currentTP -= 1;
 	game.rock1.techs.cmx +=1;
 	}
