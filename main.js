@@ -358,6 +358,7 @@ function ruinTheFun() {
 	game.up3Buys = 5;
 	game.creat = 25;
 	game.money = 50000;
+	game.rock1.moneyPerFuel = 100;
 	game.funRuined = true;
 	}
 };
