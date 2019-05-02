@@ -412,12 +412,12 @@ document.getElementById("TC16").innerHTML = game.rock1.techs.cmx;
 } else {
 	document.getElementById("brainPrestige").style.display = "none"
 }
-if (1 === 2) {
+if (game.explorerUnlocked === true) {
 document.getElementById("explorerContent").style.display = "inline"
 } else {
 	document.getElementById("explorerContent").style.display = "none"
 }
-	if (game.explorerUnlocked === true) {
+	if (game.rock1.techs.techStart === true) {
 		document.getElementById("basicTechs").style.display = ""
 		
 	}else {
