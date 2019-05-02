@@ -404,4 +404,9 @@ document.getElementById("TC16").innerHTML = game.rock1.techs.cmx;
 } else {
 	document.getElementById("brainPrestige").style.display = "none"
 }
+if (1 === 2) {
+document.getElementById("brainPrestige").style.display = "inline"
+} else {
+	document.getElementById("brainPrestige").style.display = "none"
+}
 }, 10);
