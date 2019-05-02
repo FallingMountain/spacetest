@@ -399,9 +399,4 @@ document.getElementById("TC13").innerHTML = game.rock1.techs.cs3;
 document.getElementById("TC14").innerHTML = game.rock1.techs.ef3;
 document.getElementById("TC15").innerHTML = game.rock1.techs.mpf;
 document.getElementById("TC16").innerHTML = game.rock1.techs.cmx;
-if (game.money > 50000 || game.brainstormed === true) {
-	document.getElementById("prestige").style.display = "block"
-} else {
-	document.getElementById("prestige").style.display = "none"
-}
 }, 10);
