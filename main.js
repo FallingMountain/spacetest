@@ -413,9 +413,9 @@ document.getElementById("TC16").innerHTML = game.rock1.techs.cmx;
 	document.getElementById("brainPrestige").style.display = "none"
 }
 if (1 === 2) {
-document.getElementById("explorerTab").style.display = "inline"
+document.getElementById("explorerContent").style.display = "inline"
 } else {
-	document.getElementById("explorerTab").style.display = "none"
+	document.getElementById("explorerContent").style.display = "none"
 }
 	if (game.explorerUnlocked === true) {
 		document.getElementById("basicTechs").style.display = ""
