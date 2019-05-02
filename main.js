@@ -409,4 +409,10 @@ document.getElementById("explorerTab").style.display = "inline"
 } else {
 	document.getElementById("explorerTab").style.display = "none"
 }
+	if (game.rock1.techs.techStart === true) {
+		document.getElementById("basicTechs").style.display = ""
+		
+	}else {
+document.getElementById("basicTechs").style.display = "none"
+	}
 }, 10);
