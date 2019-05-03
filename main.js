@@ -415,9 +415,8 @@ function ruinTheFun() {
 	game.up1buys = 5;
 	game.up2buys = 5;
 	game.up3buys = 5;
-	game.creat = 50;
+	game.creat = 350;
 	game.money = 50000;
-	game.rock1.moneyPerFuel = 100;
 	game.funRuined = true;
 	}
 };
