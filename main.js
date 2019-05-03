@@ -33,6 +33,14 @@ upCostScales: {
   rocket:false,
   fuel:false
   },
+rock2: {
+	fuel: {
+	amount:0,
+	cost:100,000
+	}
+	
+	
+},
   up1Cost:2500,
   up1buys:0,
   maxUp1buys:5,
@@ -84,7 +92,7 @@ function buyFuel() {
 	if (game.rock1.fuel.amount === 0) {
 	game.money -= game.rock1.fuel.cost*game.rock1.fuel.max;
 	game.rock1.fuel.amount += game.rock1.fuel.max;
-	game.rock1.fuel.cost += 0.0005*game.rock1.fuel.max*game.rock1.fuel.scaleDown;
+	game.rock1.fuel.cost += Math.floor(Math.pow(1.000001, game.rock1.fuel.max*game.rock1.fuel.scaleDown));
 	lore[3] = "You decide to get more fuel, so you can continue to launch rockets.";
     }
   }
