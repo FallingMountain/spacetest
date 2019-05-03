@@ -422,6 +422,11 @@ function ruinTheFun() {
 };
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
+}; 
+function rocklaunch2() {
+	if (game.rock2.rockLaunched)
+	
+	
 };
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
