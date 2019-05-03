@@ -34,10 +34,10 @@ upCostScales: {
   fuel:false
   },
 rock2: {
-	fuel: {
+	
 	amount:0,
 	cost:100,000
-	}
+	
 	
 	
 },
