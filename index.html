@@ -58,9 +58,9 @@
 	</div>
 	  <div id="prestige" class="tab">
 		  <center>
-			  <button class="basic" onclick="tab('basicPUps')">Basic Rocket</button>
-	  <button id="explorerContent2" style:display="none" class="explorer" onclick="tab('explorerPUps')">Explorer</button>
-			  <div id="basicPUps" class="tab">
+			  <button class="basic" onclick="subTab('basicPUps')">Basic Rocket</button>
+	  <button id="explorerContent2" style:display="none" class="explorer" onclick="subTab('explorerPUps')">Explorer</button>
+			  <div id="basicPUps" class="pSubTab">
 			  You must have $50000 or more to prestige.<br>
 		  <button class="prestige1" onclick="prestige1()">Reset everything except automation, and gain <span id = "gainOnBrainstorm"></span> creativity. <div> You must have bought at least 5 of each upgrade.</button>
 	  	  <br>
@@ -73,7 +73,7 @@
 			  <br><button class="basic" onclick="pUpgrade5()">Automate the buying of fuel and the launch of rockets.<br>WARNING: After buying this, there is no way to turn off automation.<br>Do not leave the tab open in the background.<br> Cost: 10 Creativity</button>
 			<br><button class="explorer" onclick="pUpgrade6()">Start the Explorers program.<br>Requires 25 of each upgrade<br>.Unlocks a new rocket<br>Cost: 250 creativity</button>
 			  </div>
-			<div id="explorerPUps" class="tab"
+			<div id="explorerPUps" class="pSubTab"
 			     </div>
 			  </center>
 	  </div>
@@ -104,6 +104,19 @@
 			document.getElementById(t).style.display = ""
 		}
 		  tab("basic")
+		  function subTab(tabName) {
+    var tabs = document.getElementsByClassName('pSubTab');
+    var tab;
+    for (var i = 0; i < tabs.length; i++) {
+        tab = tabs.item(i);
+        if (tab.id === tabName) {
+            tab.style.display = 'block';
+        } else {
+            tab.style.display = 'none';
+        }
+    }
+}
+		  subTab("basicPUps");
 		  </script>
 		  <script type="text/javascript" src="main.js"></script>
 	  <br>
