@@ -27,7 +27,49 @@ upCostScales: {
 	up3:1.5
 }
 },
-  
+  rock2: {
+	fuel: {
+		max:150,
+		cost:100000,
+		amount:0,
+		scaleDown:1
+	},
+	auto: {
+		rocket:false,
+		fuel:false
+	},
+	up1: {
+	cost:10000000,
+	buys:0,
+	scaling:1.4
+	},
+	up2: {
+	cost:20000000,
+	buys:0,
+	scaling:1.6
+	},  
+	up3: {
+	cost:35000000,
+	buys:0,
+	scaling:1.8
+	},  
+	techs: {
+techStart:false,
+cs1:0,
+cs2:0,
+cs3:0,
+ef1:0,
+ef3:0,
+mpf:0,
+cmx:0,
+fsp:0,
+maxTP:0,
+currentTP:0,
+respec:false
+},
+rockLimit:1,
+rockLaunched:0
+  },
   
   auto: {
   rocket:false,
@@ -378,6 +420,9 @@ function ruinTheFun() {
 	game.rock1.moneyPerFuel = 100;
 	game.funRuined = true;
 	}
+};
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 };
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
