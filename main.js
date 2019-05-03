@@ -412,9 +412,9 @@ function techRespec() {
 };
 function ruinTheFun() {
 	if (game.funRuined === false){
-	game.up1buys = 5;
-	game.up2buys = 5;
-	game.up3buys = 5;
+	game.up1buys = 25;
+	game.up2buys = 25;
+	game.up3buys = 25;
 	game.creat = 350;
 	game.money = 50000;
 	game.funRuined = true;
