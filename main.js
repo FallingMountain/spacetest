@@ -369,9 +369,9 @@ function techRespec() {
 };
 function ruinTheFun() {
 	if (game.funRuined === false){
-	game.up1Buys = 5;
-	game.up2Buys = 5;
-	game.up3Buys = 5;
+	game.up1buys = 5;
+	game.up2buys = 5;
+	game.up3buys = 5;
 	game.creat = 50;
 	game.money = 50000;
 	game.rock1.moneyPerFuel = 100;
