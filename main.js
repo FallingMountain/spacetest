@@ -201,7 +201,7 @@ game.up2Cost = 4000;
 game.up2buys = 0;
 game.up3Cost = 6000;
 game.up3buys = 0;
-	if (creat < 256) {
+	if (game.creat < 256) {
 	if (game.ally ===0) {
 	game.rock1.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)
 	}
