@@ -469,13 +469,16 @@ document.getElementById("TC16").innerHTML = game.rock1.techs.cmx;
 }
 if (game.explorerUnlocked === true) {
 document.getElementById("explorerContent").style.display = "inline"
+document.getElementById("explorerContent1").style.display = "inline"
 } else {
 	document.getElementById("explorerContent").style.display = "none"
+document.getElementById("explorerContent1").style.display = "inline"
 }
 	if (game.rock1.techs.techStart === true) {
 		document.getElementById("basicTechs").style.display = ""
-		
+		document.getElementById("basicTechs2").style.display = ""
 	}else {
 document.getElementById("basicTechs").style.display = "none"
+		document.getElementById("basicTechs2").style.display = "none"
 	}
 }, 10);
