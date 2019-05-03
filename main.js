@@ -33,14 +33,7 @@ upCostScales: {
   rocket:false,
   fuel:false
   },
-rock2: {
-	
-	amount:0,
-	cost:100,000
-	
-	
-	
-},
+
   up1Cost:2500,
   up1buys:0,
   maxUp1buys:5,
