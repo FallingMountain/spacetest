@@ -530,6 +530,7 @@ function exUp3() {
 };
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
+document.getElementById("stillmoney").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.rock1.fuel.amount;
 document.getElementById("explorerFuel").innerHTML = game.rock2.fuel.amount
 document.getElementById("fuelCost").innerHTML = game.rock1.fuel.cost;
