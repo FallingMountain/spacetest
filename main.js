@@ -442,7 +442,7 @@ function rocklaunch2() {
 	}
 };
 
-function buyFuel() {
+function expBuyFuel() {
 	if (game.money >=game.rock2.fuel.cost*game.rock2.fuel.max) {
 	if (game.rock2.fuel.amount === 0) {
 	game.money -= game.rock2.fuel.cost*game.rock2.fuel.max;
