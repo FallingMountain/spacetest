@@ -470,9 +470,8 @@ function expUp1() {
 	}
 	game.rock2.up1.buys += 1;
 	}
-	}
+	};
 
-}
 function expUp2() {
 	if (game.money >= game.rock2.up2.cost) {
 	lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2."
@@ -494,7 +493,7 @@ function expUp2() {
 	}
 	game.rock2.up2.buys += 1;
 	}
-	}
+	
 };
 function exUp3() {
 	if (game.money >= game.rock2.up3.cost) {
@@ -527,7 +526,7 @@ function exUp3() {
 	}
 	game.rock2.up3.buys;
 	}
-	}
+	
 };
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
