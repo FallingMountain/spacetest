@@ -452,15 +452,101 @@ function expBuyFuel() {
     }
   }
 };
+function expUp1() {
+	if (game.money >= game.rock2.up1.cost && game.rock2.up1.buys < 50) {
+	game.rock2.fuel.max = Math.floor(game.rock2.fuel.max*1.1);
+	game.money -= game.rock2.up1.cost;
+	if (game.rock2.techs.cs1 === 0){
+	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.3);
+	}
+	if (game.rock2.techs.cs1 === 1){
+	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.28);
+	}
+	if (game.rock2.techs.cs1 === 2){
+	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.25);
+	}
+	if (game.rock2.techs.cs1 === 3){
+	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.21);
+	}
+	game.rock2.up1.buys += 1;
+	}
+	}
+
+}
+function expUp2() {
+	if (game.money >= game.rock2.up2.cost) {
+	lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2."
+	if (game.rock2.up2.buys < 50) {
+	game.rock2.fuel.cost = 2;
+	game.rock2.fuel.scaleDown = 1.05*game.rock2.fuel.scaleDown;
+	game.money -= game.rock2.up2.cost;
+	if (game.rock2.techs.cs2 === 0){
+	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.4);
+	}
+	if (game.rock2.techs.cs2 === 1){
+	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.38);
+	}
+	if (game.rock2.techs.cs2 === 2){
+	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.35);
+	}
+	if (game.rock2.techs.cs2 === 3){
+	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.31);
+	}
+	game.rock2.up2.buys += 1;
+	}
+	}
+};
+function upgrade3() {
+	if (game.money >= game.rock2.up3.cost) {
+	lore[6] = "Better engines mean more speed. More speed means more height. And FM seems to be sending you money based on how high the rocket goes."
+	if (game.rock2.up3.buys < 50) {
+	if (game.rock2.techs.ef3 === 0){
+	game.rock2.moneyPerFuel = game.rock2.moneyPerFuel*1.25;
+	}
+	if (game.rock2.techs.ef3 === 1){
+	game.rock2.moneyPerFuel = game.rock2.moneyPerFuel*1.28;
+	}
+	if (game.rock2.techs.ef3 === 2){
+	game.rock2.moneyPerFuel = game.rock2.moneyPerFuel*1.3;
+	}
+	if (game.rock2.techs.ef3 === 3){
+	game.rock2.moneyPerFuel = game.rock2.moneyPerFuel*1.32;
+	}
+	game.money -= game.up3Cost;
+	if (game.rock2.techs.cs3 === 0){
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.5);
+	}
+	if (game.rock2.techs.cs3 === 1){
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.48);
+	}
+	if (game.rock2.techs.cs3 === 2){
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.45);
+	}
+	if (game.rock2.techs.cs3 === 3){
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.4);
+	}
+	game.rock2.up3.buys;
+	}
+	}
+};
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.rock1.fuel.amount;
+document.getElementById("explorerFuel").innerHTML = game.rock2.fuel.amount
 document.getElementById("fuelCost").innerHTML = game.rock1.fuel.cost;
+document.getElementById("explorerFuelCost").innerHTML = game.rock2.fuel.cost;
 document.getElementById("fuelMax").innerHTML = game.rock1.fuel.max;
+document.getElementById("explorerFuelMax").innerHTML = game.rock2.fuel.max;
 document.getElementById("upgrade1Cost").innerHTML = game.up1Cost;
+document.getElementById("explorerUpgrade1Cost").innerHTML = game.rock2.up1.cost;
 document.getElementById("upgrade2Cost").innerHTML = game.up2Cost;
+document.getElementById("explorerUpgrade2Cost").innerHTML = game.rock2.up3.cost;
 document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
+document.getElementById("explorerUpgrade3Cost").innerHTML = game.rock2.up3.cost;
 document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
+document.getElementById("explorerUpgrade1Buys").innerHTML = game.rock2.up1.buys;
+document.getElementById("explorerUpgrade2Buys").innerHTML = game.rock2.up2.buys;
+document.getElementById("explorerUpgrade3Buys").innerHTML = game.rock2.up3.buys;
 document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
 document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
 document.getElementById("creativity").innerHTML = game.creat;
@@ -482,6 +568,7 @@ document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2cost;
 document.getElementById("pUpgrade3Cost").innerHTML = game.pUp3cost;
 document.getElementById("creativityMultiplier").innerHTML = game.creatMult;
 document.getElementById("moneyPerFuel").innerHTML = Math.round(game.rock1.moneyPerFuel);
+document.getElementById("explorerMoneyPerFuel").innerHTML = Math.round(game.rock2.moneyPerFuel);
 document.getElementById("basicTechPoints").innerHTML = game.rock1.techs.currentTP;
 document.getElementById("maxBTP").innerHTML = game.rock1.techs.maxTP;
 document.getElementById("TC11").innerHTML = game.rock1.techs.cs1;
