@@ -493,7 +493,7 @@ function expUp2() {
 	}
 	game.rock2.up2.buys += 1;
 	}
-	
+	}
 };
 function exUp3() {
 	if (game.money >= game.rock2.up3.cost) {
@@ -526,7 +526,7 @@ function exUp3() {
 	}
 	game.rock2.up3.buys;
 	}
-	
+	}
 };
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
