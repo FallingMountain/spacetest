@@ -39,17 +39,17 @@ upCostScales: {
 		fuel:false
 	},
 	up1: {
-	cost:10000000,
+	cost:100000000,
 	buys:0,
 	scaling:1.4
 	},
 	up2: {
-	cost:20000000,
+	cost:200000000,
 	buys:0,
 	scaling:1.6
 	},  
 	up3: {
-	cost:35000000,
+	cost:350000000,
 	buys:0,
 	scaling:1.8
 	},  
