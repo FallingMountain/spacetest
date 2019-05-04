@@ -67,6 +67,7 @@ maxTP:0,
 currentTP:0,
 respec:false
 },
+moneyPerFuel:750000,
 rockLimit:1,
 rockLaunched:0
   },
@@ -424,10 +425,32 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }; 
 function rocklaunch2() {
-	if (game.rock2.rockLaunched)
-	
-	
+	if (game.rock2.rockLaunched < game.rock2.rockLimit) {
+		game.rockLaunched += 1;
+	var rocketAuto = setInterval(function() {
+	if (game.rock2.fuel.amount > 0) {
+		
+	game.money += game.rock2.moneyPerFuel;
+	game.rock2.fuel.amount -= 1;
+	game.money = Math.round(game.money*100)/100;
+	}else if (game.rock2.auto.rocket === false){
+	game.rockLaunched = 0;
+	clearInterval(rocketAuto);
+	}
+	}, 40);	
+		
+	}
 };
+
+function buyFuel() {
+	if (game.money >=game.rock2.fuel.cost*game.rock2.fuel.max) {
+	if (game.rock2.fuel.amount === 0) {
+	game.money -= game.rock2.fuel.cost*game.rock2.fuel.max;
+	game.rock2.fuel.amount += game.rock2.fuel.max;
+	game.rock2.fuel.cost += Math.floor(Math.pow(1.001, (game.rock2.fuel.max*game.rock2.fuel.scaleDown)/100));
+	lore[3] = "You decide to get more fuel, so you can continue to launch rockets.";
+    }
+  }
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.rock1.fuel.amount;
