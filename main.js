@@ -67,7 +67,7 @@ maxTP:0,
 currentTP:0,
 respec:false
 },
-moneyPerFuel:750000,
+moneyPerFuel:1500000,
 rockLimit:1,
 rockLaunched:0
   },
@@ -476,7 +476,7 @@ function expUp2() {
 	if (game.money >= game.rock2.up2.cost) {
 	lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2."
 	if (game.rock2.up2.buys < 50) {
-	game.rock2.fuel.cost = 2;
+	game.rock2.fuel.cost = 50000;
 	game.rock2.fuel.scaleDown = 1.05*game.rock2.fuel.scaleDown;
 	game.money -= game.rock2.up2.cost;
 	if (game.rock2.techs.cs2 === 0){
