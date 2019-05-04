@@ -524,7 +524,7 @@ function exUp3() {
 	if (game.rock2.techs.cs3 === 3){
 	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.4);
 	}
-	game.rock2.up3.buys;
+	game.rock2.up3.buys += 1;
 	}
 	}
 };
