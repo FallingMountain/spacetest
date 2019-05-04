@@ -39,17 +39,17 @@ upCostScales: {
 		fuel:false
 	},
 	up1: {
-	cost:100000000,
+	cost:250000000,
 	buys:0,
 	scaling:1.4
 	},
 	up2: {
-	cost:200000000,
+	cost:400000000,
 	buys:0,
 	scaling:1.6
 	},  
 	up3: {
-	cost:350000000,
+	cost:600000000,
 	buys:0,
 	scaling:1.8
 	},  
@@ -434,7 +434,7 @@ function rocklaunch2() {
 	game.rock2.fuel.amount -= 1;
 	game.money = Math.round(game.money*100)/100;
 	}else if (game.rock2.auto.rocket === false){
-	game.rockLaunched = 0;
+	game.rock2.rockLaunched = 0;
 	clearInterval(rocketAuto);
 	}
 	}, 40);	
@@ -511,7 +511,7 @@ function exUp3() {
 	if (game.rock2.techs.ef3 === 3){
 	game.rock2.moneyPerFuel = game.rock2.moneyPerFuel*1.32;
 	}
-	game.money -= game.up3Cost;
+	game.money -= game.rock2.up3.cost;
 	if (game.rock2.techs.cs3 === 0){
 	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.5);
 	}
