@@ -451,6 +451,7 @@ function buyFuel() {
 	lore[3] = "You decide to get more fuel, so you can continue to launch rockets.";
     }
   }
+};
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.rock1.fuel.amount;
