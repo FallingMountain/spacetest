@@ -496,7 +496,7 @@ function expUp2() {
 	}
 	}
 };
-function upgrade3() {
+function exUp3() {
 	if (game.money >= game.rock2.up3.cost) {
 	lore[6] = "Better engines mean more speed. More speed means more height. And FM seems to be sending you money based on how high the rocket goes."
 	if (game.rock2.up3.buys < 50) {
