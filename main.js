@@ -69,7 +69,8 @@ respec:false
 },
 moneyPerFuel:1500000,
 rockLimit:1,
-rockLaunched:0
+rockLaunched:0,
+	  affectByCreat:false
   },
   
   auto: {
@@ -245,6 +246,18 @@ game.up2Cost = 4000;
 game.up2buys = 0;
 game.up3Cost = 6000;
 game.up3buys = 0;
+game.rock2.fuel.cost = 100000;
+game.rock2.fuel.amount = 0;
+game.rock2.fuel.scaleDown = 1;
+game.rock2.fuel.max = 150;
+game.rock2.up1.buys = 0;
+game.rock2.up2.buys = 0;
+game.rock2.up3.buys = 0;
+game.rock2.up1.cost = 250000000;
+game.rock2.up2.cost = 400000000;
+game.rock2.up3.cost = 600000000;
+game.rock2.moneyPerFuel = 1500000;
+
 	if (game.creat < 256) {
 	if (game.ally ===0) {
 	game.rock1.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)
@@ -260,6 +273,11 @@ game.up3buys = 0;
 	game.rock1.moneyPerFuel = 10*(Math.log2(256)+1)*1.5*(game.rock1.techs.mpf+1)
 	}	
 	}
+if (game.rock2.affectByCreat === true && game.creat > 256) {
+	game.rock2.moneyPerFuel = 1500000*(Math.log2(game.creat-256)*1.5*(game.rock2.techs.mpf+1));
+} else {
+	game.rock2.moneyPerFuel = 1500000;
+}
 if (game.rock1.techs.respec === true) {
 game.rock1.techs.cs1 = 0;
 game.rock1.techs.cs2 = 0;
@@ -341,6 +359,18 @@ function pUpgrade6() {
 		game.creat -= 250;
 	}
 };
+function pUpgrade7() {
+	if (game.creat > 500 && game.explorerUnlocked === true && game.maxTP === 6) {
+		game.maxTP = 18;
+		game.creat -= 500;
+	}
+};
+function pUpgrade8() {
+	if (game.creat > 512 && game.explorerUnlocked === true) {
+		game.rock2.affectByCreat === true;
+		game.creat -= 512;
+	}
+}
 setInterval(function() {
 if (game.up1buys === 25 && game.up2buys === 25 && game.up3buys === 25) {
 	lore[11] = "You have done everything you can with this rocket. Maybe it's time to start a new project."
@@ -447,7 +477,7 @@ function expBuyFuel() {
 	if (game.rock2.fuel.amount === 0) {
 	game.money -= game.rock2.fuel.cost*game.rock2.fuel.max;
 	game.rock2.fuel.amount += game.rock2.fuel.max;
-	game.rock2.fuel.cost += game.rock2.fuel.cost*(1+0.0002*game.rock2.fuel.max);
+	game.rock2.fuel.cost += game.rock2.fuel.cost*(1+(0.0001*game.rock2.fuel.max));
 	lore[3] = "You decide to get more fuel, so you can continue to launch rockets.";
     }
   }
