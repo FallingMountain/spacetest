@@ -360,9 +360,9 @@ function pUpgrade6() {
 	}
 };
 function pUpgrade7() {
-	if (game.creat > 500 && game.explorerUnlocked === true && game.maxTP === 6) {
-		game.maxTP = 18;
+	if (game.creat > 500 && game.explorerUnlocked === true && game.rock1.techs.maxTP === 6) {
 		game.creat -= 500;
+		game.rock1.techs.maxTP = 18;
 	}
 };
 function pUpgrade8() {
