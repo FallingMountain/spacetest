@@ -102,7 +102,8 @@ creatMult:1,
 pUp4Bought:false,
 brainstormed:false,
 explorerUnlocked:false,
-pUp5Bought:false
+pUp5Bought:false,
+pUp9Bought:false
 };
 var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", "", "", "","","","","","","","","","","","",""]
 function rockLaunch1() {
@@ -236,6 +237,15 @@ if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 
 lore[7] = "You decide it's time to brainstorm up some better ideas for your rocket, so you deconstruct it using the money you have left."
 game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult)*(game.rock1.techs.cmx+1);
 game.money = 0;
+if (game.pUpgrade9Bought === true) {
+	game.rock1.fuel.amount = 150;
+	game.rock1.fuel.cost = 2;
+	game.rock1.fuel.max = 1579;
+	game.rock1.fuel.scaleDown = 3.38;
+	game.up1buys = 25;
+	game.up2buys = 25;
+	game.up3buys = 25;
+} else {
 game.rock1.fuel.amount = 150;
 game.rock1.fuel.cost = 3;
 game.rock1.fuel.max = 150;
@@ -250,9 +260,10 @@ game.rock2.fuel.cost = 100000;
 game.rock2.fuel.amount = 0;
 game.rock2.fuel.scaleDown = 1;
 game.rock2.fuel.max = 150;
-game.rock2.up1.buys = 0;
-game.rock2.up2.buys = 0;
-game.rock2.up3.buys = 0;
+game.rock2.up1.buys = 25;
+game.rock2.up2.buys = 25;
+game.rock2.up3.buys = 25;
+}
 game.rock2.up1.cost = 250000000;
 game.rock2.up2.cost = 400000000;
 game.rock2.up3.cost = 600000000;
@@ -272,6 +283,9 @@ game.rock2.moneyPerFuel = 1500000;
 	if (game.ally ===1) {
 	game.rock1.moneyPerFuel = 10*(Math.log2(256)+1)*1.5*(game.rock1.techs.mpf+1)
 	}	
+	}
+	if (game.pUp9Bought === true) {
+		game.rock1.moneyPerFuel = game.rock1.moneyPerFuel*1034;
 	}
 if (game.rock2.affectByCreat === true && game.creat > 256) {
 	game.rock2.moneyPerFuel = 1500000*(Math.log2(game.creat-256)*1.5*(game.rock2.techs.mpf+1));
@@ -360,15 +374,22 @@ function pUpgrade6() {
 	}
 };
 function pUpgrade7() {
-	if (game.creat > 500 && game.explorerUnlocked === true && game.rock1.techs.maxTP === 6) {
-		game.creat -= 500;
+	if (game.creat > 2500 && game.explorerUnlocked === true && game.rock1.techs.maxTP === 6) {
+		game.creat -= 2500;
 		game.rock1.techs.maxTP = 18;
 	}
 };
 function pUpgrade8() {
-	if (game.creat > 512 && game.explorerUnlocked === true) {
-		game.rock2.affectByCreat === true;
+	if (game.creat > 512 && game.explorerUnlocked === true && game.rock2.affectByCreat === false) {
+		game.rock2.affectByCreat = true;
 		game.creat -= 512;
+	}
+};
+function pUpgrade9() {
+	if (game.creat > 1000 && game.pUpgrade9Bought === false) {
+		game.creat -= 1000
+		game.pUpgrade9Bought = true;
+		
 	}
 }
 setInterval(function() {
