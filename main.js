@@ -260,9 +260,9 @@ game.rock2.fuel.cost = 100000;
 game.rock2.fuel.amount = 0;
 game.rock2.fuel.scaleDown = 1;
 game.rock2.fuel.max = 150;
-game.rock2.up1.buys = 25;
-game.rock2.up2.buys = 25;
-game.rock2.up3.buys = 25;
+game.rock2.up1.buys = 0;
+game.rock2.up2.buys = 0;
+game.rock2.up3.buys = 0;
 }
 game.rock2.up1.cost = 250000000;
 game.rock2.up2.cost = 400000000;
@@ -386,8 +386,8 @@ function pUpgrade8() {
 	}
 };
 function pUpgrade9() {
-	if (game.creat > 1000 && game.pUpgrade9Bought === false) {
-		game.creat -= 1000
+	if (game.creat > 4000 && game.pUpgrade9Bought === false) {
+		game.creat -= 4000
 		game.pUpgrade9Bought = true;
 		
 	}
@@ -508,16 +508,16 @@ function expUp1() {
 	game.rock2.fuel.max = Math.floor(game.rock2.fuel.max*1.1);
 	game.money -= game.rock2.up1.cost;
 	if (game.rock2.techs.cs1 === 0){
-	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.3);
+	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.4);
 	}
 	if (game.rock2.techs.cs1 === 1){
-	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.28);
+	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.38);
 	}
 	if (game.rock2.techs.cs1 === 2){
-	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.25);
+	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.35);
 	}
 	if (game.rock2.techs.cs1 === 3){
-	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.21);
+	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.31);
 	}
 	game.rock2.up1.buys += 1;
 	}
@@ -531,16 +531,16 @@ function expUp2() {
 	game.rock2.fuel.scaleDown = 1.05*game.rock2.fuel.scaleDown;
 	game.money -= game.rock2.up2.cost;
 	if (game.rock2.techs.cs2 === 0){
-	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.4);
+	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.5);
 	}
 	if (game.rock2.techs.cs2 === 1){
-	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.38);
+	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.48);
 	}
 	if (game.rock2.techs.cs2 === 2){
-	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.35);
+	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.45);
 	}
 	if (game.rock2.techs.cs2 === 3){
-	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.31);
+	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.41);
 	}
 	game.rock2.up2.buys += 1;
 	}
@@ -564,16 +564,16 @@ function exUp3() {
 	}
 	game.money -= game.rock2.up3.cost;
 	if (game.rock2.techs.cs3 === 0){
-	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.5);
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.65);
 	}
 	if (game.rock2.techs.cs3 === 1){
-	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.48);
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.61);
 	}
 	if (game.rock2.techs.cs3 === 2){
-	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.45);
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.58);
 	}
 	if (game.rock2.techs.cs3 === 3){
-	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.4);
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.55);
 	}
 	game.rock2.up3.buys += 1;
 	}
