@@ -403,7 +403,7 @@ function pUpgrade8() {
 function pUpgrade9() {
 	if (game.creat > 4000 && game.pUpgrade9Bought === false) {
 		game.creat -= 4000
-		game.pUpgrade9Bought = true;
+		game.pUp9Bought = true;
 		
 	}
 }
