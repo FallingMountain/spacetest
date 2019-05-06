@@ -498,7 +498,7 @@ function expBuyFuel() {
 	if (game.rock2.fuel.amount === 0) {
 	game.money -= game.rock2.fuel.cost*game.rock2.fuel.max;
 	game.rock2.fuel.amount += game.rock2.fuel.max;
-	game.rock2.fuel.cost += game.rock2.fuel.cost*(1+(0.0001*game.rock2.fuel.max));
+	game.rock2.fuel.cost = game.rock2.fuel.cost*(1+(0.0001*game.rock2.fuel.max));
 	lore[3] = "You decide to get more fuel, so you can continue to launch rockets.";
     }
   }
