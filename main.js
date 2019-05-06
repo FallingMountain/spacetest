@@ -229,13 +229,13 @@ function bugFix() {
 	game.rock1.fuel.amount = Math.round(game.rock1.fuel.amount);
 };
 function p1Gain() {
-	game.creatGainReset = Math.floor(Math.log2(game.money/50000)*game.creatMult*(game.rock1.techs.cmx+1));
+	game.creatGainReset = Math.floor(Math.sqrt(game.money/50000)*game.creatMult*(game.rock1.techs.cmx+1));
 }
 function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
 	game.brainstormed = true;
 lore[7] = "You decide it's time to brainstorm up some better ideas for your rocket, so you deconstruct it using the money you have left."
-game.creat += Math.floor(Math.log2(game.money/50000)*game.creatMult)*(game.rock1.techs.cmx+1);
+game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult)*(game.rock1.techs.cmx+1);
 game.money = 0;
 if (game.pUpgrade9Bought === true) {
 	game.rock1.fuel.amount = 150;
