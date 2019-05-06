@@ -320,19 +320,19 @@ function load() {
 	game.rockLaunched = 0;
 };
 function outof() {
-	var tempInput = document.createElement("input"); //You have to create a new document element
-	tempInput.style = "position: absolute; left: -1000px; top: -1000px"; //Say it's out of the window view
-	tempInput.value = btoa(JSON.stringify(game)); //Fill it with the player save file
-	document.body.appendChild(tempInput); //Stick the window on the main document
-	tempInput.select(); //Select the window
-	document.execCommand("copy"); //Stick the contents of said window into the clipboard
-	document.body.removeChild(tempInput); //Delete the go-between window
-	alert("Save copied to clipboard"); //Tell the player it all worked
+	var tempInput = document.createElement("input");
+	tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+	tempInput.value = btoa(JSON.stringify(game));
+	document.body.appendChild(tempInput);
+	tempInput.select();
+	document.execCommand("copy"); 
+	document.body.removeChild(tempInput); 
+	alert("Save copied to clipboard"); 
 }
 function into() {
 	var imp = prompt("Paste your save file here");
 	if(imp==null) alert("That save file doesn't work, sorry.");
-	else player = JSON.parse(atob(imp));
+	else game = JSON.parse(atob(imp));
 }
 load();
 window.setInterval(function(){
