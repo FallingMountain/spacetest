@@ -58,13 +58,14 @@
 	</div>
 	  <div id="prestige" class="tab">
 		  <center>
+			  You have <span id="creativity">0</span> creativity.
 			  <button class="basic" onclick="subTab('basicPUps')">Basic Rocket</button>
 	  <button id="explorerContent2" style:display="none" class="explorer" onclick="subTab('explorerPUps')">Explorer</button>
 			  <div id="basicPUps" class="pSubTab">
 			  You must have $50000 or more to prestige.<br>
 		  <button class="prestige1" onclick="prestige1()">Reset everything except automation, and gain <span id = "gainOnBrainstorm"></span> creativity. <div> You must have bought at least 5 of each upgrade.</button>
 	  	  <br>
-			  You have <span id="creativity">0</span> creativity.
+			  
 		  <br>
 		  <button class="allegiance yeet" onclick="pUpgrade1()">Use 1 creativity to join the United States!<br>This makes creativity have a better multiplier. (log2(x+1)+1)*1.5</button><br>
 			  <button class="allegiance yeet" onclick="pUpgrade2()">Use <span id = "pUpgrade2Cost"></span> creativity to launch multiple rockets at once! <br> Currently:<span id = "basicRocketLimit"></span></button>
