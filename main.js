@@ -63,11 +63,11 @@ techStart:false,
 cs1:0,
 cs2:0,
 cs3:0,
-ef1:0,
+cs4:0,
 ef3:0,
 mpf:0,
 cmx:0,
-fsp:0,
+ef4:0,
 maxTP:0,
 currentTP:0,
 respec:false
@@ -520,7 +520,7 @@ function rocklaunch2() {
 	clearInterval(rocketAuto);
 	}
 	}, 40);	
-		} else game.money -= 10000000;
+		} else {game.money -= game.money/2; game.rock2.fuel.amount = 0; lore
 	}
 };
 
@@ -617,7 +617,7 @@ function expUp4() {
 	if (game.money >= game.rock2.up4.cost) {
 	lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2."
 	if (game.rock2.up4.buys < 50) {
-	game.rock2.sucessChance += 3;
+	game.rock2.successChance += 2;
 	game.money -= game.rock2.up2.cost;
 	if (game.rock2.techs.cs4 === 0){
 	game.rock2.up4.cost = Math.round(game.rock2.up4.cost*1.5);
