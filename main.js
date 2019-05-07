@@ -105,7 +105,7 @@ explorerUnlocked:false,
 pUp5Bought:false,
 pUp9Bought:false
 };
-var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", "", "", "","","","","","","","","","","","",""]
+var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", "", "", "","","","","","","","","","","","","", "","","","","","","","","","","","","","",""]
 function rockLaunch1() {
 	if (game.rockLimit > game.rockLaunched) {
 	game.rockLaunched += 1;
@@ -235,7 +235,7 @@ function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
 	game.brainstormed = true;
 lore[7] = "You decide it's time to brainstorm up some better ideas for your rocket, so you deconstruct it using the money you have left."
-game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult)*(game.rock1.techs.cmx+1);
+game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult)*((game.rock1.techs.cmx/2)+1);
 game.money = 0;
 if (game.pUpgrade9Bought === true) {
 	game.rock1.fuel.amount = 150;
@@ -376,6 +376,7 @@ function pUpgrade4() {
 };
 function pUpgrade5() {
 	if (game.creat >= 10 && game.pUp5Bought === false) {
+	lore[13] = "NASA has sent some engineers to help you launch this rocket. They say it's for a new project you're going to be working on soon.";
 	game.creat -= 10;
 	game.auto.rocket = true;
 	game.auto.fuel = true;
@@ -384,24 +385,28 @@ function pUpgrade5() {
 };
 function pUpgrade6() {
 	if (game.creat > 250 && game.explorerUnlocked === false && game.up1buys === 25 && game.up2buys === 25 && game.up3buys === 25) {
+		lore[14] = "You begin work on the Explorers project. The Explorers project was a massive project designed to get a satellite into space.";
 		game.explorerUnlocked = true;
 		game.creat -= 250;
 	}
 };
 function pUpgrade7() {
 	if (game.creat > 2500 && game.explorerUnlocked === true && game.rock1.techs.maxTP === 6) {
+		lore[15] = "There's not much left to do with your basic rocket, but it's really close to perfection. Best to give it a little more power.";
 		game.creat -= 2500;
 		game.rock1.techs.maxTP = 18;
 	}
 };
 function pUpgrade8() {
 	if (game.creat > 512 && game.explorerUnlocked === true && game.rock2.affectByCreat === false) {
+		lore[16] = "The Explorers project is looking very good so far. You have all sorts of ideas for how to make it better."
 		game.rock2.affectByCreat = true;
 		game.creat -= 512;
 	}
 };
 function pUpgrade9() {
 	if (game.creat > 4000 && game.pUpgrade9Bought === false) {
+		lore[17] = "The first rocket is useless now. Moreso a stepping stone than anything.";
 		game.creat -= 4000
 		game.pUp9Bought = true;
 		
@@ -409,7 +414,7 @@ function pUpgrade9() {
 }
 setInterval(function() {
 if (game.up1buys === 25 && game.up2buys === 25 && game.up3buys === 25) {
-	lore[11] = "You have done everything you can with this rocket. Maybe it's time to start a new project."
+	lore[12] = "You have done everything you can with this rocket. Maybe it's time to start a new project."
 }
 if (game.rock1.techs.techStart === true) {
 if (game.up1buys >= 5 && game.up2buys >= 5 && game.up3buys >= 5 && game.rock1.techs.maxTP === 0) {
@@ -629,6 +634,12 @@ document.getElementById("lore9").innerHTML = lore[8];
 document.getElementById("lore10").innerHTML = lore[9];
 document.getElementById("lore11").innerHTML = lore[10];
 document.getElementById("lore12").innerHTML = lore[11];
+document.getElementById("lore13").innerHTML = lore[12];
+document.getElementById("lore14").innerHTML = lore[13];
+document.getElementById("lore15").innerHTML = lore[14];
+document.getElementById("lore16").innerHTML = lore[15];
+document.getElementById("lore17").innerHTML = lore[16];
+document.getElementById("lore18").innerHTML = lore[17];
 document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
 document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2cost;
 document.getElementById("pUpgrade3Cost").innerHTML = game.pUp3cost;
