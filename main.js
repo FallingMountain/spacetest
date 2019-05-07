@@ -243,7 +243,7 @@ if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 
 lore[7] = "You decide it's time to brainstorm up some better ideas for your rocket, so you deconstruct it using the money you have left."
 game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult)*((game.rock1.techs.cmx/2)+1);
 game.money = 0;
-if (game.pUpgrade9Bought === true) {
+if (game.pUp9Bought === true) {
 	game.rock1.fuel.amount = 150;
 	game.rock1.fuel.cost = 2;
 	game.rock1.fuel.max = 1579;
@@ -414,7 +414,7 @@ function pUpgrade8() {
 	}
 };
 function pUpgrade9() {
-	if (game.creat > 4000 && game.pUpgrade9Bought === false) {
+	if (game.creat > 4000 && game.pUp9Bought === false) {
 		lore[17] = "The first rocket is useless now. Moreso a stepping stone than anything.";
 		game.creat -= 4000
 		game.pUp9Bought = true;
