@@ -262,6 +262,7 @@ game.up2Cost = 4000;
 game.up2buys = 0;
 game.up3Cost = 6000;
 game.up3buys = 0;
+}
 game.rock2.fuel.cost = 100000;
 game.rock2.fuel.amount = 0;
 game.rock2.fuel.scaleDown = 1;
@@ -270,7 +271,6 @@ game.rock2.up1.buys = 0;
 game.rock2.up2.buys = 0;
 game.rock2.up3.buys = 0;
 game.rock2.up4.buys = 0;
-}
 game.rock2.up1.cost = 250000000;
 game.rock2.up2.cost = 400000000;
 game.rock2.up3.cost = 600000000;
