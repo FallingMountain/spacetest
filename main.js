@@ -507,7 +507,7 @@ function getRandomInt(max) {
 function rocklaunch2() {
 	if (game.rock2.rockLaunched < game.rock2.rockLimit) {
 		var failChance = getRandomInt(100);
-		if (failChance < game.successChance) {
+		if (failChance < game.rock2.successChance) {
 		game.rockLaunched += 1;
 	var rocketAuto = setInterval(function() {
 	if (game.rock2.fuel.amount > 0) {
