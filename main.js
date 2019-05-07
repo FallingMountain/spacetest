@@ -551,7 +551,7 @@ function expUp1() {
 	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.31);
 	}
 	game.rock2.up1.buys += 1;
-	game.rock2.sucessChance -= 1;
+	game.rock2.successChance -= 1;
 	}
 	};
 
@@ -575,7 +575,7 @@ function expUp2() {
 	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.41);
 	}
 	game.rock2.up2.buys += 1;
-	game.rock2.sucessChance -= 1;
+	game.rock2.successChance -= 1;
 	}
 	}
 };
@@ -609,7 +609,7 @@ function exUp3() {
 	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.55);
 	}
 	game.rock2.up3.buys += 1;
-	game.rock2.sucessChance -= 1;
+	game.rock2.successChance -= 1;
 	}
 	}
 };
