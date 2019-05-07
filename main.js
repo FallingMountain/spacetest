@@ -520,7 +520,7 @@ function rocklaunch2() {
 	clearInterval(rocketAuto);
 	}
 	}, 40);	
-		} else {game.money -= game.money/2; game.rock2.fuel.amount = 0; lore
+		} else {game.money -= game.money/2; game.rock2.fuel.amount = 0; lore[18] = "This is a disaster. The rocket failed. You need to make it a lot safer."}
 	}
 };
 
