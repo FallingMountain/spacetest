@@ -70,7 +70,8 @@ respec:false
 moneyPerFuel:1500000,
 rockLimit:1,
 rockLaunched:0,
-	  affectByCreat:false
+	  affectByCreat:false,
+	  successChance:100
   },
   
   auto: {
@@ -497,6 +498,8 @@ function getRandomInt(max) {
 }; 
 function rocklaunch2() {
 	if (game.rock2.rockLaunched < game.rock2.rockLimit) {
+		var failChance = getRandomInt(100);
+		if (failChance < game.successChance) {
 		game.rockLaunched += 1;
 	var rocketAuto = setInterval(function() {
 	if (game.rock2.fuel.amount > 0) {
@@ -509,7 +512,7 @@ function rocklaunch2() {
 	clearInterval(rocketAuto);
 	}
 	}, 40);	
-		
+		} else game.money -= 10000000;
 	}
 };
 
