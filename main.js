@@ -496,8 +496,8 @@ function ruinTheFun() {
 	game.up1buys = 25;
 	game.up2buys = 25;
 	game.up3buys = 25;
-	game.creat = 350;
-	game.money = 50000;
+	game.creat = 10000;
+	game.money = 50001;
 	game.funRuined = true;
 	}
 };
