@@ -53,6 +53,11 @@ upCostScales: {
 	buys:0,
 	scaling:1.8
 	},  
+	up4: {
+	cost:400000000,
+	buys:0,
+	scaling:1.7		
+	},
 	techs: {
 techStart:false,
 cs1:0,
@@ -264,10 +269,13 @@ game.rock2.fuel.max = 150;
 game.rock2.up1.buys = 0;
 game.rock2.up2.buys = 0;
 game.rock2.up3.buys = 0;
+game.rock2.up4.buys = 0;
 }
 game.rock2.up1.cost = 250000000;
 game.rock2.up2.cost = 400000000;
 game.rock2.up3.cost = 600000000;
+game.rock2.up4.cost = 400000000;
+game.rock2.successChance = 100;
 game.rock2.moneyPerFuel = 1500000;
 
 	if (game.creat < 256) {
@@ -543,6 +551,7 @@ function expUp1() {
 	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.31);
 	}
 	game.rock2.up1.buys += 1;
+	game.rock2.sucessChance -= 1;
 	}
 	};
 
@@ -566,6 +575,7 @@ function expUp2() {
 	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.41);
 	}
 	game.rock2.up2.buys += 1;
+	game.rock2.sucessChance -= 1;
 	}
 	}
 };
@@ -599,6 +609,29 @@ function exUp3() {
 	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.55);
 	}
 	game.rock2.up3.buys += 1;
+	game.rock2.sucessChance -= 1;
+	}
+	}
+};
+function expUp4() {
+	if (game.money >= game.rock2.up4.cost) {
+	lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2."
+	if (game.rock2.up4.buys < 50) {
+	game.rock2.sucessChance += 3;
+	game.money -= game.rock2.up2.cost;
+	if (game.rock2.techs.cs4 === 0){
+	game.rock2.up4.cost = Math.round(game.rock2.up4.cost*1.5);
+	}
+	if (game.rock2.techs.cs4 === 1){
+	game.rock2.up4.cost = Math.round(game.rock2.up4.cost*1.48);
+	}
+	if (game.rock2.techs.cs4 === 2){
+	game.rock2.up4.cost = Math.round(game.rock2.up4.cost*1.45);
+	}
+	if (game.rock2.techs.cs4 === 3){
+	game.rock2.up4.cost = Math.round(game.rock2.up4.cost*1.41);
+	}
+	game.rock2.up4.buys += 1;
 	}
 	}
 };
@@ -657,6 +690,7 @@ document.getElementById("TC13").innerHTML = game.rock1.techs.cs3;
 document.getElementById("TC14").innerHTML = game.rock1.techs.ef3;
 document.getElementById("TC15").innerHTML = game.rock1.techs.mpf;
 document.getElementById("TC16").innerHTML = game.rock1.techs.cmx;
+document.getElementById("failChance").innerHTML = game.rock2.successChance;
 	if (game.money > 50000 || game.brainstormed === true) {
 	document.getElementById("brainPrestige").style.display = "inline"
 } else {
