@@ -539,16 +539,16 @@ function expUp1() {
 	game.rock2.fuel.max = Math.floor(game.rock2.fuel.max*1.1);
 	game.money -= game.rock2.up1.cost;
 	if (game.rock2.techs.cs1 === 0){
-	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.4);
+	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.45);
 	}
 	if (game.rock2.techs.cs1 === 1){
-	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.38);
+	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.43);
 	}
 	if (game.rock2.techs.cs1 === 2){
-	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.35);
+	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.4);
 	}
 	if (game.rock2.techs.cs1 === 3){
-	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.31);
+	game.rock2.up1.cost = Math.round(game.rock2.up1.cost*1.36);
 	}
 	game.rock2.up1.buys += 1;
 	game.rock2.successChance -= 1;
@@ -563,16 +563,16 @@ function expUp2() {
 	game.rock2.fuel.scaleDown = 0.9*game.rock2.fuel.scaleDown;
 	game.money -= game.rock2.up2.cost;
 	if (game.rock2.techs.cs2 === 0){
-	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.5);
+	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.55);
 	}
 	if (game.rock2.techs.cs2 === 1){
-	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.48);
+	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.53);
 	}
 	if (game.rock2.techs.cs2 === 2){
-	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.45);
+	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.5);
 	}
 	if (game.rock2.techs.cs2 === 3){
-	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.41);
+	game.rock2.up2.cost = Math.round(game.rock2.up2.cost*1.46);
 	}
 	game.rock2.up2.buys += 1;
 	game.rock2.successChance -= 1;
@@ -597,16 +597,16 @@ function exUp3() {
 	}
 	game.money -= game.rock2.up3.cost;
 	if (game.rock2.techs.cs3 === 0){
-	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.65);
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.7);
 	}
 	if (game.rock2.techs.cs3 === 1){
-	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.61);
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.66);
 	}
 	if (game.rock2.techs.cs3 === 2){
-	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.58);
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.63);
 	}
 	if (game.rock2.techs.cs3 === 3){
-	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.55);
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.6);
 	}
 	game.rock2.up3.buys += 1;
 	game.rock2.successChance -= 1;
