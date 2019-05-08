@@ -436,7 +436,7 @@ function pUpgrade9() {
 function pUpgrade10() {
 	if (game.creat > 100000 && game.rock2.techs.techStart === false) {
 		game.creat -= 100000;
-		game.rcok2.techs.techStart = true;
+		game.rock2.techs.techStart = true;
 		
 	}
 }
