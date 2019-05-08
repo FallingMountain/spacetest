@@ -69,6 +69,34 @@ background: #6837ff
     background: #e5335f;
     border: 2px solid #e5335f;
 }
+.gemini {
+	color: #8191d4;
+    background: #000000;
+	font-weight: bold;
+    border: 2px solid #8191d4;
+	border-radius: 4px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+.gemini:hover {
+	color: #000000;
+    background: #8191d4;
+    border: 2px solid #8191d4;
+}
+.apollo {
+	color: #cbb0d4;
+    background: #000000;
+	font-weight: bold;
+    border: 2px solid #cbb0d4;
+	border-radius: 4px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+.apollo:hover {
+	color: #000000;
+    background: #cbb0d4;
+    border: 2px solid #cbb0d4;
+}
 .prestige1 {
 	color: #FFFFE5;
 	background: #040041;
