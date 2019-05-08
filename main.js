@@ -742,7 +742,7 @@ function expUp4() {
 	if (game.rock2.techs.ef4 === 3){
 	game.rock2.successChance += 2.9;
 	}
-	game.money -= game.rock2.up2.cost;
+	game.money -= game.rock2.up4.cost;
 	if (game.rock2.techs.cs4 === 0){
 	game.rock2.up4.cost = Math.round(game.rock2.up4.cost*1.5);
 	}
