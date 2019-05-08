@@ -622,7 +622,7 @@ function rocklaunch2() {
 		var failChance = getRandomInt(100);
 		if (failChance < game.rock2.successChance) {
 		game.rockLaunched += 1;
-	var rocketAuto = setInterval(function() {
+	var rocketAuto2 = setInterval(function() {
 	if (game.rock2.fuel.amount > 0) {
 		
 	game.money += game.rock2.moneyPerFuel;
@@ -630,7 +630,7 @@ function rocklaunch2() {
 	game.money = Math.round(game.money*100)/100;
 	}else if (game.rock2.auto.rocket === false){
 	game.rock2.rockLaunched = 0;
-	clearInterval(rocketAuto);
+	clearInterval(rocketAuto2);
 	}
 	}, 40);	
 		} else {game.money -= game.money/2; game.rock2.fuel.amount = 0; lore[18] = "This is a disaster. The rocket failed. You need to make it a lot safer."}
