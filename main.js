@@ -289,13 +289,13 @@ function bugFix() {
 	game.rock1.fuel.amount = Math.round(game.rock1.fuel.amount);
 };
 function p1Gain() {
-	game.creatGainReset = Math.floor(Math.sqrt(game.money/50000)*game.creatMult*((game.rock1.techs.cmx/2)+1)*((game.rock2.techs.cmx/2)+1));
+	game.creatGainReset = Math.floor(Math.sqrt(game.money/50000)*game.creatMult*((game.rock1.techs.cmx/2)+1)*((game.rock2.techs.cmx/1.5)+1));
 }
 function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
 	game.brainstormed = true;
 lore[7] = "You decide it's time to brainstorm up some better ideas for your rocket, so you deconstruct it using the money you have left."
-game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult)*((game.rock1.techs.cmx/2)+1)*((game.rock2.techs.cmx/2)+1);
+game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult*((game.rock1.techs.cmx/2)+1)*((game.rock2.techs.cmx/1.5)+1));
 game.money = 0;
 if (game.pUp9Bought === true) {
 	game.rock1.fuel.amount = 150;
@@ -350,10 +350,10 @@ game.rock2.moneyPerFuel = 1500000;
 	if (game.pUp9Bought === true) {
 		game.rock1.moneyPerFuel = game.rock1.moneyPerFuel*1034;
 	}
-if (game.rock2.affectByCreat === true && game.creat > 4096 && game.creat < 1048576) {
-	game.rock2.moneyPerFuel = 1500000*((Math.log2(game.creat-4096)+1)*1.5*(game.rock2.techs.mpf+1));
+if (game.rock2.affectByCreat === true && game.creat > 2048 && game.creat < 1048576) {
+	game.rock2.moneyPerFuel = 1500000*((Math.log2(game.creat-2048)+1)*1.5*(game.rock2.techs.mpf+1));
 } else if (game.creat > 1048576) {
-	game.rock2.moneyPerFuel = 1500000*((Math.log2(1048576-4096)+1)*1.5*(game.rock2.techs.mpf+1));
+	game.rock2.moneyPerFuel = 1500000*((Math.log2(1048576-2048)+1)*1.5*(game.rock2.techs.mpf+1));
 } else {
 	game.rock2.moneyPerFuel = 1500000;
 }
@@ -385,6 +385,9 @@ game.rock2.techs.respec = false;
 		if (game.auto.fuel === true) {
 		buyFuel();
 	}
+		if (game.rock2.auto.fuel === true) {
+		expBuyFuel();
+		}
 	bugFix();
 	p1Gain();
 }, 100);
@@ -497,6 +500,13 @@ function pUpgrade10() {
 	}
 }
 function pUpgrade11() {
+	if (game.creat > 50000 && game.rock2.auto.rocket === false) {
+		game.creat -= 50000
+		game.rock2.auto.rocket = true;
+		game.rock2.auto.fuel = true;
+	}
+}
+function pUpgrade12() {
 	if (game.creat > 250000 && game.rock3.active === false) {
 		game.creat -= 250000;
 		game.rock3.active = true;
@@ -763,13 +773,13 @@ function exUp3() {
 	game.rock2.moneyPerFuel = game.rock2.moneyPerFuel*1.25;
 	}
 	if (game.rock2.techs.ef3 === 1){
-	game.rock2.moneyPerFuel = game.rock2.moneyPerFuel*1.28;
+	game.rock2.moneyPerFuel = game.rock2.moneyPerFuel*1.29;
 	}
 	if (game.rock2.techs.ef3 === 2){
-	game.rock2.moneyPerFuel = game.rock2.moneyPerFuel*1.3;
+	game.rock2.moneyPerFuel = game.rock2.moneyPerFuel*1.32;
 	}
 	if (game.rock2.techs.ef3 === 3){
-	game.rock2.moneyPerFuel = game.rock2.moneyPerFuel*1.32;
+	game.rock2.moneyPerFuel = game.rock2.moneyPerFuel*1.34;
 	}
 	game.money -= game.rock2.up3.cost;
 	if (game.rock2.techs.cs3 === 0){
