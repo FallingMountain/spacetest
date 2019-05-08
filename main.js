@@ -297,8 +297,10 @@ game.rock2.moneyPerFuel = 1500000;
 	if (game.pUp9Bought === true) {
 		game.rock1.moneyPerFuel = game.rock1.moneyPerFuel*1034;
 	}
-if (game.rock2.affectByCreat === true && game.creat > 256) {
-	game.rock2.moneyPerFuel = 1500000*(Math.log2(game.creat-256)*1.5*(game.rock2.techs.mpf+1));
+if (game.rock2.affectByCreat === true && game.creat > 4096 && game.creat < 1048576) {
+	game.rock2.moneyPerFuel = 1500000*((Math.log2(game.creat-4096)+1)*1.5*(game.rock2.techs.mpf+1));
+} else if (game.creat > 1048576) {
+	game.rock2.moneyPerFuel = 1500000*((Math.log2(1048576-4096)+1)*1.5*(game.rock2.techs.mpf+1));
 } else {
 	game.rock2.moneyPerFuel = 1500000;
 }
@@ -420,16 +422,16 @@ function pUpgrade7() {
 	}
 };
 function pUpgrade8() {
-	if (game.creat > 512 && game.explorerUnlocked === true && game.rock2.affectByCreat === false) {
+	if (game.creat > 7500 && game.explorerUnlocked === true && game.rock2.affectByCreat === false) {
 		lore[16] = "The Explorers project is looking very good so far. You have all sorts of ideas for how to make it better."
 		game.rock2.affectByCreat = true;
-		game.creat -= 512;
+		game.creat -= 7500;
 	}
 };
 function pUpgrade9() {
-	if (game.creat > 4000 && game.pUp9Bought === false) {
+	if (game.creat > 15000 && game.pUp9Bought === false) {
 		lore[17] = "The first rocket is useless now. Moreso a stepping stone than anything.";
-		game.creat -= 4000
+		game.creat -= 15000
 		game.pUp9Bought = true;
 		
 	}
