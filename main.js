@@ -241,7 +241,7 @@ function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
 	game.brainstormed = true;
 lore[7] = "You decide it's time to brainstorm up some better ideas for your rocket, so you deconstruct it using the money you have left."
-game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult)*((game.rock1.techs.cmx/2)+1);
+game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult)*((game.rock1.techs.cmx/2)+1)*((game.rock2.techs.cmx/2)+1);
 game.money = 0;
 if (game.pUp9Bought === true) {
 	game.rock1.fuel.amount = 150;
@@ -310,6 +310,18 @@ game.rock1.techs.mpf = 0;
 game.rock1.techs.cmx = 0;
 game.rock1.techs.currentTP = game.rock1.techs.maxTP;
 game.rock1.techs.respec = false;
+}
+if (game.rock2.techs.respec === true) {
+game.rock2.techs.cs1 = 0;
+game.rock2.techs.cs2 = 0;
+game.rock2.techs.cs3 = 0;
+game.rock2.techs.cs4 = 0;
+game.rock2.techs.ef3 = 0;
+game.rock2.techs.ef4 = 0;
+game.rock2.techs.mpf = 0;
+game.rock2.techs.cmx = 0;
+game.rock2.techs.currentTP = game.rock2.techs.maxTP;
+game.rock2.techs.respec = false;
 }
 }
 };
@@ -420,6 +432,13 @@ function pUpgrade9() {
 		game.pUp9Bought = true;
 		
 	}
+};
+function pUpgrade10() {
+	if (game.creat > 100000 && game.rock2.techs.techStart === false) {
+		game.creat -= 100000;
+		game.rcok2.techs.techStart = true;
+		
+	}
 }
 setInterval(function() {
 if (game.up1buys === 25 && game.up2buys === 25 && game.up3buys === 25) {
@@ -449,6 +468,48 @@ if (game.up1buys >= 22 && game.up2buys >= 22 && game.up3buys >= 22 && game.rock1
 if (game.up1buys >= 24 && game.up2buys >= 24 && game.up3buys >= 24 && game.rock1.techs.maxTP === 5) {
 	game.rock1.techs.maxTP = 6;
 	game.rock1.techs.currentTP += 1;
+}
+}
+if (game.rock2.techs.techStart === true) {
+if (game.rock2.up1.buys >= 5 && game.rock2.up2.buys >= 5 && game.rock2.up3.buys >= 5 && game.rock2.techs.maxTP === 0) {
+	game.rock2.techs.maxTP = 1;
+	game.rock2.techs.currentTP = 1;
+}
+if (game.rock2.up1.buys >= 10 && game.rock2.up2.buys >= 10 && game.rock2.up3.buys >= 10 && game.rock2.techs.maxTP === 1) {
+	game.rock2.techs.maxTP = 2;
+	game.rock2.techs.currentTP += 1;
+}
+if (game.rock2.up1.buys >= 15 && game.rock2.up2.buys >= 15 && game.rock2.up3.buys >= 15 && game.rock2.techs.maxTP === 2) {
+	game.rock2.techs.maxTP = 3;
+	game.rock2.techs.currentTP += 1;
+}
+if (game.rock2.up1.buys >= 20 && game.rock2.up2.buys >= 20 && game.rock2.up3.buys >= 20 && game.rock2.techs.maxTP === 3) {
+	game.rock2.techs.maxTP = 4;
+	game.rock2.techs.currentTP += 1;
+}
+if (game.rock2.up1.buys >= 25 && game.rock2.up2.buys >= 25 && game.rock2.up3.buys >= 25 && game.rock2.techs.maxTP === 4) {
+	game.rock2.techs.maxTP = 5;
+	game.rock2.techs.currentTP += 1;
+}
+if (game.rock2.up1.buys >= 30 && game.rock2.up2.buys >= 30 && game.rock2.up3.buys >= 30 && game.rock2.techs.maxTP === 5) {
+	game.rock2.techs.maxTP = 6;
+	game.rock2.techs.currentTP += 1;
+}
+if (game.rock2.up1.buys >= 35 && game.rock2.up2.buys >= 35 && game.rock2.up3.buys >= 35 && game.rock2.techs.maxTP === 6) {
+	game.rock2.techs.maxTP = 7;
+	game.rock2.techs.currentTP += 1;
+}
+if (game.rock2.up1.buys >= 40 && game.rock2.up2.buys >= 40 && game.rock2.up3.buys >= 40 && game.rock2.techs.maxTP === 7) {
+	game.rock2.techs.maxTP = 8;
+	game.rock2.techs.currentTP += 1;
+}
+if (game.rock2.up1.buys >= 45 && game.rock2.up2.buys >= 45 && game.rock2.up3.buys >= 45 && game.rock2.techs.maxTP === 8) {
+	game.rock2.techs.maxTP = 9;
+	game.rock2.techs.currentTP += 1;
+}
+if (game.rock2.up1.buys >= 50 && game.rock2.up2.buys >= 50 && game.rock2.up3.buys >= 50 && game.rock2.techs.maxTP === 9) {
+	game.rock2.techs.maxTP = 10;
+	game.rock2.techs.currentTP += 1;
 }
 }
 },10)
@@ -488,8 +549,60 @@ function tech16() {
 	game.rock1.techs.cmx +=1;
 	}
 };
+function tech21() {
+	if (game.rock2.techs.cs1 < 3 && game.rock2.techs.currentTP > 0) {
+	game.rock2.techs.currentTP -= 1;
+	game.rock2.techs.cs1 +=1;
+	}
+};
+function tech22() {
+	if (game.rock2.techs.cs2 < 3 && game.rock2.techs.currentTP > 0) {
+	game.rock2.techs.currentTP -= 1;
+	game.rock2.techs.cs2 +=1;
+	}
+};
+function tech23() {
+	if (game.rock2.techs.cs3 < 3 && game.rock2.techs.currentTP > 0) {
+	game.rock2.techs.currentTP -= 1;
+	game.rock2.techs.cs3 +=1;
+	}
+};
+function tech24() {
+	if (game.rock2.techs.cs4 < 3 && game.rock2.techs.currentTP > 0) {
+	game.rock2.techs.currentTP -= 1;
+	game.rock2.techs.cs4 +=1;
+	}
+};
+function tech25() {
+	if (game.rock2.techs.ef3 < 3 && game.rock2.techs.currentTP > 0) {
+	game.rock2.techs.currentTP -= 1;
+	game.rock2.techs.ef3 +=1;
+	}
+};
+function tech26() {
+	if (game.rock2.techs.ef4 < 3 && game.rock2.techs.currentTP > 0) {
+	game.rock2.techs.currentTP -= 1;
+	game.rock2.techs.ef4 +=1;
+	}
+};
+function tech27() {
+	if (game.rock2.techs.mpf < 3 && game.rock2.techs.currentTP > 0) {
+	game.rock2.techs.currentTP -= 1;
+	game.rock2.techs.mpf +=1;
+	}
+};
+function tech28() {
+	if (game.rock2.techs.cmx < 3 && game.rock2.techs.currentTP > 0) {
+	game.rock2.techs.currentTP -= 1;
+	game.rock2.techs.cmx +=1;
+	}
+};
+
 function techRespec() {
 	game.rock1.techs.respec = true;
+};
+function techRespec2() {
+	game.rock2.techs.respec = true;
 };
 function ruinTheFun() {
 	if (game.funRuined === false){
@@ -617,7 +730,18 @@ function expUp4() {
 	if (game.money >= game.rock2.up4.cost) {
 	lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2."
 	if (game.rock2.up4.buys < 50) {
+	if (game.rock2.techs.ef4 === 0){
 	game.rock2.successChance += 2;
+	}
+	if (game.rock2.techs.ef4 === 1){
+	game.rock2.successChance += 2.2;
+	}
+	if (game.rock2.techs.ef4 === 2){
+	game.rock2.successChance += 2.5;
+	}
+	if (game.rock2.techs.ef4 === 3){
+	game.rock2.successChance += 2.9;
+	}
 	game.money -= game.rock2.up2.cost;
 	if (game.rock2.techs.cs4 === 0){
 	game.rock2.up4.cost = Math.round(game.rock2.up4.cost*1.5);
@@ -692,6 +816,14 @@ document.getElementById("TC13").innerHTML = game.rock1.techs.cs3;
 document.getElementById("TC14").innerHTML = game.rock1.techs.ef3;
 document.getElementById("TC15").innerHTML = game.rock1.techs.mpf;
 document.getElementById("TC16").innerHTML = game.rock1.techs.cmx;
+document.getElementById("TC21").innerHTML = game.rock1.techs.cs1;
+document.getElementById("TC22").innerHTML = game.rock1.techs.cs2;
+document.getElementById("TC23").innerHTML = game.rock1.techs.cs3;
+document.getElementById("TC24").innerHTML = game.rock1.techs.cs4;
+document.getElementById("TC25").innerHTML = game.rock1.techs.ef3;
+document.getElementById("TC26").innerHTML = game.rock1.techs.ef4;
+document.getElementById("TC27").innerHTML = game.rock1.techs.mpf;
+document.getElementById("TC28").innerHTML = game.rock1.techs.cmx;
 document.getElementById("failChance").innerHTML = game.rock2.successChance;
 	if (game.money > 50000 || game.brainstormed === true) {
 	document.getElementById("brainPrestige").style.display = "inline"
@@ -711,5 +843,12 @@ document.getElementById("explorerContent2").style.display = "inline"
 	}else {
 document.getElementById("basicTechs").style.display = "none"
 		document.getElementById("basicTechs2").style.display = "none"
+	}
+	if (game.rock2.techs.techStart === true) {
+		document.getElementById("explorerTechs").style.display = ""
+		document.getElementById("explorerTechs2").style.display = ""
+	}else {
+document.getElementById("explorerTechs").style.display = "none"
+		document.getElementById("explorerTechs2").style.display = "none"
 	}
 }, 10);
