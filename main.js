@@ -235,7 +235,7 @@ function bugFix() {
 	game.rock1.fuel.amount = Math.round(game.rock1.fuel.amount);
 };
 function p1Gain() {
-	game.creatGainReset = Math.floor(Math.sqrt(game.money/50000)*game.creatMult*((game.rock1.techs.cmx/2)+1)*((game.rock2.techs.cmx/2)+1);
+	game.creatGainReset = Math.floor(Math.sqrt(game.money/50000)*game.creatMult*((game.rock1.techs.cmx/2)+1)*((game.rock2.techs.cmx/2)+1));
 }
 function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
