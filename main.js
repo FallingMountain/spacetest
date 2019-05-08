@@ -80,6 +80,59 @@ rockLaunched:0,
 	  successChance:100
   },
   
+	
+  rock3: {
+	  active:false,
+	fuel: {
+		max:150,
+		cost:10000000,
+		amount:0,
+		scaleDown:1
+	},
+	auto: {
+		rocket:false,
+		fuel:false
+	},
+	up1: {
+	cost:250000000,
+	buys:0,
+	scaling:1.4
+	},
+	up2: {
+	cost:400000000,
+	buys:0,
+	scaling:1.6
+	},  
+	up3: {
+	cost:600000000,
+	buys:0,
+	scaling:1.8
+	},  
+	up4: {
+	cost:400000000,
+	buys:0,
+	scaling:1.7		
+	},
+	techs: {
+techStart:false,
+cs1:0,
+cs2:0,
+cs3:0,
+cs4:0,
+ef3:0,
+mpf:0,
+cmx:0,
+ef4:0,
+maxTP:0,
+currentTP:0,
+respec:false
+},
+moneyPerFuel:1500000,
+rockLimit:1,
+rockLaunched:0,
+	  affectByCreat:false,
+	  successChance:100
+  },
   auto: {
   rocket:false,
   fuel:false
@@ -437,9 +490,16 @@ function pUpgrade9() {
 	}
 };
 function pUpgrade10() {
-	if (game.creat > 100000 && game.rock2.techs.techStart === false) {
-		game.creat -= 100000;
+	if (game.creat > 50000 && game.rock2.techs.techStart === false) {
+		game.creat -= 50000;
 		game.rock2.techs.techStart = true;
+		
+	}
+}
+function pUpgrade11() {
+	if (game.creat > 250000 && game.rock3.active === false) {
+		game.creat -= 250000;
+		game.rock3.active = true;
 		
 	}
 }
