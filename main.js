@@ -973,6 +973,11 @@ function mercUp4() {
 	}
 	}
 };
+function putSomeoneOnYourFrickingRocket() {
+	
+	
+	
+}
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("stillmoney").innerHTML = game.money;
@@ -1083,5 +1088,5 @@ document.getElementById("explorerTechs").style.display = "none"
 	if (game.rock3.active === true) {
 		document.getElementById("mercuryContent").style.display = ""
 		
-	} else {document.getElementById("mercuryContent").style.display = ""}
+	} else {document.getElementById("mercuryContent").style.display = "none"}
 }, 10);
