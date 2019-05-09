@@ -317,6 +317,7 @@ game.up2buys = 0;
 game.up3Cost = 6000;
 game.up3buys = 0;
 }
+game.rockLaunched = 0;
 game.rock2.fuel.cost = 100000;
 game.rock2.fuel.amount = 0;
 game.rock2.fuel.scaleDown = 1;
@@ -487,7 +488,7 @@ function pUpgrade8() {
 function pUpgrade9() {
 	if (game.creat > 15000 && game.pUp9Bought === false) {
 		lore[17] = "The first rocket is useless now. Moreso a stepping stone than anything.";
-		game.creat -= 15000
+		game.creat -= 15000;
 		game.pUp9Bought = true;
 		
 	}
@@ -501,7 +502,7 @@ function pUpgrade10() {
 }
 function pUpgrade11() {
 	if (game.creat > 50000 && game.rock2.auto.rocket === false) {
-		game.creat -= 50000
+		game.creat -= 50000;
 		game.rock2.auto.rocket = true;
 		game.rock2.auto.fuel = true;
 	}
@@ -694,7 +695,7 @@ function rocklaunch2() {
 	if (game.rock2.rockLaunched < game.rock2.rockLimit) {
 		var failChance = getRandomInt(100);
 		if (failChance < game.rock2.successChance) {
-		game.rockLaunched += 1;
+		game.rock2.rockLaunched += 1;
 	var rocketAuto2 = setInterval(function() {
 	if (game.rock2.fuel.amount > 0) {
 		
@@ -706,7 +707,7 @@ function rocklaunch2() {
 	clearInterval(rocketAuto2);
 	}
 	}, 40);	
-		} else {game.money -= game.money/2; game.rock2.fuel.amount = 0; lore[18] = "This is a disaster. The rocket failed. You need to make it a lot safer."}
+		} else {game.money -= game.money/2; game.rock2.fuel.amount = 0; lore[18] = "This is a disaster. The rocket failed. You need to make it a lot safer.";}
 	}
 };
 
