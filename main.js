@@ -508,8 +508,8 @@ function pUpgrade11() {
 	}
 }
 function pUpgrade12() {
-	if (game.creat > 250000 && game.rock3.active === false) {
-		game.creat -= 250000;
+	if (game.creat > 10000000 && game.rock3.active === false) {
+		game.creat -= 10000000;
 		game.rock3.active = true;
 		
 	}
