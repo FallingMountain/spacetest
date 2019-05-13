@@ -1087,8 +1087,8 @@ function rockLaunch3() {
 function buyFuelForTheThirdTime() {
 if (game.money >=game.rock3.fuel.cost*game.rock3.fuel.max) {
 	if (game.rock3.fuel.amount === 0) {
-	game.money -= game.rock2.fuel.cost*game.rock2.fuel.max;
-	game.rock3.fuel.amount += game.rock2.fuel.max;
+	game.money -= game.rock3.fuel.cost*game.rock3.fuel.max;
+	game.rock3.fuel.amount += game.rock3.fuel.max;
 	game.rock3.fuel.cost = game.rock3.fuel.cost*(1+(0.0001*game.rock3.fuel.max));
 	lore[3] = "You decide to get more fuel, so you can continue to launch rockets.";
     }
