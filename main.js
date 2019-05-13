@@ -422,6 +422,10 @@ game.up3Cost = 6000;
 game.up3buys = 0;
 }
 game.rockLaunched = 0;
+game.rock2.rockLaunched = 0;
+game.rock3.rockLaunched = 0;
+game.rock4.rockLaunched = 0;
+game.rock5.rockLaunched = 0;
 game.rock2.fuel.cost = 100000;
 game.rock2.fuel.amount = 0;
 game.rock2.fuel.scaleDown = 1;
