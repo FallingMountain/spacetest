@@ -85,7 +85,7 @@ rockLaunched:0,
 	  active:false,
 	fuel: {
 		max:150,
-		cost:1e13,
+		cost:1e12,
 		amount:0,
 		scaleDown:1
 	},
@@ -430,7 +430,7 @@ game.rock2.fuel.cost = 100000;
 game.rock2.fuel.amount = 0;
 game.rock2.fuel.scaleDown = 1;
 game.rock2.fuel.max = 150;
-game.rock3.fuel.cost = 1e15;
+game.rock3.fuel.cost = 1e12;
 game.rock3.fuel.amount = 0;
 game.rock3.fuel.scaleDown = 1;
 game.rock3.fuel.max = 150;
