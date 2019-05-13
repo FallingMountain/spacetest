@@ -1342,7 +1342,7 @@ document.getElementById("explorerTechs").style.display = "none"
 		document.getElementById("mercuryTechs").style.display = ""
 		document.getElementById("mercuryTechs2").style.display = ""
 	}else {
-document.getElementById("explorerTechs").style.display = "none"
+document.getElementById("mercuryTechs").style.display = "none"
 		document.getElementById("mercuryTechs2").style.display = "none"
 	}
 }, 10);
