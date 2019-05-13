@@ -657,6 +657,13 @@ function pUpgrade12() {
 		
 	}
 }
+function pUpgrade13() {
+	if (game.creat > 100000000 && game.rock3.techs.techStart === false) {
+		game.creat -= 100000000;
+		game.rock3.techs.techStart = true;
+		
+	}
+}
 setInterval(function() {
 if (game.up1buys === 25 && game.up2buys === 25 && game.up3buys === 25) {
 	lore[12] = "You have done everything you can with this rocket. Maybe it's time to start a new project."
@@ -1277,7 +1284,7 @@ document.getElementById("maxBTP").innerHTML = game.rock1.techs.maxTP;
 document.getElementById("explorerTechPoints").innerHTML = game.rock2.techs.currentTP;
 document.getElementById("maxETP").innerHTML = game.rock2.techs.maxTP;
 document.getElementById("mercuryTechPoints").innerHTML = game.rock3.techs.currentTP;
-document.getElementById("maxMTP").innerHTML = game.rock2.techs.maxTP;
+document.getElementById("maxMTP").innerHTML = game.rock3.techs.maxTP;
 document.getElementById("TC11").innerHTML = game.rock1.techs.cs1;
 document.getElementById("TC12").innerHTML = game.rock1.techs.cs2;
 document.getElementById("TC13").innerHTML = game.rock1.techs.cs3;
@@ -1331,4 +1338,11 @@ document.getElementById("explorerTechs").style.display = "none"
 		document.getElementById("mercuryContent").style.display = ""
 		
 	} else {document.getElementById("mercuryContent").style.display = "none"}
+	if (game.rock3.techs.techStart === true) {
+		document.getElementById("mercuryTechs").style.display = ""
+		document.getElementById("mercuryTechs2").style.display = ""
+	}else {
+document.getElementById("explorerTechs").style.display = "none"
+		document.getElementById("mercuryTechs2").style.display = "none"
+	}
 }, 10);
