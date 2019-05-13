@@ -289,13 +289,13 @@ function bugFix() {
 	game.rock1.fuel.amount = Math.round(game.rock1.fuel.amount);
 };
 function p1Gain() {
-	game.creatGainReset = Math.floor(Math.sqrt(game.money/50000)*game.creatMult*((game.rock1.techs.cmx/2)+1)*((game.rock2.techs.cmx/1.5)+1));
+	game.creatGainReset = Math.floor(Math.sqrt(game.money/50000)*game.creatMult*((game.rock1.techs.cmx/2)+1)*((game.rock2.techs.cmx/1.5)+1)*((game.rock3.techs.cmx/1.5)+1));
 }
 function prestige1(){
 if (game.up1buys >=5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000){
 	game.brainstormed = true;
 lore[7] = "You decide it's time to brainstorm up some better ideas for your rocket, so you deconstruct it using the money you have left."
-game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult*((game.rock1.techs.cmx/2)+1)*((game.rock2.techs.cmx/1.5)+1));
+game.creat += Math.floor(Math.sqrt(game.money/50000)*game.creatMult*((game.rock1.techs.cmx/2)+1)*((game.rock2.techs.cmx/1.5)+1)*((game.rock3.techs.cmx/1.5)+1));
 game.money = 0;
 if (game.pUp9Bought === true) {
 	game.rock1.fuel.amount = 150;
@@ -586,6 +586,48 @@ if (game.rock2.up1.buys >= 50 && game.rock2.up2.buys >= 50 && game.rock2.up3.buy
 	game.rock2.techs.currentTP += 1;
 }
 }
+if (game.rock3.techs.techStart === true) {
+if (game.rock3.up1.buys >= 5 && game.rock3.up2.buys >= 5 && game.rock3.up3.buys >= 5 && game.rock3.techs.maxTP === 0) {
+	game.rock3.techs.maxTP = 1;
+	game.rock3.techs.currentTP = 1;
+}
+if (game.rock3.up1.buys >= 10 && game.rock3.up2.buys >= 10 && game.rock3.up3.buys >= 10 && game.rock3.techs.maxTP === 1) {
+	game.rock3.techs.maxTP = 2;
+	game.rock3.techs.currentTP += 1;
+}
+if (game.rock3.up1.buys >= 15 && game.rock3.up2.buys >= 15 && game.rock3.up3.buys >= 15 && game.rock3.techs.maxTP === 2) {
+	game.rock3.techs.maxTP = 3;
+	game.rock3.techs.currentTP += 1;
+}
+if (game.rock3.up1.buys >= 20 && game.rock3.up2.buys >= 20 && game.rock3.up3.buys >= 20 && game.rock3.techs.maxTP === 3) {
+	game.rock3.techs.maxTP = 4;
+	game.rock3.techs.currentTP += 1;
+}
+if (game.rock3.up1.buys >= 25 && game.rock3.up2.buys >= 25 && game.rock3.up3.buys >= 25 && game.rock3.techs.maxTP === 4) {
+	game.rock3.techs.maxTP = 5;
+	game.rock3.techs.currentTP += 1;
+}
+if (game.rock3.up1.buys >= 30 && game.rock3.up2.buys >= 30 && game.rock3.up3.buys >= 30 && game.rock3.techs.maxTP === 5) {
+	game.rock3.techs.maxTP = 6;
+	game.rock3.techs.currentTP += 1;
+}
+if (game.rock3.up1.buys >= 35 && game.rock3.up2.buys >= 35 && game.rock3.up3.buys >= 35 && game.rock3.techs.maxTP === 6) {
+	game.rock3.techs.maxTP = 7;
+	game.rock3.techs.currentTP += 1;
+}
+if (game.rock3.up1.buys >= 40 && game.rock3.up2.buys >= 40 && game.rock3.up3.buys >= 40 && game.rock3.techs.maxTP === 7) {
+	game.rock3.techs.maxTP = 8;
+	game.rock3.techs.currentTP += 1;
+}
+if (game.rock3.up1.buys >= 45 && game.rock3.up2.buys >= 45 && game.rock3.up3.buys >= 45 && game.rock3.techs.maxTP === 8) {
+	game.rock3.techs.maxTP = 9;
+	game.rock3.techs.currentTP += 1;
+}
+if (game.rock3.up1.buys >= 50 && game.rock3.up2.buys >= 50 && game.rock3.up3.buys >= 50 && game.rock3.techs.maxTP === 9) {
+	game.rock3.techs.maxTP = 10;
+	game.rock3.techs.currentTP += 1;
+}
+}
 },10)
 function tech11() {
 	if (game.rock1.techs.cs1 < 3 && game.rock1.techs.currentTP > 0) {
@@ -671,7 +713,54 @@ function tech28() {
 	game.rock2.techs.cmx +=1;
 	}
 };
-
+function tech31() {
+	if (game.rock3.techs.cs1 < 3 && game.rock3.techs.currentTP > 0) {
+	game.rock3.techs.currentTP -= 1;
+	game.rock3.techs.cs1 +=1;
+	}
+};
+function tech32() {
+	if (game.rock3.techs.cs2 < 3 && game.rock3.techs.currentTP > 0) {
+	game.rock3.techs.currentTP -= 1;
+	game.rock3.techs.cs2 +=1;
+	}
+};
+function tech33() {
+	if (game.rock3.techs.cs3 < 3 && game.rock3.techs.currentTP > 0) {
+	game.rock3.techs.currentTP -= 1;
+	game.rock3.techs.cs3 +=1;
+	}
+};
+function tech34() {
+	if (game.rock3.techs.cs4 < 3 && game.rock3.techs.currentTP > 0) {
+	game.rock3.techs.currentTP -= 1;
+	game.rock3.techs.cs4 +=1;
+	}
+};
+function tech35() {
+	if (game.rock3.techs.ef3 < 3 && game.rock3.techs.currentTP > 0) {
+	game.rock3.techs.currentTP -= 1;
+	game.rock3.techs.ef3 +=1;
+	}
+};
+function tech36() {
+	if (game.rock3.techs.ef4 < 3 && game.rock3.techs.currentTP > 0) {
+	game.rock3.techs.currentTP -= 1;
+	game.rock3.techs.ef4 +=1;
+	}
+};
+function tech37() {
+	if (game.rock3.techs.mpf < 3 && game.rock3.techs.currentTP > 0) {
+	game.rock3.techs.currentTP -= 1;
+	game.rock3.techs.mpf +=1;
+	}
+};
+function tech38() {
+	if (game.rock3.techs.cmx < 3 && game.rock3.techs.currentTP > 0) {
+	game.rock3.techs.currentTP -= 1;
+	game.rock3.techs.cmx +=1;
+	}
+};
 function techRespec() {
 	game.rock1.techs.respec = true;
 };
