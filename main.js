@@ -1073,7 +1073,7 @@ function rockLaunch3() {
 	var imTiredOfMakingFormalNames = setInterval(function() {
 	if (game.rock3.fuel.amount > 0) {
 		
-	game.money += game.rock2.moneyPerFuel;
+	game.money += game.rock3.moneyPerFuel;
 	game.rock3.fuel.amount -= 1;
 	game.money = Math.round(game.money*100)/100;
 	}else if (game.rock3.auto.rocket === false){
