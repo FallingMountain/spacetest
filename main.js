@@ -127,7 +127,7 @@ maxTP:0,
 currentTP:0,
 respec:false
 },
-moneyPerFuel:1e15,
+moneyPerFuel:1e16,
 rockLimit:1,
 rockLaunched:0,
 	  affectByCreat:false,
