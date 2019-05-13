@@ -1016,16 +1016,16 @@ function exUp3() {
 	}
 	game.money -= game.rock2.up3.cost;
 	if (game.rock2.techs.cs3 === 0){
-	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.7);
-	}
-	if (game.rock2.techs.cs3 === 1){
-	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.64);
-	}
-	if (game.rock2.techs.cs3 === 2){
 	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.6);
 	}
+	if (game.rock2.techs.cs3 === 1){
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.54);
+	}
+	if (game.rock2.techs.cs3 === 2){
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.5);
+	}
 	if (game.rock2.techs.cs3 === 3){
-	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.58);
+	game.rock2.up3.cost = Math.round(game.rock2.up3.cost*1.48);
 	}
 	game.rock2.up3.buys += 1;
 	game.rock2.successChance -= 1;
