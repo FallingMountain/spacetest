@@ -133,11 +133,115 @@ rockLaunched:0,
 	  affectByCreat:false,
 	  successChance:100
   },
+ rock4: {
+	  active:false,
+	fuel: {
+		max:150,
+		cost:1e21,
+		amount:0,
+		scaleDown:1
+	},
+	auto: {
+		rocket:false,
+		fuel:false
+	},
+	up1: {
+	cost:2.5e23,
+	buys:0,
+	scaling:1.3
+	},
+	up2: {
+	cost:4e23,
+	buys:0,
+	scaling:1.4
+	},  
+	up3: {
+	cost:6e23,
+	buys:0,
+	scaling:1.6
+	},  
+	up4: {
+	cost:4e23,
+	buys:0,
+	scaling:1.4		
+	},
+	techs: {
+techStart:false,
+cs1:0,
+cs2:0,
+cs3:0,
+cs4:0,
+ef3:0,
+mpf:0,
+cmx:0,
+ef4:0,
+maxTP:0,
+currentTP:0,
+respec:false
+},
+moneyPerFuel:1e22,
+rockLimit:1,
+rockLaunched:0,
+	  affectByCreat:false,
+	  successChance:100
+  },
+	 rock5: {
+	  active:false,
+	fuel: {
+		max:150,
+		cost:1e28,
+		amount:0,
+		scaleDown:1
+	},
+	auto: {
+		rocket:false,
+		fuel:false
+	},
+	up1: {
+	cost:2.5e30,
+	buys:0,
+	scaling:1.3
+	},
+	up2: {
+	cost:4e30,
+	buys:0,
+	scaling:1.4
+	},  
+	up3: {
+	cost:6e30,
+	buys:0,
+	scaling:1.6
+	},  
+	up4: {
+	cost:4e30,
+	buys:0,
+	scaling:1.4		
+	},
+	techs: {
+techStart:false,
+cs1:0,
+cs2:0,
+cs3:0,
+cs4:0,
+ef3:0,
+mpf:0,
+cmx:0,
+ef4:0,
+maxTP:0,
+currentTP:0,
+respec:false
+},
+moneyPerFuel:1e29,
+rockLimit:1,
+rockLaunched:0,
+	  affectByCreat:false,
+	  successChance:100
+  },
   auto: {
   rocket:false,
   fuel:false
   },
-
+//HλLF-LIFE 3 confirmed
   up1Cost:2500,
   up1buys:0,
   maxUp1buys:5,
@@ -322,17 +426,52 @@ game.rock2.fuel.cost = 100000;
 game.rock2.fuel.amount = 0;
 game.rock2.fuel.scaleDown = 1;
 game.rock2.fuel.max = 150;
+game.rock3.fuel.cost = 1e15;
+game.rock3.fuel.amount = 0;
+game.rock3.fuel.scaleDown = 1;
+game.rock3.fuel.max = 150;
+game.rock4.fuel.cost = 1e21;
+game.rock4.fuel.amount = 0;
+game.rock4.fuel.scaleDown = 1;
+game.rock4.fuel.max = 150;
+game.rock5.fuel.cost = 1e28;
+game.rock5.fuel.amount = 0;
+game.rock5.fuel.scaleDown = 1;
+game.rock5.fuel.max = 150;
 game.rock2.up1.buys = 0;
 game.rock2.up2.buys = 0;
 game.rock2.up3.buys = 0;
 game.rock2.up4.buys = 0;
+game.rock3.up1.buys = 0;
+game.rock3.up2.buys = 0;
+game.rock3.up3.buys = 0;
+game.rock3.up4.buys = 0;
+game.rock4.up1.buys = 0;
+game.rock4.up2.buys = 0;
+game.rock4.up3.buys = 0;
+game.rock4.up4.buys = 0;
+game.rock5.up1.buys = 0;
+game.rock5.up2.buys = 0;
+game.rock5.up3.buys = 0;
+game.rock5.up4.buys = 0;
 game.rock2.up1.cost = 250000000;
 game.rock2.up2.cost = 400000000;
 game.rock2.up3.cost = 600000000;
 game.rock2.up4.cost = 400000000;
+game.rock3.up1.cost = 2.5e17;
+game.rock3.up2.cost = 4e17;
+game.rock3.up3.cost = 6e17;
+game.rock3.up4.cost = 4e17;
+game.rock4.up1.cost = 2.5e23;
+game.rock4.up2.cost = 4e23;
+game.rock4.up3.cost = 6e23;
+game.rock4.up4.cost = 4e23;
+game.rock5.up1.cost = 2.5e30;
+game.rock5.up2.cost = 4e30;
+game.rock5.up3.cost = 6e30;
+game.rock5.up4.cost = 4e30;
 game.rock2.successChance = 100;
 game.rock2.moneyPerFuel = 1500000;
-
 	if (game.creat < 256) {
 	if (game.ally ===0) {
 	game.rock1.moneyPerFuel = 10*(Math.log2(game.creat+1)+1)
@@ -1147,6 +1286,14 @@ document.getElementById("TC25").innerHTML = game.rock2.techs.ef3;
 document.getElementById("TC26").innerHTML = game.rock2.techs.ef4;
 document.getElementById("TC27").innerHTML = game.rock2.techs.mpf;
 document.getElementById("TC28").innerHTML = game.rock2.techs.cmx;
+document.getElementById("TC31").innerHTML = game.rock3.techs.cs1;
+document.getElementById("TC32").innerHTML = game.rock3.techs.cs2;
+document.getElementById("TC33").innerHTML = game.rock3.techs.cs3;
+document.getElementById("TC34").innerHTML = game.rock3.techs.cs4;
+document.getElementById("TC35").innerHTML = game.rock3.techs.ef3;
+document.getElementById("TC36").innerHTML = game.rock3.techs.ef4;
+document.getElementById("TC37").innerHTML = game.rock3.techs.mpf;
+document.getElementById("TC38").innerHTML = game.rock3.techs.cmx;
 document.getElementById("failChance").innerHTML = game.rock2.successChance;
 	if (game.money > 50000 || game.brainstormed === true) {
 	document.getElementById("brainPrestige").style.display = "inline"
