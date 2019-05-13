@@ -127,7 +127,7 @@ maxTP:0,
 currentTP:0,
 respec:false
 },
-moneyPerFuel:1e16,
+moneyPerFuel:5e16,
 rockLimit:1,
 rockLaunched:0,
 	  affectByCreat:false,
@@ -494,6 +494,7 @@ game.rock2.moneyPerFuel = 1500000;
 	if (game.pUp9Bought === true) {
 		game.rock1.moneyPerFuel = game.rock1.moneyPerFuel*1034;
 	}
+	game.rock3.moneyPerFuel = 5e16*game.rock3.techs.mpf*Math.log10(game.creat);
 if (game.rock2.affectByCreat === true && game.creat > 2048 && game.creat < 1048576) {
 	game.rock2.moneyPerFuel = 1500000*((Math.log2(game.creat-2048)+1)*1.5*(game.rock2.techs.mpf+1));
 } else if (game.creat > 1048576) {
