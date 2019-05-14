@@ -665,6 +665,34 @@ function pUpgrade13() {
 		
 	}
 }
+function pUpgrade14() {
+	if (game.creat > 100000000 && game.rock4.active === false&& game.rock3.up1.buys === 50&& game.rock3.up2.buys === 50&& game.rock3.up3.buys === 50) {
+		game.creat -= 100000000;
+		game.rock4.active = true;
+		
+	}
+}
+function pUpgrade15() {
+	if (game.creat > 10000000000 && game.rock4.techs.techStart === false&& game.rock4.up1.buys === 25&& game.rock4.up2.buys === 25&& game.rock4.up3.buys === 25) {
+		game.creat -= 100000000000;
+		game.rock4.techs.techStart = true;
+		
+	}
+}
+function pUpgrade16() {
+	if (game.creat > 100000000 && game.rock5.active === false&& game.rock4.up1.buys === 50&& game.rock4.up2.buys === 50&& game.rock4.up3.buys === 50) {
+		game.creat -= 100000000;
+		game.rock5.active = true;
+		
+	}
+}
+function pUpgrade17() {
+	if (game.creat > 10000000000 && game.rock5.techs.techStart === false&& game.rock5.up1.buys === 25&& game.rock5.up2.buys === 25&& game.rock5.up3.buys === 25) {
+		game.creat -= 100000000000;
+		game.rock5.techs.techStart = true;
+		
+	}
+}
 setInterval(function() {
 if (game.up1buys === 25 && game.up2buys === 25 && game.up3buys === 25) {
 	lore[12] = "You have done everything you can with this rocket. Maybe it's time to start a new project."
@@ -1218,6 +1246,36 @@ function putSomeoneOnYourFrickingRocket() {
 	
 	
 }
+function rocklaunch4() {
+	if (game.rock4.rockLaunched < game.rock4.rockLimit) {
+		var failChance = getRandomInt(100);
+		if (failChance < game.rock4.successChance) {
+		game.rock4.rockLaunched += 1;
+	var rocketAuto4 = setInterval(function() {
+	if (game.rock4.fuel.amount > 0) {
+		
+	game.money += game.rock4.moneyPerFuel;
+	game.rock4.fuel.amount -= 1;
+	game.money = Math.round(game.money*100)/100;
+	}else if (game.rock4.auto.rocket === false){
+	game.rock4.rockLaunched = 0;
+	clearInterval(rocketAuto4);
+	}
+	}, 40);	
+		} else {game.money -= game.money/2; game.rock4.fuel.amount = 0; lore[18] = "This is a disaster. The rocket failed. You need to make it a lot safer.";}
+	}
+};
+
+function gemBuyFuel() {
+	if (game.money >=game.rock4.fuel.cost*game.rock4.fuel.max) {
+	if (game.rock4.fuel.amount === 0) {
+	game.money -= game.rock4.fuel.cost*game.rock4.fuel.max;
+	game.rock4.fuel.amount += game.rock4.fuel.max;
+	game.rock4.fuel.cost = game.rock4.fuel.cost*(1+(0.0001*game.rock4.fuel.max));
+	lore[3] = "You decide to get more fuel, so you can continue to launch rockets.";
+    }
+  }
+};
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("stillmoney").innerHTML = game.money;
