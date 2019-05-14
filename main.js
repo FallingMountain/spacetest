@@ -1190,7 +1190,7 @@ function mercUp3() {
 	if (game.rock3.techs.ef3 === 3){
 	game.rock3.moneyPerFuel = game.rock3.moneyPerFuel*1.34;
 	}
-	game.money -= game.rock2.up3.cost;
+	game.money -= game.rock3.up3.cost;
 	if (game.rock3.techs.cs3 === 0){
 	game.rock3.up3.cost = Math.round(game.rock3.up3.cost*1.6);
 	}
@@ -1215,26 +1215,26 @@ function mercUp4() {
 	if (game.rock3.techs.ef4 === 0){
 	game.rock3.successChance += 2;
 	}
-	if (game.rock2.techs.ef4 === 1){
+	if (game.rock3.techs.ef4 === 1){
 	game.rock3.successChance += 2.2;
 	}
-	if (game.rock2.techs.ef4 === 2){
+	if (game.rock3.techs.ef4 === 2){
 	game.rock3.successChance += 2.5;
 	}
-	if (game.rock2.techs.ef4 === 3){
+	if (game.rock3.techs.ef4 === 3){
 	game.rock3.successChance += 2.9;
 	}
 	game.money -= game.rock3.up4.cost;
 	if (game.rock3.techs.cs4 === 0){
 	game.rock3.up4.cost = Math.round(game.rock3.up4.cost*1.5);
 	}
-	if (game.rock2.techs.cs4 === 1){
+	if (game.rock3.techs.cs4 === 1){
 	game.rock3.up4.cost = Math.round(game.rock3.up4.cost*1.48);
 	}
-	if (game.rock2.techs.cs4 === 2){
+	if (game.rock3.techs.cs4 === 2){
 	game.rock3.up4.cost = Math.round(game.rock3.up4.cost*1.45);
 	}
-	if (game.rock2.techs.cs4 === 3){
+	if (game.rock3.techs.cs4 === 3){
 	game.rock3.up4.cost = Math.round(game.rock3.up4.cost*1.41);
 	}
 	game.rock3.up4.buys += 1;
@@ -1276,39 +1276,315 @@ function gemBuyFuel() {
     }
   }
 };
+function gemUp1() {
+	if (game.money >= game.rock4.up1.cost && game.rock4.up1.buys < 50) {
+	game.rock4.fuel.max = Math.floor(game.rock4.fuel.max*1.1);
+	game.money -= game.rock4.up1.cost;
+	if (game.rock4.techs.cs1 === 0){
+	game.rock4.up1.cost = Math.round(game.rock4.up1.cost*1.3);
+	}
+	if (game.rock4.techs.cs1 === 1){
+	game.rock4.up1.cost = Math.round(game.rock4.up1.cost*1.28);
+	}
+	if (game.rock4.techs.cs1 === 2){
+	game.rock4.up1.cost = Math.round(game.rock4.up1.cost*1.25);
+	}
+	if (game.rock4.techs.cs1 === 3){
+	game.rock4.up1.cost = Math.round(game.rock4.up1.cost*1.22);
+	}
+	game.rock4.up1.buys += 1;
+	game.rock4.successChance -= 1;
+	}
+	};
+function gemUp2() {
+	if (game.money >= game.rock4.up2.cost) {
+	lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2."
+	if (game.rock4.up2.buys < 50) {
+	game.rock4.fuel.cost = 50000;
+	game.rock4.fuel.scaleDown = 0.9*game.rock4.fuel.scaleDown;
+	game.money -= game.rock4.up2.cost;
+	if (game.rock4.techs.cs2 === 0){
+	game.rock4.up2.cost = Math.round(game.rock4.up2.cost*1.5);
+	}
+	if (game.rock4.techs.cs2 === 1){
+	game.rock4.up2.cost = Math.round(game.rock4.up2.cost*1.46);
+	}
+	if (game.rock4.techs.cs2 === 2){
+	game.rock4.up2.cost = Math.round(game.rock4.up2.cost*1.43);
+	}
+	if (game.rock4.techs.cs2 === 3){
+	game.rock4.up2.cost = Math.round(game.rock4.up2.cost*1.4);
+	}
+	game.rock4.up2.buys += 1;
+	game.rock4.successChance -= 1;
+	}
+	}
+};
+function gemUp3() {
+	if (game.money >= game.rock4.up3.cost) {
+	lore[6] = "Better engines mean more speed. More speed means more height. And FM seems to be sending you money based on how high the rocket goes."
+	if (game.rock4.up3.buys < 50) {
+	if (game.rock4.techs.ef3 === 0){
+	game.rock4.moneyPerFuel = game.rock4.moneyPerFuel*1.25;
+	}
+	if (game.rock4.techs.ef3 === 1){
+	game.rock4.moneyPerFuel = game.rock4.moneyPerFuel*1.29;
+	}
+	if (game.rock4.techs.ef3 === 2){
+	game.rock4.moneyPerFuel = game.rock4.moneyPerFuel*1.32;
+	}
+	if (game.rock4.techs.ef3 === 3){
+	game.rock4.moneyPerFuel = game.rock4.moneyPerFuel*1.34;
+	}
+	game.money -= game.rock2.up3.cost;
+	if (game.rock4.techs.cs3 === 0){
+	game.rock4.up3.cost = Math.round(game.rock4.up3.cost*1.6);
+	}
+	if (game.rock4.techs.cs3 === 1){
+	game.rock4.up3.cost = Math.round(game.rock4.up3.cost*1.56);
+	}
+	if (game.rock4.techs.cs3 === 2){
+	game.rock4.up3.cost = Math.round(game.rock4.up3.cost*1.53);
+	}
+	if (game.rock4.techs.cs3 === 3){
+	game.rock4.up3.cost = Math.round(game.rock4.up3.cost*1.5);
+	}
+	game.rock4.up3.buys += 1;
+	game.rock4.successChance -= 1;
+	}
+	}
+};
+function gemUp4() {
+	if (game.money >= game.rock4.up4.cost) {
+	lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2."
+	if (game.rock4.up4.buys < 50) {
+	if (game.rock4.techs.ef4 === 0){
+	game.rock4.successChance += 2;
+	}
+	if (game.rock2.techs.ef4 === 1){
+	game.rock4.successChance += 2.2;
+	}
+	if (game.rock2.techs.ef4 === 2){
+	game.rock4.successChance += 2.5;
+	}
+	if (game.rock2.techs.ef4 === 3){
+	game.rock4.successChance += 2.9;
+	}
+	game.money -= game.rock4.up4.cost;
+	if (game.rock4.techs.cs4 === 0){
+	game.rock4.up4.cost = Math.round(game.rock4.up4.cost*1.5);
+	}
+	if (game.rock2.techs.cs4 === 1){
+	game.rock4.up4.cost = Math.round(game.rock4.up4.cost*1.48);
+	}
+	if (game.rock2.techs.cs4 === 2){
+	game.rock4.up4.cost = Math.round(game.rock4.up4.cost*1.45);
+	}
+	if (game.rock2.techs.cs4 === 3){
+	game.rock4.up4.cost = Math.round(game.rock4.up4.cost*1.41);
+	}
+	game.rock4.up4.buys += 1;
+	}
+	}
+};
+function rocklaunch5() {
+	if (game.rock5.rockLaunched < game.rock5.rockLimit) {
+		var failChance = getRandomInt(100);
+		if (failChance < game.rock5.successChance) {
+		game.rock5.rockLaunched += 1;
+	var rocketAuto5 = setInterval(function() {
+	if (game.rock5.fuel.amount > 0) {
+		
+	game.money += game.rock5.moneyPerFuel;
+	game.rock5.fuel.amount -= 1;
+	game.money = Math.round(game.money*100)/100;
+	}else if (game.rock5.auto.rocket === false){
+	game.rock5.rockLaunched = 0;
+	clearInterval(rocketAuto5);
+	}
+	}, 40);	
+		} else {game.money -= game.money/2; game.rock5.fuel.amount = 0; lore[18] = "This is a disaster. The rocket failed. You need to make it a lot safer.";}
+	}
+};
+
+function apBuyFuel() {
+	if (game.money >=game.rock5.fuel.cost*game.rock5.fuel.max) {
+	if (game.rock5.fuel.amount === 0) {
+	game.money -= game.rock5.fuel.cost*game.rock5.fuel.max;
+	game.rock5.fuel.amount += game.rock5.fuel.max;
+	game.rock5.fuel.cost = game.rock5.fuel.cost*(1+(0.0001*game.rock5.fuel.max));
+	lore[3] = "You decide to get more fuel, so you can continue to launch rockets.";
+    }
+  }
+};
+function apUp1() {
+	if (game.money >= game.rock5.up1.cost && game.rock5.up1.buys < 50) {
+	game.rock5.fuel.max = Math.floor(game.rock5.fuel.max*1.1);
+	game.money -= game.rock5.up1.cost;
+	if (game.rock5.techs.cs1 === 0){
+	game.rock5.up1.cost = Math.round(game.rock5.up1.cost*1.3);
+	}
+	if (game.rock5.techs.cs1 === 1){
+	game.rock5.up1.cost = Math.round(game.rock5.up1.cost*1.28);
+	}
+	if (game.rock5.techs.cs1 === 2){
+	game.rock5.up1.cost = Math.round(game.rock5.up1.cost*1.25);
+	}
+	if (game.rock5.techs.cs1 === 3){
+	game.rock5.up1.cost = Math.round(game.rock5.up1.cost*1.22);
+	}
+	game.rock5.up1.buys += 1;
+	game.rock5.successChance -= 1;
+	}
+	};
+function apUp2() {
+	if (game.money >= game.rock5.up2.cost) {
+	lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2."
+	if (game.rock5.up2.buys < 50) {
+	game.rock5.fuel.cost = 50000;
+	game.rock5.fuel.scaleDown = 0.9*game.rock5.fuel.scaleDown;
+	game.money -= game.rock5.up2.cost;
+	if (game.rock5.techs.cs2 === 0){
+	game.rock5.up2.cost = Math.round(game.rock5.up2.cost*1.5);
+	}
+	if (game.rock5.techs.cs2 === 1){
+	game.rock5.up2.cost = Math.round(game.rock5.up2.cost*1.46);
+	}
+	if (game.rock5.techs.cs2 === 2){
+	game.rock5.up2.cost = Math.round(game.rock5.up2.cost*1.43);
+	}
+	if (game.rock5.techs.cs2 === 3){
+	game.rock5.up2.cost = Math.round(game.rock5.up2.cost*1.4);
+	}
+	game.rock5.up2.buys += 1;
+	game.rock5.successChance -= 1;
+	}
+	}
+};
+function apUp3() {
+	if (game.money >= game.rock5.up3.cost) {
+	lore[6] = "Better engines mean more speed. More speed means more height. And FM seems to be sending you money based on how high the rocket goes."
+	if (game.rock5.up3.buys < 50) {
+	if (game.rock5.techs.ef3 === 0){
+	game.rock5.moneyPerFuel = game.rock5.moneyPerFuel*1.25;
+	}
+	if (game.rock5.techs.ef3 === 1){
+	game.rock5.moneyPerFuel = game.rock5.moneyPerFuel*1.29;
+	}
+	if (game.rock5.techs.ef3 === 2){
+	game.rock5.moneyPerFuel = game.rock5.moneyPerFuel*1.32;
+	}
+	if (game.rock5.techs.ef3 === 3){
+	game.rock5.moneyPerFuel = game.rock5.moneyPerFuel*1.34;
+	}
+	game.money -= game.rock2.up3.cost;
+	if (game.rock5.techs.cs3 === 0){
+	game.rock5.up3.cost = Math.round(game.rock5.up3.cost*1.6);
+	}
+	if (game.rock5.techs.cs3 === 1){
+	game.rock5.up3.cost = Math.round(game.rock5.up3.cost*1.56);
+	}
+	if (game.rock5.techs.cs3 === 2){
+	game.rock5.up3.cost = Math.round(game.rock5.up3.cost*1.53);
+	}
+	if (game.rock5.techs.cs3 === 3){
+	game.rock5.up3.cost = Math.round(game.rock5.up3.cost*1.5);
+	}
+	game.rock5.up3.buys += 1;
+	game.rock5.successChance -= 1;
+	}
+	}
+};
+function apUp4() {
+	if (game.money >= game.rock5.up4.cost) {
+	lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2."
+	if (game.rock5.up4.buys < 50) {
+	if (game.rock5.techs.ef4 === 0){
+	game.rock5.successChance += 2;
+	}
+	if (game.rock2.techs.ef4 === 1){
+	game.rock5.successChance += 2.2;
+	}
+	if (game.rock2.techs.ef4 === 2){
+	game.rock5.successChance += 2.5;
+	}
+	if (game.rock2.techs.ef4 === 3){
+	game.rock5.successChance += 2.9;
+	}
+	game.money -= game.rock5.up4.cost;
+	if (game.rock5.techs.cs4 === 0){
+	game.rock5.up4.cost = Math.round(game.rock5.up4.cost*1.5);
+	}
+	if (game.rock2.techs.cs4 === 1){
+	game.rock5.up4.cost = Math.round(game.rock5.up4.cost*1.48);
+	}
+	if (game.rock2.techs.cs4 === 2){
+	game.rock5.up4.cost = Math.round(game.rock5.up4.cost*1.45);
+	}
+	if (game.rock2.techs.cs4 === 3){
+	game.rock5.up4.cost = Math.round(game.rock5.up4.cost*1.41);
+	}
+	game.rock5.up4.buys += 1;
+	}
+	}
+};
 window.setInterval(function(){
 document.getElementById("money").innerHTML = game.money;
 document.getElementById("stillmoney").innerHTML = game.money;
 document.getElementById("alsostillmoney").innerHTML = game.money;
+document.getElementById("probablystillmoney").innerHTML = game.money;
+document.getElementById("mightbemoneyimnotsure").innerHTML = game.money;
 document.getElementById("fuel").innerHTML = game.rock1.fuel.amount;
 document.getElementById("explorerFuel").innerHTML = game.rock2.fuel.amount
 document.getElementById("mercuryFuel").innerHTML = game.rock3.fuel.amount
+document.getElementById("geminiFuel").innerHTML = game.rock4.fuel.amount
+document.getElementById("apolloFuel").innerHTML = game.rock5.fuel.amount
 document.getElementById("fuelCost").innerHTML = game.rock1.fuel.cost;
 document.getElementById("explorerFuelCost").innerHTML = game.rock2.fuel.cost;
 document.getElementById("mercuryFuelCost").innerHTML = game.rock3.fuel.cost;
+document.getElementById("geminiFuelCost").innerHTML = game.rock4.fuel.cost;
+document.getElementById("apolloFuelCost").innerHTML = game.rock5.fuel.cost;
 document.getElementById("fuelMax").innerHTML = game.rock1.fuel.max;
 document.getElementById("explorerFuelMax").innerHTML = game.rock2.fuel.max;
 document.getElementById("mercuryFuelMax").innerHTML = game.rock3.fuel.max;
+document.getElementById("geminiFuelMax").innerHTML = game.rock4.fuel.max;
+document.getElementById("apolloFuelMax").innerHTML = game.rock5.fuel.max;
 document.getElementById("upgrade1Cost").innerHTML = game.up1Cost;
 document.getElementById("explorerUpgrade1Cost").innerHTML = game.rock2.up1.cost;
 document.getElementById("mercuryUpgrade1Cost").innerHTML = game.rock3.up1.cost;
+document.getElementById("geminiUpgrade1Cost").innerHTML = game.rock4.up1.cost;
+document.getElementById("apolloUpgrade1Cost").innerHTML = game.rock5.up1.cost;
 document.getElementById("upgrade2Cost").innerHTML = game.up2Cost;
 document.getElementById("explorerUpgrade2Cost").innerHTML = game.rock2.up2.cost;
 document.getElementById("mercuryUpgrade2Cost").innerHTML = game.rock3.up2.cost;
+document.getElementById("geminiUpgrade2Cost").innerHTML = game.rock4.up2.cost;
+document.getElementById("apolloUpgrade2Cost").innerHTML = game.rock5.up2.cost;
 document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
 document.getElementById("explorerUpgrade3Cost").innerHTML = game.rock2.up3.cost;
 document.getElementById("mercuryUpgrade3Cost").innerHTML = game.rock3.up3.cost;
+document.getElementById("geminiUpgrade3Cost").innerHTML = game.rock4.up3.cost;
+document.getElementById("mercuryUpgrade3Cost").innerHTML = game.rock5.up3.cost;
 document.getElementById("explorerUpgrade4Cost").innerHTML = game.rock2.up4.cost;
 document.getElementById("mercuryUpgrade4Cost").innerHTML = game.rock3.up4.cost;
+document.getElementById("geminiUpgrade4Cost").innerHTML = game.rock4.up4.cost;
+document.getElementById("apolloUpgrade4Cost").innerHTML = game.rock5.up4.cost;
 document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
 document.getElementById("explorerUpgrade1Buys").innerHTML = game.rock2.up1.buys;
 document.getElementById("explorerUpgrade2Buys").innerHTML = game.rock2.up2.buys;
 document.getElementById("explorerUpgrade3Buys").innerHTML = game.rock2.up3.buys;
 document.getElementById("explorerUpgrade4Buys").innerHTML = game.rock2.up4.buys;
+document.getElementById("geminiUpgrade1Buys").innerHTML = game.rock4.up1.buys;
+document.getElementById("geminiUpgrade2Buys").innerHTML = game.rock4.up2.buys;
+document.getElementById("geminiUpgrade3Buys").innerHTML = game.rock4.up3.buys;
+document.getElementById("geminiUpgrade4Buys").innerHTML = game.rock4.up4.buys;
 document.getElementById("mercuryUpgrade1Buys").innerHTML = game.rock3.up1.buys;
 document.getElementById("mercuryUpgrade2Buys").innerHTML = game.rock3.up2.buys;
 document.getElementById("mercuryUpgrade3Buys").innerHTML = game.rock3.up3.buys;
 document.getElementById("mercuryUpgrade4Buys").innerHTML = game.rock3.up4.buys;
+document.getElementById("apolloUpgrade1Buys").innerHTML = game.rock3.up1.buys;
+document.getElementById("apolloUpgrade2Buys").innerHTML = game.rock3.up2.buys;
+document.getElementById("apolloUpgrade3Buys").innerHTML = game.rock3.up3.buys;
+document.getElementById("apolloUpgrade4Buys").innerHTML = game.rock3.up4.buys;
 document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
 document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
 document.getElementById("creativity").innerHTML = game.creat;
@@ -1338,12 +1614,18 @@ document.getElementById("creativityMultiplier").innerHTML = game.creatMult;
 document.getElementById("moneyPerFuel").innerHTML = Math.round(game.rock1.moneyPerFuel);
 document.getElementById("explorerMoneyPerFuel").innerHTML = Math.round(game.rock2.moneyPerFuel);
 document.getElementById("mercuryMoneyPerFuel").innerHTML = Math.round(game.rock2.moneyPerFuel);
+document.getElementById("geminiMoneyPerFuel").innerHTML = Math.round(game.rock2.moneyPerFuel);
+document.getElementById("apolloMoneyPerFuel").innerHTML = Math.round(game.rock2.moneyPerFuel);
 document.getElementById("basicTechPoints").innerHTML = game.rock1.techs.currentTP;
 document.getElementById("maxBTP").innerHTML = game.rock1.techs.maxTP;
 document.getElementById("explorerTechPoints").innerHTML = game.rock2.techs.currentTP;
 document.getElementById("maxETP").innerHTML = game.rock2.techs.maxTP;
 document.getElementById("mercuryTechPoints").innerHTML = game.rock3.techs.currentTP;
 document.getElementById("maxMTP").innerHTML = game.rock3.techs.maxTP;
+document.getElementById("geminiTechPoints").innerHTML = game.rock3.techs.currentTP;
+document.getElementById("maxGTP").innerHTML = game.rock3.techs.maxTP;
+document.getElementById("apolloTechPoints").innerHTML = game.rock3.techs.currentTP;
+document.getElementById("maxATP").innerHTML = game.rock3.techs.maxTP;
 document.getElementById("TC11").innerHTML = game.rock1.techs.cs1;
 document.getElementById("TC12").innerHTML = game.rock1.techs.cs2;
 document.getElementById("TC13").innerHTML = game.rock1.techs.cs3;
