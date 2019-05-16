@@ -1,102 +1,116 @@
 .tabe {
 	color: #82fffc;
-    background: #7447ff;
+	background: #7447ff;
 	font-weight: bold;
-    border: 2px solid #82fffc;
+	border: 2px solid #82fffc;
 	border-radius: 4px;
 	transition-duration: 0.4s;
 	cursor: pointer;
 }
+
 .tabe:hover {
-    color: #6837ff;
-    background: #82fffc;
-    border: 2px solid #6837ff;
+	color: #6837ff;
+	background: #82fffc;
+	border: 2px solid #6837ff;
 }
+
 .yeet {
 	color: #6837ff;
-    background: #82fffc;
+	background: #82fffc;
 	font-weight: bold;
-    border: 2px solid #6837ff;
+	border: 2px solid #6837ff;
 	border-radius: 4px;
 	transition-duration: 0.4s;
 	cursor: pointer;
 }
+
 .yeet:hover {
 
-    border: 2px solid #00ffff;
-color: #82fffc;
-background: #6837ff
+	border: 2px solid #00ffff;
+	color: #82fffc;
+	background: #6837ff
 }
+
 .basic {
 	color: #00FF7E;
-    background: #000000;
+	background: #000000;
 	font-weight: bold;
-    border: 2px solid #00FF7E;
+	border: 2px solid #00FF7E;
 	border-radius: 4px;
 	transition-duration: 0.4s;
 	cursor: pointer;
 }
+
 .basic:hover {
 	color: #000000;
-    background: #00FF7E;
+	background: #00FF7E;
 	border: 2px solid #00FF7E;
 }
+
 .explorer {
 	color: #FF7B00;
-    background: #000000;
+	background: #000000;
 	font-weight: bold;
-    border: 2px solid #FF7B00;
+	border: 2px solid #FF7B00;
 	border-radius: 4px;
 	transition-duration: 0.4s;
 	cursor: pointer;
 }
+
 .explorer:hover {
 	color: #000000;
-    background: #FF7B00;
-    border: 2px solid #FF7B00;
+	background: #FF7B00;
+	border: 2px solid #FF7B00;
 }
+
 .mercury {
 	color: #e5335f;
-    background: #000000;
+	background: #000000;
 	font-weight: bold;
-    border: 2px solid #e5335f;
+	border: 2px solid #e5335f;
 	border-radius: 4px;
 	transition-duration: 0.4s;
 	cursor: pointer;
 }
+
 .mercury:hover {
 	color: #000000;
-    background: #e5335f;
-    border: 2px solid #e5335f;
+	background: #e5335f;
+	border: 2px solid #e5335f;
 }
+
 .gemini {
 	color: #8191d4;
-    background: #000000;
+	background: #000000;
 	font-weight: bold;
-    border: 2px solid #8191d4;
+	border: 2px solid #8191d4;
 	border-radius: 4px;
 	transition-duration: 0.4s;
 	cursor: pointer;
 }
+
 .gemini:hover {
 	color: #000000;
-    background: #8191d4;
-    border: 2px solid #8191d4;
+	background: #8191d4;
+	border: 2px solid #8191d4;
 }
+
 .apollo {
 	color: #cbb0d4;
-    background: #000000;
+	background: #000000;
 	font-weight: bold;
-    border: 2px solid #cbb0d4;
+	border: 2px solid #cbb0d4;
 	border-radius: 4px;
 	transition-duration: 0.4s;
 	cursor: pointer;
 }
+
 .apollo:hover {
 	color: #000000;
-    background: #cbb0d4;
-    border: 2px solid #cbb0d4;
+	background: #cbb0d4;
+	border: 2px solid #cbb0d4;
 }
+
 .prestige1 {
 	color: #FFFFE5;
 	background: #040041;
@@ -106,6 +120,7 @@ background: #6837ff
 	transition-duration: 0.2s;
 	cursor: pointer;
 }
+
 .prestige1:hover {
 	color: #FEFDFD;
 	background: #3500DA;
