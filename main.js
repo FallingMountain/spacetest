@@ -1755,8 +1755,8 @@ window.setInterval(function () {
 		document.getElementById("basicTechs").style.display = "";
 		document.getElementById("basicTechs2").style.display = "";
 	} else {
-		document.getElementById("basicTechs").style.display = "none";
-		document.getElementById("basicTechs2").style.display = "none";
+		document.getElementById("basicTechs").style.display = "";
+		document.getElementById("basicTechs2").style.display = "";
 	}
 	if (game.rock2.techs.techStart === true) {
 		document.getElementById("explorerTechs").style.display = "";
@@ -1779,3 +1779,29 @@ window.setInterval(function () {
 		document.getElementById("mercuryTechs2").style.display = "none";
 	}
 }, 10);
+
+function tab(t) {
+	var classList = document.getElementsByClassName("tab");
+	for (var i = 0; i < classList.length; i++) {
+		classList[i].style.display = "none";
+	}
+	document.getElementById(t).style.display = "";
+}
+
+tab("basic");
+
+function subTab(tabName) {
+	var tabs = document.getElementsByClassName('pSubTab');
+	var tab;
+	for (var i = 0; i < tabs.length; i++) {
+		tab = tabs.item(i);
+		if (tab.id === tabName) {
+			tab.style.display = 'block';
+		} else {
+			tab.style.display = 'none';
+		}
+	}
+}
+
+
+subTab("basicPUps");

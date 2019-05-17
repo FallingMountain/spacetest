@@ -1,351 +1,461 @@
 <!DOCTYPE html>
-<meta charset="utf-8" />
+
 <html>
 <title>Space Race Incremental</title>
 
 <head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+		integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<title>Space Test</title>
 	<link rel="stylesheet" type="text/css" href="yeet.css">
 </head>
 
 <body>
-	<button class="basic" onclick="tab('basic')">Basic Rocket</button>
-	<button id="explorerContent" style:display="none" class="explorer" onclick="tab('rock1')">Explorer</button>
-	<button id="mercuryContent" class="mercury" onclick="tab('rock2')">Mercury</button>
-	<button class="gemini" onclick="tab('rock3')">Gemini</button>
-	<button class="apollo" onclick="tab('rock4')">Apollo</button>
-	<button class="tabe" onclick="tab('sources')">Blueprints</button>
-	<button class="tabe" onclick="tab('options')">Workshop</button>
-	<button id="brainPrestige" class="prestige1" onclick="tab('prestige')">Brainstorm</button>
-	<button class="tabe" onclick="tab('lore')">Journal</button>
-	<div id="basic" class="tab">
-		<button class="basic" onclick="rockLaunch1()">Launch a small rocket,<br>You lose your fuel, and gain money.</button>
-		<br>
-		You have <span id="money"></span>$<br>
-		You have <span id="fuel"></span> fuel.<br>
-		Your current funding gives you <span id="moneyPerFuel"></span> dollars per fuel used.<br>
-		Your maximum fuel is <span id="fuelMax"></span><br>
-		The current cost of 1 fuel is <span id="fuelCost"></span>$<br>
-		<button class="yeet" onclick="buyFuel()"><br>Buy some fuel!<br></button><br>
-		<button class="yeet" onclick="upgrade1()">Make your rocket longer, allowing it to <br>increase your fuel capacity by
-			10%!<br>Cost:<span id="upgrade1Cost"></span>$<br>Bought <span id="upgrade1Buys"></span>/25 times</button>
-		<button class="yeet" onclick="upgrade2()">Disrupt the economy, so you can decrease the cost<br> of fuel to $2, but
-			increase the cost scaling of fuel by 5%!<br>Cost:<span id="upgrade2Cost"></span>$<br>Bought <span
-				id="upgrade2Buys"></span>/25 times</button>
-		<button class="yeet" onclick="upgrade3()">Increase the speed of your rocket,<br> allowing it to collect 25% more
-			money!<br>Cost:<span id="upgrade3Cost"></span>$<br>Bought <span id="upgrade3Buys"></span>/25 times</button>
-		<br>
-		You have <span id="basicTechPoints"></span> TP, out of <span id="maxBTP"></span>
-		<br>
-		<center>
-			<table id="basicTechs">
-				<tr>
-					<td>
-						<button class="basic" onclick="tech11()"> Decrease the cost scaling of the first upgrade to <br>28% -> 25%
-							-> 21%.<br>Cost: 1 TP. Bought:<span id="TC11"></span></button></td>
-					<td>
-						<button class="basic" onclick="tech12()"> Decrease the cost scaling of the second upgrade to <br>38% -> 35%
-							-> 31%.<br>Cost: 1 TP. Bought:<span id="TC12"></span></button></td>
-					<td>
-						<button class="basic" onclick="tech13()"> Decrease the cost scaling of the third upgrade to <br>48% -> 45%
-							-> 40%.<br>Cost: 1 TP. Bought:<span id="TC13"></span></button></td>
-				</tr>
-				<tr>
-					<td>
-						<button class="basic" onclick="tech14()"> Increase the effectiveness of the third upgrade to <br>28% -> 30%
-							-> 32%.<br>Cost: 1 TP. Bought:<span id="TC14"></span></button></td>
-					<td>
-						<button class="basic" onclick="tech15()"> Increase the Money per Fuel multiplier on prestige to <br>2x -> 3x
-							-> 4x.<br>Cost: 1 TP. Bought:<span id="TC15"></span></button></td>
-					<td>
-						<button class="basic" onclick="tech16()"> Increase the multiplier for Creativity to <br>1.5x -> 2x ->
-							2.5x.<br>Cost: 1 TP. Bought:<span id="TC16"></span></button></td>
-				</tr>
-			</table><br>
-			<button id="basicTechs2" class="basic" onclick="techRespec()"> <br>Respec TCs on next Brainstorm<br></button><br>
-		</center>
-		<br>
-		Thanks to SuperSpruce for some of the code! You can check out his YouTube channel <a
-			href="https://www.youtube.com/channel/UCrpbLYZYpwpkrW9j9x8Ci2A" target="_blank">here</a>, and the game we're
-		collaborating on <a href="https://superspruce.github.io/Clover-Clicker/" target="_blank">here<a>.
-	</div>
-	<div id="sources" class="tab">
-		Secondary:
-		Morring, Jr., Frank. "Space race." World Book Advanced, World Book, 2019,
-		www.worldbookonline.com/advanced/article?id=ar755298. Accessed 16 Jan. 2019.<br>
-		Trevino, Marcella Bush. “Space Race.” Salem Press Encyclopedia, 2018. EBSCOhost,
-		search.ebscohost.com/login.aspx?direct=true&db=t6o&AN=89183508.<br>
-		McGill, Sara Ann. “The First Moon Landing.” First Moon Landing, Aug. 2017, pp. 1–2. EBSCOhost,
-		search.ebscohost.com/login.aspx?direct=true&db=n8h&AN=17989654.<br>
-		https://www.khanacademy.org/humanities/us-history/postwarera/1950s-america/a/the-start-of-the-space-race<br>
-		https://www.history.com/topics/cold-war/space-race<br>
-		Primary: <br>
-		https://history.nasa.gov/afj/ap11fj/01launch.html <br>
-		https://historycollection.jsc.nasa.gov/JSCHistoryPortal/history/mission_trans/MR03_TEC.PDF<br>
-		https://historycollection.jsc.nasa.gov/JSCHistoryPortal/history/mission_trans/GT03_TEC.PDF<br>
-		https://history.nasa.gov/SP-4029/Apollo_01c_Timeline.htm<br>
-		an intervew with someone, but i won't say here in order to contain my anonymity
-	</div>
-	<div id="options" class="tab">
-		<button class="yeet" onclick="fullReset()">Reset the game</button>
-		<button class="yeet" onclick="save()">Save</button>
-		<button class="yeet" onclick="outof()">Export</button>
-		<button class="yeet" onclick="into()">Import</button>
-		<button class="yeet" onclick="ruinTheFun()">Get to where new content starts.</button>
-
-
-	</div>
-	<div id="prestige" class="tab">
-		<center>
-			You have <span id="creativity">0</span> creativity.<br>
-			<button class="basic" onclick="subTab('basicPUps')">Basic Rocket</button>
-			<button id="explorerContent2" style:display="none" class="explorer"
-				onclick="subTab('explorerPUps')">Explorer</button>
-			<div id="basicPUps" class="pSubTab">
-				You must have $50000 or more to prestige.<br>
-				<button class="prestige1" onclick="prestige1()">Reset everything except automation, and gain <span
-						id="gainOnBrainstorm"></span> creativity. <div> You must have bought at least 5 of each upgrade.</button>
-				<br>
-
-				<br>
-				<button class="allegiance yeet" onclick="pUpgrade1()">Use 1 creativity to join the United States!<br>This makes
-					creativity have a better multiplier. (log2(x+1)+1)*1.5</button><br>
-				<button class="allegiance yeet" onclick="pUpgrade2()">Use <span id="pUpgrade2Cost"></span> creativity to launch
-					multiple rockets at once! <br> Currently:<span id="basicRocketLimit"></span></button>
-				<button class="yeet" onclick="pUpgrade3()">Use <span id="pUpgrade3Cost"></span> creativity to increase the
-					Creativity multiplier.<br>Currently: <span id="creativityMultiplier"></span></button><br>
-				<button class="basic" onclick="pUpgrade4()">Use 10 creativity to unlock Technologies.<br>This unlocks Technology
-					Point generation,<br>gained based on how many upgrades you have!</button>
-				<br><button class="basic" onclick="pUpgrade5()">Automate the buying of fuel and the launch of
-					rockets.<br>WARNING: After buying this, there is no way to turn off automation.<br>Do not leave the tab open
-					in the background.<br> Cost: 10 Creativity</button>
-				<br><button class="explorer" onclick="pUpgrade6()">Start the Explorers program.<br>Requires 25 of each
-					upgrade<br>.Unlocks a new rocket<br>Cost: 250 creativity</button>
+	<div class="pure-g">
+		<div class="pure-u-1-4">
+				<div class="pure-menu custom-restricted-width">
+						<span class="pure-menu-heading">Space Menu</span>
+					
+						<ul class="pure-menu-list">
+							<li class="pure-menu-item">
+								<a onclick="tab('basic')" href="#" class="pure-menu-link">Basic Rocket</a>
+							</li>
+							<li id="explorerContent" class="pure-menu-item" style="display: none;" class="explorer">
+								<a onclick="tab('rock1')" href="#" class="pure-menu-link">Explorer</a>
+							</li>
+							<li id="mercuryContent" class="pure-menu-item" style="display: none;">
+								<a onclick="tab('rock2')" href="#" class="pure-menu-link">Mercury</a>
+							</li>
+							<li class="pure-menu-item">
+								<a onclick="tab('rock3')" href="#" class="pure-menu-link">Gemini</a>
+							</li>
+							<li class="pure-menu-item">
+								<a onclick="tab('rock4')" href="#" class="pure-menu-link">Apollo</a>
+							</li>
+							<li class="pure-menu-item">
+								<a onclick="tab('sources')" href="#" class="pure-menu-link">Blueprints</a>
+							</li>
+							<li class="pure-menu-item">
+								<a onclick="tab('options')" href="#" class="pure-menu-link">Workshop</a>
+							</li>
+							<li id="brainPrestige" class="pure-menu-item" style="display: none;">
+								<a onclick="tab('prestige')" href="#" class="pure-menu-link">Brainstorm</a>
+							</li>
+							<li class="pure-menu-item">
+								<a onclick="tab('lore')" href="#" class="pure-menu-link">Journal</a>
+							</li>
+						</ul>
+					</div>
+			<!-- <button class="basic" onclick="tab('basic')">Basic Rocket</button>
+			<button id="explorerContent" style:display="none" class="explorer" onclick="tab('rock1')">Explorer</button>
+			<button id="mercuryContent" class="mercury" onclick="tab('rock2')">Mercury</button>
+			<button class="gemini" onclick="tab('rock3')">Gemini</button>
+			<button class="apollo" onclick="tab('rock4')">Apollo</button>
+			<button class="tabe" onclick="tab('sources')">Blueprints</button>
+			<button class="tabe" onclick="tab('options')">Workshop</button>
+			<button id="brainPrestige" class="prestige1" onclick="tab('prestige')">Brainstorm</button>
+			<button class="tabe" onclick="tab('lore')">Journal</button> -->
+		</div>
+		<div class="pure-u-3-4">
+			<div id="basic" class="tab">
+				<h1>Basic Rocket</h1>
+				<ul style="list-style: none; padding-left: 0;">
+					<li>Money: $<span id="money"></span></li>
+					<li>Fuel: <span id="fuel"></span> / <span id="fuelMax"></span></li>
+					<li>Your current funding gives you <span id="moneyPerFuel"></span> dollars per fuel used.</li>
+					<li>The current cost of 1 fuel is <span id="fuelCost"></span>$</li>
+					<li>You have <span id="basicTechPoints"></span> TP, out of <span id="maxBTP"></span></li>
+				</ul>
+				<h2 style="margin-bottom: 0;">Actions</h2>
+				<div style="padding: .5em 0;">
+					<button id="basicButton" class="pure-button" onclick="rockLaunch1()"><i class="fas fa-rocket"></i> Launch Rocket
+					</button>
+					<button id="basicBuyFuel" class="pure-button" onclick="buyFuel()"><i class="fas fa-gas-pump"></i> Buy Propellant<br></button>	
+				</div>
+				
+				<div class="tabs">
+						<input name="tabs" type="radio" id="tab-1" checked="checked" class="input"/>
+						<label for="tab-1" class="label"><i class="fas fa-angle-double-up"></i> Improvements</label>
+						<div class="panel">
+							<table>
+								<tr>
+									<td style="width: 50%;">
+										<button class="pure-button" onclick="upgrade1()">
+											Increase your fuel capacity by 10%
+										</button>
+									</td style="width: 50%;">
+									<td>
+										<p style="padding: .5em;">
+											Cost: $<span id="upgrade1Cost"></span> | Own <span id="upgrade1Buys"></span>/25 times
+										</p>
+									</td>
+								</tr>
+								<tr>
+									<td style="width: 50%;">
+										<button class="pure-button" onclick="upgrade2()">
+											Decrease the cost of fuel to $2 and <br> increase the cost scaling of fuel 5% 
+										</button>
+									</td style="width: 50%;">
+									<td>
+										<p style="padding: .5em;">
+											Cost: $<span id="upgrade2Cost"></span> | Own: <span id="upgrade2Buys"></span>/25 times
+										</p>
+									</td>
+								</tr>
+								<tr>
+									<td style="width: 50%;">
+											<button class="pure-button" onclick="upgrade3()">
+												Collect 25% more money on launch
+											</button>
+									</td style="width: 50%;">
+									<td>
+										<p style="padding: .5em;">
+											Cost: $<span id="upgrade3Cost"></span> | Own: <span id="upgrade3Buys"></span>/25 times
+										</p>
+									</td>
+								</tr>
+							</table>
+								
+								
+								
+								
+						</div>
+					  
+						<input name="tabs" type="radio" id="tab-2" class="input"/>
+						<label for="tab-2" class="label"><i class="fas fa-cogs"></i> Technologies</label>
+						<div class="panel">
+								<center>
+										<table id="basicTechs">
+											<tr>
+												<td>
+													<button class="basic" onclick="tech11()"> Decrease the cost scaling of the first upgrade to <br>28% ->
+														25%
+														-> 21%.<br>Cost: 1 TP. Bought:<span id="TC11"></span></button></td>
+												<td>
+													<button class="basic" onclick="tech12()"> Decrease the cost scaling of the second upgrade to <br>38% ->
+														35%
+														-> 31%.<br>Cost: 1 TP. Bought:<span id="TC12"></span></button></td>
+												<td>
+													<button class="basic" onclick="tech13()"> Decrease the cost scaling of the third upgrade to <br>48% ->
+														45%
+														-> 40%.<br>Cost: 1 TP. Bought:<span id="TC13"></span></button></td>
+											</tr>
+											<tr>
+												<td>
+													<button class="basic" onclick="tech14()"> Increase the effectiveness of the third upgrade to <br>28% ->
+														30%
+														-> 32%.<br>Cost: 1 TP. Bought:<span id="TC14"></span></button></td>
+												<td>
+													<button class="basic" onclick="tech15()"> Increase the Money per Fuel multiplier on prestige to <br>2x
+														-> 3x
+														-> 4x.<br>Cost: 1 TP. Bought:<span id="TC15"></span></button></td>
+												<td>
+													<button class="basic" onclick="tech16()"> Increase the multiplier for Creativity to <br>1.5x -> 2x ->
+														2.5x.<br>Cost: 1 TP. Bought:<span id="TC16"></span></button></td>
+											</tr>
+										</table><br>
+										<button id="basicTechs2" class="basic" onclick="techRespec()"> <br>Respec TCs on next
+											Brainstorm<br></button><br>
+									</center>
+						</div>
+					  
+					  </div>
+				<p>
+				Thanks to SuperSpruce for some of the code! You can check out his YouTube channel <a
+					href="https://www.youtube.com/channel/UCrpbLYZYpwpkrW9j9x8Ci2A" target="_blank">here</a>, and the game we're
+				collaborating on <a href="https://superspruce.github.io/Clover-Clicker/" target="_blank">here<a>.
+				</p>
 			</div>
-			<div id="explorerPUps" class="pSubTab">
-				<button class="basic" onclick="pUpgrade7()">Increase the BTP max to 18. <br> Cost: 2500 creativity</button><br>
-				<button class="explorer" onclick="pUpgrade8()">Explorer's money per fuel is boosted by your creativity.<br>
-					Cost: 7500 creativity</button>
-				<button class="basic" onclick="pUpgrade9()">You start with all of the first rocket's upgrades bought.<br> Cost:
-					15000 creativity</button><br>
-				<button class="explorer" onclick="pUpgrade10()">Unlock Explorer's Tech Points.<br> Cost: 50000
-					creativity</button>
-				<button class="explorer" onclick="pUpgrade11()">Unlock Explorer's automation.<br> Cost: 50000
-					creativity</button>
-				<button class="mercury" onclick="pUpgrade12()">Unlock Mercury. You have to have at least 25 of each Explorer
-					upgrade.<br> Cost: 10000000 creativity</button>
-				<button class="mercury" onclick="pUpgrade13()">Unlock Mercury's TP.<br> Cost: 100000000 creativity</button>
+			<div id="sources" class="tab">
+				Secondary:
+				Morring, Jr., Frank. "Space race." World Book Advanced, World Book, 2019,
+				www.worldbookonline.com/advanced/article?id=ar755298. Accessed 16 Jan. 2019.<br>
+				Trevino, Marcella Bush. “Space Race.” Salem Press Encyclopedia, 2018. EBSCOhost,
+				search.ebscohost.com/login.aspx?direct=true&db=t6o&AN=89183508.<br>
+				McGill, Sara Ann. “The First Moon Landing.” First Moon Landing, Aug. 2017, pp. 1–2. EBSCOhost,
+				search.ebscohost.com/login.aspx?direct=true&db=n8h&AN=17989654.<br>
+				https://www.khanacademy.org/humanities/us-history/postwarera/1950s-america/a/the-start-of-the-space-race<br>
+				https://www.history.com/topics/cold-war/space-race<br>
+				Primary: <br>
+				https://history.nasa.gov/afj/ap11fj/01launch.html <br>
+				https://historycollection.jsc.nasa.gov/JSCHistoryPortal/history/mission_trans/MR03_TEC.PDF<br>
+				https://historycollection.jsc.nasa.gov/JSCHistoryPortal/history/mission_trans/GT03_TEC.PDF<br>
+				https://history.nasa.gov/SP-4029/Apollo_01c_Timeline.htm<br>
+				an intervew with someone, but i won't say here in order to contain my anonymity
 			</div>
-		</center>
+			<div id="options" class="tab">
+				<button class="yeet" onclick="fullReset()">Reset the game</button>
+				<button class="yeet" onclick="save()">Save</button>
+				<button class="yeet" onclick="outof()">Export</button>
+				<button class="yeet" onclick="into()">Import</button>
+				<button class="yeet" onclick="ruinTheFun()">Get to where new content starts.</button>
+
+
+			</div>
+			<div id="prestige" class="tab">
+				<center>
+					You have <span id="creativity">0</span> creativity.<br>
+					<button class="basic" onclick="subTab('basicPUps')">Basic Rocket</button>
+					<button id="explorerContent2" style:display="none" class="explorer"
+						onclick="subTab('explorerPUps')">Explorer</button>
+					<div id="basicPUps" class="pSubTab">
+						You must have $50000 or more to prestige.<br>
+						<button class="prestige1" onclick="prestige1()">Reset everything except automation, and gain <span
+								id="gainOnBrainstorm"></span> creativity. <div> You must have bought at least 5 of each
+								upgrade.</button>
+						<br>
+
+						<br>
+						<button class="allegiance yeet" onclick="pUpgrade1()">Use 1 creativity to join the United States!<br>This
+							makes
+							creativity have a better multiplier. (log2(x+1)+1)*1.5</button><br>
+						<button class="allegiance yeet" onclick="pUpgrade2()">Use <span id="pUpgrade2Cost"></span> creativity to
+							launch
+							multiple rockets at once! <br> Currently:<span id="basicRocketLimit"></span></button>
+						<button class="yeet" onclick="pUpgrade3()">Use <span id="pUpgrade3Cost"></span> creativity to increase the
+							Creativity multiplier.<br>Currently: <span id="creativityMultiplier"></span></button><br>
+						<button class="basic" onclick="pUpgrade4()">Use 10 creativity to unlock Technologies.<br>This unlocks
+							Technology
+							Point generation,<br>gained based on how many upgrades you have!</button>
+						<br><button class="basic" onclick="pUpgrade5()">Automate the buying of fuel and the launch of
+							rockets.<br>WARNING: After buying this, there is no way to turn off automation.<br>Do not leave the tab
+							open
+							in the background.<br> Cost: 10 Creativity</button>
+						<br><button class="explorer" onclick="pUpgrade6()">Start the Explorers program.<br>Requires 25 of each
+							upgrade<br>.Unlocks a new rocket<br>Cost: 250 creativity</button>
+					</div>
+					<div id="explorerPUps" class="pSubTab">
+						<button class="basic" onclick="pUpgrade7()">Increase the BTP max to 18. <br> Cost: 2500
+							creativity</button><br>
+						<button class="explorer" onclick="pUpgrade8()">Explorer's money per fuel is boosted by your creativity.<br>
+							Cost: 7500 creativity</button>
+						<button class="basic" onclick="pUpgrade9()">You start with all of the first rocket's upgrades bought.<br>
+							Cost:
+							15000 creativity</button><br>
+						<button class="explorer" onclick="pUpgrade10()">Unlock Explorer's Tech Points.<br> Cost: 50000
+							creativity</button>
+						<button class="explorer" onclick="pUpgrade11()">Unlock Explorer's automation.<br> Cost: 50000
+							creativity</button>
+						<button class="mercury" onclick="pUpgrade12()">Unlock Mercury. You have to have at least 25 of each Explorer
+							upgrade.<br> Cost: 10000000 creativity</button>
+						<button class="mercury" onclick="pUpgrade13()">Unlock Mercury's TP.<br> Cost: 100000000 creativity</button>
+					</div>
+				</center>
+			</div>
+			<div id="lore" class="tab">
+				<span id="lore1"></span><br>
+				<span id="lore2"></span><br>
+				<span id="lore3"></span><br>
+				<span id="lore4"></span><br>
+				<span id="lore5"></span><br>
+				<span id="lore6"></span><br>
+				<span id="lore7"></span><br>
+				<span id="lore8"></span><br>
+				<span id="lore9"></span><br>
+				<span id="lore10"></span><br>
+				<span id="lore11"></span><br>
+				<span id="lore12"></span><br>
+				<span id="lore13"></span><br>
+				<span id="lore14"></span><br>
+				<span id="lore15"></span><br>
+				<span id="lore16"></span><br>
+				<span id="lore17"></span><br>
+				<span id="lore18"></span><br>
+			</div>
+			<div id="rock1" class="tab">
+				<button class="explorer" onclick="rocklaunch2()">Launch the Explorer rocket.<br>You lose your fuel, and gain
+					money.</button><br>
+				You have <span id="stillmoney"></span>$<br>
+				You have <span id="explorerFuel"></span> fuel.<br>
+				Your current funding gives you <span id="explorerMoneyPerFuel"></span> dollars per fuel used.<br>
+				Your maximum fuel is <span id="explorerFuelMax"></span><br>
+				The current cost of 1 fuel is <span id="explorerFuelCost"></span>$<br>
+				You have a <span id="failChance"></span>% chance of success.<br>
+				<button class="yeet" onclick="expBuyFuel()"><br>Buy some fuel!<br></button><br>
+				<button class="yeet" onclick="expUp1()">Make your rocket longer, allowing it to <br>increase your fuel capacity
+					by
+					10%!<br>Cost:<span id="explorerUpgrade1Cost"></span>$<br>Bought <span id="explorerUpgrade1Buys"></span>/50
+					times</button>
+				<button class="yeet" onclick="expUp2()">Disrupt the economy, so you can decrease the cost<br> of fuel to $50000,
+					but
+					decrease the cost scaling of fuel by 10%!<br>Cost:<span id="explorerUpgrade2Cost"></span>$<br>Bought <span
+						id="explorerUpgrade2Buys"></span>/50 times</button>
+				<button class="yeet" onclick="exUp3()">Increase the speed of your rocket,<br> allowing it to collect 25% more
+					money!<br>Cost:<span id="explorerUpgrade3Cost"></span>$<br>Bought <span id="explorerUpgrade3Buys"></span>/50
+					times</button>
+				<button class="yeet" onclick="expUp4()">Reinforce the rocket, giving an extra 2% chance of sucess!<br>Cost:<span
+						id="explorerUpgrade4Cost"></span>$<br>Bought <span id="explorerUpgrade4Buys"></span>/50 times</button><br>
+				You have <span id="explorerTechPoints"></span> TP, out of <span id="maxETP"></span>
+				<table id="explorerTechs">
+					<tr>
+						<td>
+							<button class="explorer" onclick="tech21()"> Decrease the cost scaling of the first upgrade to <br>43% ->
+								40%
+								-> 36%.<br>Cost: 1 TP. Bought:<span id="TC21"></span></button></td>
+						<td>
+							<button class="explorer" onclick="tech22()"> Decrease the cost scaling of the second upgrade to <br>53% ->
+								50%
+								-> 46%.<br>Cost: 1 TP. Bought:<span id="TC22"></span></button></td>
+						<td>
+							<button class="explorer" onclick="tech23()"> Decrease the cost scaling of the third upgrade to <br>64% ->
+								60%
+								-> 58%.<br>Cost: 1 TP. Bought:<span id="TC23"></span></button></td>
+						<td>
+							<button class="explorer" onclick="tech24()"> Decrease the cost scaling of the fourth upgrade to <br>48% ->
+								45%
+								-> 41%.<br>Cost: 1 TP. Bought:<span id="TC24"></span></button></td>
+					</tr>
+					<tr>
+						<td>
+							<button class="explorer" onclick="tech25()"> Increase the effectiveness of the third upgrade to <br>29% ->
+								32%
+								-> 34%.<br>Cost: 1 TP. Bought:<span id="TC25"></span></button></td>
+						<td>
+							<button class="explorer" onclick="tech26()"> Increase the effectiveness of the fourth upgrade to <br>2.2%
+								->
+								2.5% -> 2.9%.<br>Cost: 1 TP. Bought:<span id="TC26"></span></button></td>
+						<td>
+							<button class="explorer" onclick="tech27()"> Increase the Money per Fuel multiplier on prestige to <br>2x
+								->
+								3x -> 4x.<br>Cost: 1 TP. Bought:<span id="TC27"></span></button></td>
+						<td>
+							<button class="explorer" onclick="tech28()"> Increase the multiplier for Creativity to <br>1.5x -> 2x ->
+								2.5x.<br>Cost: 1 TP. Bought:<span id="TC28"></span></button></td>
+					</tr>
+				</table><br>
+				<button id="explorerTechs2" class="explorer" onclick="techRespec2()"> <br>Respec TCs on next
+					Brainstorm<br></button><br>
+			</div>
+			<div id="rock2" class="tab">
+				<button class="mercury" onclick="rockLaunch3()">Launch the Mercury rocket.<br>You lose your fuel, and gain
+					money.</button><br>
+				You have <span id="alsostillmoney"></span>$<br>
+				You have <span id="mercuryFuel"></span> fuel.<br>
+				Your current funding gives you <span id="mercuryMoneyPerFuel"></span> dollars per fuel used.<br>
+				Your maximum fuel is <span id="mercuryFuelMax"></span><br>
+				The current cost of 1 fuel is <span id="mercuryFuelCost"></span>$<br>
+				You have a <span id="failChance"></span>% chance of success.<br>
+				<button class="yeet" onclick="buyFuelForTheThirdTime()"><br>Buy some fuel!<br></button><br>
+				<button class="yeet" onclick="mercUp1()">Make your rocket longer, allowing it to <br>increase your fuel capacity
+					by
+					10%!<br>Cost:<span id="mercuryUpgrade1Cost"></span>$<br>Bought <span id="mercuryUpgrade1Buys"></span>/50
+					times</button>
+				<button class="yeet" onclick="mercUp2()">Disrupt the economy, so you can decrease the cost<br> of fuel to
+					$50000,
+					but decrease the cost scaling of fuel by 10%!<br>Cost:<span id="mercuryUpgrade2Cost"></span>$<br>Bought <span
+						id="mercuryUpgrade2Buys"></span>/50 times</button>
+				<button class="yeet" onclick="mercUp3()">Increase the speed of your rocket,<br> allowing it to collect 25% more
+					money!<br>Cost:<span id="mercuryUpgrade3Cost"></span>$<br>Bought <span id="mercuryUpgrade3Buys"></span>/50
+					times</button>
+				<button class="yeet" onclick="mercUp4()">Reinforce the rocket, giving an extra 2% chance of
+					sucess!<br>Cost:<span id="mercuryUpgrade4Cost"></span>$<br>Bought <span id="mercuryUpgrade4Buys"></span>/50
+					times</button><br>
+				You have <span id="mercuryTechPoints"></span> TP, out of <span id="maxMTP"></span>
+				<table id="mercuryTechs">
+					<tr>
+						<td>
+							<button class="mercury" onclick="tech31()"> Decrease the cost scaling of the first upgrade to <br>28% ->
+								25%
+								-> 22%.<br>Cost: 1 TP. Bought:<span id="TC31"></span></button></td>
+						<td>
+							<button class="mercury" onclick="tech32()"> Decrease the cost scaling of the second upgrade to <br>46% ->
+								43%
+								-> 46%.<br>Cost: 1 TP. Bought:<span id="TC32"></span></button></td>
+						<td>
+							<button class="mercury" onclick="tech33()"> Decrease the cost scaling of the third upgrade to <br>56% ->
+								53%
+								-> 50%.<br>Cost: 1 TP. Bought:<span id="TC33"></span></button></td>
+						<td>
+							<button class="mercury" onclick="tech34()"> Decrease the cost scaling of the fourth upgrade to <br>48% ->
+								45%
+								-> 41%.<br>Cost: 1 TP. Bought:<span id="TC34"></span></button></td>
+					</tr>
+					<tr>
+						<td>
+							<button class="mercury" onclick="tech35()"> Increase the effectiveness of the third upgrade to <br>29% ->
+								32%
+								-> 34%.<br>Cost: 1 TP. Bought:<span id="TC35"></span></button></td>
+						<td>
+							<button class="mercury" onclick="tech36()"> Increase the effectiveness of the fourth upgrade to <br>2.2%
+								->
+								2.5% -> 2.9%.<br>Cost: 1 TP. Bought:<span id="TC36"></span></button></td>
+						<td>
+							<button class="mercury" onclick="tech37()"> Increase the Money per Fuel multiplier on prestige to <br>2x
+								-> 3x
+								-> 4x.<br>Cost: 1 TP. Bought:<span id="TC37"></span></button></td>
+						<td>
+							<button class="mercury" onclick="tech38()"> Increase the multiplier for Creativity to <br>1.5x -> 2x ->
+								2.5x.<br>Cost: 1 TP. Bought:<span id="TC38"></span></button></td>
+					</tr>
+				</table><br>
+				<button id="mercuryTechs2" class="mercury" onclick="techRespec2()"> <br>Respec TCs on next
+					Brainstorm<br></button><br>
+
+
+
+			</div>
+			<div id="rock3" class="tab">
+				<button class="gemini" onclick="rockLaunch3()">Launch the gemini rocket.<br>You lose your fuel, and gain
+					money.</button><br>
+				You have <span id="probablystillmoney"></span>$<br>
+				You have <span id="geminiFuel"></span> fuel.<br>
+				Your current funding gives you <span id="geminiMoneyPerFuel"></span> dollars per fuel used.<br>
+				Your maximum fuel is <span id="geminiFuelMax"></span><br>
+				The current cost of 1 fuel is <span id="geminiFuelCost"></span>$<br>
+				You have a <span id="failChance"></span>% chance of success.<br>
+				<button class="yeet" onclick="buyFuelForTheThirdTime()"><br>Buy some fuel!<br></button><br>
+				<button class="yeet" onclick="gemUp1()">Make your rocket longer, allowing it to <br>increase your fuel capacity
+					by
+					10%!<br>Cost:<span id="geminiUpgrade1Cost"></span>$<br>Bought <span id="geminiUpgrade1Buys"></span>/50
+					times</button>
+				<button class="yeet" onclick="gemUp2()">Disrupt the economy, so you can decrease the cost<br> of fuel to $50000,
+					but
+					decrease the cost scaling of fuel by 10%!<br>Cost:<span id="geminiUpgrade2Cost"></span>$<br>Bought <span
+						id="geminiUpgrade2Buys"></span>/50 times</button>
+				<button class="yeet" onclick="gemUp3()">Increase the speed of your rocket,<br> allowing it to collect 25% more
+					money!<br>Cost:<span id="geminiUpgrade3Cost"></span>$<br>Bought <span id="geminiUpgrade3Buys"></span>/50
+					times</button>
+				<button class="yeet" onclick="gemUp4()">Reinforce the rocket, giving an extra 2% chance of sucess!<br>Cost:<span
+						id="geminiUpgrade4Cost"></span>$<br>Bought <span id="geminiUpgrade4Buys"></span>/50 times</button><br>
+				You have <span id="geminiTechPoints"></span> TP, out of <span id="maxGTP"></span>
+
+
+			</div>
+			<div id="rock4" class="tab">
+				<button class="apollo" onclick="rockLaunch3()">Launch the apollo rocket.<br>You lose your fuel, and gain
+					money.</button><br>
+				You have <span id="mightbemoneyimnotsure"></span>$<br>
+				You have <span id="apolloFuel"></span> fuel.<br>
+				Your current funding gives you <span id="apolloMoneyPerFuel"></span> dollars per fuel used.<br>
+				Your maximum fuel is <span id="apolloFuelMax"></span><br>
+				The current cost of 1 fuel is <span id="apolloFuelCost"></span>$<br>
+				You have a <span id="failChance"></span>% chance of success.<br>
+				<button class="yeet" onclick="buyFuelForTheThirdTime()"><br>Buy some fuel!<br></button><br>
+				<button class="yeet" onclick="apUp1()">Make your rocket longer, allowing it to <br>increase your fuel capacity
+					by
+					10%!<br>Cost:<span id="apolloUpgrade1Cost"></span>$<br>Bought <span id="apolloUpgrade1Buys"></span>/50
+					times</button>
+				<button class="yeet" onclick="apUp2()">Disrupt the economy, so you can decrease the cost<br> of fuel to $50000,
+					but
+					decrease the cost scaling of fuel by 10%!<br>Cost:<span id="apolloUpgrade2Cost"></span>$<br>Bought <span
+						id="apolloUpgrade2Buys"></span>/50 times</button>
+				<button class="yeet" onclick="apUp3()">Increase the speed of your rocket,<br> allowing it to collect 25% more
+					money!<br>Cost:<span id="apolloUpgrade3Cost"></span>$<br>Bought <span id="apolloUpgrade3Buys"></span>/50
+					times</button>
+				<button class="yeet" onclick="apUp4()">Reinforce the rocket, giving an extra 2% chance of sucess!<br>Cost:<span
+						id="apolloUpgrade4Cost"></span>$<br>Bought <span id="apolloUpgrade4Buys"></span>/50 times</button><br>
+				You have <span id="apolloTechPoints"></span> TP, out of <span id="maxATP"></span>
+
+
+			</div>
+		</div>
 	</div>
-	<div id="lore" class="tab">
-		<span id="lore1"></span><br>
-		<span id="lore2"></span><br>
-		<span id="lore3"></span><br>
-		<span id="lore4"></span><br>
-		<span id="lore5"></span><br>
-		<span id="lore6"></span><br>
-		<span id="lore7"></span><br>
-		<span id="lore8"></span><br>
-		<span id="lore9"></span><br>
-		<span id="lore10"></span><br>
-		<span id="lore11"></span><br>
-		<span id="lore12"></span><br>
-		<span id="lore13"></span><br>
-		<span id="lore14"></span><br>
-		<span id="lore15"></span><br>
-		<span id="lore16"></span><br>
-		<span id="lore17"></span><br>
-		<span id="lore18"></span><br>
-	</div>
-	<div id="rock1" class="tab">
-		<button class="explorer" onclick="rocklaunch2()">Launch the Explorer rocket.<br>You lose your fuel, and gain
-			money.</button><br>
-		You have <span id="stillmoney"></span>$<br>
-		You have <span id="explorerFuel"></span> fuel.<br>
-		Your current funding gives you <span id="explorerMoneyPerFuel"></span> dollars per fuel used.<br>
-		Your maximum fuel is <span id="explorerFuelMax"></span><br>
-		The current cost of 1 fuel is <span id="explorerFuelCost"></span>$<br>
-		You have a <span id="failChance"></span>% chance of success.<br>
-		<button class="yeet" onclick="expBuyFuel()"><br>Buy some fuel!<br></button><br>
-		<button class="yeet" onclick="expUp1()">Make your rocket longer, allowing it to <br>increase your fuel capacity by
-			10%!<br>Cost:<span id="explorerUpgrade1Cost"></span>$<br>Bought <span id="explorerUpgrade1Buys"></span>/50
-			times</button>
-		<button class="yeet" onclick="expUp2()">Disrupt the economy, so you can decrease the cost<br> of fuel to $50000, but
-			decrease the cost scaling of fuel by 10%!<br>Cost:<span id="explorerUpgrade2Cost"></span>$<br>Bought <span
-				id="explorerUpgrade2Buys"></span>/50 times</button>
-		<button class="yeet" onclick="exUp3()">Increase the speed of your rocket,<br> allowing it to collect 25% more
-			money!<br>Cost:<span id="explorerUpgrade3Cost"></span>$<br>Bought <span id="explorerUpgrade3Buys"></span>/50
-			times</button>
-		<button class="yeet" onclick="expUp4()">Reinforce the rocket, giving an extra 2% chance of sucess!<br>Cost:<span
-				id="explorerUpgrade4Cost"></span>$<br>Bought <span id="explorerUpgrade4Buys"></span>/50 times</button><br>
-		You have <span id="explorerTechPoints"></span> TP, out of <span id="maxETP"></span>
-		<table id="explorerTechs">
-			<tr>
-				<td>
-					<button class="explorer" onclick="tech21()"> Decrease the cost scaling of the first upgrade to <br>43% -> 40%
-						-> 36%.<br>Cost: 1 TP. Bought:<span id="TC21"></span></button></td>
-				<td>
-					<button class="explorer" onclick="tech22()"> Decrease the cost scaling of the second upgrade to <br>53% -> 50%
-						-> 46%.<br>Cost: 1 TP. Bought:<span id="TC22"></span></button></td>
-				<td>
-					<button class="explorer" onclick="tech23()"> Decrease the cost scaling of the third upgrade to <br>64% -> 60%
-						-> 58%.<br>Cost: 1 TP. Bought:<span id="TC23"></span></button></td>
-				<td>
-					<button class="explorer" onclick="tech24()"> Decrease the cost scaling of the fourth upgrade to <br>48% -> 45%
-						-> 41%.<br>Cost: 1 TP. Bought:<span id="TC24"></span></button></td>
-			</tr>
-			<tr>
-				<td>
-					<button class="explorer" onclick="tech25()"> Increase the effectiveness of the third upgrade to <br>29% -> 32%
-						-> 34%.<br>Cost: 1 TP. Bought:<span id="TC25"></span></button></td>
-				<td>
-					<button class="explorer" onclick="tech26()"> Increase the effectiveness of the fourth upgrade to <br>2.2% ->
-						2.5% -> 2.9%.<br>Cost: 1 TP. Bought:<span id="TC26"></span></button></td>
-				<td>
-					<button class="explorer" onclick="tech27()"> Increase the Money per Fuel multiplier on prestige to <br>2x ->
-						3x -> 4x.<br>Cost: 1 TP. Bought:<span id="TC27"></span></button></td>
-				<td>
-					<button class="explorer" onclick="tech28()"> Increase the multiplier for Creativity to <br>1.5x -> 2x ->
-						2.5x.<br>Cost: 1 TP. Bought:<span id="TC28"></span></button></td>
-			</tr>
-		</table><br>
-		<button id="explorerTechs2" class="explorer" onclick="techRespec2()"> <br>Respec TCs on next
-			Brainstorm<br></button><br>
-	</div>
-	<div id="rock2" class="tab">
-		<button class="mercury" onclick="rockLaunch3()">Launch the Mercury rocket.<br>You lose your fuel, and gain
-			money.</button><br>
-		You have <span id="alsostillmoney"></span>$<br>
-		You have <span id="mercuryFuel"></span> fuel.<br>
-		Your current funding gives you <span id="mercuryMoneyPerFuel"></span> dollars per fuel used.<br>
-		Your maximum fuel is <span id="mercuryFuelMax"></span><br>
-		The current cost of 1 fuel is <span id="mercuryFuelCost"></span>$<br>
-		You have a <span id="failChance"></span>% chance of success.<br>
-		<button class="yeet" onclick="buyFuelForTheThirdTime()"><br>Buy some fuel!<br></button><br>
-		<button class="yeet" onclick="mercUp1()">Make your rocket longer, allowing it to <br>increase your fuel capacity by
-			10%!<br>Cost:<span id="mercuryUpgrade1Cost"></span>$<br>Bought <span id="mercuryUpgrade1Buys"></span>/50
-			times</button>
-		<button class="yeet" onclick="mercUp2()">Disrupt the economy, so you can decrease the cost<br> of fuel to $50000,
-			but decrease the cost scaling of fuel by 10%!<br>Cost:<span id="mercuryUpgrade2Cost"></span>$<br>Bought <span
-				id="mercuryUpgrade2Buys"></span>/50 times</button>
-		<button class="yeet" onclick="mercUp3()">Increase the speed of your rocket,<br> allowing it to collect 25% more
-			money!<br>Cost:<span id="mercuryUpgrade3Cost"></span>$<br>Bought <span id="mercuryUpgrade3Buys"></span>/50
-			times</button>
-		<button class="yeet" onclick="mercUp4()">Reinforce the rocket, giving an extra 2% chance of sucess!<br>Cost:<span
-				id="mercuryUpgrade4Cost"></span>$<br>Bought <span id="mercuryUpgrade4Buys"></span>/50 times</button><br>
-		You have <span id="mercuryTechPoints"></span> TP, out of <span id="maxMTP"></span>
-		<table id="mercuryTechs">
-			<tr>
-				<td>
-					<button class="mercury" onclick="tech31()"> Decrease the cost scaling of the first upgrade to <br>28% -> 25%
-						-> 22%.<br>Cost: 1 TP. Bought:<span id="TC31"></span></button></td>
-				<td>
-					<button class="mercury" onclick="tech32()"> Decrease the cost scaling of the second upgrade to <br>46% -> 43%
-						-> 46%.<br>Cost: 1 TP. Bought:<span id="TC32"></span></button></td>
-				<td>
-					<button class="mercury" onclick="tech33()"> Decrease the cost scaling of the third upgrade to <br>56% -> 53%
-						-> 50%.<br>Cost: 1 TP. Bought:<span id="TC33"></span></button></td>
-				<td>
-					<button class="mercury" onclick="tech34()"> Decrease the cost scaling of the fourth upgrade to <br>48% -> 45%
-						-> 41%.<br>Cost: 1 TP. Bought:<span id="TC34"></span></button></td>
-			</tr>
-			<tr>
-				<td>
-					<button class="mercury" onclick="tech35()"> Increase the effectiveness of the third upgrade to <br>29% -> 32%
-						-> 34%.<br>Cost: 1 TP. Bought:<span id="TC35"></span></button></td>
-				<td>
-					<button class="mercury" onclick="tech36()"> Increase the effectiveness of the fourth upgrade to <br>2.2% ->
-						2.5% -> 2.9%.<br>Cost: 1 TP. Bought:<span id="TC36"></span></button></td>
-				<td>
-					<button class="mercury" onclick="tech37()"> Increase the Money per Fuel multiplier on prestige to <br>2x -> 3x
-						-> 4x.<br>Cost: 1 TP. Bought:<span id="TC37"></span></button></td>
-				<td>
-					<button class="mercury" onclick="tech38()"> Increase the multiplier for Creativity to <br>1.5x -> 2x ->
-						2.5x.<br>Cost: 1 TP. Bought:<span id="TC38"></span></button></td>
-			</tr>
-		</table><br>
-		<button id="mercuryTechs2" class="mercury" onclick="techRespec2()"> <br>Respec TCs on next
-			Brainstorm<br></button><br>
 
-
-
-	</div>
-	<div id="rock3" class="tab">
-		<button class="gemini" onclick="rockLaunch3()">Launch the gemini rocket.<br>You lose your fuel, and gain
-			money.</button><br>
-		You have <span id="probablystillmoney"></span>$<br>
-		You have <span id="geminiFuel"></span> fuel.<br>
-		Your current funding gives you <span id="geminiMoneyPerFuel"></span> dollars per fuel used.<br>
-		Your maximum fuel is <span id="geminiFuelMax"></span><br>
-		The current cost of 1 fuel is <span id="geminiFuelCost"></span>$<br>
-		You have a <span id="failChance"></span>% chance of success.<br>
-		<button class="yeet" onclick="buyFuelForTheThirdTime()"><br>Buy some fuel!<br></button><br>
-		<button class="yeet" onclick="gemUp1()">Make your rocket longer, allowing it to <br>increase your fuel capacity by
-			10%!<br>Cost:<span id="geminiUpgrade1Cost"></span>$<br>Bought <span id="geminiUpgrade1Buys"></span>/50
-			times</button>
-		<button class="yeet" onclick="gemUp2()">Disrupt the economy, so you can decrease the cost<br> of fuel to $50000, but
-			decrease the cost scaling of fuel by 10%!<br>Cost:<span id="geminiUpgrade2Cost"></span>$<br>Bought <span
-				id="geminiUpgrade2Buys"></span>/50 times</button>
-		<button class="yeet" onclick="gemUp3()">Increase the speed of your rocket,<br> allowing it to collect 25% more
-			money!<br>Cost:<span id="geminiUpgrade3Cost"></span>$<br>Bought <span id="geminiUpgrade3Buys"></span>/50
-			times</button>
-		<button class="yeet" onclick="gemUp4()">Reinforce the rocket, giving an extra 2% chance of sucess!<br>Cost:<span
-				id="geminiUpgrade4Cost"></span>$<br>Bought <span id="geminiUpgrade4Buys"></span>/50 times</button><br>
-		You have <span id="geminiTechPoints"></span> TP, out of <span id="maxGTP"></span>
-
-
-	</div>
-	<div id="rock4" class="tab">
-		<button class="apollo" onclick="rockLaunch3()">Launch the apollo rocket.<br>You lose your fuel, and gain
-			money.</button><br>
-		You have <span id="mightbemoneyimnotsure"></span>$<br>
-		You have <span id="apolloFuel"></span> fuel.<br>
-		Your current funding gives you <span id="apolloMoneyPerFuel"></span> dollars per fuel used.<br>
-		Your maximum fuel is <span id="apolloFuelMax"></span><br>
-		The current cost of 1 fuel is <span id="apolloFuelCost"></span>$<br>
-		You have a <span id="failChance"></span>% chance of success.<br>
-		<button class="yeet" onclick="buyFuelForTheThirdTime()"><br>Buy some fuel!<br></button><br>
-		<button class="yeet" onclick="apUp1()">Make your rocket longer, allowing it to <br>increase your fuel capacity by
-			10%!<br>Cost:<span id="apolloUpgrade1Cost"></span>$<br>Bought <span id="apolloUpgrade1Buys"></span>/50
-			times</button>
-		<button class="yeet" onclick="apUp2()">Disrupt the economy, so you can decrease the cost<br> of fuel to $50000, but
-			decrease the cost scaling of fuel by 10%!<br>Cost:<span id="apolloUpgrade2Cost"></span>$<br>Bought <span
-				id="apolloUpgrade2Buys"></span>/50 times</button>
-		<button class="yeet" onclick="apUp3()">Increase the speed of your rocket,<br> allowing it to collect 25% more
-			money!<br>Cost:<span id="apolloUpgrade3Cost"></span>$<br>Bought <span id="apolloUpgrade3Buys"></span>/50
-			times</button>
-		<button class="yeet" onclick="apUp4()">Reinforce the rocket, giving an extra 2% chance of sucess!<br>Cost:<span
-				id="apolloUpgrade4Cost"></span>$<br>Bought <span id="apolloUpgrade4Buys"></span>/50 times</button><br>
-		You have <span id="apolloTechPoints"></span> TP, out of <span id="maxATP"></span>
-
-
-	</div>
-	<script>
-		function tab(t) {
-			var classList = document.getElementsByClassName("tab");
-			for (var i = 0; i < classList.length; i++) {
-				classList[i].style.display = "none"
-			}
-			document.getElementById(t).style.display = ""
-		}
-		tab("basic")
-
-		function subTab(tabName) {
-			var tabs = document.getElementsByClassName('pSubTab');
-			var tab;
-			for (var i = 0; i < tabs.length; i++) {
-				tab = tabs.item(i);
-				if (tab.id === tabName) {
-					tab.style.display = 'block';
-				} else {
-					tab.style.display = 'none';
-				}
-			}
-		}
-		subTab("basicPUps");
-	</script>
 	<script type="text/javascript" src="main.js"></script>
-	<br>
 </body>
 
 </html>
