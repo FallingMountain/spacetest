@@ -12,163 +12,154 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 	<title>Space Test</title>
 	<link rel="stylesheet" type="text/css" href="yeet.css">
+	<!--[if lte IE 8]>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+<!--<![endif]-->
 </head>
 
 <body>
-	<div class="pure-g">
-		<div class="pure-u-1-4">
-				<div class="pure-menu custom-restricted-width">
-						<span class="pure-menu-heading">Space Menu</span>
-					
-						<ul class="pure-menu-list">
-							<li class="pure-menu-item">
-								<a onclick="tab('basic')" href="#" class="pure-menu-link">Basic Rocket</a>
-							</li>
-							<li id="explorerContent" class="pure-menu-item" style="display: none;" class="explorer">
-								<a onclick="tab('rock1')" href="#" class="pure-menu-link">Explorer</a>
-							</li>
-							<li id="mercuryContent" class="pure-menu-item" style="display: none;">
-								<a onclick="tab('rock2')" href="#" class="pure-menu-link">Mercury</a>
-							</li>
-							<li class="pure-menu-item">
-								<a onclick="tab('rock3')" href="#" class="pure-menu-link">Gemini</a>
-							</li>
-							<li class="pure-menu-item">
-								<a onclick="tab('rock4')" href="#" class="pure-menu-link">Apollo</a>
-							</li>
-							<li class="pure-menu-item">
-								<a onclick="tab('sources')" href="#" class="pure-menu-link">Blueprints</a>
-							</li>
-							<li class="pure-menu-item">
-								<a onclick="tab('options')" href="#" class="pure-menu-link">Workshop</a>
-							</li>
-							<li id="brainPrestige" class="pure-menu-item" style="display: none;">
-								<a onclick="tab('prestige')" href="#" class="pure-menu-link">Brainstorm</a>
-							</li>
-							<li class="pure-menu-item">
-								<a onclick="tab('lore')" href="#" class="pure-menu-link">Journal</a>
-							</li>
-						</ul>
-					</div>
-			<!-- <button class="basic" onclick="tab('basic')">Basic Rocket</button>
-			<button id="explorerContent" style:display="none" class="explorer" onclick="tab('rock1')">Explorer</button>
-			<button id="mercuryContent" class="mercury" onclick="tab('rock2')">Mercury</button>
-			<button class="gemini" onclick="tab('rock3')">Gemini</button>
-			<button class="apollo" onclick="tab('rock4')">Apollo</button>
-			<button class="tabe" onclick="tab('sources')">Blueprints</button>
-			<button class="tabe" onclick="tab('options')">Workshop</button>
-			<button id="brainPrestige" class="prestige1" onclick="tab('prestige')">Brainstorm</button>
-			<button class="tabe" onclick="tab('lore')">Journal</button> -->
+	<div class="pure-g" style=" height: 550px;">
+		<div class="pure-u" >
+			<div class="pure-menu custom-restricted-width">
+				<span class="pure-menu-heading">Space Menu</span>
+			
+				<ul class="pure-menu-list">
+					<li class="pure-menu-item">
+						<a onclick="tab('basic')" href="#" class="pure-menu-link">Basic Rocket</a>
+					</li>
+					<li id="explorerContent" class="pure-menu-item" style="display: none;" class="explorer">
+						<a onclick="tab('basicRocket')" href="#" class="pure-menu-link">Explorer</a>
+					</li>
+					<li id="mercuryContent" class="pure-menu-item" style="display: none;">
+						<a onclick="tab('rock2')" href="#" class="pure-menu-link">Mercury</a>
+					</li>
+					<li class="pure-menu-item">
+						<a onclick="tab('rock3')" href="#" class="pure-menu-link">Gemini</a>
+					</li>
+					<li class="pure-menu-item">
+						<a onclick="tab('rock4')" href="#" class="pure-menu-link">Apollo</a>
+					</li>
+					<li class="pure-menu-item">
+						<a onclick="tab('sources')" href="#" class="pure-menu-link">Blueprints</a>
+					</li>
+					<li class="pure-menu-item">
+						<a onclick="tab('options')" href="#" class="pure-menu-link">Workshop</a>
+					</li>
+					<li id="brainPrestige" class="pure-menu-item" style="display: none;">
+						<a onclick="tab('prestige')" href="#" class="pure-menu-link">Brainstorm</a>
+					</li>
+					<!-- <li class="pure-menu-item">
+						<a onclick="tab('lore')" href="#" class="pure-menu-link">Journal</a>
+					</li> -->
+					<li class="pure-menu-item">
+						<a onclick="tab('achievements')" href="#" class="pure-menu-link">Achievements</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<div class="pure-u-3-4">
+		<div class="pure-u-3-5" style="padding: 1em; border-left: 1px solid #ccc; border-right: 1px solid #ccc;">
 			<div id="basic" class="tab">
 				<h1>Basic Rocket</h1>
 				<ul style="list-style: none; padding-left: 0;">
 					<li>Money: $<span id="money"></span></li>
 					<li>Fuel: <span id="fuel"></span> / <span id="fuelMax"></span></li>
-					<li>Your current funding gives you <span id="moneyPerFuel"></span> dollars per fuel used.</li>
-					<li>The current cost of 1 fuel is <span id="fuelCost"></span>$</li>
-					<li>You have <span id="basicTechPoints"></span> TP, out of <span id="maxBTP"></span></li>
+					<li>Dollar Per Fuel: $<span id="moneyPerFuel"></span></li>
+					<li>Fuel Cost: $<span id="fuelCost"></span></li>
+					<li>Tech Points: <span id="basicTechPoints"></span> / <span id="maxBTP"></span></li>
 				</ul>
 				<h2 style="margin-bottom: 0;">Actions</h2>
-				<div style="padding: .5em 0;">
-					<button id="basicButton" class="pure-button" onclick="rockLaunch1()"><i class="fas fa-rocket"></i> Launch Rocket
+				<div style="padding: .5em 0; margin-bottom: 1em;">
+					<button id="basicBtnLaunch" class="pure-button" onclick="rockLaunch1()"><i class="fas fa-rocket"></i> Launch Rocket
 					</button>
-					<button id="basicBuyFuel" class="pure-button" onclick="buyFuel()"><i class="fas fa-gas-pump"></i> Buy Propellant<br></button>	
+					<button id="basicBtnFuel" class="pure-button" onclick="buyFuel()"><i class="fas fa-gas-pump"></i> Buy Propellant<br></button>	
 				</div>
 				
 				<div class="tabs">
-						<input name="tabs" type="radio" id="tab-1" checked="checked" class="input"/>
-						<label for="tab-1" class="label"><i class="fas fa-angle-double-up"></i> Improvements</label>
-						<div class="panel">
+					<input name="tabs" type="radio" id="tab-1" checked="checked" class="input"/>
+					<label for="tab-1" class="label"><i class="fas fa-angle-double-up"></i> Improvements</label>
+					<div class="panel">
+						<table>
+							<tr>
+								<td style="width: 50%;">
+									<button class="pure-button" onclick="upgrade1()">
+										Increase Fuel Capacity by 10%
+									</button>
+								</td style="width: 50%;">
+								<td>
+									<p style="padding: .5em;">
+										Cost: $<span id="upgrade1Cost"></span> | Own <span id="upgrade1Buys"></span>/25
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="width: 50%;">
+									<button class="pure-button" onclick="upgrade2()">
+										Reset Fuel Cost to $2 and <br> Increase Fuel Cost Scaling 5% 
+									</button>
+								</td style="width: 50%;">
+								<td>
+									<p style="padding: .5em;">
+										Cost: $<span id="upgrade2Cost"></span> | Own: <span id="upgrade2Buys"></span>/25
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="width: 50%;">
+										<button class="pure-button" onclick="upgrade3()">
+											25% More Money Per Launch
+										</button>
+								</td style="width: 50%;">
+								<td>
+									<p style="padding: .5em;">
+										Cost: $<span id="upgrade3Cost"></span> | Own: <span id="upgrade3Buys"></span>/25
+									</p>
+								</td>
+							</tr>
+						</table>								
+					</div>
+					
+					<input name="tabs" type="radio" id="tab-2" class="input"/>
+					<label for="tab-2" id="basicTechs" class="label"><i class="fas fa-cogs"></i> Technologies</label>
+					<div class="panel">
+						<center>
 							<table>
 								<tr>
-									<td style="width: 50%;">
-										<button class="pure-button" onclick="upgrade1()">
-											Increase your fuel capacity by 10%
-										</button>
-									</td style="width: 50%;">
 									<td>
-										<p style="padding: .5em;">
-											Cost: $<span id="upgrade1Cost"></span> | Own <span id="upgrade1Buys"></span>/25 times
-										</p>
-									</td>
+										<button class="basic" onclick="tech11()"> Decrease the cost scaling of the first upgrade to <br>28% ->
+											25%
+											-> 21%.<br>Cost: 1 TP. Bought:<span id="TC11"></span></button></td>
+									<td>
+										<button class="basic" onclick="tech12()"> Decrease the cost scaling of the second upgrade to <br>38% ->
+											35%
+											-> 31%.<br>Cost: 1 TP. Bought:<span id="TC12"></span></button></td>
+									<td>
+										<button class="basic" onclick="tech13()"> Decrease the cost scaling of the third upgrade to <br>48% ->
+											45%
+											-> 40%.<br>Cost: 1 TP. Bought:<span id="TC13"></span></button></td>
 								</tr>
 								<tr>
-									<td style="width: 50%;">
-										<button class="pure-button" onclick="upgrade2()">
-											Decrease the cost of fuel to $2 and <br> increase the cost scaling of fuel 5% 
-										</button>
-									</td style="width: 50%;">
 									<td>
-										<p style="padding: .5em;">
-											Cost: $<span id="upgrade2Cost"></span> | Own: <span id="upgrade2Buys"></span>/25 times
-										</p>
-									</td>
-								</tr>
-								<tr>
-									<td style="width: 50%;">
-											<button class="pure-button" onclick="upgrade3()">
-												Collect 25% more money on launch
-											</button>
-									</td style="width: 50%;">
+										<button class="basic" onclick="tech14()"> Increase the effectiveness of the third upgrade to <br>28% ->
+											30%
+											-> 32%.<br>Cost: 1 TP. Bought:<span id="TC14"></span></button></td>
 									<td>
-										<p style="padding: .5em;">
-											Cost: $<span id="upgrade3Cost"></span> | Own: <span id="upgrade3Buys"></span>/25 times
-										</p>
-									</td>
+										<button class="basic" onclick="tech15()"> Increase the Money per Fuel multiplier on prestige to <br>2x
+											-> 3x
+											-> 4x.<br>Cost: 1 TP. Bought:<span id="TC15"></span></button></td>
+									<td>
+										<button class="basic" onclick="tech16()"> Increase the multiplier for Creativity to <br>1.5x -> 2x ->
+											2.5x.<br>Cost: 1 TP. Bought:<span id="TC16"></span></button></td>
 								</tr>
 							</table>
-								
-								
-								
-								
+							<button id="basicTechs2" class="basic" onclick="techRespec()"> <br>Respec TCs on next
+								Brainstorm
+							</button>
+							</center>
 						</div>
-					  
-						<input name="tabs" type="radio" id="tab-2" class="input"/>
-						<label for="tab-2" class="label"><i class="fas fa-cogs"></i> Technologies</label>
-						<div class="panel">
-								<center>
-										<table id="basicTechs">
-											<tr>
-												<td>
-													<button class="basic" onclick="tech11()"> Decrease the cost scaling of the first upgrade to <br>28% ->
-														25%
-														-> 21%.<br>Cost: 1 TP. Bought:<span id="TC11"></span></button></td>
-												<td>
-													<button class="basic" onclick="tech12()"> Decrease the cost scaling of the second upgrade to <br>38% ->
-														35%
-														-> 31%.<br>Cost: 1 TP. Bought:<span id="TC12"></span></button></td>
-												<td>
-													<button class="basic" onclick="tech13()"> Decrease the cost scaling of the third upgrade to <br>48% ->
-														45%
-														-> 40%.<br>Cost: 1 TP. Bought:<span id="TC13"></span></button></td>
-											</tr>
-											<tr>
-												<td>
-													<button class="basic" onclick="tech14()"> Increase the effectiveness of the third upgrade to <br>28% ->
-														30%
-														-> 32%.<br>Cost: 1 TP. Bought:<span id="TC14"></span></button></td>
-												<td>
-													<button class="basic" onclick="tech15()"> Increase the Money per Fuel multiplier on prestige to <br>2x
-														-> 3x
-														-> 4x.<br>Cost: 1 TP. Bought:<span id="TC15"></span></button></td>
-												<td>
-													<button class="basic" onclick="tech16()"> Increase the multiplier for Creativity to <br>1.5x -> 2x ->
-														2.5x.<br>Cost: 1 TP. Bought:<span id="TC16"></span></button></td>
-											</tr>
-										</table><br>
-										<button id="basicTechs2" class="basic" onclick="techRespec()"> <br>Respec TCs on next
-											Brainstorm<br></button><br>
-									</center>
-						</div>
-					  
-					  </div>
-				<p>
-				Thanks to SuperSpruce for some of the code! You can check out his YouTube channel <a
-					href="https://www.youtube.com/channel/UCrpbLYZYpwpkrW9j9x8Ci2A" target="_blank">here</a>, and the game we're
-				collaborating on <a href="https://superspruce.github.io/Clover-Clicker/" target="_blank">here<a>.
-				</p>
+					</div>
 			</div>
 			<div id="sources" class="tab">
 				Secondary:
@@ -197,76 +188,123 @@
 
 			</div>
 			<div id="prestige" class="tab">
-				<center>
-					You have <span id="creativity">0</span> creativity.<br>
-					<button class="basic" onclick="subTab('basicPUps')">Basic Rocket</button>
-					<button id="explorerContent2" style:display="none" class="explorer"
-						onclick="subTab('explorerPUps')">Explorer</button>
-					<div id="basicPUps" class="pSubTab">
-						You must have $50000 or more to prestige.<br>
-						<button class="prestige1" onclick="prestige1()">Reset everything except automation, and gain <span
-								id="gainOnBrainstorm"></span> creativity. <div> You must have bought at least 5 of each
-								upgrade.</button>
-						<br>
+				<h1>Brainstorm</h1>
+				<p>
+					Creativity: <span id="creativity">0</span>
+				</p>
+				<div class="tabs">
+					<input name="tabs1" type="radio" id="tab-3" checked="checked" class="input"/>
+					<label for="tab-3" class="label">Basic Rocket</label>
+					<div class="panel">
+						<div class="pure-g">
+							<div class="pure-u-1-3">
+								<button class="pure-button" onclick="prestige1()">
+									Prestige
+								</button>
+							</div>
+							<div class="pure-u-3-5">
+								Cost: $50,000 and own atleast 5 of each improvment <br>
+								You will gain 1 Creativity.
+							</div>
+						</div>
+						<div class="pure-g" style="margin-top: 1em;">
+							<div class="pure-u-1-3">
+								<button class="pure-button" onclick="pUpgrade1()">
+									Join NASA
+								</button>
+							</div>
+							<div class="pure-u-2-5">
+								Cost: <span id="pUpgrade2Cost"></span> Creativty <br>
+								Better multiplier (log2(x+1) +1) * 1.5
+							</div>
+						</div>
 
-						<br>
-						<button class="allegiance yeet" onclick="pUpgrade1()">Use 1 creativity to join the United States!<br>This
-							makes
-							creativity have a better multiplier. (log2(x+1)+1)*1.5</button><br>
-						<button class="allegiance yeet" onclick="pUpgrade2()">Use <span id="pUpgrade2Cost"></span> creativity to
-							launch
-							multiple rockets at once! <br> Currently:<span id="basicRocketLimit"></span></button>
-						<button class="yeet" onclick="pUpgrade3()">Use <span id="pUpgrade3Cost"></span> creativity to increase the
-							Creativity multiplier.<br>Currently: <span id="creativityMultiplier"></span></button><br>
-						<button class="basic" onclick="pUpgrade4()">Use 10 creativity to unlock Technologies.<br>This unlocks
-							Technology
-							Point generation,<br>gained based on how many upgrades you have!</button>
-						<br><button class="basic" onclick="pUpgrade5()">Automate the buying of fuel and the launch of
-							rockets.<br>WARNING: After buying this, there is no way to turn off automation.<br>Do not leave the tab
-							open
-							in the background.<br> Cost: 10 Creativity</button>
-						<br><button class="explorer" onclick="pUpgrade6()">Start the Explorers program.<br>Requires 25 of each
-							upgrade<br>.Unlocks a new rocket<br>Cost: 250 creativity</button>
+						<div class="pure-g" style="margin-top: 1em;">
+							<div class="pure-u-1-3">
+								<button class="pure-button" onclick="pUpgrade2()">
+									Launch <span id="basicRocketLimit"></span> Rocket(s)
+								</button>
+							</div>
+							<div class="pure-u-2-5">
+								Cost: <span id="pUpgrade3Cost"></span> Creativty <br>
+								Launch multiple rockets at once
+							</div>
+						</div>
+
+						<div class="pure-g" style="margin-top: 1em;">
+							<div class="pure-u-1-3">
+								<button class="pure-button" onclick="pUpgrade3()">
+									<span id="creativityMultiplier"></span> Creative Multiplier
+								</button>
+							</div>
+							<div class="pure-u-2-5">
+								Cost: 5 Creativty <br>
+								Increase creativity multiplier
+							</div>
+						</div>
+
+						<div class="pure-g" style="margin-top: 1em;">
+							<div class="pure-u-1-3">
+								<button class="pure-button" onclick="pUpgrade4()">
+									Unlock Technology
+								</button>
+							</div>
+							<div class="pure-u-3-5">
+								Cost: 10 Creativty <br>
+								Unlocks Technology Point Generation
+							</div>
+						</div>
+						
+						<div class="pure-g" style="margin-top: 1em;">
+							<div class="pure-u-1-3">
+								<button class="pure-button" onclick="pUpgrade5()">
+									Automate Launches
+								</button>
+							</div>
+							<div class="pure-u-3-5">
+								Cost: 10 Creativty <br>
+								Automated Launch and Fuel Purchase
+							</div>
+						</div>
+
+						<div class="pure-g" style="margin-top: 1em;">
+							<div class="pure-u-1-3">
+								<button class="pure-button" onclick="pUpgrade6()">
+									Explorer Program
+								</button>
+							</div>
+							<div class="pure-u-3-5">
+								Cost: 250 Creativty and all Improvements<br>
+								Start Exploring!
+							</div>
+						</div>
 					</div>
-					<div id="explorerPUps" class="pSubTab">
-						<button class="basic" onclick="pUpgrade7()">Increase the BTP max to 18. <br> Cost: 2500
-							creativity</button><br>
-						<button class="explorer" onclick="pUpgrade8()">Explorer's money per fuel is boosted by your creativity.<br>
-							Cost: 7500 creativity</button>
-						<button class="basic" onclick="pUpgrade9()">You start with all of the first rocket's upgrades bought.<br>
-							Cost:
-							15000 creativity</button><br>
-						<button class="explorer" onclick="pUpgrade10()">Unlock Explorer's Tech Points.<br> Cost: 50000
-							creativity</button>
-						<button class="explorer" onclick="pUpgrade11()">Unlock Explorer's automation.<br> Cost: 50000
-							creativity</button>
-						<button class="mercury" onclick="pUpgrade12()">Unlock Mercury. You have to have at least 25 of each Explorer
-							upgrade.<br> Cost: 10000000 creativity</button>
-						<button class="mercury" onclick="pUpgrade13()">Unlock Mercury's TP.<br> Cost: 100000000 creativity</button>
+					
+					<input name="tabs1" type="radio" id="tab-4" class="input"/>
+					<label for="tab-4" id="explorerContent2" style="display: none;" class="label">Explorer</label>
+					<div class="panel">
+							<button class="basic" onclick="pUpgrade7()">Increase the BTP max to 18. <br> Cost: 2500
+								creativity</button><br>
+							<button class="explorer" onclick="pUpgrade8()">Explorer's money per fuel is boosted by your creativity.<br>
+								Cost: 7500 creativity</button>
+							<button class="basic" onclick="pUpgrade9()">You start with all of the first rocket's upgrades bought.<br>
+								Cost:
+								15000 creativity</button><br>
+							<button class="explorer" onclick="pUpgrade10()">Unlock Explorer's Tech Points.<br> Cost: 50000
+								creativity</button>
+							<button class="explorer" onclick="pUpgrade11()">Unlock Explorer's automation.<br> Cost: 50000
+								creativity</button>
+							<button class="mercury" onclick="pUpgrade12()">Unlock Mercury. You have to have at least 25 of each Explorer
+								upgrade.<br> Cost: 10000000 creativity</button>
+							<button class="mercury" onclick="pUpgrade13()">Unlock Mercury's TP.<br> Cost: 100000000 creativity</button>	
 					</div>
-				</center>
+				</div>
 			</div>
-			<div id="lore" class="tab">
-				<span id="lore1"></span><br>
-				<span id="lore2"></span><br>
-				<span id="lore3"></span><br>
-				<span id="lore4"></span><br>
-				<span id="lore5"></span><br>
-				<span id="lore6"></span><br>
-				<span id="lore7"></span><br>
-				<span id="lore8"></span><br>
-				<span id="lore9"></span><br>
-				<span id="lore10"></span><br>
-				<span id="lore11"></span><br>
-				<span id="lore12"></span><br>
-				<span id="lore13"></span><br>
-				<span id="lore14"></span><br>
-				<span id="lore15"></span><br>
-				<span id="lore16"></span><br>
-				<span id="lore17"></span><br>
-				<span id="lore18"></span><br>
-			</div>
-			<div id="rock1" class="tab">
+			<!-- <div id="lore" class="tab">
+				
+			</div> -->
+			<div id="basicRocket" class="tab">
+				<h1>Explorer</h1>
 				<button class="explorer" onclick="rocklaunch2()">Launch the Explorer rocket.<br>You lose your fuel, and gain
 					money.</button><br>
 				You have <span id="stillmoney"></span>$<br>
@@ -453,8 +491,68 @@
 
 			</div>
 		</div>
+		<div class="pure-u-1-4">
+			<div style="padding: .5em; height: 575px; width: 100%; overflow-y: auto;">
+				<blockquote id="lore1">
+					<p><q><span id="lore1"></span></q></p>
+				</blockquote>
+				<blockquote id="lore2">
+					<p><q><span id="lore2"></span></q></p>
+				</blockquote>
+				<blockquote id="lore3">
+					<p><q><span id="lore3"></span></q></p>
+				</blockquote>
+				<blockquote id="lore4">
+					<p><q><span id="lore4"></span></q></p>
+				</blockquote>
+				<blockquote id="lore5">
+					<p><q><span id="lore5"></span></q></p>
+				</blockquote>
+				<blockquote id="lore6">
+					<p><q><span id="lore6"></span></q></p>
+				</blockquote>
+				<blockquote id="lore7">
+					<p><q><span id="lore7"></span></q></p>
+				</blockquote>
+				<blockquote id="lore8">
+					<p><q><span id="lore8"></span></q></p>
+				</blockquote>
+				<blockquote id="lore9">
+					<p><q><span id="lore9"></span></q></p>
+				</blockquote>
+				<blockquote id="lore10">
+					<p><q><span id="lore10"></span></q></p>
+				</blockquote>
+				<blockquote id="lore11">
+					<p><q><span id="lore11"></span></q></p>
+				</blockquote>
+				<blockquote id="lore12">
+					<p><q><span id="lore12"></span></q></p>
+				</blockquote>
+				<blockquote id="lore13">
+					<p><q><span id="lore13"></span></q></p>
+				</blockquote>
+				<blockquote id="lore14">
+					<p><q><span id="lore14"></span></q></p>
+				</blockquote>
+				<blockquote id="lore15">
+					<p><q><span id="lore15"></span></q></p>
+				</blockquote>
+				<blockquote id="lore16">
+					<p><q><span id="lore16"></span></q></p>
+				</blockquote>
+				<blockquote id="lore17">
+					<p><q><span id="lore17"></span></q></p>
+				</blockquote>
+				<blockquote id="lore18">
+					<p><q><span id="lore18"></span></q></p>
+				</blockquote>
+			
+		</div>
 	</div>
-
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 </body>
 
