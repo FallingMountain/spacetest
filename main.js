@@ -290,26 +290,6 @@ function rockLaunch1() {
 	}
 }
 
-function buyFuel() {
-
-	let fuelCost = game.basicRocket.fuel.cost * game.basicRocket.fuel.max;
-
-	if (game.basicRocket.fuel.amount === 0) {
-		document.getElementById('basicBtnLaunch').classList.remove('pure-button-disabled')
-		if (game.money >= fuelCost) {								
-			game.money -= fuelCost;
-			game.basicRocket.fuel.amount = game.basicRocket.fuel.max;
-			game.basicRocket.fuel.cost = game.basicRocket.fuel.cost * (1 + (0.0002 * game.basicRocket.fuel.max) * game.basicRocket.fuel.scaleDown);
-			lore[3] = "You decide to get more fuel, so you can continue to launch rockets.";
-		}	else if (game.money < fuelCost) {		
-			var halp = Math.floor(game.money / game.basicRocket.fuel.cost);
-			game.basicRocket.fuel.amount += halp;
-			game.money -= game.basicRocket.fuel.cost * halp;
-			halp = 0;		
-		}
-	}
-}
-
 function upgrade1() {
 	if (game.money >= game.up1Cost) {
 		if (game.up1buys < 25) {
@@ -389,6 +369,10 @@ function upgrade3() {
 			game.up3buys += 1;
 		}
 	}
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function bugFix() {
@@ -1051,11 +1035,12 @@ function rocklaunch2() {
 }
 
 function expBuyFuel() {
-	if (game.money >= game.rock2.fuel.cost * game.rock2.fuel.max) {
+	let fuelCost = game.rock2.fuel.cost * game.rock2.fuel.max;
+	if (game.money >= fuelCost) {
 		if (game.rock2.fuel.amount === 0) {
-			game.money -= game.rock2.fuel.cost * game.rock2.fuel.max;
+			game.money -= fuelCost;
 			game.rock2.fuel.amount += game.rock2.fuel.max;
-			game.rock2.fuel.cost = game.rock2.fuel.cost * (1 + (0.0001 * game.rock2.fuel.max));
+			game.rock2.fuel.cost = parseFloat(game.rock2.fuel.cost * (1 + (0.0001 * game.rock2.fuel.max))).toFixed(2);
 			lore[3] = "You decide to get more fuel, so you can continue to launch rockets.";
 		}
 	}
@@ -1142,7 +1127,7 @@ function exUp3() {
 	}
 }
 
-function expUp4() {
+function exUp4() {
 	if (game.money >= game.rock2.up4.cost) {
 		lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2.";
 		if (game.rock2.up4.buys < 50) {
@@ -1633,45 +1618,45 @@ function apUp4() {
 }
 
 window.setInterval(function () {
-	document.getElementById("money").innerHTML = game.money;
-	document.getElementById("stillmoney").innerHTML = game.money;
-	document.getElementById("alsostillmoney").innerHTML = game.money;
-	document.getElementById("probablystillmoney").innerHTML = game.money;
-	document.getElementById("mightbemoneyimnotsure").innerHTML = game.money;
+	document.getElementById("money").innerHTML = numberWithCommas(game.money);
+	document.getElementById("stillmoney").innerHTML = numberWithCommas(game.money);
+	document.getElementById("alsostillmoney").innerHTML = numberWithCommas(game.money);
+	document.getElementById("probablystillmoney").innerHTML = numberWithCommas(game.money);
+	document.getElementById("mightbemoneyimnotsure").innerHTML = numberWithCommas(game.money);
 	document.getElementById("fuel").innerHTML = game.basicRocket.fuel.amount;
 	document.getElementById("explorerFuel").innerHTML = game.rock2.fuel.amount;
 	document.getElementById("mercuryFuel").innerHTML = game.rock3.fuel.amount;
 	document.getElementById("geminiFuel").innerHTML = game.rock4.fuel.amount;
 	document.getElementById("apolloFuel").innerHTML = game.rock5.fuel.amount;
-	document.getElementById("fuelCost").innerHTML = game.basicRocket.fuel.cost;
-	document.getElementById("explorerFuelCost").innerHTML = game.rock2.fuel.cost;
-	document.getElementById("mercuryFuelCost").innerHTML = game.rock3.fuel.cost;
-	document.getElementById("geminiFuelCost").innerHTML = game.rock4.fuel.cost;
-	document.getElementById("apolloFuelCost").innerHTML = game.rock5.fuel.cost;
+	document.getElementById("fuelCost").innerHTML = numberWithCommas(game.basicRocket.fuel.cost);
+	document.getElementById("explorerFuelCost").innerHTML = numberWithCommas(game.rock2.fuel.cost);
+	document.getElementById("mercuryFuelCost").innerHTML = numberWithCommas(game.rock3.fuel.cost);
+	document.getElementById("geminiFuelCost").innerHTML = numberWithCommas(game.rock4.fuel.cost);
+	document.getElementById("apolloFuelCost").innerHTML = numberWithCommas(game.rock5.fuel.cost);
 	document.getElementById("fuelMax").innerHTML = game.basicRocket.fuel.max;
 	document.getElementById("explorerFuelMax").innerHTML = game.rock2.fuel.max;
 	document.getElementById("mercuryFuelMax").innerHTML = game.rock3.fuel.max;
 	document.getElementById("geminiFuelMax").innerHTML = game.rock4.fuel.max;
 	document.getElementById("apolloFuelMax").innerHTML = game.rock5.fuel.max;
-	document.getElementById("upgrade1Cost").innerHTML = game.up1Cost;
-	document.getElementById("explorerUpgrade1Cost").innerHTML = game.rock2.up1.cost;
-	document.getElementById("mercuryUpgrade1Cost").innerHTML = game.rock3.up1.cost;
-	document.getElementById("geminiUpgrade1Cost").innerHTML = game.rock4.up1.cost;
-	document.getElementById("apolloUpgrade1Cost").innerHTML = game.rock5.up1.cost;
-	document.getElementById("upgrade2Cost").innerHTML = game.up2Cost;
-	document.getElementById("explorerUpgrade2Cost").innerHTML = game.rock2.up2.cost;
-	document.getElementById("mercuryUpgrade2Cost").innerHTML = game.rock3.up2.cost;
-	document.getElementById("geminiUpgrade2Cost").innerHTML = game.rock4.up2.cost;
-	document.getElementById("apolloUpgrade2Cost").innerHTML = game.rock5.up2.cost;
-	document.getElementById("upgrade3Cost").innerHTML = game.up3Cost;
-	document.getElementById("explorerUpgrade3Cost").innerHTML = game.rock2.up3.cost;
-	document.getElementById("mercuryUpgrade3Cost").innerHTML = game.rock3.up3.cost;
-	document.getElementById("geminiUpgrade3Cost").innerHTML = game.rock4.up3.cost;
-	document.getElementById("mercuryUpgrade3Cost").innerHTML = game.rock5.up3.cost;
-	document.getElementById("explorerUpgrade4Cost").innerHTML = game.rock2.up4.cost;
-	document.getElementById("mercuryUpgrade4Cost").innerHTML = game.rock3.up4.cost;
-	document.getElementById("geminiUpgrade4Cost").innerHTML = game.rock4.up4.cost;
-	document.getElementById("apolloUpgrade4Cost").innerHTML = game.rock5.up4.cost;
+	document.getElementById("upgrade1Cost").innerHTML = numberWithCommas(game.up1Cost);
+	document.getElementById("explorerUpgrade1Cost").innerHTML = numberWithCommas(game.rock2.up1.cost);
+	document.getElementById("mercuryUpgrade1Cost").innerHTML = numberWithCommas(game.rock3.up1.cost);
+	document.getElementById("geminiUpgrade1Cost").innerHTML = numberWithCommas(game.rock4.up1.cost);
+	document.getElementById("apolloUpgrade1Cost").innerHTML = numberWithCommas(game.rock5.up1.cost);
+	document.getElementById("upgrade2Cost").innerHTML = numberWithCommas(game.up2Cost);
+	document.getElementById("explorerUpgrade2Cost").innerHTML = numberWithCommas(game.rock2.up2.cost);
+	document.getElementById("mercuryUpgrade2Cost").innerHTML = numberWithCommas(game.rock3.up2.cost);
+	document.getElementById("geminiUpgrade2Cost").innerHTML = numberWithCommas(game.rock4.up2.cost);
+	document.getElementById("apolloUpgrade2Cost").innerHTML = numberWithCommas(game.rock5.up2.cost);
+	document.getElementById("upgrade3Cost").innerHTML = numberWithCommas(game.up3Cost);
+	document.getElementById("explorerUpgrade3Cost").innerHTML = numberWithCommas(game.rock2.up3.cost);
+	document.getElementById("mercuryUpgrade3Cost").innerHTML = numberWithCommas(game.rock3.up3.cost);
+	document.getElementById("geminiUpgrade3Cost").innerHTML = numberWithCommas(game.rock4.up3.cost);
+	document.getElementById("mercuryUpgrade3Cost").innerHTML = numberWithCommas(game.rock5.up3.cost);
+	document.getElementById("explorerUpgrade4Cost").innerHTML = numberWithCommas(game.rock2.up4.cost);
+	document.getElementById("mercuryUpgrade4Cost").innerHTML = numberWithCommas(game.rock3.up4.cost);
+	document.getElementById("geminiUpgrade4Cost").innerHTML = numberWithCommas(game.rock4.up4.cost);
+	document.getElementById("apolloUpgrade4Cost").innerHTML = numberWithCommas(game.rock5.up4.cost);
 	document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
 	document.getElementById("explorerUpgrade1Buys").innerHTML = game.rock2.up1.buys;
 	document.getElementById("explorerUpgrade2Buys").innerHTML = game.rock2.up2.buys;
@@ -1711,15 +1696,16 @@ window.setInterval(function () {
 	document.getElementById("lore16").innerHTML = lore[15];
 	document.getElementById("lore17").innerHTML = lore[16];
 	document.getElementById("lore18").innerHTML = lore[17];
+	document.getElementById("lore19").innerHTML = lore[18];
 	document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
 	document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2cost;
 	document.getElementById("pUpgrade3Cost").innerHTML = game.pUp3cost;
 	document.getElementById("creativityMultiplier").innerHTML = game.creatMult;
-	document.getElementById("moneyPerFuel").innerHTML = Math.round(game.basicRocket.moneyPerFuel);
-	document.getElementById("explorerMoneyPerFuel").innerHTML = Math.round(game.rock2.moneyPerFuel);
-	document.getElementById("mercuryMoneyPerFuel").innerHTML = Math.round(game.rock2.moneyPerFuel);
-	document.getElementById("geminiMoneyPerFuel").innerHTML = Math.round(game.rock2.moneyPerFuel);
-	document.getElementById("apolloMoneyPerFuel").innerHTML = Math.round(game.rock2.moneyPerFuel);
+	document.getElementById("moneyPerFuel").innerHTML = numberWithCommas(Math.round(game.basicRocket.moneyPerFuel));
+	document.getElementById("explorerMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock2.moneyPerFuel));
+	document.getElementById("mercuryMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock2.moneyPerFuel));
+	document.getElementById("geminiMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock2.moneyPerFuel));
+	document.getElementById("apolloMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock2.moneyPerFuel));
 	document.getElementById("basicTechPoints").innerHTML = game.basicRocket.techs.currentTP;
 	document.getElementById("maxBTP").innerHTML = game.basicRocket.techs.maxTP;
 	document.getElementById("explorerTechPoints").innerHTML = game.rock2.techs.currentTP;
