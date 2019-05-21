@@ -270,11 +270,28 @@ var game = {
 };
 var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
+function basicSwitchAuto() {
+	game.auto.rocket = !game.auto.rocket;
+
+	if (game.auto.rocket) {
+		document.getElementById('basicDisableAuto').classList.add('pure-button-active');		
+		document.getElementById('basicBtnLaunch').style.display = 'none';
+		document.getElementById('basicBtnFuel').style.display = 'none';
+		rockLaunch1();
+	} else {
+		document.getElementById('basicDisableAuto').classList.remove('pure-button-active');
+		document.getElementById('basicBtnLaunch').style.display = 'inline';
+		document.getElementById('basicBtnFuel').style.display = 'inline';
+	}
+	
+}
+
 function rockLaunch1() {
 	if (game.rockLimit > game.rockLaunched) {
 		game.rockLaunched += 1;
-		lore[1] = "You set up a launch pad in a field filled with flowers and one-leafed clovers. As you launch the rocket, you realize you won't be able to make any money for future launches, which is sad.";
-		var rocketAuto = setInterval(function () {
+		lore[1] = "You set up a launch pad in a field filled with flowers and one-leafed clovers. As you launch the rocket, you realize you won't be able to make any money for future launches, which is sad.";		
+
+		var basicRocketAuto = setInterval(function () {
 			if (game.basicRocket.fuel.amount > 0) {
 				let money = game.basicRocket.moneyPerFuel * game.rockLimit;				
 				game.money += money;
@@ -282,9 +299,8 @@ function rockLaunch1() {
 				game.money = Math.round(game.money * 100) / 100;
 			} else if (game.auto.rocket === false) {
 				lore[2] = "The day after the rocket launch, you recieve a letter saying \'That rocket launch was cool. Hope you can do more!\' with enough money to fund another launch. The letter is signed \'FM\'";
-				game.rockLaunched = 0;
-				document.getElementById('basicBtnLaunch').classList.add('pure-button-disabled')
-				clearInterval(rocketAuto);
+				game.rockLaunched = 0;				
+				clearInterval(basicRocketAuto);
 			}
 		}, 50);
 	}
@@ -316,7 +332,7 @@ function upgrade1() {
 function upgrade2() {
 	if (game.money >= game.up2Cost) {
 		lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2.";
-		if (game.up2buys < 25) {
+		if (game.up2buys <= 25) {
 			game.basicRocket.fuel.cost = 2;
 			game.basicRocket.fuel.scaleDown = 1.05 * game.basicRocket.fuel.scaleDown;
 			game.money -= game.up2Cost;
@@ -553,27 +569,6 @@ function into() {
 	if (imp == null) alert("That save file doesn't work, sorry.");
 	else game = JSON.parse(atob(imp));
 }
-load();
-window.setInterval(function () {
-	save();
-}, 2000);
-
-function fullReset() {
-	swal({
-		title: "Reset Game",
-		text: "Are you sure you want to reset?",
-		icon: "warning",
-		buttons: true,
-		dangerMode: true
-
-	}).then(function(reset) {
-		if(reset) {
-			localStorage.removeItem("sri");
-			location.reload();
-		}
-	});
-	
-}
 
 function pUpgrade1() {
 	if (game.ally === 0 && game.creat >= 1) {
@@ -615,7 +610,7 @@ function pUpgrade5() {
 	if (game.creat >= 10 && game.pUp5Bought === false) {
 		lore[13] = "NASA has sent some engineers to help you launch this rocket. They say it's for a new project you're going to be working on soon.";
 		game.creat -= 10;
-		game.auto.rocket = true;
+		game.auto.rocket = basicSwitchAuto();
 		game.auto.fuel = true;
 		game.pUp5Bought = true;
 	}
@@ -1010,8 +1005,24 @@ function getRandomInt(max) {
 	return Math.floor(Math.random() * Math.floor(max));
 }
 
+function explorerSwitchAuto() {
+	game.rock2.auto.rocket = !game.rock2.auto.rocket;
+
+	if (game.rock2.auto.rocket) {
+		document.getElementById('explorerDisableAuto').classList.add('pure-button-active');		
+		document.getElementById('explorerBtnLaunch').style.display = 'none';
+		document.getElementById('explorerBtnFuel').style.display = 'none';
+		rocklaunch2();
+	} else {
+		document.getElementById('explorerDisableAuto').classList.remove('pure-button-active');
+		document.getElementById('explorerBtnLaunch').style.display = 'inline';
+		document.getElementById('explorerBtnFuel').style.display = 'inline';
+	}
+	
+}
+
 function rocklaunch2() {
-	if (game.rock2.rockLaunched < game.rock2.rockLimit) {
+	//if (game.rock2.rockLaunched < game.rock2.rockLimit) {
 		var failChance = getRandomInt(100);
 		if (failChance < game.rock2.successChance) {
 			game.rock2.rockLaunched += 1;
@@ -1031,7 +1042,7 @@ function rocklaunch2() {
 			game.rock2.fuel.amount = 0;
 			lore[18] = "This is a disaster. The rocket failed. You need to make it a lot safer.";
 		}
-	}
+	//}
 }
 
 function expBuyFuel() {
@@ -1676,7 +1687,7 @@ window.setInterval(function () {
 	document.getElementById("apolloUpgrade4Buys").innerHTML = game.rock3.up4.buys;
 	document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
 	document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
-	document.getElementById("creativity").innerHTML = game.creat;
+	document.getElementById("creativity").innerHTML = numberWithCommas(game.creat);
 	//document.getElementById("gainOnBrainstorm").innerHTML = game.creatGainReset;
 	document.getElementById("lore1").innerHTML = lore[0];
 	document.getElementById("lore2").innerHTML = lore[1];
@@ -1738,7 +1749,7 @@ window.setInterval(function () {
 	document.getElementById("TC36").innerHTML = game.rock3.techs.ef4;
 	document.getElementById("TC37").innerHTML = game.rock3.techs.mpf;
 	document.getElementById("TC38").innerHTML = game.rock3.techs.cmx;
-	document.getElementById("failChance").innerHTML = game.rock2.successChance;
+	document.getElementById("failChance").innerHTML = game.rock2.successChance.toFixed(2);
 	if (game.money > 50000 || game.brainstormed === true) {
 		document.getElementById("brainPrestige").style.display = "inline";
 	} else {
@@ -1777,8 +1788,30 @@ window.setInterval(function () {
 	} else {
 		document.getElementById("mercuryTechs").style.display = "none";
 		document.getElementById("mercuryTechs2").style.display = "none";
-	}
-}, 10);
+	}	
+}, 100);
+
+load();
+window.setInterval(function () {
+	save();
+}, 60000);
+
+function fullReset() {
+	swal({
+		title: "Reset Game",
+		text: "Are you sure you want to reset?",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true
+
+	}).then(function(reset) {
+		if(reset) {
+			localStorage.removeItem("sri");
+			location.reload();
+		}
+	});
+	
+}
 
 function tab(t) {
 	var classList = document.getElementsByClassName("tab");
