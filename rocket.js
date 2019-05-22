@@ -1,3 +1,13 @@
+class Rocket {
+	constructor(name) {
+		this.name = name;
+	}
+
+	buyFuel() {
+		
+	}
+}
+
 function launch(rocket) {
 
 }

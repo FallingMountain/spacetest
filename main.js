@@ -1022,7 +1022,7 @@ function explorerSwitchAuto() {
 }
 
 function rocklaunch2() {
-	//if (game.rock2.rockLaunched < game.rock2.rockLimit) {
+	if (game.rock2.rockLaunched <= game.rock2.rockLimit) {
 		var failChance = getRandomInt(100);
 		if (failChance < game.rock2.successChance) {
 			game.rock2.rockLaunched += 1;
@@ -1042,7 +1042,7 @@ function rocklaunch2() {
 			game.rock2.fuel.amount = 0;
 			lore[18] = "This is a disaster. The rocket failed. You need to make it a lot safer.";
 		}
-	//}
+	}
 }
 
 function expBuyFuel() {
@@ -1153,7 +1153,8 @@ function exUp4() {
 			}
 			if (game.rock2.techs.ef4 === 3) {
 				game.rock2.successChance += 2.9;
-			}
+			}			
+
 			game.money -= game.rock2.up4.cost;
 			if (game.rock2.techs.cs4 === 0) {
 				game.rock2.up4.cost = Math.round(game.rock2.up4.cost * 1.5);
@@ -1173,7 +1174,7 @@ function exUp4() {
 }
 
 function rockLaunch3() {
-	if (game.rock3.rockLaunched < game.rock3.rockLimit) {
+	if (game.rock3.rockLaunched <= game.rock3.rockLimit) {
 		var failChance = getRandomInt(100);
 		if (failChance < game.rock3.successChance) {
 			game.rock3.rockLaunched += 1;
@@ -1663,7 +1664,7 @@ window.setInterval(function () {
 	document.getElementById("explorerUpgrade3Cost").innerHTML = numberWithCommas(game.rock2.up3.cost);
 	document.getElementById("mercuryUpgrade3Cost").innerHTML = numberWithCommas(game.rock3.up3.cost);
 	document.getElementById("geminiUpgrade3Cost").innerHTML = numberWithCommas(game.rock4.up3.cost);
-	document.getElementById("mercuryUpgrade3Cost").innerHTML = numberWithCommas(game.rock5.up3.cost);
+	document.getElementById("apolloUpgrade3Cost").innerHTML = numberWithCommas(game.rock5.up3.cost);
 	document.getElementById("explorerUpgrade4Cost").innerHTML = numberWithCommas(game.rock2.up4.cost);
 	document.getElementById("mercuryUpgrade4Cost").innerHTML = numberWithCommas(game.rock3.up4.cost);
 	document.getElementById("geminiUpgrade4Cost").innerHTML = numberWithCommas(game.rock4.up4.cost);
@@ -1709,9 +1710,9 @@ window.setInterval(function () {
 	document.getElementById("lore18").innerHTML = lore[17];
 	document.getElementById("lore19").innerHTML = lore[18];
 	document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
-	document.getElementById("pUpgrade2Cost").innerHTML = game.pUp2cost;
-	document.getElementById("pUpgrade3Cost").innerHTML = game.pUp3cost;
-	document.getElementById("creativityMultiplier").innerHTML = game.creatMult;
+	document.getElementById("pUpgrade2Cost").innerHTML = numberWithCommas(game.pUp2cost);
+	document.getElementById("pUpgrade3Cost").innerHTML = numberWithCommas(game.pUp3cost);
+	document.getElementById("creativityMultiplier").innerHTML = game.creatMult.toFixed(2);
 	document.getElementById("moneyPerFuel").innerHTML = numberWithCommas(Math.round(game.basicRocket.moneyPerFuel));
 	document.getElementById("explorerMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock2.moneyPerFuel));
 	document.getElementById("mercuryMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock2.moneyPerFuel));
@@ -1750,6 +1751,7 @@ window.setInterval(function () {
 	document.getElementById("TC37").innerHTML = game.rock3.techs.mpf;
 	document.getElementById("TC38").innerHTML = game.rock3.techs.cmx;
 	document.getElementById("failChance").innerHTML = game.rock2.successChance.toFixed(2);
+	document.getElementById('mercuryFailChance').innerHTML = game.rock3.successChance.toFixed(2);
 	if (game.money > 50000 || game.brainstormed === true) {
 		document.getElementById("brainPrestige").style.display = "inline";
 	} else {
@@ -1821,7 +1823,7 @@ function tab(t) {
 	document.getElementById(t).style.display = "";
 }
 
-tab("basicRocket");
+tab("rock2");
 
 function subTab(tabName) {
 	var tabs = document.getElementsByClassName('pSubTab');

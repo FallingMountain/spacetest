@@ -13,11 +13,11 @@
 	<title>Space Test</title>
 	<link rel="stylesheet" type="text/css" href="yeet.css">
 	<!--[if lte IE 8]>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
-<![endif]-->
-<!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
-<!--<![endif]-->
+    	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
+	<![endif]-->
+	<!--[if gt IE 8]><!-->
+		<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+	<!--<![endif]-->
 </head>
 
 <body>
@@ -491,69 +491,131 @@
 				
 			</div>
 			<div id="rock2" class="tab">
-				<button class="mercury" onclick="rockLaunch3()">Launch the Mercury rocket.<br>You lose your fuel, and gain
-					money.</button><br>
-				You have <span id="alsostillmoney"></span>$<br>
-				You have <span id="mercuryFuel"></span> fuel.<br>
-				Your current funding gives you <span id="mercuryMoneyPerFuel"></span> dollars per fuel used.<br>
-				Your maximum fuel is <span id="mercuryFuelMax"></span><br>
-				The current cost of 1 fuel is <span id="mercuryFuelCost"></span>$<br>
-				You have a <span id="failChance"></span>% chance of success.<br>
-				<button class="yeet" onclick="buyFuelForTheThirdTime()"><br>Buy some fuel!<br></button><br>
-				<button class="yeet" onclick="mercUp1()">Make your rocket longer, allowing it to <br>increase your fuel capacity
-					by
-					10%!<br>Cost:<span id="mercuryUpgrade1Cost"></span>$<br>Bought <span id="mercuryUpgrade1Buys"></span>/50
-					times</button>
-				<button class="yeet" onclick="mercUp2()">Disrupt the economy, so you can decrease the cost<br> of fuel to
-					$50000,
-					but decrease the cost scaling of fuel by 10%!<br>Cost:<span id="mercuryUpgrade2Cost"></span>$<br>Bought <span
-						id="mercuryUpgrade2Buys"></span>/50 times</button>
-				<button class="yeet" onclick="mercUp3()">Increase the speed of your rocket,<br> allowing it to collect 25% more
-					money!<br>Cost:<span id="mercuryUpgrade3Cost"></span>$<br>Bought <span id="mercuryUpgrade3Buys"></span>/50
-					times</button>
-				<button class="yeet" onclick="mercUp4()">Reinforce the rocket, giving an extra 2% chance of
-					sucess!<br>Cost:<span id="mercuryUpgrade4Cost"></span>$<br>Bought <span id="mercuryUpgrade4Buys"></span>/50
-					times</button><br>
-				You have <span id="mercuryTechPoints"></span> TP, out of <span id="maxMTP"></span>
-				<table id="mercuryTechs">
-					<tr>
-						<td>
-							<button class="mercury" onclick="tech31()"> Decrease the cost scaling of the first upgrade to <br>28% ->
-								25%
-								-> 22%.<br>Cost: 1 TP. Bought:<span id="TC31"></span></button></td>
-						<td>
-							<button class="mercury" onclick="tech32()"> Decrease the cost scaling of the second upgrade to <br>46% ->
-								43%
-								-> 46%.<br>Cost: 1 TP. Bought:<span id="TC32"></span></button></td>
-						<td>
-							<button class="mercury" onclick="tech33()"> Decrease the cost scaling of the third upgrade to <br>56% ->
-								53%
-								-> 50%.<br>Cost: 1 TP. Bought:<span id="TC33"></span></button></td>
-						<td>
-							<button class="mercury" onclick="tech34()"> Decrease the cost scaling of the fourth upgrade to <br>48% ->
-								45%
-								-> 41%.<br>Cost: 1 TP. Bought:<span id="TC34"></span></button></td>
-					</tr>
-					<tr>
-						<td>
-							<button class="mercury" onclick="tech35()"> Increase the effectiveness of the third upgrade to <br>29% ->
-								32%
-								-> 34%.<br>Cost: 1 TP. Bought:<span id="TC35"></span></button></td>
-						<td>
-							<button class="mercury" onclick="tech36()"> Increase the effectiveness of the fourth upgrade to <br>2.2%
-								->
-								2.5% -> 2.9%.<br>Cost: 1 TP. Bought:<span id="TC36"></span></button></td>
-						<td>
-							<button class="mercury" onclick="tech37()"> Increase the Money per Fuel multiplier on prestige to <br>2x
-								-> 3x
-								-> 4x.<br>Cost: 1 TP. Bought:<span id="TC37"></span></button></td>
-						<td>
-							<button class="mercury" onclick="tech38()"> Increase the multiplier for Creativity to <br>1.5x -> 2x ->
-								2.5x.<br>Cost: 1 TP. Bought:<span id="TC38"></span></button></td>
-					</tr>
-				</table><br>
-				<button id="mercuryTechs2" class="mercury" onclick="techRespec2()"> <br>Respec TCs on next
-					Brainstorm<br></button><br>
+				<h1>Mercury</h1>
+				<ul style="list-style: none; padding-left: 0;">
+					<li>Money: $<span id="alsostillmoney"></span></li>
+					<li>Fuel: <span id="mercuryFuel"></span> / <span id="mercuryFuelMax"></span></li>
+					<li>Dollar Per Fuel: $<span id="mercuryMoneyPerFuel"></span></li>
+					<li>Fuel Cost: $<span id="mercuryFuelCost"></span></li>
+					<li>Tech Points: <span id="mercuryTechPoints"></span> / <span id="maxMTP"></span></li>
+					<li>Launch Success: <span id="mercuryFailChance"></span>%</li>
+				</ul>
+				<h2 style="margin-bottom: 0;">Actions</h2>
+				<div style="padding: .5em 0; margin-bottom: 1em;">
+						<button id="mercuryDisableAuto" style="display: inline;" class="pure-button pure-button-active" onclick="explorerSwitchAuto()">
+							<i class="fas fa-charging-station"></i> Auto Launch
+						</button>
+					<button id="mercuryBtnLaunch" class="pure-button" onclick="rockLaunch3()">
+						<i class="fas fa-rocket"></i> Launch Rocket
+					</button>
+					<button id="mercuryBtnFuel" class="pure-button" onclick="buyFuelForTheThirdTime()">
+						<i class="fas fa-gas-pump"></i> Buy Propellant<br>
+					</button>	
+				</div>
+
+				<div class="tabs">
+					<input name="tabs3" type="radio" id="tab-7" checked="checked" class="input"/>
+					<label for="tab-7" class="label"><i class="fas fa-angle-double-up"></i> Improvements</label>
+					<div class="panel">
+						<table>
+							<tr>
+								<td style="width: 50%;">
+									<button class="pure-button" onclick="mercUp1()">
+										Increase Fuel Capacity by 10%
+									</button>
+								</td style="width: 50%;">
+								<td>
+									<p style="padding: .5em;">
+										Cost: $<span id="mercuryUpgrade1Cost"></span> | Own <span id="mercuryUpgrade1Buys"></span> / 50
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="width: 50%;">
+									<button class="pure-button" onclick="mercUp2()">
+										Reset Fuel Cost to $50K and <br> Decrease Fuel Cost Scaling 10% 
+									</button>
+								</td style="width: 50%;">
+								<td>
+									<p style="padding: .5em;">
+										Cost: $<span id="mercuryUpgrade2Cost"></span> | Own: <span id="mercuryUpgrade2Buys"></span> / 50
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="width: 50%;">
+										<button class="pure-button" onclick="mercUp3()">
+											25% More Money Per Launch
+										</button>
+								</td style="width: 50%;">
+								<td>
+									<p style="padding: .5em;">
+										Cost: $<span id="mercuryUpgrade3Cost"></span> | Own: <span id="mercuryUpgrade3Buys"></span> / 50
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="width: 50%;">
+										<button class="pure-button" onclick="mercUp4()">
+											Extra 2% Launch Success
+										</button>
+								</td style="width: 50%;">
+								<td>
+									<p style="padding: .5em;">
+										Cost: $<span id="mercuryUpgrade4Cost"></span> | Own: <span id="mercuryUpgrade4Buys"></span> / 50
+									</p>
+								</td>
+							</tr>
+						</table>								
+					</div>
+					
+					<input name="tabs3" type="radio" id="tab-8" class="input"/>
+					<label for="tab-8" id="mercuryTechs" class="label"><i class="fas fa-cogs"></i> Technologies</label>
+					<div class="panel">
+						<table style="margin-bottom: 1em;">
+							<tr>
+								<td>
+									<button class="mercury" onclick="tech31()"> Decrease the cost scaling of the first upgrade to <br>28% ->
+										25%
+										-> 22%.<br>Cost: 1 TP. Bought:<span id="TC31"></span></button></td>
+								<td>
+									<button class="mercury" onclick="tech32()"> Decrease the cost scaling of the second upgrade to <br>46% ->
+										43%
+										-> 46%.<br>Cost: 1 TP. Bought:<span id="TC32"></span></button></td>
+								<td>
+									<button class="mercury" onclick="tech33()"> Decrease the cost scaling of the third upgrade to <br>56% ->
+										53%
+										-> 50%.<br>Cost: 1 TP. Bought:<span id="TC33"></span></button></td>
+								<td>
+									<button class="mercury" onclick="tech34()"> Decrease the cost scaling of the fourth upgrade to <br>48% ->
+										45%
+										-> 41%.<br>Cost: 1 TP. Bought:<span id="TC34"></span></button></td>
+							</tr>
+							<tr>
+								<td>
+									<button class="mercury" onclick="tech35()"> Increase the effectiveness of the third upgrade to <br>29% ->
+										32%
+										-> 34%.<br>Cost: 1 TP. Bought:<span id="TC35"></span></button></td>
+								<td>
+									<button class="mercury" onclick="tech36()"> Increase the effectiveness of the fourth upgrade to <br>2.2%
+										->
+										2.5% -> 2.9%.<br>Cost: 1 TP. Bought:<span id="TC36"></span></button></td>
+								<td>
+									<button class="mercury" onclick="tech37()"> Increase the Money per Fuel multiplier on prestige to <br>2x
+										-> 3x
+										-> 4x.<br>Cost: 1 TP. Bought:<span id="TC37"></span></button></td>
+								<td>
+									<button class="mercury" onclick="tech38()"> Increase the multiplier for Creativity to <br>1.5x -> 2x ->
+										2.5x.<br>Cost: 1 TP. Bought:<span id="TC38"></span></button></td>
+							</tr>
+						</table>
+						<button id="mercuryTechs2" class="mercury" onclick="techRespec2()"> 
+							Respec TCs on next Brainstorm
+						</button>
+					</div>
+				</div>
+				
+				
 
 
 
