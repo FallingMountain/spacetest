@@ -1715,9 +1715,9 @@ window.setInterval(function () {
 	document.getElementById("creativityMultiplier").innerHTML = game.creatMult.toFixed(2);
 	document.getElementById("moneyPerFuel").innerHTML = numberWithCommas(Math.round(game.basicRocket.moneyPerFuel));
 	document.getElementById("explorerMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock2.moneyPerFuel));
-	document.getElementById("mercuryMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock2.moneyPerFuel));
-	document.getElementById("geminiMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock2.moneyPerFuel));
-	document.getElementById("apolloMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock2.moneyPerFuel));
+	document.getElementById("mercuryMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock3.moneyPerFuel));
+	document.getElementById("geminiMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock4.moneyPerFuel));
+	document.getElementById("apolloMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock5.moneyPerFuel));
 	document.getElementById("basicTechPoints").innerHTML = game.basicRocket.techs.currentTP;
 	document.getElementById("maxBTP").innerHTML = game.basicRocket.techs.maxTP;
 	document.getElementById("explorerTechPoints").innerHTML = game.rock2.techs.currentTP;
