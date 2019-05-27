@@ -21,6 +21,11 @@
 </head>
 
 <body>
+	<div class="pure-g">
+		<div class="pure-u-1" style="padding: 1em;">
+			<h1 style="margin-bottom: 0;">Money: $<span id="money"></span></h1>
+		</div>
+	</div>
 	<div class="pure-g" style=" height: 550px;">
 		<div class="pure-u" >
 			<div class="pure-menu custom-restricted-width">
@@ -28,10 +33,10 @@
 			
 				<ul class="pure-menu-list">
 					<li class="pure-menu-item">
-						<a onclick="tab('basic')" href="#" class="pure-menu-link">Basic Rocket</a>
+						<a onclick="tab('basicrocket')" href="#" class="pure-menu-link">Basic Rocket</a>
 					</li>
 					<li id="explorerContent" class="pure-menu-item" style="display: none;" class="explorer">
-						<a onclick="tab('basicRocket')" href="#" class="pure-menu-link">Explorer</a>
+						<a onclick="tab('explorer')" href="#" class="pure-menu-link">Explorer</a>
 					</li>
 					<li id="mercuryContent" class="pure-menu-item" style="display: none;">
 						<a onclick="tab('rock2')" href="#" class="pure-menu-link">Mercury</a>
@@ -61,10 +66,10 @@
 			</div>
 		</div>
 		<div class="pure-u-3-5" style="padding: 1em; border-left: 1px solid #ccc; border-right: 1px solid #ccc;">
-			<div id="basic" class="tab">
+			<div id="basicrocket" class="tab">
 				<h1>Basic Rocket</h1>
 				<ul style="list-style: none; padding-left: 0;">
-					<li>Money: $<span id="money"></span></li>
+					
 					<li>Fuel: <span id="fuel"></span> / <span id="fuelMax"></span></li>
 					<li>Dollar Per Fuel: $<span id="moneyPerFuel"></span></li>
 					<li>Fuel Cost: $<span id="fuelCost"></span></li>
@@ -73,10 +78,10 @@
 				<h2 style="margin-bottom: 0;">Actions</h2>
 				<div style="padding: .5em 0; margin-bottom: 1em;">
 					<button id="basicDisableAuto" style="display: inline;" class="pure-button pure-button-active" onclick="basicSwitchAuto()">
-						<i class="fas fa-charging-station"></i> Auto Launch
+						<i class="fas fa-charging-station"></i> Auto Launch (<span id="autoRocketCount"></span>)
 					</button>
 					<button id="basicBtnLaunch" style="display: inline" class="pure-button" onclick="rockLaunch1()"><i class="fas fa-rocket"></i> 
-						Launch Rocket
+						Launch <span id="basicRocketCount"></span> Rocket
 					</button>					
 					<button id="basicBtnFuel" style="display: inline" class="pure-button" onclick="buyFuel()"><i class="fas fa-gas-pump"></i> 
 						Buy Propellant<br>
@@ -196,7 +201,7 @@
 			<div id="prestige" class="tab">
 				<h1>Brainstorm</h1>
 				<p>
-					Creativity: <span id="creativity">0</span>
+					Current Creativity: <span id="creativity">0</span> Gain on Next Prestige: <span id="gainOnBrainstorm">0</span>
 				</p>
 				<div class="tabs">
 					<input name="brainstorm-tabs" type="radio" id="bs-basicrocket-tab" checked="checked" class="input"/>
@@ -433,25 +438,24 @@
 			<!-- <div id="lore" class="tab">
 				
 			</div> -->
-			<div id="basicRocket" class="tab">
+			<div id="explorer" class="tab">
 				<h1>Explorer</h1>
 				<ul style="list-style: none; padding-left: 0;">
-					<li>Money: $<span id="stillmoney"></span></li>
 					<li>Fuel: <span id="explorerFuel"></span> / <span id="explorerFuelMax"></span></li>
 					<li>Dollar Per Fuel: $<span id="explorerMoneyPerFuel"></span></li>
 					<li>Fuel Cost: $<span id="explorerFuelCost"></span></li>
 					<li>Tech Points: <span id="explorerTechPoints"></span> / <span id="maxETP"></span></li>
-					<li>Launch Success: <span id="failChance"></span>%</li>
+					<li>Launch Success: <span id="explorerFailChance"></span>%</li>
 				</ul>
 				<h2 style="margin-bottom: 0;">Actions</h2>
 				<div style="padding: .5em 0; margin-bottom: 1em;">
 						<button id="explorerDisableAuto" style="display: inline;" class="pure-button pure-button-active" onclick="explorerSwitchAuto()">
 							<i class="fas fa-charging-station"></i> Auto Launch
 						</button>
-					<button id="explorerBtnLaunch" class="pure-button" onclick="rocklaunch2()">
+					<button id="explorerBtnLaunch" class="pure-button" onclick="explorerLaunch()">
 						<i class="fas fa-rocket"></i> Launch Rocket
 					</button>
-					<button id="explorerBtnFuel" class="pure-button" onclick="expBuyFuel()">
+					<button id="explorerBtnFuel" class="pure-button" onclick="explorerBuyFuel()">
 						<i class="fas fa-gas-pump"></i> Buy Propellant<br>
 					</button>	
 				</div>
@@ -810,8 +814,9 @@
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script type="text/javascript" src="main.js"></script>
 	<script type="text/javascript" src="rocket.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	
 </body>
 
 </html>

@@ -1,390 +1,32 @@
-var game = {
-	money: 0,
-	basicRocket: {
-		moneyPerFuel: 10,
-		fuel: {
-			amount: 150,
-			cost: 3,
-			max: 150,
-			scaleDown: 1
-		},
-		techs: {
-			techStart: false,
 
-			cs1: 0,
-			cs2: 0,
-			cs3: 0,
-			ef3: 0,
-			mpf: 0,
-			cmx: 0,
-			maxTP: 0,
-			currentTP: 0,
-			respec: false
-		},
-		upCostScales: {
-			up1: 1.3,
-			up2: 1.4,
-			up3: 1.5
-		}
-	},
-	rock2: {
-		fuel: {
-			max: 150,
-			cost: 100000,
-			amount: 0,
-			scaleDown: 1
-		},
-		auto: {
-			rocket: false,
-			fuel: false
-		},
-		up1: {
-			cost: 250000000,
-			buys: 0,
-			scaling: 1.4
-		},
-		up2: {
-			cost: 400000000,
-			buys: 0,
-			scaling: 1.6
-		},
-		up3: {
-			cost: 600000000,
-			buys: 0,
-			scaling: 1.8
-		},
-		up4: {
-			cost: 400000000,
-			buys: 0,
-			scaling: 1.7
-		},
-		techs: {
-			techStart: false,
-			cs1: 0,
-			cs2: 0,
-			cs3: 0,
-			cs4: 0,
-			ef3: 0,
-			mpf: 0,
-			cmx: 0,
-			ef4: 0,
-			maxTP: 0,
-			currentTP: 0,
-			respec: false
-		},
-		moneyPerFuel: 1500000,
-		rockLimit: 1,
-		rockLaunched: 0,
-		affectByCreat: false,
-		successChance: 100
-	},
-
-
-	rock3: {
-		active: false,
-		fuel: {
-			max: 150,
-			cost: 1e12,
-			amount: 0,
-			scaleDown: 1
-		},
-		auto: {
-			rocket: false,
-			fuel: false
-		},
-		up1: {
-			cost: 2.5e17,
-			buys: 0,
-			scaling: 1.3
-		},
-		up2: {
-			cost: 4e17,
-			buys: 0,
-			scaling: 1.4
-		},
-		up3: {
-			cost: 6e17,
-			buys: 0,
-			scaling: 1.6
-		},
-		up4: {
-			cost: 4e17,
-			buys: 0,
-			scaling: 1.4
-		},
-		techs: {
-			techStart: false,
-			cs1: 0,
-			cs2: 0,
-			cs3: 0,
-			cs4: 0,
-			ef3: 0,
-			mpf: 0,
-			cmx: 0,
-			ef4: 0,
-			maxTP: 0,
-			currentTP: 0,
-			respec: false
-		},
-		moneyPerFuel: 5e16,
-		rockLimit: 1,
-		rockLaunched: 0,
-		affectByCreat: false,
-		successChance: 100
-	},
-	rock4: {
-		active: false,
-		fuel: {
-			max: 150,
-			cost: 1e21,
-			amount: 0,
-			scaleDown: 1
-		},
-		auto: {
-			rocket: false,
-			fuel: false
-		},
-		up1: {
-			cost: 2.5e23,
-			buys: 0,
-			scaling: 1.3
-		},
-		up2: {
-			cost: 4e23,
-			buys: 0,
-			scaling: 1.4
-		},
-		up3: {
-			cost: 6e23,
-			buys: 0,
-			scaling: 1.6
-		},
-		up4: {
-			cost: 4e23,
-			buys: 0,
-			scaling: 1.4
-		},
-		techs: {
-			techStart: false,
-			cs1: 0,
-			cs2: 0,
-			cs3: 0,
-			cs4: 0,
-			ef3: 0,
-			mpf: 0,
-			cmx: 0,
-			ef4: 0,
-			maxTP: 0,
-			currentTP: 0,
-			respec: false
-		},
-		moneyPerFuel: 1e22,
-		rockLimit: 1,
-		rockLaunched: 0,
-		affectByCreat: false,
-		successChance: 100
-	},
-	rock5: {
-		active: false,
-		fuel: {
-			max: 150,
-			cost: 1e28,
-			amount: 0,
-			scaleDown: 1
-		},
-		auto: {
-			rocket: false,
-			fuel: false
-		},
-		up1: {
-			cost: 2.5e30,
-			buys: 0,
-			scaling: 1.3
-		},
-		up2: {
-			cost: 4e30,
-			buys: 0,
-			scaling: 1.4
-		},
-		up3: {
-			cost: 6e30,
-			buys: 0,
-			scaling: 1.6
-		},
-		up4: {
-			cost: 4e30,
-			buys: 0,
-			scaling: 1.4
-		},
-		techs: {
-			techStart: false,
-			cs1: 0,
-			cs2: 0,
-			cs3: 0,
-			cs4: 0,
-			ef3: 0,
-			mpf: 0,
-			cmx: 0,
-			ef4: 0,
-			maxTP: 0,
-			currentTP: 0,
-			respec: false
-		},
-		moneyPerFuel: 1e29,
-		rockLimit: 1,
-		rockLaunched: 0,
-		affectByCreat: false,
-		successChance: 100
-	},
-	auto: {
-		rocket: false,
-		fuel: false
-	},
-	//HλLF-LIFE 3 confirmed
-	up1Cost: 2500,
-	up1buys: 0,
-	maxUp1buys: 5,
-	up2Cost: 4000,
-	up2buys: 0,
-	maxUp2buys: 5,
-	up3Cost: 6000,
-	up3buys: 0,
-	maxUp3buys: 5,
-	creat: 0,
-	creatGainReset: 0,
-	ally: 0,
-	rockLimit: 1,
-	allyButText: "none",
-	era: "before",
-	pUp2cost: 5,
-	rockLaunched: 0,
-	pUp3cost: 5,
-	rocket: 0,
-	funRuined: false,
-	creatMult: 1,
-	pUp4Bought: false,
-	brainstormed: false,
-	explorerUnlocked: false,
-	pUp5Bought: false,
-	pUp9Bought: false
-};
 var lore = ["You've heard of the people in the United States and the Soviet Union trying to make spaceships. You kind of want to make one yourself.", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
 function basicSwitchAuto() {
-	game.auto.rocket = !game.auto.rocket;
-
-	if (game.auto.rocket) {
-		document.getElementById('basicDisableAuto').classList.add('pure-button-active');		
-		document.getElementById('basicBtnLaunch').style.display = 'none';
-		document.getElementById('basicBtnFuel').style.display = 'none';
-		rockLaunch1();
-	} else {
-		document.getElementById('basicDisableAuto').classList.remove('pure-button-active');
-		document.getElementById('basicBtnLaunch').style.display = 'inline';
-		document.getElementById('basicBtnFuel').style.display = 'inline';
-	}
-	
+	rocket1.switchAuto(!rocket1.properties.auto);	
 }
 
 function rockLaunch1() {
-	if (game.rockLimit > game.rockLaunched) {
-		game.rockLaunched += 1;
-		lore[1] = "You set up a launch pad in a field filled with flowers and one-leafed clovers. As you launch the rocket, you realize you won't be able to make any money for future launches, which is sad.";		
+	rocket1.launch();	
+}
 
-		var basicRocketAuto = setInterval(function () {
-			if (game.basicRocket.fuel.amount > 0) {
-				let money = game.basicRocket.moneyPerFuel * game.rockLimit;				
-				game.money += money;
-				game.basicRocket.fuel.amount -= 1;
-				game.money = Math.round(game.money * 100) / 100;
-			} else if (game.auto.rocket === false) {
-				lore[2] = "The day after the rocket launch, you recieve a letter saying \'That rocket launch was cool. Hope you can do more!\' with enough money to fund another launch. The letter is signed \'FM\'";
-				game.rockLaunched = 0;				
-				clearInterval(basicRocketAuto);
-			}
-		}, 50);
-	}
+function buyFuel() {
+	rocket1.buyFuel();
 }
 
 function upgrade1() {
-	if (game.money >= game.up1Cost) {
-		if (game.up1buys < 25) {
-			lore[4] = "You figure out that if you make your rocket taller or wider, you can fit more fuel inside. You feel like you should have thought of that by now.";
-			game.basicRocket.fuel.max = Math.floor(game.basicRocket.fuel.max * 1.1);
-			game.money -= game.up1Cost;
-			if (game.basicRocket.techs.cs1 === 0) {
-				game.up1Cost = Math.round(game.up1Cost * 1.3);
-			}
-			if (game.basicRocket.techs.cs1 === 1) {
-				game.up1Cost = Math.round(game.up1Cost * 1.28);
-			}
-			if (game.basicRocket.techs.cs1 === 2) {
-				game.up1Cost = Math.round(game.up1Cost * 1.25);
-			}
-			if (game.basicRocket.techs.cs1 === 3) {
-				game.up1Cost = Math.round(game.up1Cost * 1.21);
-			}
-			game.up1buys += 1;
-		}
-	}
+	rocket1.buyUpgrade1();
 }
 
 function upgrade2() {
-	if (game.money >= game.up2Cost) {
-		lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2.";
-		if (game.up2buys <= 25) {
-			game.basicRocket.fuel.cost = 2;
-			game.basicRocket.fuel.scaleDown = 1.05 * game.basicRocket.fuel.scaleDown;
-			game.money -= game.up2Cost;
-			if (game.basicRocket.techs.cs2 === 0) {
-				game.up2Cost = Math.round(game.up2Cost * 1.4);
-			}
-			if (game.basicRocket.techs.cs2 === 1) {
-				game.up2Cost = Math.round(game.up2Cost * 1.38);
-			}
-			if (game.basicRocket.techs.cs2 === 2) {
-				game.up2Cost = Math.round(game.up2Cost * 1.35);
-			}
-			if (game.basicRocket.techs.cs2 === 3) {
-				game.up2Cost = Math.round(game.up2Cost * 1.31);
-			}
-			game.up2buys += 1;
-		}
-	}
+	rocket1.buyUpgrade2();	
 }
 
 function upgrade3() {
-	if (game.money >= game.up3Cost) {
-		lore[6] = "Better engines mean more speed. More speed means more height. And FM seems to be sending you money based on how high the rocket goes.";
-		if (game.up3buys < 25) {
-			if (game.basicRocket.techs.ef3 === 0) {
-				game.basicRocket.moneyPerFuel = game.basicRocket.moneyPerFuel * 1.25;
-			}
-			if (game.basicRocket.techs.ef3 === 1) {
-				game.basicRocket.moneyPerFuel = game.basicRocket.moneyPerFuel * 1.28;
-			}
-			if (game.basicRocket.techs.ef3 === 2) {
-				game.basicRocket.moneyPerFuel = game.basicRocket.moneyPerFuel * 1.3;
-			}
-			if (game.basicRocket.techs.ef3 === 3) {
-				game.basicRocket.moneyPerFuel = game.basicRocket.moneyPerFuel * 1.32;
-			}
-			game.money -= game.up3Cost;
-			if (game.basicRocket.techs.cs3 === 0) {
-				game.up3Cost = Math.round(game.up3Cost * 1.5);
-			}
-			if (game.basicRocket.techs.cs3 === 1) {
-				game.up3Cost = Math.round(game.up3Cost * 1.48);
-			}
-			if (game.basicRocket.techs.cs3 === 2) {
-				game.up3Cost = Math.round(game.up3Cost * 1.45);
-			}
-			if (game.basicRocket.techs.cs3 === 3) {
-				game.up3Cost = Math.round(game.up3Cost * 1.4);
-			}
-			game.up3buys += 1;
-		}
-	}
+	rocket1.buyUpgrade3();	
+}
+
+function explorerBuyFuel() {
+	rocket2.buyFuel();
 }
 
 function numberWithCommas(x) {
@@ -398,44 +40,36 @@ function bugFix() {
 }
 
 function p1Gain() {
-	game.creatGainReset = Math.floor(Math.sqrt(game.money / 50000) * game.creatMult * ((game.basicRocket.techs.cmx / 2) + 1) * ((game.rock2.techs.cmx / 1.5) + 1) * ((game.rock3.techs.cmx / 1.5) + 1));
+	game.creatGainReset = Math.floor(Math.sqrt(game.money / 50000) * game.creatMult * ((rocket1.properties.techs.cmx / 2) + 1) * ((rocket2.properties.techs.cmx / 1.5) + 1) * ((game.rock3.techs.cmx / 1.5) + 1));
 }
 
 function prestige1() {
-	if (game.up1buys >= 5 && game.up2buys >= 5 && game.up3buys >= 5 && game.money >= 50000) {
+
+	if (rocket1.properties.up1.buys >= 5 && 
+		rocket1.properties.up2.buys >= 5 && 
+		rocket1.properties.up3.buys >= 5 && 
+		game.money >= 50000) {
+
 		game.brainstormed = true;
 		lore[7] = "You decide it's time to brainstorm up some better ideas for your rocket, so you deconstruct it using the money you have left.";
-		game.creat += Math.floor(Math.sqrt(game.money / 50000) * game.creatMult * ((game.basicRocket.techs.cmx / 2) + 1) * ((game.rock2.techs.cmx / 1.5) + 1) * ((game.rock3.techs.cmx / 1.5) + 1));
+		game.creat += Math.floor(Math.sqrt(game.money / 50000) * game.creatMult * ((rocket1.properties.techs.cmx / 2) + 1) * ((rocket2.properties.techs.cmx / 1.5) + 1) * ((game.rock3.techs.cmx / 1.5) + 1));
 		game.money = 0;
 		if (game.pUp9Bought === true) {
-			game.basicRocket.fuel.amount = 150;
-			game.basicRocket.fuel.cost = 2;
-			game.basicRocket.fuel.max = 1579;
-			game.basicRocket.fuel.scaleDown = 3.38;
-			game.up1buys = 25;
-			game.up2buys = 25;
-			game.up3buys = 25;
+			rocket1.properties.fuel.amount = 150;
+			rocket1.properties.fuel.cost = 2;
+			rocket1.properties.fuel.max = 1579;
+			rocket1.properties.fuel.scaleDown = 3.38;
+			rocket1.properties.up1.buys = 25;
+			rocket1.properties.up2.buys = 25;
+			rocket1.properties.up3.buys = 25;
 		} else {
-			game.basicRocket.fuel.amount = 150;
-			game.basicRocket.fuel.cost = 3;
-			game.basicRocket.fuel.max = 150;
-			game.basicRocket.fuel.scaleDown = 1;
-			game.up1Cost = 2500;
-			game.up1buys = 0;
-			game.up2Cost = 4000;
-			game.up2buys = 0;
-			game.up3Cost = 6000;
-			game.up3buys = 0;
+			rocket1.prestige();			
 		}
-		game.rockLaunched = 0;
-		game.rock2.rockLaunched = 0;
+		rocket1.properties.rockLaunched = 0;
+		rocket2.properties.rockLaunched = 0;
 		game.rock3.rockLaunched = 0;
 		game.rock4.rockLaunched = 0;
 		game.rock5.rockLaunched = 0;
-		game.rock2.fuel.cost = 100000;
-		game.rock2.fuel.amount = 0;
-		game.rock2.fuel.scaleDown = 1;
-		game.rock2.fuel.max = 150;
 		game.rock3.fuel.cost = 1e12;
 		game.rock3.fuel.amount = 0;
 		game.rock3.fuel.scaleDown = 1;
@@ -448,10 +82,6 @@ function prestige1() {
 		game.rock5.fuel.amount = 0;
 		game.rock5.fuel.scaleDown = 1;
 		game.rock5.fuel.max = 150;
-		game.rock2.up1.buys = 0;
-		game.rock2.up2.buys = 0;
-		game.rock2.up3.buys = 0;
-		game.rock2.up4.buys = 0;
 		game.rock3.up1.buys = 0;
 		game.rock3.up2.buys = 0;
 		game.rock3.up3.buys = 0;
@@ -464,10 +94,6 @@ function prestige1() {
 		game.rock5.up2.buys = 0;
 		game.rock5.up3.buys = 0;
 		game.rock5.up4.buys = 0;
-		game.rock2.up1.cost = 250000000;
-		game.rock2.up2.cost = 400000000;
-		game.rock2.up3.cost = 600000000;
-		game.rock2.up4.cost = 400000000;
 		game.rock3.up1.cost = 2.5e17;
 		game.rock3.up2.cost = 4e17;
 		game.rock3.up3.cost = 6e17;
@@ -480,76 +106,75 @@ function prestige1() {
 		game.rock5.up2.cost = 4e30;
 		game.rock5.up3.cost = 6e30;
 		game.rock5.up4.cost = 4e30;
-		game.rock2.successChance = 100;
-		game.rock2.moneyPerFuel = 1500000;
-		if (game.creat < 256) {
-			if (game.ally === 0) {
-				game.basicRocket.moneyPerFuel = 10 * (Math.log2(game.creat + 1) + 1);
-			}
-			if (game.ally === 1) {
-				game.basicRocket.moneyPerFuel = 10 * (Math.log2(game.creat + 1) + 1) * 1.5 * (game.basicRocket.techs.mpf + 1);
-			}
-		} else {
-			if (game.ally === 0) {
-				game.basicRocket.moneyPerFuel = 10 * (Math.log2(256) + 1);
-			}
-			if (game.ally === 1) {
-				game.basicRocket.moneyPerFuel = 10 * (Math.log2(256) + 1) * 1.5 * (game.basicRocket.techs.mpf + 1);
-			}
-		}
+		
 		if (game.pUp9Bought === true) {
-			game.basicRocket.moneyPerFuel = game.basicRocket.moneyPerFuel * 1034;
+			rocket1.properties.moneyPerFuel = rocket1.properties.moneyPerFuel * 1034;
 		}
 		game.rock3.moneyPerFuel = (5e16 * (game.rock3.techs.mpf + 1)) * Math.log10(game.creat);
-		if (game.rock2.affectByCreat === true && game.creat > 2048 && game.creat < 1048576) {
-			game.rock2.moneyPerFuel = 1500000 * ((Math.log2(game.creat - 2048) + 1) * 1.5 * (game.rock2.techs.mpf + 1));
+		if (rocket2.properties.affectByCreat === true && game.creat > 2048 && game.creat < 1048576) {
+			rocket2.properties.moneyPerFuel = 1500000 * ((Math.log2(game.creat - 2048) + 1) * 1.5 * (rocket2.properties.techs.mpf + 1));
 		} else if (game.creat > 1048576) {
-			game.rock2.moneyPerFuel = 1500000 * ((Math.log2(1048576 - 2048) + 1) * 1.5 * (game.rock2.techs.mpf + 1));
+			rocket2.properties.moneyPerFuel = 1500000 * ((Math.log2(1048576 - 2048) + 1) * 1.5 * (rocket2.properties.techs.mpf + 1));
 		} else {
-			game.rock2.moneyPerFuel = 1500000;
+			rocket2.properties.moneyPerFuel = 1500000;
 		}
-		if (game.basicRocket.techs.respec === true) {
-			game.basicRocket.techs.cs1 = 0;
-			game.basicRocket.techs.cs2 = 0;
-			game.basicRocket.techs.cs3 = 0;
-			game.basicRocket.techs.ef3 = 0;
-			game.basicRocket.techs.mpf = 0;
-			game.basicRocket.techs.cmx = 0;
-			game.basicRocket.techs.currentTP = game.basicRocket.techs.maxTP;
-			game.basicRocket.techs.respec = false;
-		}
-		if (game.rock2.techs.respec === true) {
-			game.rock2.techs.cs1 = 0;
-			game.rock2.techs.cs2 = 0;
-			game.rock2.techs.cs3 = 0;
-			game.rock2.techs.cs4 = 0;
-			game.rock2.techs.ef3 = 0;
-			game.rock2.techs.ef4 = 0;
-			game.rock2.techs.mpf = 0;
-			game.rock2.techs.cmx = 0;
-			game.rock2.techs.currentTP = game.rock2.techs.maxTP;
-			game.rock2.techs.respec = false;
+		
+		if (rocket2.properties.techs.respec === true) {
+			rocket2.properties.techs.cs1 = 0;
+			rocket2.properties.techs.cs2 = 0;
+			rocket2.properties.techs.cs3 = 0;
+			rocket2.properties.techs.cs4 = 0;
+			rocket2.properties.techs.ef3 = 0;
+			rocket2.properties.techs.ef4 = 0;
+			rocket2.properties.techs.mpf = 0;
+			rocket2.properties.techs.cmx = 0;
+			rocket2.properties.techs.currentTP = rocket2.properties.techs.maxTP;
+			rocket2.properties.techs.respec = false;
 		}
 	}
 }
-window.setInterval(function () {
-	if (game.auto.fuel === true) {
-		buyFuel();
-	}
-	if (game.rock2.auto.fuel === true) {
-		expBuyFuel();
-	}
-	bugFix();
-	p1Gain();
-}, 100);
+// window.setInterval(function () {
+// 	if (game.auto.fuel === true) {
+// 		buyFuel();
+// 	}
+// 	if (game.rock2.auto.fuel === true) {
+// 		expBuyFuel();
+// 	}
+// 	bugFix();
+// 	p1Gain();
+// }, 100);
 
 function save() {
 	localStorage.sri = btoa(JSON.stringify(game));
+	localStorage.beta = btoa(JSON.stringify(rocket1.properties));
+	localStorage.explorer = btoa(JSON.stringify(rocket2.properties));
 }
 
 function load() {
-	if (!localStorage.sri) return;
-	game = JSON.parse(atob(localStorage.sri));
+	if (localStorage.sri) {
+		game = JSON.parse(atob(localStorage.sri));	
+	}
+
+	if (localStorage.beta) {
+		rocket1.properties = JSON.parse(atob(localStorage.beta));
+		if (rocket1.properties.auto) {
+			document.getElementById('basicDisableAuto').classList.add('pure-button-active');		
+			document.getElementById('basicBtnLaunch').style.display = 'none';
+			document.getElementById('basicBtnFuel').style.display = 'none';
+			rocket1.launch();
+		}
+	}
+
+	if (localStorage.explorer) {
+		rocket2.properties = JSON.parse(atob(localStorage.explorer));
+		if (rocket2.properties.auto) {
+			document.getElementById('explorerDisableAuto').classList.add('pure-button-active');		
+			document.getElementById('explorerBtnLaunch').style.display = 'none';
+			document.getElementById('explorerBtnFuel').style.display = 'none';
+			rocket2.launch();
+		}
+	}
+	
 	game.rockLaunched = 0;
 }
 
@@ -600,7 +225,7 @@ function pUpgrade4() {
 	if (game.creat >= 10 && game.pUp4Bought === false) {
 		lore[11] = "You have recieved additional funding to make better rockets with things called Technology Points. Pretty cool.";
 		game.creat -= 10;
-		game.basicRocket.techs.techStart = true;
+		rocket1.properties.techs.techStart = true;
 		game.pUp4Bought = true;
 	}
 
@@ -610,32 +235,31 @@ function pUpgrade5() {
 	if (game.creat >= 10 && game.pUp5Bought === false) {
 		lore[13] = "NASA has sent some engineers to help you launch this rocket. They say it's for a new project you're going to be working on soon.";
 		game.creat -= 10;
-		game.auto.rocket = basicSwitchAuto();
-		game.auto.fuel = true;
+		rocket1.switchAuto(true);
 		game.pUp5Bought = true;
 	}
 }
 
 function pUpgrade6() {
-	if (game.creat > 250 && game.explorerUnlocked === false && game.up1buys === 25 && game.up2buys === 25 && game.up3buys === 25) {
+	if (game.creat > 250 && rocket2.properties.unlocked === false && rocket1.properties.up1.buys === 25 && rocket1.properties.up2.buys === 25 && rocket1.properties.up3.buys === 25) {
 		lore[14] = "You begin work on the Explorers project. The Explorers project was a massive project designed to get a satellite into space.";
-		game.explorerUnlocked = true;
+		rocket2.properties.unlocked = true;
 		game.creat -= 250;
 	}
 }
 
 function pUpgrade7() {
-	if (game.creat > 2500 && game.explorerUnlocked === true && game.basicRocket.techs.maxTP === 6) {
+	if (game.creat > 2500 && rocket2.properties.unlocked === true && rocket1.properties.techs.maxTP === 6) {
 		lore[15] = "There's not much left to do with your basic rocket, but it's really close to perfection. Best to give it a little more power.";
 		game.creat -= 2500;
-		game.basicRocket.techs.maxTP = 18;
+		rocket1.properties.techs.maxTP = 18;
 	}
 }
 
 function pUpgrade8() {
-	if (game.creat > 7500 && game.explorerUnlocked === true && game.rock2.affectByCreat === false) {
+	if (game.creat > 7500 && rocket2.properties.unlocked === true && rocket2.properties.affectByCreat === false) {
 		lore[16] = "The Explorers project is looking very good so far. You have all sorts of ideas for how to make it better.";
-		game.rock2.affectByCreat = true;
+		rocket2.properties.affectByCreat = true;
 		game.creat -= 7500;
 	}
 }
@@ -652,16 +276,15 @@ function pUpgrade9() {
 function pUpgrade10() {
 	if (game.creat > 50000 && game.rock2.techs.techStart === false) {
 		game.creat -= 50000;
-		game.rock2.techs.techStart = true;
+		rocket2.properties.techs.techStart = true;
 
 	}
 }
 
 function pUpgrade11() {
-	if (game.creat > 50000 && game.rock2.auto.rocket === false) {
+	if (game.creat > 50000 && rocket2.properties.auto === false) {
 		game.creat -= 50000;
-		game.rock2.auto.rocket = true;
-		game.rock2.auto.fuel = true;
+		rocket2.properties.auto = true;
 	}
 }
 
@@ -713,77 +336,49 @@ function pUpgrade17() {
 	}
 }
 setInterval(function () {
-	if (game.up1buys === 25 && game.up2buys === 25 && game.up3buys === 25) {
-		lore[12] = "You have done everything you can with this rocket. Maybe it's time to start a new project.";
-	}
-	if (game.basicRocket.techs.techStart === true) {
-		if (game.up1buys >= 5 && game.up2buys >= 5 && game.up3buys >= 5 && game.basicRocket.techs.maxTP === 0) {
-			game.basicRocket.techs.maxTP = 1;
-			game.basicRocket.techs.currentTP = 1;
-		}
-		if (game.up1buys >= 10 && game.up2buys >= 10 && game.up3buys >= 10 && game.basicRocket.techs.maxTP === 1) {
-			game.basicRocket.techs.maxTP = 2;
-			game.basicRocket.techs.currentTP += 1;
-		}
-		if (game.up1buys >= 15 && game.up2buys >= 15 && game.up3buys >= 15 && game.basicRocket.techs.maxTP === 2) {
-			game.basicRocket.techs.maxTP = 3;
-			game.basicRocket.techs.currentTP += 1;
-		}
-		if (game.up1buys >= 20 && game.up2buys >= 20 && game.up3buys >= 20 && game.basicRocket.techs.maxTP === 3) {
-			game.basicRocket.techs.maxTP = 4;
-			game.basicRocket.techs.currentTP += 1;
-		}
-		if (game.up1buys >= 22 && game.up2buys >= 22 && game.up3buys >= 22 && game.basicRocket.techs.maxTP === 4) {
-			game.basicRocket.techs.maxTP = 5;
-			game.basicRocket.techs.currentTP += 1;
-		}
-		if (game.up1buys >= 24 && game.up2buys >= 24 && game.up3buys >= 24 && game.basicRocket.techs.maxTP === 5) {
-			game.basicRocket.techs.maxTP = 6;
-			game.basicRocket.techs.currentTP += 1;
-		}
-	}
-	if (game.rock2.techs.techStart === true) {
-		if (game.rock2.up1.buys >= 5 && game.rock2.up2.buys >= 5 && game.rock2.up3.buys >= 5 && game.rock2.techs.maxTP === 0) {
-			game.rock2.techs.maxTP = 1;
-			game.rock2.techs.currentTP = 1;
-		}
-		if (game.rock2.up1.buys >= 10 && game.rock2.up2.buys >= 10 && game.rock2.up3.buys >= 10 && game.rock2.techs.maxTP === 1) {
-			game.rock2.techs.maxTP = 2;
-			game.rock2.techs.currentTP += 1;
-		}
-		if (game.rock2.up1.buys >= 15 && game.rock2.up2.buys >= 15 && game.rock2.up3.buys >= 15 && game.rock2.techs.maxTP === 2) {
-			game.rock2.techs.maxTP = 3;
-			game.rock2.techs.currentTP += 1;
-		}
-		if (game.rock2.up1.buys >= 20 && game.rock2.up2.buys >= 20 && game.rock2.up3.buys >= 20 && game.rock2.techs.maxTP === 3) {
-			game.rock2.techs.maxTP = 4;
-			game.rock2.techs.currentTP += 1;
-		}
-		if (game.rock2.up1.buys >= 25 && game.rock2.up2.buys >= 25 && game.rock2.up3.buys >= 25 && game.rock2.techs.maxTP === 4) {
-			game.rock2.techs.maxTP = 5;
-			game.rock2.techs.currentTP += 1;
-		}
-		if (game.rock2.up1.buys >= 30 && game.rock2.up2.buys >= 30 && game.rock2.up3.buys >= 30 && game.rock2.techs.maxTP === 5) {
-			game.rock2.techs.maxTP = 6;
-			game.rock2.techs.currentTP += 1;
-		}
-		if (game.rock2.up1.buys >= 35 && game.rock2.up2.buys >= 35 && game.rock2.up3.buys >= 35 && game.rock2.techs.maxTP === 6) {
-			game.rock2.techs.maxTP = 7;
-			game.rock2.techs.currentTP += 1;
-		}
-		if (game.rock2.up1.buys >= 40 && game.rock2.up2.buys >= 40 && game.rock2.up3.buys >= 40 && game.rock2.techs.maxTP === 7) {
-			game.rock2.techs.maxTP = 8;
-			game.rock2.techs.currentTP += 1;
-		}
-		if (game.rock2.up1.buys >= 45 && game.rock2.up2.buys >= 45 && game.rock2.up3.buys >= 45 && game.rock2.techs.maxTP === 8) {
-			game.rock2.techs.maxTP = 9;
-			game.rock2.techs.currentTP += 1;
-		}
-		if (game.rock2.up1.buys >= 50 && game.rock2.up2.buys >= 50 && game.rock2.up3.buys >= 50 && game.rock2.techs.maxTP === 9) {
-			game.rock2.techs.maxTP = 10;
-			game.rock2.techs.currentTP += 1;
-		}
-	}
+	
+	// if (game.rock2.techs.techStart === true) {
+	// 	if (game.rock2.up1.buys >= 5 && game.rock2.up2.buys >= 5 && game.rock2.up3.buys >= 5 && game.rock2.techs.maxTP === 0) {
+	// 		game.rock2.techs.maxTP = 1;
+	// 		game.rock2.techs.currentTP = 1;
+	// 	}
+	// 	if (game.rock2.up1.buys >= 10 && game.rock2.up2.buys >= 10 && game.rock2.up3.buys >= 10 && game.rock2.techs.maxTP === 1) {
+	// 		game.rock2.techs.maxTP = 2;
+	// 		game.rock2.techs.currentTP += 1;
+	// 	}
+	// 	if (game.rock2.up1.buys >= 15 && game.rock2.up2.buys >= 15 && game.rock2.up3.buys >= 15 && game.rock2.techs.maxTP === 2) {
+	// 		game.rock2.techs.maxTP = 3;
+	// 		game.rock2.techs.currentTP += 1;
+	// 	}
+	// 	if (game.rock2.up1.buys >= 20 && game.rock2.up2.buys >= 20 && game.rock2.up3.buys >= 20 && game.rock2.techs.maxTP === 3) {
+	// 		game.rock2.techs.maxTP = 4;
+	// 		game.rock2.techs.currentTP += 1;
+	// 	}
+	// 	if (game.rock2.up1.buys >= 25 && game.rock2.up2.buys >= 25 && game.rock2.up3.buys >= 25 && game.rock2.techs.maxTP === 4) {
+	// 		game.rock2.techs.maxTP = 5;
+	// 		game.rock2.techs.currentTP += 1;
+	// 	}
+	// 	if (game.rock2.up1.buys >= 30 && game.rock2.up2.buys >= 30 && game.rock2.up3.buys >= 30 && game.rock2.techs.maxTP === 5) {
+	// 		game.rock2.techs.maxTP = 6;
+	// 		game.rock2.techs.currentTP += 1;
+	// 	}
+	// 	if (game.rock2.up1.buys >= 35 && game.rock2.up2.buys >= 35 && game.rock2.up3.buys >= 35 && game.rock2.techs.maxTP === 6) {
+	// 		game.rock2.techs.maxTP = 7;
+	// 		game.rock2.techs.currentTP += 1;
+	// 	}
+	// 	if (game.rock2.up1.buys >= 40 && game.rock2.up2.buys >= 40 && game.rock2.up3.buys >= 40 && game.rock2.techs.maxTP === 7) {
+	// 		game.rock2.techs.maxTP = 8;
+	// 		game.rock2.techs.currentTP += 1;
+	// 	}
+	// 	if (game.rock2.up1.buys >= 45 && game.rock2.up2.buys >= 45 && game.rock2.up3.buys >= 45 && game.rock2.techs.maxTP === 8) {
+	// 		game.rock2.techs.maxTP = 9;
+	// 		game.rock2.techs.currentTP += 1;
+	// 	}
+	// 	if (game.rock2.up1.buys >= 50 && game.rock2.up2.buys >= 50 && game.rock2.up3.buys >= 50 && game.rock2.techs.maxTP === 9) {
+	// 		game.rock2.techs.maxTP = 10;
+	// 		game.rock2.techs.currentTP += 1;
+	// 	}
+	// }
 	if (game.rock3.techs.techStart === true) {
 		if (game.rock3.up1.buys >= 5 && game.rock3.up2.buys >= 5 && game.rock3.up3.buys >= 5 && game.rock3.techs.maxTP === 0) {
 			game.rock3.techs.maxTP = 1;
@@ -829,45 +424,27 @@ setInterval(function () {
 }, 10);
 
 function tech11() {
-	if (game.basicRocket.techs.cs1 < 3 && game.basicRocket.techs.currentTP > 0) {
-		game.basicRocket.techs.currentTP -= 1;
-		game.basicRocket.techs.cs1 += 1;
-	}
+	rocket1.buyTech1();
 }
 
 function tech12() {
-	if (game.basicRocket.techs.cs2 < 3 && game.basicRocket.techs.currentTP > 0) {
-		game.basicRocket.techs.currentTP -= 1;
-		game.basicRocket.techs.cs2 += 1;
-	}
+	rocket1.buyTech2();
 }
 
 function tech13() {
-	if (game.basicRocket.techs.cs3 < 3 && game.basicRocket.techs.currentTP > 0) {
-		game.basicRocket.techs.currentTP -= 1;
-		game.basicRocket.techs.cs3 += 1;
-	}
+	rocket1.buyTech3();
 }
 
 function tech14() {
-	if (game.basicRocket.techs.ef3 < 3 && game.basicRocket.techs.currentTP > 0) {
-		game.basicRocket.techs.currentTP -= 1;
-		game.basicRocket.techs.ef3 += 1;
-	}
+	rocket1.buyTech4();
 }
 
 function tech15() {
-	if (game.basicRocket.techs.mpf < 3 && game.basicRocket.techs.currentTP > 0) {
-		game.basicRocket.techs.currentTP -= 1;
-		game.basicRocket.techs.mpf += 1;
-	}
+	rocket1.buyTech5();
 }
 
 function tech16() {
-	if (game.basicRocket.techs.cmx < 3 && game.basicRocket.techs.currentTP > 0) {
-		game.basicRocket.techs.currentTP -= 1;
-		game.basicRocket.techs.cmx += 1;
-	}
+	rocket1.buyTech6();
 }
 
 function tech21() {
@@ -983,7 +560,7 @@ function tech38() {
 }
 
 function techRespec() {
-	game.basicRocket.techs.respec = true;
+	rocket1.resetTech();
 }
 
 function techRespec2() {
@@ -992,9 +569,9 @@ function techRespec2() {
 
 function ruinTheFun() {
 	if (game.funRuined === false) {
-		game.up1buys = 25;
-		game.up2buys = 25;
-		game.up3buys = 25;
+		rocket1.properties.up1.buys = 25;
+		rocket1.properties.up2.buys = 25;
+		rocket1.properties.up3.buys = 25;
 		game.creat = 200000;
 		game.money = 50001;
 		game.funRuined = true;
@@ -1021,41 +598,11 @@ function explorerSwitchAuto() {
 	
 }
 
-function rocklaunch2() {
-	if (game.rock2.rockLaunched <= game.rock2.rockLimit) {
-		var failChance = getRandomInt(100);
-		if (failChance < game.rock2.successChance) {
-			game.rock2.rockLaunched += 1;
-			var rocketAuto2 = setInterval(function () {
-				if (game.rock2.fuel.amount > 0) {
-
-					game.money += game.rock2.moneyPerFuel;
-					game.rock2.fuel.amount -= 1;
-					game.money = Math.round(game.money * 100) / 100;
-				} else if (game.rock2.auto.rocket === false) {
-					game.rock2.rockLaunched = 0;
-					clearInterval(rocketAuto2);
-				}
-			}, 40);
-		} else {
-			game.money -= game.money / 2;
-			game.rock2.fuel.amount = 0;
-			lore[18] = "This is a disaster. The rocket failed. You need to make it a lot safer.";
-		}
-	}
+function explorerLaunch() {
+	rocket2.launch();
 }
 
-function expBuyFuel() {
-	let fuelCost = game.rock2.fuel.cost * game.rock2.fuel.max;
-	if (game.money >= fuelCost) {
-		if (game.rock2.fuel.amount === 0) {
-			game.money -= fuelCost;
-			game.rock2.fuel.amount += game.rock2.fuel.max;
-			game.rock2.fuel.cost = parseFloat(game.rock2.fuel.cost * (1 + (0.0001 * game.rock2.fuel.max))).toFixed(2);
-			lore[3] = "You decide to get more fuel, so you can continue to launch rockets.";
-		}
-	}
-}
+
 
 function expUp1() {
 	if (game.money >= game.rock2.up1.cost && game.rock2.up1.buys < 50) {
@@ -1629,51 +1176,32 @@ function apUp4() {
 	}
 }
 
-window.setInterval(function () {
-	document.getElementById("money").innerHTML = numberWithCommas(game.money);
-	document.getElementById("stillmoney").innerHTML = numberWithCommas(game.money);
+window.setInterval(function () {	
+	document.getElementById("money").innerHTML = numberWithCommas(parseFloat(game.money).toFixed(2));
 	document.getElementById("alsostillmoney").innerHTML = numberWithCommas(game.money);
 	document.getElementById("probablystillmoney").innerHTML = numberWithCommas(game.money);
 	document.getElementById("mightbemoneyimnotsure").innerHTML = numberWithCommas(game.money);
-	document.getElementById("fuel").innerHTML = game.basicRocket.fuel.amount;
-	document.getElementById("explorerFuel").innerHTML = game.rock2.fuel.amount;
 	document.getElementById("mercuryFuel").innerHTML = game.rock3.fuel.amount;
 	document.getElementById("geminiFuel").innerHTML = game.rock4.fuel.amount;
-	document.getElementById("apolloFuel").innerHTML = game.rock5.fuel.amount;
-	document.getElementById("fuelCost").innerHTML = numberWithCommas(game.basicRocket.fuel.cost);
-	document.getElementById("explorerFuelCost").innerHTML = numberWithCommas(game.rock2.fuel.cost);
+	document.getElementById("apolloFuel").innerHTML = game.rock5.fuel.amount;	
 	document.getElementById("mercuryFuelCost").innerHTML = numberWithCommas(game.rock3.fuel.cost);
 	document.getElementById("geminiFuelCost").innerHTML = numberWithCommas(game.rock4.fuel.cost);
-	document.getElementById("apolloFuelCost").innerHTML = numberWithCommas(game.rock5.fuel.cost);
-	document.getElementById("fuelMax").innerHTML = game.basicRocket.fuel.max;
-	document.getElementById("explorerFuelMax").innerHTML = game.rock2.fuel.max;
+	document.getElementById("apolloFuelCost").innerHTML = numberWithCommas(game.rock5.fuel.cost);	
 	document.getElementById("mercuryFuelMax").innerHTML = game.rock3.fuel.max;
 	document.getElementById("geminiFuelMax").innerHTML = game.rock4.fuel.max;
-	document.getElementById("apolloFuelMax").innerHTML = game.rock5.fuel.max;
-	document.getElementById("upgrade1Cost").innerHTML = numberWithCommas(game.up1Cost);
-	document.getElementById("explorerUpgrade1Cost").innerHTML = numberWithCommas(game.rock2.up1.cost);
+	document.getElementById("apolloFuelMax").innerHTML = game.rock5.fuel.max;	
 	document.getElementById("mercuryUpgrade1Cost").innerHTML = numberWithCommas(game.rock3.up1.cost);
 	document.getElementById("geminiUpgrade1Cost").innerHTML = numberWithCommas(game.rock4.up1.cost);
 	document.getElementById("apolloUpgrade1Cost").innerHTML = numberWithCommas(game.rock5.up1.cost);
-	document.getElementById("upgrade2Cost").innerHTML = numberWithCommas(game.up2Cost);
-	document.getElementById("explorerUpgrade2Cost").innerHTML = numberWithCommas(game.rock2.up2.cost);
 	document.getElementById("mercuryUpgrade2Cost").innerHTML = numberWithCommas(game.rock3.up2.cost);
 	document.getElementById("geminiUpgrade2Cost").innerHTML = numberWithCommas(game.rock4.up2.cost);
-	document.getElementById("apolloUpgrade2Cost").innerHTML = numberWithCommas(game.rock5.up2.cost);
-	document.getElementById("upgrade3Cost").innerHTML = numberWithCommas(game.up3Cost);
-	document.getElementById("explorerUpgrade3Cost").innerHTML = numberWithCommas(game.rock2.up3.cost);
+	document.getElementById("apolloUpgrade2Cost").innerHTML = numberWithCommas(game.rock5.up2.cost);	
 	document.getElementById("mercuryUpgrade3Cost").innerHTML = numberWithCommas(game.rock3.up3.cost);
 	document.getElementById("geminiUpgrade3Cost").innerHTML = numberWithCommas(game.rock4.up3.cost);
 	document.getElementById("apolloUpgrade3Cost").innerHTML = numberWithCommas(game.rock5.up3.cost);
-	document.getElementById("explorerUpgrade4Cost").innerHTML = numberWithCommas(game.rock2.up4.cost);
 	document.getElementById("mercuryUpgrade4Cost").innerHTML = numberWithCommas(game.rock3.up4.cost);
 	document.getElementById("geminiUpgrade4Cost").innerHTML = numberWithCommas(game.rock4.up4.cost);
-	document.getElementById("apolloUpgrade4Cost").innerHTML = numberWithCommas(game.rock5.up4.cost);
-	document.getElementById("upgrade1Buys").innerHTML = game.up1buys;
-	document.getElementById("explorerUpgrade1Buys").innerHTML = game.rock2.up1.buys;
-	document.getElementById("explorerUpgrade2Buys").innerHTML = game.rock2.up2.buys;
-	document.getElementById("explorerUpgrade3Buys").innerHTML = game.rock2.up3.buys;
-	document.getElementById("explorerUpgrade4Buys").innerHTML = game.rock2.up4.buys;
+	document.getElementById("apolloUpgrade4Cost").innerHTML = numberWithCommas(game.rock5.up4.cost);	
 	document.getElementById("geminiUpgrade1Buys").innerHTML = game.rock4.up1.buys;
 	document.getElementById("geminiUpgrade2Buys").innerHTML = game.rock4.up2.buys;
 	document.getElementById("geminiUpgrade3Buys").innerHTML = game.rock4.up3.buys;
@@ -1685,11 +1213,9 @@ window.setInterval(function () {
 	document.getElementById("apolloUpgrade1Buys").innerHTML = game.rock3.up1.buys;
 	document.getElementById("apolloUpgrade2Buys").innerHTML = game.rock3.up2.buys;
 	document.getElementById("apolloUpgrade3Buys").innerHTML = game.rock3.up3.buys;
-	document.getElementById("apolloUpgrade4Buys").innerHTML = game.rock3.up4.buys;
-	document.getElementById("upgrade2Buys").innerHTML = game.up2buys;
-	document.getElementById("upgrade3Buys").innerHTML = game.up3buys;
+	document.getElementById("apolloUpgrade4Buys").innerHTML = game.rock3.up4.buys;	
 	document.getElementById("creativity").innerHTML = numberWithCommas(game.creat);
-	//document.getElementById("gainOnBrainstorm").innerHTML = game.creatGainReset;
+	document.getElementById("gainOnBrainstorm").innerHTML = game.creatGainReset;
 	document.getElementById("lore1").innerHTML = lore[0];
 	document.getElementById("lore2").innerHTML = lore[1];
 	document.getElementById("lore3").innerHTML = lore[2];
@@ -1712,36 +1238,16 @@ window.setInterval(function () {
 	document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
 	document.getElementById("pUpgrade2Cost").innerHTML = numberWithCommas(game.pUp2cost);
 	document.getElementById("pUpgrade3Cost").innerHTML = numberWithCommas(game.pUp3cost);
-	document.getElementById("creativityMultiplier").innerHTML = game.creatMult.toFixed(2);
-	document.getElementById("moneyPerFuel").innerHTML = numberWithCommas(Math.round(game.basicRocket.moneyPerFuel));
-	document.getElementById("explorerMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock2.moneyPerFuel));
+	document.getElementById("creativityMultiplier").innerHTML = game.creatMult.toFixed(2);	
 	document.getElementById("mercuryMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock3.moneyPerFuel));
 	document.getElementById("geminiMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock4.moneyPerFuel));
 	document.getElementById("apolloMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock5.moneyPerFuel));
-	document.getElementById("basicTechPoints").innerHTML = game.basicRocket.techs.currentTP;
-	document.getElementById("maxBTP").innerHTML = game.basicRocket.techs.maxTP;
-	document.getElementById("explorerTechPoints").innerHTML = game.rock2.techs.currentTP;
-	document.getElementById("maxETP").innerHTML = game.rock2.techs.maxTP;
 	document.getElementById("mercuryTechPoints").innerHTML = game.rock3.techs.currentTP;
 	document.getElementById("maxMTP").innerHTML = game.rock3.techs.maxTP;
 	document.getElementById("geminiTechPoints").innerHTML = game.rock3.techs.currentTP;
 	document.getElementById("maxGTP").innerHTML = game.rock3.techs.maxTP;
 	document.getElementById("apolloTechPoints").innerHTML = game.rock3.techs.currentTP;
 	document.getElementById("maxATP").innerHTML = game.rock3.techs.maxTP;
-	document.getElementById("TC11").innerHTML = game.basicRocket.techs.cs1;
-	document.getElementById("TC12").innerHTML = game.basicRocket.techs.cs2;
-	document.getElementById("TC13").innerHTML = game.basicRocket.techs.cs3;
-	document.getElementById("TC14").innerHTML = game.basicRocket.techs.ef3;
-	document.getElementById("TC15").innerHTML = game.basicRocket.techs.mpf;
-	document.getElementById("TC16").innerHTML = game.basicRocket.techs.cmx;
-	document.getElementById("TC21").innerHTML = game.rock2.techs.cs1;
-	document.getElementById("TC22").innerHTML = game.rock2.techs.cs2;
-	document.getElementById("TC23").innerHTML = game.rock2.techs.cs3;
-	document.getElementById("TC24").innerHTML = game.rock2.techs.cs4;
-	document.getElementById("TC25").innerHTML = game.rock2.techs.ef3;
-	document.getElementById("TC26").innerHTML = game.rock2.techs.ef4;
-	document.getElementById("TC27").innerHTML = game.rock2.techs.mpf;
-	document.getElementById("TC28").innerHTML = game.rock2.techs.cmx;
 	document.getElementById("TC31").innerHTML = game.rock3.techs.cs1;
 	document.getElementById("TC32").innerHTML = game.rock3.techs.cs2;
 	document.getElementById("TC33").innerHTML = game.rock3.techs.cs3;
@@ -1750,34 +1256,13 @@ window.setInterval(function () {
 	document.getElementById("TC36").innerHTML = game.rock3.techs.ef4;
 	document.getElementById("TC37").innerHTML = game.rock3.techs.mpf;
 	document.getElementById("TC38").innerHTML = game.rock3.techs.cmx;
-	document.getElementById("failChance").innerHTML = game.rock2.successChance.toFixed(2);
 	document.getElementById('mercuryFailChance').innerHTML = game.rock3.successChance.toFixed(2);
 	if (game.money > 50000 || game.brainstormed === true) {
 		document.getElementById("brainPrestige").style.display = "inline";
 	} else {
 		document.getElementById("brainPrestige").style.display = "none";
 	}
-	if (game.explorerUnlocked === true) {
-		document.getElementById("explorerContent").style.display = "";
-		document.getElementById("explorerContent2").style.display = "";
-	} else {
-		document.getElementById("explorerContent").style.display = "none";
-		document.getElementById("explorerContent2").style.display = "none";
-	}
-	if (game.basicRocket.techs.techStart === true) {
-		document.getElementById("basicTechs").style.display = "";
-		document.getElementById("basicTechs2").style.display = "";
-	} else {
-		document.getElementById("basicTechs").style.display = "none";
-		document.getElementById("basicTechs2").style.display = "none";
-	}
-	if (game.rock2.techs.techStart === true) {
-		document.getElementById("explorerTechs").style.display = "";
-		document.getElementById("explorerTechs2").style.display = "";
-	} else {
-		document.getElementById("explorerTechs").style.display = "none";
-		document.getElementById("explorerTechs2").style.display = "none";
-	}
+	
 	if (game.rock3.active === true) {
 		document.getElementById("mercuryContent").style.display = "";
 
@@ -1791,6 +1276,8 @@ window.setInterval(function () {
 		document.getElementById("mercuryTechs").style.display = "none";
 		document.getElementById("mercuryTechs2").style.display = "none";
 	}	
+
+	p1Gain();
 }, 100);
 
 load();
@@ -1809,6 +1296,7 @@ function fullReset() {
 	}).then(function(reset) {
 		if(reset) {
 			localStorage.removeItem("sri");
+			localStorage.removeItem("beta");
 			location.reload();
 		}
 	});
@@ -1823,7 +1311,7 @@ function tab(t) {
 	document.getElementById(t).style.display = "";
 }
 
-tab("rock2");
+tab("basicrocket");
 
 function subTab(tabName) {
 	var tabs = document.getElementsByClassName('pSubTab');
