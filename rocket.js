@@ -159,17 +159,31 @@ class BasicRocket extends Rocket {
 
 		let prestige = JSON.parse(JSON.stringify(rocketTypes[0]));
 
-		this.properties.fuel = prestige.fuel;
-		this.properties.up1 = prestige.up1;
-		this.properties.up2 = prestige.up2;
-		this.properties.up3 = prestige.up3;
+		this.properties.rockLaunched = 0;
 
-		let gameCreat = game.creat < 256 ? game.creat + 1 : 256;
+		if (game.pUp9Bought === true) {
 
-		if (game.ally === 0) {
-			this.properties.moneyPerFuel = 10 * (Math.log2(gameCreat) + 1);
+			rocket1.properties.fuel.amount = 150;
+			rocket1.properties.fuel.cost = 2;
+			rocket1.properties.fuel.max = 1579;
+			rocket1.properties.fuel.scaleDown = 3.38;
+			rocket1.properties.up1.buys = 25;
+			rocket1.properties.up2.buys = 25;
+			rocket1.properties.up3.buys = 25; 
+			rocket1.properties.moneyPerFuel = prestige.moneyPerFuel * 1034;
 		} else {
-			this.properties.moneyPerFuel = 10 * (Math.log2(gameCreat) + 1) * 1.5 * (this.properties.techs.mpf + 1);
+			this.properties.fuel = prestige.fuel;
+			this.properties.up1 = prestige.up1;
+			this.properties.up2 = prestige.up2;
+			this.properties.up3 = prestige.up3;
+
+			let gameCreat = game.creat < 256 ? game.creat + 1 : 256;
+
+			if (game.ally === 0) {
+				this.properties.moneyPerFuel = 10 * (Math.log2(gameCreat) + 1);
+			} else {
+				this.properties.moneyPerFuel = 10 * (Math.log2(gameCreat) + 1) * 1.5 * (this.properties.techs.mpf + 1);
+			}
 		}
 		
 		if (this.properties.techs.respec === true) {
@@ -397,7 +411,21 @@ class BasicRocket extends Rocket {
 			document.getElementById("moneyPerFuel").innerHTML = numberWithCommas(Math.round(this.properties.moneyPerFuel));
 			document.getElementById("basicTechPoints").innerHTML = this.properties.techs.currentTP;
 			document.getElementById("maxBTP").innerHTML = this.properties.techs.maxTP;
-			document.getElementById('basicDisableAuto').style.display = game.pUp5Bought == true ? 'inline' : 'none';
+			if (game.pUp5Bought) {
+				document.getElementById('basicDisableAuto').style.display = 'inline';
+				if (this.properties.auto) {
+					document.getElementById('basicDisableAuto').classList.add('pure-button-active');		
+					document.getElementById('basicBtnLaunch').style.display = 'none';
+					document.getElementById('basicBtnFuel').style.display = 'none';
+				} else {
+					document.getElementById('basicDisableAuto').classList.remove('pure-button-active');		
+					document.getElementById('basicBtnLaunch').style.display = 'inline';
+					document.getElementById('basicBtnFuel').style.display = 'inline';
+				}
+			} else {
+				document.getElementById('basicDisableAuto').style.display = 'none';
+			}
+
 			document.getElementById('basicRocketCount').innerHTML = game.rockLimit;
 			document.getElementById('autoRocketCount').innerHTML = game.rockLimit;
 			document.getElementById("upgrade1Cost").innerHTML = numberWithCommas(this.properties.up1.cost);
@@ -453,35 +481,76 @@ class Explorer extends Rocket {
 		this.updateUI();
 	}	
 
+	prestige() {
+
+		let prestige = JSON.parse(JSON.stringify(rocketTypes[1]));
+
+		this.properties.rockLaunched = 0;
+
+		this.properties.fuel = prestige.fuel;
+		this.properties.up1 = prestige.up1;
+		this.properties.up2 = prestige.up2;
+		this.properties.up3 = prestige.up3;
+		this.properties.up4 = prestige.up4;
+		this.properties.successChance = prestige.successChance;
+
+		if (this.properties.affectByCreat === true && game.creat > 2048 && game.creat < 1048576) {
+			this.properties.moneyPerFuel = 1500000 * ((Math.log2(game.creat - 2048) + 1) * 1.5 * (this.properties.techs.mpf + 1));
+		} else if (game.creat > 1048576) {
+			this.properties.moneyPerFuel = 1500000 * ((Math.log2(1048576 - 2048) + 1) * 1.5 * (this.properties.techs.mpf + 1));
+		} else {
+			this.properties.moneyPerFuel = 1500000;
+		}
+
+		if (this.properties.techs.respec === true) {
+			this.properties.techs.cs1 = 0;
+			this.properties.techs.cs2 = 0;
+			this.properties.techs.cs3 = 0;
+			this.properties.techs.ef3 = 0;
+			this.properties.techs.mpf = 0;
+			this.properties.techs.cmx = 0;
+			this.properties.techs.currentTP = this.properties.techs.maxTP;
+			this.properties.techs.respec = false;
+		}
+
+	}
 	reset() {
-		this.properties = JSON.parse(JSON.stringify(rocketTypes[0]));
+		this.properties = JSON.parse(JSON.stringify(rocketTypes[1]));
 	}
 
-	switchAuto() {
-		this.properties.auto = !this.properties.auto;
+	switchAuto(isEnabled) {
+		this.properties.auto = isEnabled;
+
+		if (this.properties.auto) {
+			document.getElementById('explorerDisableAuto').classList.add('pure-button-active');		
+			document.getElementById('explorerBtnLaunch').style.display = 'none';
+			document.getElementById('explorerBtnFuel').style.display = 'none';
+			this.launch();
+		} else {
+			document.getElementById('explorerDisableAuto').classList.remove('pure-button-active');
+			document.getElementById('explorerBtnLaunch').style.display = 'inline';
+			document.getElementById('explorerBtnFuel').style.display = 'inline';
+		}
 	}
 
 	launch() {
-		if (this.properties.rockLaunched <= this.properties.rockLimit) {
-			let explorerFailChance = getRandomInt(100);
-			if (explorerFailChance < this.properties.successChance) {
-				this.properties.rockLaunched += 1;
-				var explorerLaunch = setInterval(function () {
-					if (this.properties.fuel.amount > 0) {
-	
-						game.money += this.properties.moneyPerFuel;
-						this.properties.fuel.amount -= 1;
-						game.money = Math.round(game.money * 100) / 100;
-					} else if (this.properties.auto === false) {
-						this.properties.rockLaunched = 0;
-						clearInterval(explorerLaunch);
-					}
-				}.bind(this), 50);
-			} else {
-				game.money -= game.money / 2;
-				this.properties.fuel.amount = 0;
-				lore[18] = "This is a disaster. The rocket failed. You need to make it a lot safer.";
-			}
+		if (getRandomInt(100) < this.properties.successChance) {
+			this.properties.rockLaunched += 1;
+			var explorerLaunch = setInterval(function () {
+				if (this.properties.fuel.amount > 0) {
+
+					game.money += this.properties.moneyPerFuel;
+					this.properties.fuel.amount -= 1;
+					game.money = Math.round(game.money * 100) / 100;
+				} else if (this.properties.auto === false) {
+					this.properties.rockLaunched = 0;
+					clearInterval(explorerLaunch);
+				}
+			}.bind(this), 50);
+		} else {
+			game.money -= game.money / 2;
+			this.properties.fuel.amount = 0;
+			lore[18] = "This is a disaster. The rocket failed. You need to make it a lot safer.";
 		}
 	}
 
@@ -496,13 +565,198 @@ class Explorer extends Rocket {
 		}
 	}
 
-	buyUpgrade1() {}
+	buyUpgrade1() {
+		if (game.money < this.properties.up1.cost) {
+			return;
+		}
+		if (this.properties.up1.buys >= 50) {
+			return; 
+		}
+		
+		this.properties.fuel.max = Math.floor(this.properties.fuel.max * 1.1);
+		game.money -= this.properties.up1.cost;
+		
+		if (this.properties.techs.cs1 === 0) {
+			this.properties.up1.cost = Math.round(this.properties.up1.cost * 1.45);
+		}
+		if (this.properties.techs.cs1 === 1) {
+			this.properties.up1.cost = Math.round(this.properties.up1.cost * 1.43);
+		}
+		if (this.properties.techs.cs1 === 2) {
+			this.properties.up1.cost = Math.round(this.properties.up1.cost * 1.4);
+		}
+		if (this.properties.techs.cs1 === 3) {
+			this.properties.up1.cost = Math.round(this.properties.up1.cost * 1.36);
+		}
+		this.properties.up1.buys += 1;
+		this.properties.successChance -= 1;
+		
+	}
 
-	buyUpgrade2() {}
+	buyUpgrade2() {
 
-	buyUpgrade3() {}
+		if (game.money < this.properties.up2.cost) {
+			return;
+		}
+		if (this.properties.up2.buys >= 50) {
+			return; 
+		}
+		
+		lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2.";
 
-	buyUpgrade4() {}
+		this.properties.fuel.cost = 50000;
+		this.properties.fuel.scaleDown = 0.9 * this.properties.fuel.scaleDown;
+		game.money -= this.properties.up2.cost;
+		if (this.properties.techs.cs2 === 0) {
+			this.properties.up2.cost = Math.round(this.properties.up2.cost * 1.55);
+		}
+		if (this.properties.techs.cs2 === 1) {
+			this.properties.up2.cost = Math.round(this.properties.up2.cost * 1.53);
+		}
+		if (this.properties.techs.cs2 === 2) {
+			this.properties.up2.cost = Math.round(this.properties.up2.cost * 1.5);
+		}
+		if (this.properties.techs.cs2 === 3) {
+			this.properties.up2.cost = Math.round(this.properties.up2.cost * 1.46);
+		}
+		this.properties.up2.buys += 1;
+		this.properties.successChance -= 1;
+	}
+
+	buyUpgrade3() {
+		if (game.money < this.properties.up3.cost) {
+			return;
+		}
+		if (this.properties.up3.buys >= 50) {
+			return; 
+		}
+		
+		lore[6] = "Better engines mean more speed. More speed means more height. And FM seems to be sending you money based on how high the rocket goes.";
+	
+		if (this.properties.techs.ef3 === 0) {
+			this.properties.moneyPerFuel = this.properties.moneyPerFuel * 1.25;
+		}
+		if (this.properties.techs.ef3 === 1) {
+			this.properties.moneyPerFuel = this.properties.moneyPerFuel * 1.29;
+		}
+		if (this.properties.techs.ef3 === 2) {
+			this.properties.moneyPerFuel = this.properties.moneyPerFuel * 1.32;
+		}
+		if (this.properties.techs.ef3 === 3) {
+			this.properties.moneyPerFuel = this.properties.moneyPerFuel * 1.34;
+		}
+		game.money -= this.properties.up3.cost;
+		if (this.properties.techs.cs3 === 0) {
+			this.properties.up3.cost = Math.round(this.properties.up3.cost * 1.6);
+		}
+		if (this.properties.techs.cs3 === 1) {
+			this.properties.up3.cost = Math.round(this.properties.up3.cost * 1.54);
+		}
+		if (this.properties.techs.cs3 === 2) {
+			this.properties.up3.cost = Math.round(this.properties.up3.cost * 1.5);
+		}
+		if (this.properties.techs.cs3 === 3) {
+			this.properties.up3.cost = Math.round(this.properties.up3.cost * 1.48);
+		}
+		this.properties.up3.buys += 1;
+		this.properties.successChance -= 1;
+			
+	}
+
+	buyUpgrade4() {
+		if (game.money < this.properties.up4.cost) {
+			return;
+		}
+		if (this.properties.up4.buys >= 50) {
+			return; 
+		}
+		
+		lore[5] = "Amazingly, you find some way to mess up the fuel industry, and lower the cost of fuel to $2.";
+			
+		if (this.properties.techs.ef4 === 0) {
+			this.properties.successChance += 2;
+		}
+		if (this.properties.techs.ef4 === 1) {
+			this.properties.successChance += 2.2;
+		}
+		if (this.properties.techs.ef4 === 2) {
+			this.properties.successChance += 2.5;
+		}
+		if (this.properties.techs.ef4 === 3) {
+			this.properties.successChance += 2.9;
+		}			
+
+		game.money -= this.properties.up4.cost;
+		if (this.properties.techs.cs4 === 0) {
+			this.properties.up4.cost = Math.round(this.properties.up4.cost * 1.5);
+		}
+		if (this.properties.techs.cs4 === 1) {
+			this.properties.up4.cost = Math.round(this.properties.up4.cost * 1.48);
+		}
+		if (this.properties.techs.cs4 === 2) {
+			this.properties.up4.cost = Math.round(this.properties.up4.cost * 1.45);
+		}
+		if (this.properties.techs.cs4 === 3) {
+			this.properties.up4.cost = Math.round(this.properties.up4.cost * 1.41);
+		}
+		this.properties.up4.buys += 1;
+	}
+
+	buyTech1() {
+		if (this.properties.techs.cs1 < 3 && this.properties.techs.currentTP > 0) {
+			this.properties.techs.currentTP -= 1;
+			this.properties.techs.cs1 += 1;
+		}
+	}
+
+	buyTech2() {
+		if (this.properties.techs.cs2 < 3 && this.properties.techs.currentTP > 0) {
+			this.properties.techs.currentTP -= 1;
+			this.properties.techs.cs2 += 1;
+		}
+	}
+
+	buyTech3() {
+		if (this.properties.techs.cs3 < 3 && this.properties.techs.currentTP > 0) {
+			this.properties.techs.currentTP -= 1;
+			this.properties.techs.cs3 += 1;
+		}
+	}
+
+	buyTech4() {
+		if (this.properties.techs.cs4 < 3 && this.properties.techs.currentTP > 0) {
+			this.properties.techs.currentTP -= 1;
+			this.properties.techs.cs4 += 1;
+		}
+	}
+
+	buyTech5() {
+		if (this.properties.techs.ef3 < 3 && this.properties.techs.currentTP > 0) {
+			this.properties.techs.currentTP -= 1;
+			this.properties.techs.ef3 += 1;
+		}
+	}
+
+	buyTech6() {
+		if (this.properties.techs.ef4 < 3 && this.properties.techs.currentTP > 0) {
+			this.properties.techs.currentTP -= 1;
+			this.properties.techs.ef4 += 1;
+		}
+	}
+
+	buyTech7() {
+		if (this.properties.techs.mpf < 3 && this.properties.techs.currentTP > 0) {
+			this.properties.techs.currentTP -= 1;
+			this.properties.techs.mpf += 1;
+		}
+	}
+
+	buyTech8() {
+		if (this.properties.techs.cmx < 3 && this.properties.techs.currentTP > 0) {
+			this.properties.techs.currentTP -= 1;
+			this.properties.techs.cmx += 1;
+		}
+	}
 	
 	updateUI() {
 		var uiUpdate = setInterval(function() {		
@@ -527,6 +781,16 @@ class Explorer extends Rocket {
 				document.getElementById("explorerTechs2").style.display = "none";
 			}
 
+			if (this.properties.auto) {
+				document.getElementById('explorerDisableAuto').classList.add('pure-button-active');		
+				document.getElementById('explorerBtnLaunch').style.display = 'none';
+				document.getElementById('explorerBtnFuel').style.display = 'none';
+			} else {
+				document.getElementById('explorerDisableAuto').classList.remove('pure-button-active');		
+				document.getElementById('explorerBtnLaunch').style.display = 'inline';
+				document.getElementById('explorerBtnFuel').style.display = 'inline';
+			}
+
 			document.getElementById("explorerFuel").innerHTML = this.properties.fuel.amount;
 			document.getElementById("explorerFuelMax").innerHTML = this.properties.fuel.max;
 			document.getElementById("explorerFuelCost").innerHTML = numberWithCommas(this.properties.fuel.cost);
@@ -534,7 +798,7 @@ class Explorer extends Rocket {
 			document.getElementById("explorerTechPoints").innerHTML = this.properties.techs.currentTP;
 			document.getElementById("maxETP").innerHTML = this.properties.techs.maxTP;
 			document.getElementById("explorerFailChance").innerHTML = this.properties.successChance.toFixed(2);
-			document.getElementById('explorerDisableAuto').style.display = this.properties.auto == true ? 'inline' : 'none';
+			document.getElementById('explorerDisableAuto').style.display = rocket2.properties.auto == true ? 'inline' : 'none';
 			document.getElementById("explorerUpgrade1Cost").innerHTML = numberWithCommas(this.properties.up1.cost);
 			document.getElementById("explorerUpgrade1Buys").innerHTML = this.properties.up1.buys;
 			document.getElementById("explorerUpgrade2Cost").innerHTML = numberWithCommas(this.properties.up2.cost);
@@ -552,9 +816,6 @@ class Explorer extends Rocket {
 			document.getElementById("TC27").innerHTML = this.properties.techs.mpf;
 			document.getElementById("TC28").innerHTML = this.properties.techs.cmx;
 
-			if (this.properties.up1.buys === 25 && this.properties.up2.buys === 25 && this.properties.up3.buys === 25) {
-				lore[12] = "You have done everything you can with this rocket. Maybe it's time to start a new project.";
-			}
 			if (this.properties.techs.techStart === true) {
 				if (this.properties.up1.buys >= 5 && this.properties.up2.buys >= 5 && this.properties.up3.buys >= 5 && this.properties.techs.maxTP === 0) {
 					this.properties.techs.maxTP = 1;
@@ -585,6 +846,7 @@ class Explorer extends Rocket {
 	}
 
 }
+
 let rocket1 = new BasicRocket();
 let rocket2 = new Explorer();
 
