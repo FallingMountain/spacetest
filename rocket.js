@@ -407,8 +407,8 @@ class BasicRocket extends Rocket {
 
 			document.getElementById("fuel").innerHTML = this.properties.fuel.amount;
 			document.getElementById("fuelMax").innerHTML = this.properties.fuel.max;
-			document.getElementById("fuelCost").innerHTML = numberWithCommas(this.properties.fuel.cost);
-			document.getElementById("moneyPerFuel").innerHTML = numberWithCommas(Math.round(this.properties.moneyPerFuel));
+			document.getElementById("fuelCost").innerHTML = format(this.properties.fuel.cost);
+			document.getElementById("moneyPerFuel").innerHTML = format(Math.round(this.properties.moneyPerFuel));
 			document.getElementById("basicTechPoints").innerHTML = this.properties.techs.currentTP;
 			document.getElementById("maxBTP").innerHTML = this.properties.techs.maxTP;
 			if (game.pUp5Bought) {
@@ -428,11 +428,11 @@ class BasicRocket extends Rocket {
 
 			document.getElementById('basicRocketCount').innerHTML = game.rockLimit;
 			document.getElementById('autoRocketCount').innerHTML = game.rockLimit;
-			document.getElementById("upgrade1Cost").innerHTML = numberWithCommas(this.properties.up1.cost);
+			document.getElementById("upgrade1Cost").innerHTML = format(this.properties.up1.cost);
 			document.getElementById("upgrade1Buys").innerHTML = this.properties.up1.buys;
-			document.getElementById("upgrade2Cost").innerHTML = numberWithCommas(this.properties.up2.cost);
+			document.getElementById("upgrade2Cost").innerHTML = format(this.properties.up2.cost);
 			document.getElementById("upgrade2Buys").innerHTML = this.properties.up2.buys;
-			document.getElementById("upgrade3Cost").innerHTML = numberWithCommas(this.properties.up3.cost);
+			document.getElementById("upgrade3Cost").innerHTML = format(this.properties.up3.cost);
 			document.getElementById("upgrade3Buys").innerHTML = this.properties.up3.buys;
 			document.getElementById("TC11").innerHTML = this.properties.techs.cs1;
 			document.getElementById("TC12").innerHTML = this.properties.techs.cs2;
@@ -793,19 +793,19 @@ class Explorer extends Rocket {
 
 			document.getElementById("explorerFuel").innerHTML = this.properties.fuel.amount;
 			document.getElementById("explorerFuelMax").innerHTML = this.properties.fuel.max;
-			document.getElementById("explorerFuelCost").innerHTML = numberWithCommas(this.properties.fuel.cost);
-			document.getElementById("explorerMoneyPerFuel").innerHTML = numberWithCommas(Math.round(this.properties.moneyPerFuel));
+			document.getElementById("explorerFuelCost").innerHTML = format(this.properties.fuel.cost);
+			document.getElementById("explorerMoneyPerFuel").innerHTML = format(Math.round(this.properties.moneyPerFuel));
 			document.getElementById("explorerTechPoints").innerHTML = this.properties.techs.currentTP;
 			document.getElementById("maxETP").innerHTML = this.properties.techs.maxTP;
 			document.getElementById("explorerFailChance").innerHTML = this.properties.successChance.toFixed(2);
 			document.getElementById('explorerDisableAuto').style.display = rocket2.properties.auto == true ? 'inline' : 'none';
-			document.getElementById("explorerUpgrade1Cost").innerHTML = numberWithCommas(this.properties.up1.cost);
+			document.getElementById("explorerUpgrade1Cost").innerHTML = format(this.properties.up1.cost);
 			document.getElementById("explorerUpgrade1Buys").innerHTML = this.properties.up1.buys;
-			document.getElementById("explorerUpgrade2Cost").innerHTML = numberWithCommas(this.properties.up2.cost);
+			document.getElementById("explorerUpgrade2Cost").innerHTML = format(this.properties.up2.cost);
 			document.getElementById("explorerUpgrade2Buys").innerHTML = this.properties.up2.buys;
-			document.getElementById("explorerUpgrade3Cost").innerHTML = numberWithCommas(this.properties.up3.cost);
+			document.getElementById("explorerUpgrade3Cost").innerHTML = format(this.properties.up3.cost);
 			document.getElementById("explorerUpgrade3Buys").innerHTML = this.properties.up3.buys;
-			document.getElementById("explorerUpgrade4Cost").innerHTML = numberWithCommas(this.properties.up4.cost);
+			document.getElementById("explorerUpgrade4Cost").innerHTML = format(this.properties.up4.cost);
 			document.getElementById("explorerUpgrade4Buys").innerHTML = this.properties.up4.buys;
 			document.getElementById("TC21").innerHTML = this.properties.techs.cs1;
 			document.getElementById("TC22").innerHTML = this.properties.techs.cs2;

@@ -965,31 +965,31 @@ function apUp4() {
 }
 
 window.setInterval(function () {	
-	document.getElementById("money").innerHTML = numberWithCommas(parseFloat(game.money).toFixed(2));
+	document.getElementById("money").innerHTML = format(parseFloat(game.money));
 	//document.getElementById("alsostillmoney").innerHTML = numberWithCommas(game.money);
 	//document.getElementById("probablystillmoney").innerHTML = numberWithCommas(game.money);
 	//document.getElementById("mightbemoneyimnotsure").innerHTML = numberWithCommas(game.money);
 	document.getElementById("mercuryFuel").innerHTML = game.rock3.fuel.amount;
 	document.getElementById("geminiFuel").innerHTML = game.rock4.fuel.amount;
 	document.getElementById("apolloFuel").innerHTML = game.rock5.fuel.amount;	
-	document.getElementById("mercuryFuelCost").innerHTML = numberWithCommas(game.rock3.fuel.cost);
-	document.getElementById("geminiFuelCost").innerHTML = numberWithCommas(game.rock4.fuel.cost);
-	document.getElementById("apolloFuelCost").innerHTML = numberWithCommas(game.rock5.fuel.cost);	
+	document.getElementById("mercuryFuelCost").innerHTML = format(game.rock3.fuel.cost);
+	document.getElementById("geminiFuelCost").innerHTML = format(game.rock4.fuel.cost);
+	document.getElementById("apolloFuelCost").innerHTML = format(game.rock5.fuel.cost);	
 	document.getElementById("mercuryFuelMax").innerHTML = game.rock3.fuel.max;
 	document.getElementById("geminiFuelMax").innerHTML = game.rock4.fuel.max;
 	document.getElementById("apolloFuelMax").innerHTML = game.rock5.fuel.max;	
-	document.getElementById("mercuryUpgrade1Cost").innerHTML = numberWithCommas(game.rock3.up1.cost);
-	document.getElementById("geminiUpgrade1Cost").innerHTML = numberWithCommas(game.rock4.up1.cost);
-	document.getElementById("apolloUpgrade1Cost").innerHTML = numberWithCommas(game.rock5.up1.cost);
-	document.getElementById("mercuryUpgrade2Cost").innerHTML = numberWithCommas(game.rock3.up2.cost);
-	document.getElementById("geminiUpgrade2Cost").innerHTML = numberWithCommas(game.rock4.up2.cost);
-	document.getElementById("apolloUpgrade2Cost").innerHTML = numberWithCommas(game.rock5.up2.cost);	
-	document.getElementById("mercuryUpgrade3Cost").innerHTML = numberWithCommas(game.rock3.up3.cost);
-	document.getElementById("geminiUpgrade3Cost").innerHTML = numberWithCommas(game.rock4.up3.cost);
-	document.getElementById("apolloUpgrade3Cost").innerHTML = numberWithCommas(game.rock5.up3.cost);
-	document.getElementById("mercuryUpgrade4Cost").innerHTML = numberWithCommas(game.rock3.up4.cost);
-	document.getElementById("geminiUpgrade4Cost").innerHTML = numberWithCommas(game.rock4.up4.cost);
-	document.getElementById("apolloUpgrade4Cost").innerHTML = numberWithCommas(game.rock5.up4.cost);	
+	document.getElementById("mercuryUpgrade1Cost").innerHTML = format(game.rock3.up1.cost);
+	document.getElementById("geminiUpgrade1Cost").innerHTML = format(game.rock4.up1.cost);
+	document.getElementById("apolloUpgrade1Cost").innerHTML = format(game.rock5.up1.cost);
+	document.getElementById("mercuryUpgrade2Cost").innerHTML = format(game.rock3.up2.cost);
+	document.getElementById("geminiUpgrade2Cost").innerHTML = format(game.rock4.up2.cost);
+	document.getElementById("apolloUpgrade2Cost").innerHTML = format(game.rock5.up2.cost);	
+	document.getElementById("mercuryUpgrade3Cost").innerHTML = format(game.rock3.up3.cost);
+	document.getElementById("geminiUpgrade3Cost").innerHTML = format(game.rock4.up3.cost);
+	document.getElementById("apolloUpgrade3Cost").innerHTML = format(game.rock5.up3.cost);
+	document.getElementById("mercuryUpgrade4Cost").innerHTML = format(game.rock3.up4.cost);
+	document.getElementById("geminiUpgrade4Cost").innerHTML = format(game.rock4.up4.cost);
+	document.getElementById("apolloUpgrade4Cost").innerHTML = format(game.rock5.up4.cost);	
 	document.getElementById("geminiUpgrade1Buys").innerHTML = game.rock4.up1.buys;
 	document.getElementById("geminiUpgrade2Buys").innerHTML = game.rock4.up2.buys;
 	document.getElementById("geminiUpgrade3Buys").innerHTML = game.rock4.up3.buys;
@@ -1002,7 +1002,7 @@ window.setInterval(function () {
 	document.getElementById("apolloUpgrade2Buys").innerHTML = game.rock3.up2.buys;
 	document.getElementById("apolloUpgrade3Buys").innerHTML = game.rock3.up3.buys;
 	document.getElementById("apolloUpgrade4Buys").innerHTML = game.rock3.up4.buys;	
-	document.getElementById("creativity").innerHTML = numberWithCommas(game.creat);
+	document.getElementById("creativity").innerHTML = format(game.creat);
 	document.getElementById("gainOnBrainstorm").innerHTML = game.creatGainReset;
 	document.getElementById("lore1").innerHTML = lore[0];
 	document.getElementById("lore2").innerHTML = lore[1];
@@ -1069,12 +1069,12 @@ window.setInterval(function () {
 		document.getElementById('pUpgrade11').classList.remove('pure-button-disabled');
 	}
 	document.getElementById("basicRocketLimit").innerHTML = game.rockLimit;
-	document.getElementById("pUpgrade2Cost").innerHTML = numberWithCommas(game.pUp2cost);
-	document.getElementById("pUpgrade3Cost").innerHTML = numberWithCommas(game.pUp3cost);
+	document.getElementById("pUpgrade2Cost").innerHTML = format(game.pUp2cost);
+	document.getElementById("pUpgrade3Cost").innerHTML = format(game.pUp3cost);
 	document.getElementById("creativityMultiplier").innerHTML = game.creatMult.toFixed(2);	
-	document.getElementById("mercuryMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock3.moneyPerFuel));
-	document.getElementById("geminiMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock4.moneyPerFuel));
-	document.getElementById("apolloMoneyPerFuel").innerHTML = numberWithCommas(Math.round(game.rock5.moneyPerFuel));
+	document.getElementById("mercuryMoneyPerFuel").innerHTML = format(Math.round(game.rock3.moneyPerFuel));
+	document.getElementById("geminiMoneyPerFuel").innerHTML = format(Math.round(game.rock4.moneyPerFuel));
+	document.getElementById("apolloMoneyPerFuel").innerHTML = format(Math.round(game.rock5.moneyPerFuel));
 	document.getElementById("mercuryTechPoints").innerHTML = game.rock3.techs.currentTP;
 	document.getElementById("maxMTP").innerHTML = game.rock3.techs.maxTP;
 	document.getElementById("geminiTechPoints").innerHTML = game.rock3.techs.currentTP;
@@ -1135,6 +1135,42 @@ function fullReset() {
 		}
 	});
 	
+}
+
+function format(number, decPlaces = 2) {
+    // 2 decimal places => 100, 3 => 1000, etc
+    decPlaces = Math.pow(10, decPlaces);
+
+    // Enumerate number abbreviations
+    var abbrev = ["K", "M", "B", "T", "q", "Q", "s", "S", "O", "N", "D"];
+
+    // Go through the array backwards, so we do the largest first
+    for (var i = abbrev.length - 1; i >= 0; i--) {
+
+        // Convert array index to "1000", "1000000", etc
+        var size = Math.pow(10, (i + 1) * 3);
+
+        // If the number is bigger or equal do the abbreviation
+        if (size <= number) {
+            // Here, we multiply by decPlaces, round, and then divide by decPlaces.
+            // This gives us nice rounding to a particular decimal place.
+            number = Math.round(number * decPlaces / size) / decPlaces;
+
+            // Handle special case where we round up to the next abbreviation
+            if ((number == 1000) && (i < abbrev.length - 1)) {
+                number = 1;
+                i++;
+            }
+
+            // Add the letter for the abbreviation
+            number += abbrev[i];
+
+            // We are done... stop
+            break;
+        }
+    }
+
+    return number;
 }
 
 function tab(t) {
