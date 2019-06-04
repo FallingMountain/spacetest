@@ -20,23 +20,20 @@ class Rocket {
 	}
 
 	launch() {
-		if (game.rockLimit > game.rockLaunched) {
-			game.rockLaunched += 1;
-			lore[1] = "You set up a launch pad in a field filled with flowers and one-leafed clovers. As you launch the rocket, you realize you won't be able to make any money for future launches, which is sad.";		
-	
-			var autoLaunch = setInterval(function () {
-				if (this.properties.fuel.amount > 0) {
-					let money = this.properties.moneyPerFuel * game.rockLimit;				
-					game.money += money;
-					this.properties.fuel.amount -= 1;
-					game.money = Math.round(game.money * 100) / 100;
-				} else if (this.properties.auto === false) {
-					lore[2] = "The day after the rocket launch, you recieve a letter saying \'That rocket launch was cool. Hope you can do more!\' with enough money to fund another launch. The letter is signed \'FM\'";
-					game.rockLaunched = 0;				
-					clearInterval(autoLaunch);
-				}
-			}.bind(this), 50);
-		}
+		lore[1] = "You set up a launch pad in a field filled with flowers and one-leafed clovers. As you launch the rocket, you realize you won't be able to make any money for future launches, which is sad.";		
+
+		var autoLaunch = setInterval(function () {
+			if (this.properties.fuel.amount > 0) {
+				let money = this.properties.moneyPerFuel * this.properties.limit;
+				game.money += money;
+				this.properties.fuel.amount -= 1;
+				game.money = Math.round(game.money * 100) / 100;
+			} else if (this.properties.auto === false) {
+				lore[2] = "The day after the rocket launch, you recieve a letter saying \'That rocket launch was cool. Hope you can do more!\' with enough money to fund another launch. The letter is signed \'FM\'";
+				game.rockLaunched = 0;				
+				clearInterval(autoLaunch);
+			}
+		}.bind(this), 50);		
 	}
 
 	buyFuel() {		
@@ -65,6 +62,7 @@ let rocketTypes = [
 	basicRocket = {
 		moneyPerFuel: 10,
 		auto: false,
+		limit: 1,		
 		fuel: {
 			amount: 150,
 			cost: 3,
@@ -101,7 +99,7 @@ let rocketTypes = [
 	},
 	explorer = {
 		moneyPerFuel: 1500000,
-		rockLimit: 1,
+		limit: 1,
 		rockLaunched: 0,
 		affectByCreat: false,
 		successChance: 100,
@@ -161,7 +159,7 @@ class BasicRocket extends Rocket {
 
 		this.properties.rockLaunched = 0;
 
-		if (game.pUp9Bought === true) {
+		if (game.prestige.upgrades[8].bought) {
 
 			rocket1.properties.fuel.amount = 150;
 			rocket1.properties.fuel.cost = 2;
@@ -177,9 +175,9 @@ class BasicRocket extends Rocket {
 			this.properties.up2 = prestige.up2;
 			this.properties.up3 = prestige.up3;
 
-			let gameCreat = game.creat < 256 ? game.creat + 1 : 256;
+			let gameCreat = game.creativity.total < 256 ? game.creativity.total + 1 : 256;
 
-			if (game.ally === 0) {
+			if (!game.prestige.upgrades[0].bought) {
 				this.properties.moneyPerFuel = 10 * (Math.log2(gameCreat) + 1);
 			} else {
 				this.properties.moneyPerFuel = 10 * (Math.log2(gameCreat) + 1) * 1.5 * (this.properties.techs.mpf + 1);
@@ -398,8 +396,8 @@ class BasicRocket extends Rocket {
 			}
 
 			if (this.properties.techs.techStart === true) {
-				document.getElementById("basicTechs").style.display = "";
-				document.getElementById("basicTechs2").style.display = "";
+				document.getElementById("basicTechs").style.display = "inline";
+				document.getElementById("basicTechs2").style.display = "inline";
 			} else {
 				document.getElementById("basicTechs").style.display = "none";
 				document.getElementById("basicTechs2").style.display = "none";
@@ -411,7 +409,8 @@ class BasicRocket extends Rocket {
 			document.getElementById("moneyPerFuel").innerHTML = format(Math.round(this.properties.moneyPerFuel));
 			document.getElementById("basicTechPoints").innerHTML = this.properties.techs.currentTP;
 			document.getElementById("maxBTP").innerHTML = this.properties.techs.maxTP;
-			if (game.pUp5Bought) {
+			
+			if (game.prestige.upgrades[4].bought) {
 				document.getElementById('basicDisableAuto').style.display = 'inline';
 				if (this.properties.auto) {
 					document.getElementById('basicDisableAuto').classList.add('pure-button-active');		
@@ -426,8 +425,8 @@ class BasicRocket extends Rocket {
 				document.getElementById('basicDisableAuto').style.display = 'none';
 			}
 
-			document.getElementById('basicRocketCount').innerHTML = game.rockLimit;
-			document.getElementById('autoRocketCount').innerHTML = game.rockLimit;
+			document.getElementById('basicRocketCount').innerHTML = this.properties.limit;
+			document.getElementById('autoRocketCount').innerHTML = this.properties.limit;
 			document.getElementById("upgrade1Cost").innerHTML = format(this.properties.up1.cost);
 			document.getElementById("upgrade1Buys").innerHTML = this.properties.up1.buys;
 			document.getElementById("upgrade2Cost").innerHTML = format(this.properties.up2.cost);
@@ -444,6 +443,7 @@ class BasicRocket extends Rocket {
 			if (this.properties.up1.buys === 25 && this.properties.up2.buys === 25 && this.properties.up3.buys === 25) {
 				lore[12] = "You have done everything you can with this rocket. Maybe it's time to start a new project.";
 			}
+
 			if (this.properties.techs.techStart === true) {
 				if (this.properties.up1.buys >= 5 && this.properties.up2.buys >= 5 && this.properties.up3.buys >= 5 && this.properties.techs.maxTP === 0) {
 					this.properties.techs.maxTP = 1;
@@ -494,9 +494,9 @@ class Explorer extends Rocket {
 		this.properties.up4 = prestige.up4;
 		this.properties.successChance = prestige.successChance;
 
-		if (this.properties.affectByCreat === true && game.creat > 2048 && game.creat < 1048576) {
-			this.properties.moneyPerFuel = 1500000 * ((Math.log2(game.creat - 2048) + 1) * 1.5 * (this.properties.techs.mpf + 1));
-		} else if (game.creat > 1048576) {
+		if (this.properties.affectByCreat === true && game.creativity.total > 2048 && game.creativity.total < 1048576) {
+			this.properties.moneyPerFuel = 1500000 * ((Math.log2(game.creativity.total - 2048) + 1) * 1.5 * (this.properties.techs.mpf + 1));
+		} else if (game.creativity.total > 1048576) {
 			this.properties.moneyPerFuel = 1500000 * ((Math.log2(1048576 - 2048) + 1) * 1.5 * (this.properties.techs.mpf + 1));
 		} else {
 			this.properties.moneyPerFuel = 1500000;
@@ -781,15 +781,20 @@ class Explorer extends Rocket {
 				document.getElementById("explorerTechs2").style.display = "none";
 			}
 
-			if (this.properties.auto) {
-				document.getElementById('explorerDisableAuto').classList.add('pure-button-active');		
-				document.getElementById('explorerBtnLaunch').style.display = 'none';
-				document.getElementById('explorerBtnFuel').style.display = 'none';
+			if (game.prestige.upgrades[10].bought) {
+				document.getElementById('explorerDisableAuto').style.display = 'inline';
+				if (this.properties.auto) {
+					document.getElementById('explorerDisableAuto').classList.add('pure-button-active');		
+					document.getElementById('explorerBtnLaunch').style.display = 'none';
+					document.getElementById('explorerBtnFuel').style.display = 'none';
+				} else {
+					document.getElementById('explorerDisableAuto').classList.remove('pure-button-active');		
+					document.getElementById('explorerBtnLaunch').style.display = 'inline';
+					document.getElementById('explorerBtnFuel').style.display = 'inline';
+				}
 			} else {
-				document.getElementById('explorerDisableAuto').classList.remove('pure-button-active');		
-				document.getElementById('explorerBtnLaunch').style.display = 'inline';
-				document.getElementById('explorerBtnFuel').style.display = 'inline';
-			}
+				document.getElementById('explorerDisableAuto').style.display = 'none';
+			}			
 
 			document.getElementById("explorerFuel").innerHTML = this.properties.fuel.amount;
 			document.getElementById("explorerFuelMax").innerHTML = this.properties.fuel.max;
@@ -797,8 +802,7 @@ class Explorer extends Rocket {
 			document.getElementById("explorerMoneyPerFuel").innerHTML = format(Math.round(this.properties.moneyPerFuel));
 			document.getElementById("explorerTechPoints").innerHTML = this.properties.techs.currentTP;
 			document.getElementById("maxETP").innerHTML = this.properties.techs.maxTP;
-			document.getElementById("explorerFailChance").innerHTML = this.properties.successChance.toFixed(2);
-			document.getElementById('explorerDisableAuto').style.display = rocket2.properties.auto == true ? 'inline' : 'none';
+			document.getElementById("explorerFailChance").innerHTML = this.properties.successChance.toFixed(2);			
 			document.getElementById("explorerUpgrade1Cost").innerHTML = format(this.properties.up1.cost);
 			document.getElementById("explorerUpgrade1Buys").innerHTML = this.properties.up1.buys;
 			document.getElementById("explorerUpgrade2Cost").innerHTML = format(this.properties.up2.cost);
@@ -852,6 +856,37 @@ let rocket2 = new Explorer();
 
 var game = {
 	money: 0,
+	creativity: {
+		total: 0,
+		gainReset: 0,
+		multiplier: 1
+	},
+	prestige: {
+		enabled: false,
+		autoLaunch: {
+			basicRocket: false,
+			explorer: false
+		},
+		maxProgram: {
+			basicRocket: false,
+			explorer: false
+		},
+		upgrades: [
+			{name: 'Join Nasa', cost: 1, bought: false},
+			{name: 'Launch # Rocket(s)', cost: 5, bought: false},
+			{name: '# Creativity Multiplier', cost: 5, bought: false},
+			{name: 'Basic Rocket Unlock Technology', cost: 10, bought: false},
+			{name: 'Basic Rocket Automate Launches', cost: 10, bought: false},
+			{name: 'Explorer Program', cost: 250, bought: false},
+			{name: 'MaxBTP', cost: 2500, bought: false},
+			{name: 'More Money', cost: 7500, bought: false},
+			{name: 'Max Basic Rocket', cost: 15000, bought: false},
+			{name: 'Explorer Unlock Technology', cost: 50000, bought: false},
+			{name: 'Explorer Automate Launches', cost: 50000, bought: false},
+			{name: 'Mercury Program', cost: 10000000, bought: false},
+		]
+	},	
+	funRuined: false,			
 	rock3: {
 		active: false,
 		fuel: {
@@ -1007,33 +1042,6 @@ var game = {
 		rockLaunched: 0,
 		affectByCreat: false,
 		successChance: 100
-	},
-	auto: {
-		rocket: false,
-		fuel: false
-	},
-	//HλLF-LIFE 3 confirmed
-	up1Cost: 2500,
-	up1buys: 0,
-	up2Cost: 4000,
-	up2buys: 0,
-	up3Cost: 6000,
-	up3buys: 0,
-	creat: 0,
-	creatGainReset: 0,
-	ally: 0,
-	rockLimit: 1,
-	allyButText: "none",
-	era: "before",
-	pUp2cost: 5,
-	rockLaunched: 0,
-	pUp3cost: 5,
-	rocket: 0,
-	funRuined: false,
-	creatMult: 1,
-	pUp4Bought: false,
-	brainstormed: false,
-	explorerUnlocked: false,
-	pUp5Bought: false,
-	pUp9Bought: false
+	},	
+	
 };
